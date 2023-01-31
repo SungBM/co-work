@@ -31,16 +31,18 @@ public class ProjectFrontController extends HttpServlet {
 		String contextPath = request.getContextPath() + "/Ajax";
 		System.out.println("contextPath = " + contextPath);
 		
+		
 		//requestURI 에서 컨텍스트 경로 길이 값의 인덱스 위치의 문자부터 마지막 위치 문자까지 추출
 		//command : /login.net 반환
-		String command =  requestURI.substring(contextPath.length()+1);
+		String command =  requestURI.substring(contextPath.length());
 		System.out.println("command = " + command);
 		
 		ActionForward forward = null;
 		Action action = null;
 		
+		
 		switch(command) {
-		case "ProjectList.po" :
+		case "/ProjectList.po" :
 			action = new ProjectListAction();
 			break;
 		}
