@@ -925,20 +925,7 @@
     <script src="assets/libs/simplebar/simplebar.min.js"></script>
     <script src="assets/libs/node-waves/waves.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtSAR45TFgZjOs4nBFFZnII-6mMHLfSYI"></script>
-	<script type="text/javascript">
-		$(function(){
-			alert("흠");
-			$.ajax({
-				url : "/BootStrap/test.do",
-				success : function(resp){
-					alert("악!")
-				}, 
-				error : function(request, status, error) { // 결과 에러 콜백함수
-			        console.log(error);
-				}
-			});
-		});
-	</script>
+
     <!-- App js -->
     <script src="assets/js/app.js"></script>
     <script src="assets/js/ajax.js"></script>
