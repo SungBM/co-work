@@ -2,18 +2,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>로그인</title>
-<link href="css/login.css" type="text/css" rel="stylesheet">
-<script src="js/jquery-3.6.3.js"></script>
+<link rel="stylesheet" href="/resource/css/bootstrap.css">
+<script type="text/javascript" src="/resource/js/bootstrap.js"></script>
+<script src="co_work/auth-login.html"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/resource/js/bootstrap.js"></script>
 
+<title>로그인</title>
 <script>
 	$(function(){
 		$(".join").click(function(){
 			location.href = "join.net";
 		});
 		
-		const id = '${id}';
-		if(id){
+		const id = '${USER_ID}';
+		if(USER_ID){
 			$("#id").val(id);
 			$("#remember").prop('checked', true);
 		}
