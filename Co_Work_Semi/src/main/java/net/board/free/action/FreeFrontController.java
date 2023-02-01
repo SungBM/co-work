@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ProjectFrontController
  */
-@WebServlet("*.net")
+@WebServlet("*.bo")
 public class FreeFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -40,7 +40,7 @@ public class FreeFrontController extends HttpServlet {
 		Action action = null;
 		
 		switch(command) {
-		case "/logo.net" :
+		case "/logo.bo" :
 			action = new FreeLogoAction();
 			break;
 		}
