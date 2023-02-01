@@ -28,7 +28,7 @@ public class ProjectFrontController extends HttpServlet {
 		
 		//getContextPath() : 컨텍스트 경로가반환
 		//contextPath : "JspProject 가 반환
-		String contextPath = request.getContextPath() + "/Ajax";
+		String contextPath = request.getContextPath() + "/co_work";
 		System.out.println("contextPath = " + contextPath);
 		
 		
