@@ -1,4 +1,4 @@
-select * from USER_INFO;
+select * from USER_INFO WHERE user_id = 'HTA1';
 
 CREATE TABLE USER_INFO(
 	USER_ID		VARCHAR2(30),
