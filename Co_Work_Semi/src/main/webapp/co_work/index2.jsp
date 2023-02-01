@@ -646,7 +646,7 @@
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="contacts-grid.html" key="t-user-grid">Users Grid</a></li>
                                 <li><a href="contacts-list.html" key="t-user-list">Users List</a></li>
-                                <li><a href="contacts-profile.html" key="t-profile">Profile</a></li>
+                                <li><a id="HTABL1">My Page</a></li>  <%-- 안덕균 --%>
                             </ul>
                         </li>
         
@@ -926,10 +926,26 @@
     <script src="assets/libs/node-waves/waves.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtSAR45TFgZjOs4nBFFZnII-6mMHLfSYI"></script>
 	<script type="text/javascript">
+	
 	$(function(){
 		$("#HTABL").click(function(){
 			$.ajax({
 				url: "blog-list.html" ,
+				cache: false,
+				dataType: "html",
+				type: "GET",
+				success: function(data) {
+					$("#result").empty();
+					$("#result").html(data);
+					window.location.hash = page;
+					$(window).scrollTop(0);
+				}
+			});
+		})  // HTABL Click end
+		
+		$("#HTABL1").click(function(){
+			$.ajax({
+				url: "mypage.my" ,
 				cache: false,
 				dataType: "html",
 				type: "GET",
