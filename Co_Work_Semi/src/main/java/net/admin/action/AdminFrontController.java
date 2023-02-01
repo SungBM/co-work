@@ -8,8 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("*.net")
-public class MemberFrontController extends javax.servlet.http.HttpServlet {
+@WebServlet("*.com")
+public class AdminFrontController extends javax.servlet.http.HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
@@ -38,7 +38,7 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet {
 
 		switch (command) {
 		case "/login.net":
-			action = new MemberLoginAction();
+			action = new AdminLoginAction();
 			break;
 
 		} // switch end
