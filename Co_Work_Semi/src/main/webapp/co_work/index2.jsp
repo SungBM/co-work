@@ -657,7 +657,7 @@
                                 <span key="t-blog">Blog</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="blog-list.html" key="t-blog-list">Blog List</a></li>
+                                <li><a id="HTABL">Blog List</a></li>
                                 <li><a href="blog-grid.html" key="t-blog-grid">Blog Grid</a></li>
                                 <li><a href="blog-details.html" key="t-blog-details">Blog Details</a></li>
                             </ul>
@@ -926,18 +926,24 @@
     <script src="assets/libs/node-waves/waves.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtSAR45TFgZjOs4nBFFZnII-6mMHLfSYI"></script>
 	<script type="text/javascript">
-		$(function(){
-			alert("흠");
+	$(function(){
+		$("#HTABL").click(function(){
 			$.ajax({
-				url : "/BootStrap/test.do",
-				success : function(resp){
-					alert("악!")
-				}, 
-				error : function(request, status, error) { // 결과 에러 콜백함수
-			        console.log(error);
+				url: "blog-list.html" ,
+				cache: false,
+				dataType: "html",
+				type: "GET",
+				success: function(data) {
+					$("#result").empty();
+					$("#result").html(data);
+					window.location.hash = page;
+					$(window).scrollTop(0);
 				}
 			});
-		});
+		})
+	})
+	
+	
 	</script>
     <!-- App js -->
     <script src="assets/js/app.js"></script>
