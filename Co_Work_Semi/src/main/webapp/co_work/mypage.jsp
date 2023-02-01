@@ -5,6 +5,11 @@
 <html>
 <head>
 <title>회원정보수정</title>
+<style>
+input[type=file] {
+	display: none;
+}
+</style>
 </head>
 <body>
 	<div class="page-content">
@@ -31,18 +36,22 @@
 				<div class="row">
 					<div class="col-xl-3">
 						<div class="text-primary p-2">
-							<img src="assets/images/users/avatar-1.jpg" alt="" width="100%">
-							<input type="hidden" name="check" value="${memberinfo.user_img }">
+							<label> <img src="assets/images/users/avatar-1.jpg"
+								alt="" width="100%"> <input type="hidden" name="check"
+								value="${memberinfo.user_img }"> <input type="file"
+								name="user_img" accept="image/*">
+							</label>
 						</div>
 						<!-- end card -->
 						<div>사진과 명함을 교체하시려면 각 이미지를 클릭</div>
 						<!-- end img -->
 						<div class="card">
 							<div class="card-body">
-								<img src="assets/images/namecard.png" alt="" width="100%">
-								<input type="hidden" name="check"
+								<label> <img src="assets/images/namecard.png" alt=""
+									width="100%"> <input type="hidden" name="check"
 									value="${memberinfo.user_card }"> <input type="file"
-									name="memberfile" accept="image/*">
+									name="user_card" accept="image/*">
+								</label>
 
 							</div>
 						</div>
