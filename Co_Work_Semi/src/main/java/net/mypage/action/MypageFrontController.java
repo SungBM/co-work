@@ -40,7 +40,9 @@ public class MypageFrontController extends javax.servlet.http.HttpServlet {
 		case "/mypage.my":
 			action = new MypageAction();
 			break;
-			
+		case "/update.my":
+			action = new MypageUpdateAction();
+			break;
 
 		} // switch end
 		forward = action.execute(request, response);
