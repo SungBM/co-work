@@ -52,6 +52,9 @@ public class MypageFrontController extends javax.servlet.http.HttpServlet {
 		case "/passwordchangeProcess.my":
 			action = new PasswordChangeProcess();
 			break;
+		case "/notify.my":
+			action = new NotifyAction();
+			break;
 		} // switch end
 		forward = action.execute(request, response);
 

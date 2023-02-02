@@ -423,7 +423,7 @@
 						</button>
 						<div class="dropdown-menu dropdown-menu-end">
 							<!-- item-->
-							<a class="dropdown-item" id="mypage" href="#"
+							<a class="dropdown-item" name="mypage" href="#"
 								onclick='preventClick(event)'><i
 								class="bx bx-user font-size-16 align-middle me-1"></i> <span
 								key="t-profile">내 프로필</span></a>
@@ -506,7 +506,7 @@
 
 						<%-- 2월 2일 안덕균 추가 --%>
 
-						<li><a id="mypage1" href="#" onclick='preventClick(event)'
+						<li><a name="mypage" href="#" onclick='preventClick(event)'
 							class="waves-effect"> <i class="bx bx-user"></i> <span
 								key="t-chat">내 프로필</span>
 						</a></li>
@@ -515,7 +515,7 @@
 							class="has-arrow waves-effect"> <i class="bx bx-cog"></i> <span>설정</span>
 						</a>
 							<ul class="sub-menu" aria-expanded="false">
-								<li><a>알림</a></li>
+								<li><a id="notify" href="#" onclick='preventClick(event)'>알림</a></li>
 								<li><a id="passwordchange" href="#"
 									onclick='preventClick(event)'>비밀번호 변경</a></li>
 								<li><a>보안</a></li>
@@ -653,22 +653,7 @@
 				move_ajax(url_add);
 			})
 
-			$("#mypage").click(function() {
-				$.ajax({
-					url : "mypagecheck.my",
-					cache : false,
-					dataType : "html",
-					type : "GET",
-					success : function(data) {
-						$("#result").empty();
-						$("#result").html(data);
-						window.location.hash = page;
-						$(window).scrollTop(0);
-					}
-				});
-			})
-
-			$("#mypage1").click(function() {
+			$("a[name=mypage]").click(function() {
 				$.ajax({
 					url : "mypagecheck.my",
 					cache : false,
@@ -686,6 +671,21 @@
 			$("#passwordchange").click(function() {
 				$.ajax({
 					url : "passwordchange.my",
+					cache : false,
+					dataType : "html",
+					type : "GET",
+					success : function(data) {
+						$("#result").empty();
+						$("#result").html(data);
+						window.location.hash = page;
+						$(window).scrollTop(0);
+					}
+				});
+			})
+
+			$("#notify").click(function() {
+				$.ajax({
+					url : "notify.my",
 					cache : false,
 					dataType : "html",
 					type : "GET",

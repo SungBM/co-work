@@ -30,10 +30,6 @@ public class MypageAction implements Action {
 				request.setAttribute("message", "아이디에 해당하는 정보가 없습니다.");
 				return forward;
 			}
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('수정 페이지로 이동합니다.');");
-			out.println("</script>");
 			forward.setPath("mypage.jsp");
 			forward.setRedirect(false);
 			request.setAttribute("memberinfo", m);

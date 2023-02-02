@@ -165,4 +165,3 @@
 <script src="assets/libs/jquery/jquery.min.js"></script>
 <script src="assets/js/app.js"></script>
 <script src="assets/js/ajax.js"></script>
-
