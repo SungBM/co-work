@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8" />
@@ -425,25 +424,19 @@
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg"
+                            <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg"  
                                 alt="Header Avatar">
                             <span class="d-none d-xl-inline-block ms-1" key="t-henry">Henry</span>
                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
                             <!-- item-->
-                            <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i>
-                                <span key="t-profile">Profile</span></a>
-                            <a class="dropdown-item" href="#"><i
-                                    class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet">My
-                                    Wallet</span></a>
+                            <a class="dropdown-item" id="adg" href="#" onclick='preventClick(event)'><i class="bx bx-user font-size-16 align-middle me-1"></i>
+                                <span key="t-profile">내 프로필</span></a>    <%-- 안덕균 --%>
                             <a class="dropdown-item d-block" href="#"><span
                                     class="badge bg-success float-end">11</span><i
                                     class="bx bx-wrench font-size-16 align-middle me-1"></i> <span
                                     key="t-settings">Settings</span></a>
-                            <a class="dropdown-item" href="#"><i
-                                    class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span
-                                    key="t-lock-screen">Lock screen</span></a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-danger" href="#"><i
                                     class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span
@@ -647,13 +640,28 @@
 			console.log(url_add);
 			move_ajax(url_add);
 		})
+		
+      $("#adg").click(function(){
+         $.ajax({
+            url: "mypage.my" ,
+            cache: false,
+            dataType: "html",
+            type: "GET",
+            success: function(data) {
+               $("#result").empty();
+               $("#result").html(data);
+               window.location.hash = page;
+               $(window).scrollTop(0);
+            }
+         });
+      })
+		
 		//a 태그 href 이동 막아주는 부분
 		//<a id="HTABL" href="blog-list.html" onclick='preventClick(event)'> 태그에 onclick='preventClick(event) 작성해야합니다
 		function preventClick(e){
 			e.preventDefault()
 		}
 	})
-	
 	
 	</script>
     <!-- App js -->
