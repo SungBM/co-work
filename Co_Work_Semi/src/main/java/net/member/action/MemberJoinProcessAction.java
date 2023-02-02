@@ -27,7 +27,7 @@ public class MemberJoinProcessAction implements Action {
 		MemberDAO mdao = new MemberDAO();
 		int result = mdao.insert(m);
 		
-		//result=0;
+		result=0;
 		if(result==0) {
 			System.out.println("회원 가입 실패입니다.");
 			ActionForward forward = new ActionForward();
