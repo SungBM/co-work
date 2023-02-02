@@ -19,7 +19,7 @@ input[type=file] {
 				<div class="col-12">
 					<div
 						class="page-title-box d-sm-flex align-items-center justify-content-between">
-						<h4 class="mb-sm-0 font-size-18">Profile</h4>
+						<h4 class="mb-sm-0 font-size-18">내 프로필> 수정</h4>
 
 						<div class="page-title-right">
 							<ol class="breadcrumb m-0">
@@ -32,7 +32,7 @@ input[type=file] {
 				</div>
 			</div>
 			<!-- end page title -->
-			<form action="update.my" method="post" enctype="multipart/form-data">
+			<form action="updateProcess.my" method="post" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col-xl-3">
 						<div class="text-primary p-2">
@@ -147,4 +147,10 @@ input[type=file] {
 <!-- apexcharts -->
 <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
 <script src="assets/js/pages/profile.init.js"></script>
-<script src="assets/js/pages/table-editable.int.js"></script>
+<script src="assets/libs/jquery/jquery.min.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/ajax.js"></script>
+
+<script>
+	
+</script>
