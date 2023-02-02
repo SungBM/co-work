@@ -27,7 +27,7 @@ public class MemberLoginProcessAction implements Action {
 			HttpSession session = request.getSession();
 			session.setAttribute("USER_ID", USER_ID);
 			
-			String IDStore = request.getParameter("remember");
+			String IDStore = request.getParameter("remember-check");
 			Cookie cookie = new Cookie("USER_ID", USER_ID);
 			
 			//아이디 기억하기를 체크한 경우
@@ -43,7 +43,7 @@ public class MemberLoginProcessAction implements Action {
 			}
 			
 			forward.setRedirect(true);
-			forward.setPath("BoardList.bo");  //메인 페이지로 변경하기
+			forward.setPath("index2.jsp");  //메인 페이지로 이동
 			return forward;
 		} else {
 			String message = "비밀번호가 일치하지 않습니다.";

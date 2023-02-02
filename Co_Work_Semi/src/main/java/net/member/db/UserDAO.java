@@ -30,7 +30,7 @@ public class UserDAO {
 		try {
 			con = ds.getConnection();
 			
-			String sql = "SELECT ID FROM USER_INFO WHERE ID = ?";
+			String sql = "SELECT USER_ID FROM USER_INFO WHERE USER_ID = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, USER_ID);
 			rs = pstmt.executeQuery();
@@ -70,7 +70,7 @@ public class UserDAO {
 		try {
 			con = ds.getConnection();
 			
-			String sql = "select id from member where id = ? ";
+			String sql = "SELECT USER_ID FROM USER_INFO WHERE USER_ID = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, USER_ID);
 			rs = pstmt.executeQuery();
