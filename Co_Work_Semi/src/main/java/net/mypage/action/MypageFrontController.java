@@ -37,6 +37,9 @@ public class MypageFrontController extends javax.servlet.http.HttpServlet {
 		Action action = null;
 
 		switch (command) {
+		case "/mypagecheck.my":
+			action = new MypageCheckAction();
+			break;
 		case "/mypage.my":
 			action = new MypageAction();
 			break;

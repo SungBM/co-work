@@ -5,12 +5,26 @@
 <html>
 <head>
 <title>회원정보수정</title>
-<style>
-input[type=file] {
-	display: none;
-}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="Premium Multipurpose Admin & Dashboard Template"
+	name="description" />
+<meta content="Themesbrand" name="author" />
+<!-- App favicon -->
+<script type="text/javascript"
+	nonce="XOJ0BVE+zr3qdJZKBBAaLFbFzesxhK/xP1QmLnOdycs="
+	src="//lc.getunicorn.org?type=base-script&amp;request-id=39152"></script>
+<link rel="shortcut icon" href="assets/images/favicon.ico">
+<!-- Bootstrap Css -->
+<link href="assets/css/bootstrap.min.css" id="bootstrap-style"
+	rel="stylesheet" type="text/css" />
+<!-- Icons Css -->
+<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+<!-- App Css-->
+<link href="assets/css/app.min.css" id="app-style" rel="stylesheet"
+	type="text/css" />
+
 </head>
+
 <body>
 	<div class="page-content">
 		<div class="container-fluid">
@@ -32,7 +46,8 @@ input[type=file] {
 				</div>
 			</div>
 			<!-- end page title -->
-			<form action="updateProcess.my" method="post" enctype="multipart/form-data">
+			<form action="updateProcess.my" method="post"
+				enctype="multipart/form-data">
 				<div class="row">
 					<div class="col-xl-3">
 						<div class="text-primary p-2">
@@ -151,6 +166,3 @@ input[type=file] {
 <script src="assets/js/app.js"></script>
 <script src="assets/js/ajax.js"></script>
 
-<script>
-	
-</script>

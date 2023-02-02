@@ -57,7 +57,6 @@
 									id="horizontal-password-input" name="user_password2">
 							</div>
 						</div>
-
 						<div class="row justify-content-end">
 							<div class="col-sm-9">
 								<div>

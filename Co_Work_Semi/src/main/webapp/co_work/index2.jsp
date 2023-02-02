@@ -655,7 +655,7 @@
 
 			$("#mypage").click(function() {
 				$.ajax({
-					url : "mypage.my",
+					url : "mypagecheck.my",
 					cache : false,
 					dataType : "html",
 					type : "GET",
@@ -670,7 +670,7 @@
 
 			$("#mypage1").click(function() {
 				$.ajax({
-					url : "mypage.my",
+					url : "mypagecheck.my",
 					cache : false,
 					dataType : "html",
 					type : "GET",
