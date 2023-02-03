@@ -24,7 +24,7 @@ public class MypageFrontController extends javax.servlet.http.HttpServlet {
 
 		// getContextPath() : 컨텍스트 경로가 반환됩니다.
 		// contextPath는 "/JspProject"가 반환됩니다.
-		String contextPath = request.getContextPath() + "/co_work";
+		String contextPath = request.getContextPath() + "/co_work/mypage";
 		System.out.println("contextPath = " + contextPath);
 
 		// RequestURI에서 컨텍스트 경로 길이 값의 인덱스 위치의 문자부터 마지막 위치 문자까지 추출합니다.

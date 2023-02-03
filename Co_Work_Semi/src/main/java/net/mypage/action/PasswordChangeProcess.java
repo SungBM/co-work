@@ -43,6 +43,18 @@ public class PasswordChangeProcess implements Action {
 				out.close();
 				return null;
 			} else {
+				if(user_password1.equals(user_password)) {
+					PrintWriter out = response.getWriter();
+					out.println("<script>");
+					out.println("alert('변경할 비밀번호가 현재 비밀번호와 동일합니다.');");
+					out.println("history.back()");
+					out.println("$(this).focus()");
+					out.println("</script>");
+					out.close();
+					return null;
+
+				}
+				
 				result = mydao.passwordchange(user_id, user_password1);
 				System.out.println(user_id);
 				System.out.println(user_password1);

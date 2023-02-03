@@ -20,7 +20,7 @@ public class MemberJoinProcessAction implements Action {
 		int CODE = Integer.parseInt(request.getParameter("CODE"));
 		String NAME = request.getParameter("NAME");
 		
-		Member m = new Member();
+		Company m = new Company();
 		m.setID(ID);				m.setPASSWORD(PASSWORD);		m.setPASSWORD_CH(PASSWORD_CH);
 		m.setEMAIL(EMAIL);			m.setCODE(CODE);			m.setNAME(NAME);
 		

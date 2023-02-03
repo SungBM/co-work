@@ -521,6 +521,17 @@
 								<li><a>보안</a></li>
 								<li><a>접속기기</a></li>
 							</ul></li>
+						<li style="text-align:center"><a>👇 관리자 메뉴 👇</a></li>
+						<%-- 작업 완료 후 삭제 에정 --%>
+						<li><a href="javascript: void(0);"
+							class="has-arrow waves-effect"> <i class="bx bx-cog"></i> <span>회사</span>
+						</a>
+							<ul class="sub-menu" aria-expanded="false">
+								<li><a id="companyinfo" href="#"
+									onclick='preventClick(event)'>회사정보</a></li>
+								<li><a>조직도 관리</a></li>
+								<li><a>회의실 예약 현황</a></li>
+							</ul></li>
 					</ul>
 				</div>
 				<!-- Sidebar -->
@@ -625,8 +636,7 @@
 	<script src="assets/libs/metismenu/metismenu.min.js"></script>
 	<script src="assets/libs/simplebar/simplebar.min.js"></script>
 	<script src="assets/libs/node-waves/waves.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtSAR45TFgZjOs4nBFFZnII-6mMHLfSYI"></script>
+	<script src="mypage/mypage.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			//ajax호출할때마다 실행되는 함수 (페이지이동시)
@@ -653,50 +663,6 @@
 				move_ajax(url_add);
 			})
 
-			$("a[name=mypage]").click(function() {
-				$.ajax({
-					url : "mypagecheck.my",
-					cache : false,
-					dataType : "html",
-					type : "GET",
-					success : function(data) {
-						$("#result").empty();
-						$("#result").html(data);
-						window.location.hash = page;
-						$(window).scrollTop(0);
-					}
-				});
-			})
-
-			$("#passwordchange").click(function() {
-				$.ajax({
-					url : "passwordchange.my",
-					cache : false,
-					dataType : "html",
-					type : "GET",
-					success : function(data) {
-						$("#result").empty();
-						$("#result").html(data);
-						window.location.hash = page;
-						$(window).scrollTop(0);
-					}
-				});
-			})
-
-			$("#notify").click(function() {
-				$.ajax({
-					url : "notify.my",
-					cache : false,
-					dataType : "html",
-					type : "GET",
-					success : function(data) {
-						$("#result").empty();
-						$("#result").html(data);
-						window.location.hash = page;
-						$(window).scrollTop(0);
-					}
-				});
-			})
 
 			//a 태그 href 이동 막아주는 부분
 			//<a id="HTABL" href="blog-list.html" onclick='preventClick(event)'> 태그에 onclick='preventClick(event) 작성해야합니다
