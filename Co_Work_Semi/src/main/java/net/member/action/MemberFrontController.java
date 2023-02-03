@@ -48,6 +48,9 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet{
 		case "/loginProcess.net":
 			action = new MemberLoginProcessAction();
 			break;
+		case "/logout.net":
+			action = new MemberLogoutAction();
+			break;
 	
 		} //switch and
 		forward = action.execute(request, response); //반환형 포워드다.

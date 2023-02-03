@@ -13,7 +13,7 @@ public class MemberJoinAction implements Action {
 			throws ServletException, IOException {
 		ActionForward forward=new ActionForward();  
 		forward.setRedirect(false);					//request가 계속 살아있어야 된다.=주소변경없이 JSP페이지로 이동=디스패쳐방식이다.
-		forward.setPath("co_work/joinForm.jsp"); 	//이동할 곳
+		forward.setPath("co_work/member/joinForm.jsp"); 	//이동할 곳
 		return forward;								//이 정보를 담아서 리턴.
 	}
 }

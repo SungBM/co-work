@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
 
     <meta charset="utf-8" />
@@ -8,15 +7,15 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="co_work/assets/images/favicon.ico">
 
     <!-- Bootstrap Css -->
-    <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link href="co_work/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="aco_work/ssets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
-
+    <link href="co_work/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+<script src="js/jquery-3.6.3.js"></script>
 <script>
 $(function(){
 	let checkid=false;
@@ -26,10 +25,10 @@ $(function(){
 		$("#message").empty(); //처음에 pattern에 적합하지 않은 경우 메시지 출력 후 적합한 데이터를 입력해도
 							   //계속 같은 데이터 출력하므로 이벤트 시작할 때마다 비워둡니다.
 		//[A-Za-z0-9_]의 의미는 \w
-		const pattern = /^\w{5,12}$/;
+		const pattern = /^\w{6,15}$/;
 		const id = $("input:eq(0)").val();
 		if(!pattern.test(id)){
-			$("#message").css('color','red').html("영어 숫자 _로 5~12자 가능합니다.");
+			$("#message").css('color','red').html("영어 숫자 _로 6~15자 가능합니다.");
 			checkid=false;
 			return;
 		}
@@ -68,7 +67,7 @@ $(function(){
 		}); //on
 		
 		let pwChecked=false;
-        $(".pwcheck").focusout(function() { // 아이디를 입력할때 마다 중복검사 실행
+        $(".form-control").focusout(function() { // 아이디를 입력할때 마다 중복검사 실행
             checkPw($(this).val())
         })
         function checkPw(pw){
@@ -107,7 +106,6 @@ $(function(){
 			}
 		});//submit
 })//ready
-        }
 </script>
 </head>
 
@@ -145,41 +143,43 @@ $(function(){
                                 
                                 	<div class="mb-3">
                                         <label for="userId" class="form-label">아이디</label>
-                                        <input type="text" class="form-control" id="id"
+                                        <input type="text" class="form-control" id="id" name="id"
                                             placeholder="아이디(6~15자 영문, 숫자, _로 가능합니다.)" required>
+                                            <span id="message"></span>
                                     </div>
-                                    
+                                    	
                                     <div class="mb-3">
                                         <label for="userpassword" class="form-label">비밀번호</label>
-                                        <input type="password" class="form-control" id="password"
+                                        <input type="password" class="form-control" id="pw1" name="pass"
                                             placeholder="비밀번호(6~15자 영문, 숫자, _로 가능합니다.)" required>
-                                            <td><font id="checkPw"></font></td>
                                     </div>
                                     
                                     <div class="mb-3">
                                         <label for="userpassword_ch" class="form-label">비밀번호 확인</label>
-                                        <input type="password" class="form-control" id="password_ch"
+                                        <input type="password" class="form-control" id="pw2" name="password_ch"
                                             placeholder="비밀번호를 다시 입력하세요" required>
+                                             <td><font id="checkPw"></font></td>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <label for="useremail" class="form-label">이메일</label>
-                                        <input type="email" class="form-control" id="useremail"
-                                            placeholder="e-mail@naver.com" required>
-                                    </div>
-                                    
-                                    <div class="mb-3">
+                                    <!-- <div class="mb-3">
                                     <div class="float-end">
                                                     <a href="auth-recoverpw-2.html" class="text-muted">인증번호 전송</a>
-                                                </div>
-                                        <label for="useremail" class="form-label">인증번호</label>
-                                        <input type="email" class="form-control" id="useremail"
-                                            placeholder="인증번호" required>
+                                                </div> -->
+                                        <label for="useremail" class="form-label">이메일</label>
+                                        <input type="email" class="form-control" id="useremail" name="email"
+                                            placeholder="e-mail@naver.com" required>
+                                            <span id="email_message"></span>
                                     </div>
+                                    
+                                   <!--  <div class="mb-3">
+                                        <label for="code" class="form-label">인증번호</label>
+                                        <input type="text" class="form-control" id="code"
+                                            placeholder="인증번호" required>
+                                    </div> -->
 
                                     <div class="mb-3">
                                         <label for="name" class="form-label">이름</label>
-                                        <input type="text" class="form-control" id="name"
+                                        <input type="text" class="form-control" id="name" name="name"
                                             placeholder="이름을 입력하세요" required>
                                     </div>
 
@@ -246,17 +246,17 @@ $(function(){
     </div>
 
     <!-- JAVASCRIPT -->
-    <script src="assets/libs/jquery/jquery.min.js"></script>
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/metismenu/metisMenu.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/libs/node-waves/waves.min.js"></script>
+    <script src="co_work/assets/libs/jquery/jquery.min.js"></script>
+    <script src="co_work/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="co_work/assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="co_work/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="co_work/assets/libs/node-waves/waves.min.js"></script>
 
     <!-- validation init -->
-    <script src="assets/js/pages/validation.init.js"></script>
+    <script src="co_work/assets/js/pages/validation.init.js"></script>
 
     <!-- App js -->
-    <script src="assets/js/app.js"></script>
+    <script src="co_work/assets/js/app.js"></script>
 </form>
 </body>
 

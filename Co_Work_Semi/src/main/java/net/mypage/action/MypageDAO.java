@@ -71,6 +71,45 @@ public class MypageDAO {
 				}
 		}
 		return m;
+	} // member_info end
 
-	}
+	public int update(Member m) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			con = ds.getConnection();
+			String sql = "update user_info "
+					+ "	  set user_name=?, user_dept=?, user_job=?, user_email=?, user_fax=?, user_phone=?, user_intro=?, user_img=?, user_card=? "
+					+ "	  where USER_ID=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, m.getUser_name());
+			pstmt.setString(2, m.getUser_dept());
+			pstmt.setString(3, m.getUser_job());
+			pstmt.setString(4, m.getUser_email());
+			pstmt.setString(5, m.getUser_fax());
+			pstmt.setString(6, m.getUser_phone());
+			pstmt.setString(7, m.getUser_intro());
+			pstmt.setString(8, m.getUser_img());
+			pstmt.setString(9, m.getUser_card());
+			pstmt.setString(10, "HTA1");
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}
+		return result;
+	} // update end
 }

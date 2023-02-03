@@ -128,7 +128,7 @@
 
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">아이디</label>
-                                                <input type="text" class="form-control" id="id"
+                                                <input type="text" class="form-control" id="id" name="id"
                                                     placeholder="Enter id" required>
                                             </div>
 
@@ -139,13 +139,13 @@
                                                 <label class="form-label">비밀번호</label>
                                                 <div class="input-group auth-pass-inputgroup">
                                                     <input type="password" class="form-control" id="pass"
-                                                        aria-label="Password" placeholder="Enter password"  required
+                                                        aria-label="Password" placeholder="Enter password"  name="pass" required
                                                         aria-describedby="password-addon">
                                                 </div>
                                             </div>
 
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="remember-check">
+                                                <input class="form-check-input" type="checkbox" id="remember-check" name="remember-check" value="store">
                                                 <label class="form-check-label" for="remember-check">
                                                     아이디 기억하기
                                                 </label>
