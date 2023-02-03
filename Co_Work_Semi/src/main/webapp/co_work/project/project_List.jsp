@@ -75,7 +75,7 @@
                                                         <span class="avatar-title rounded-circle bg-success text-white font-size-16">
                                                             A
                                                         </span>
-                                                    </div>
+             ek                                        </div>
                                                 </a>
                                             </div>
                                             <div class="avatar-group-item">
