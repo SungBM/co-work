@@ -467,7 +467,7 @@
                                 <span key="t-ecommerce">프로젝트</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a id="HTABL" href="blog-list.html" onclick='preventClick(event)'>전체</a></li>
+                                <li><a id="project_list">전체</a></li>
                                 <li><a>진행</a></li>
                                 <li><a>마감</a></li>
                                 <li><a>즐겨찾기</a></li>
@@ -617,6 +617,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtSAR45TFgZjOs4nBFFZnII-6mMHLfSYI"></script>
 	<script type="text/javascript">
 	$(function(){
+		
 		//ajax호출할때마다 실행되는 함수 (페이지이동시)
 		var move_ajax = function(url_add){
 			$.ajax({
@@ -632,6 +633,9 @@
 				}
 			});
 		}
+		$("#project_list").click(function(){
+			move_ajax("ProjectList.po");
+		});
 		
 		//태그 클릭시 url주소 가져오는 부분
 		$("#HTABL").click(function(){
