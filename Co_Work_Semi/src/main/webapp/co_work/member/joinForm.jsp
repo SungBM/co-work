@@ -15,7 +15,7 @@
     <link href="aco_work/ssets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="co_work/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
-<script src="js/jquery-3.6.3.js"></script>
+<script src="co_work/member_js/jquery-3.6.3.js"></script>
 <script>
 $(function(){
 	let checkid=false;
