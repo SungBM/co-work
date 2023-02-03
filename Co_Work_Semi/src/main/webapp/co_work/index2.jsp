@@ -33,6 +33,10 @@
 
 <body data-sidebar="dark">
 
+
+            <hr class="mt-0" />
+            <h6 class="text-center mb-0">Choose Layouts</h6>
+
 	<!-- Begin page -->
 	<div id="layout-wrapper">
 
@@ -635,6 +639,7 @@
 	<script src="assets/libs/metismenu/metismenu.min.js"></script>
 	<script src="assets/libs/simplebar/simplebar.min.js"></script>
 	<script src="assets/libs/node-waves/waves.min.js"></script>
+
 
 	</script>
 	<!-- App js -->

@@ -7,24 +7,30 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.member.db.Member;
-import net.member.db.MemberDAO;
+import net.member.db.UserDAO;
+import net.member.db.UserInfo;
 
 public class MemberJoinProcessAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
-		String ID = request.getParameter("ID");
-		String PASSWORD = request.getParameter("PASSWORD");
-		String PASSWORD_CH = request.getParameter("PASSWORD_CH");
-		String EMAIL = request.getParameter("EMAIL");
-		int CODE = Integer.parseInt(request.getParameter("CODE"));
-		String NAME = request.getParameter("NAME");
+		String USER_ID = request.getParameter("USER_ID");
+		String USER_PASSWORD = request.getParameter("USER_PASSWORD");
+		String USER_EMAIL = request.getParameter("USER_EMAIL");
+		//int USER_CODE = Integer.parseInt(request.getParameter("USER_CODE"));
+		String USER_NAME = request.getParameter("USER_NAME");
 		
+
+		UserInfo m = new UserInfo();
+		m.setUSER_ID(USER_ID);		m.setUSER_PASSWORD(USER_PASSWORD);
+		m.setUSER_EMAIL(USER_EMAIL);			//m.setUSER_CODE(USER_CODE);	
+		m.setUSER_NAME(USER_NAME);
+
 		Company m = new Company();
 		m.setID(ID);				m.setPASSWORD(PASSWORD);		m.setPASSWORD_CH(PASSWORD_CH);
 		m.setEMAIL(EMAIL);			m.setCODE(CODE);			m.setNAME(NAME);
+ 
 		
-		MemberDAO mdao = new MemberDAO();
+		UserDAO mdao = new UserDAO();
 		int result = mdao.insert(m);
 		
 		result=0;
