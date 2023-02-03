@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class MypageUpdateAction implements Action {
+public class MypageUpdateProcessAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -56,6 +56,7 @@ public class MypageUpdateAction implements Action {
 			m.setUser_img(img);
 			m.setUser_card(card);
 
+			System.out.println(multi.getParameter("check"));
 			if (img != null) {
 				m.setUser_img(img);
 			} else if (multi.getParameter("check") != "") {
@@ -88,5 +89,4 @@ public class MypageUpdateAction implements Action {
 			return forward;
 		} // catch end
 	} // execute end
-
 }

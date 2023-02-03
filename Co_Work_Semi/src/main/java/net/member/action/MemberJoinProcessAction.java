@@ -19,10 +19,16 @@ public class MemberJoinProcessAction implements Action {
 		//int USER_CODE = Integer.parseInt(request.getParameter("USER_CODE"));
 		String USER_NAME = request.getParameter("USER_NAME");
 		
+
 		UserInfo m = new UserInfo();
 		m.setUSER_ID(USER_ID);		m.setUSER_PASSWORD(USER_PASSWORD);
 		m.setUSER_EMAIL(USER_EMAIL);			//m.setUSER_CODE(USER_CODE);	
 		m.setUSER_NAME(USER_NAME);
+
+		Company m = new Company();
+		m.setID(ID);				m.setPASSWORD(PASSWORD);		m.setPASSWORD_CH(PASSWORD_CH);
+		m.setEMAIL(EMAIL);			m.setCODE(CODE);			m.setNAME(NAME);
+ 
 		
 		UserDAO mdao = new UserDAO();
 		int result = mdao.insert(m);
