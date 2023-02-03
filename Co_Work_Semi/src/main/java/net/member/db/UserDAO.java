@@ -30,13 +30,17 @@ public class UserDAO {
 		try {
 			con = ds.getConnection();
 			
-			String sql = "SELECT ID FROM USER_INFO WHERE ID = ?";
+			String sql = "SELECT USER_ID, USER_PASSWORD FROM USER_INFO WHERE USER_ID = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, USER_ID);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				result = 0;   //DB에 해당 id가 있습니다.
+				if(rs.getString(2).equals(USER_PASSWORD)) {
+					result = 1; //아이디와 비밀번호 일치하는 경우
+				}else {
+					result = 0; //비밀번호가 일치하지 않는 경우
+				}
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -70,7 +74,7 @@ public class UserDAO {
 		try {
 			con = ds.getConnection();
 			
-			String sql = "select id from member where id = ? ";
+			String sql = "SELECT USER_ID FROM USER_INFO WHERE USER_ID = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, USER_ID);
 			rs = pstmt.executeQuery();
@@ -101,4 +105,45 @@ public class UserDAO {
 		}
 		return result;
 		}
+
+	public int insert(UserInfo m) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			con = ds.getConnection();
+			System.out.println("getConnection : insert()");
+			
+			pstmt = con.prepareStatement(
+					"insert into USER_INFO (USER_ID, USER_PASSWORD, USER_PASSWORD_CH, USER_EMAIL, USER_NAME) "
+					+"values (?,?,?,?,?)");
+			pstmt.setString(1, m.getUSER_ID());
+			pstmt.setString(2, m.getUSER_PASSWORD());
+			pstmt.setString(3, m.getUSER_PASSWORD_CH());
+			pstmt.setString(4, m.getUSER_EMAIL());
+			//pstmt.setInt(4, m.getUSER_CODE());
+			pstmt.setString(5, m.getUSER_NAME());
+			result = pstmt.executeUpdate();  //삽입 성공시 result=1
+			
+		}catch(java.sql.SQLIntegrityConstraintViolationException e) {
+			result = -1;
+			System.out.println("멤버 아이디 중복 에러입니다.");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+				if(pstmt != null)
+					try{
+						pstmt.close();
+			}catch(SQLException ex) {
+				ex.printStackTrace();
+			}
+		if(con != null)
+			try {
+				con.close();
+			}catch(SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return result;
+	}
 }
