@@ -462,8 +462,7 @@
 								class="bx bx-briefcase-alt-2"></i> <span key="t-ecommerce">프로젝트</span>
 						</a>
 							<ul class="sub-menu" aria-expanded="false">
-								<li><a id="HTABL" href="blog-list.html"
-									onclick='preventClick(event)'>전체</a></li>
+					      <li><a id="project_list">전체</a></li>
 								<li><a>진행</a></li>
 								<li><a>마감</a></li>
 								<li><a>즐겨찾기</a></li>
@@ -636,44 +635,14 @@
 	<script src="assets/libs/metismenu/metismenu.min.js"></script>
 	<script src="assets/libs/simplebar/simplebar.min.js"></script>
 	<script src="assets/libs/node-waves/waves.min.js"></script>
-	<script src="mypage/mypage.js"></script>
-	<script type="text/javascript">
-		$(function() {
-			//ajax호출할때마다 실행되는 함수 (페이지이동시)
-			var move_ajax = function(url_add) {
-				$.ajax({
-					url : url_add, //매개변수로 넘겨받은 url주소
-					cache : false,
-					dataType : "html",
-					type : "GET",
-					success : function(data) {
-						$("#result").empty();
-						$("#result").html(data);
-						window.location.hash = page;
-						$(window).scrollTop(0);
-					}
-				});
-			}
 
-			//태그 클릭시 url주소 가져오는 부분
-			$("#HTABL").click(function() {
-				var url_add = $('#HTABL').attr('href');
-				//url주소 저장해서 move_ajax함수 호출
-				console.log(url_add);
-				move_ajax(url_add);
-			})
-
-
-			//a 태그 href 이동 막아주는 부분
-			//<a id="HTABL" href="blog-list.html" onclick='preventClick(event)'> 태그에 onclick='preventClick(event) 작성해야합니다
-			function preventClick(e) {
-				e.preventDefault()
-			}
-		})
 	</script>
 	<!-- App js -->
 	<script src="assets/js/app.js"></script>
 	<script src="assets/js/ajax.js"></script>
+  <script src="project_js/project_list.js"></script>
+  <script src="mypage/mypage.js"></script>
+
 </body>
 
 </html>
