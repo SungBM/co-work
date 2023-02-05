@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
 <head>
 
 <meta charset="utf-8" />
@@ -12,9 +12,6 @@
 <meta content="Themesbrand" name="author" />
 <!-- App favicon -->
 <link rel="shortcut icon" href="assets/images/favicon.ico">
-
-
-
 <!-- Bootstrap Css -->
 <link href="assets/css/bootstrap.min.css" id="bootstrap-style"
 	rel="stylesheet" type="text/css" />
@@ -32,8 +29,6 @@
 </head>
 
 <body data-sidebar="dark">
-
-
             <hr class="mt-0" />
             <h6 class="text-center mb-0">Choose Layouts</h6>
 
@@ -437,7 +432,7 @@
 								class="bx bx-wrench font-size-16 align-middle me-1"></i> <span
 								key="t-settings">Settings</span></a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item text-danger" href="#"><i
+							<a href = "logout.net" class="dropdown-item text-danger"><i
 								class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
 								<span key="t-logout">Logout</span></a>
 						</div>
@@ -627,11 +622,17 @@
 			</div>
 		</div>
 		<!-- end slimscroll-menu-->
+		
+		<!-- 이다빈 메인 -->
+		<div class="table">
+		  
+		</div>
 	</div>
 	<!-- /Right-bar -->
 
 	<!-- Right bar overlay-->
 	<div class="rightbar-overlay"></div>
+	
 
 	<!-- JAVASCRIPT -->
 	<script src="assets/libs/jquery/jquery.min.js"></script>

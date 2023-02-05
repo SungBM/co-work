@@ -13,27 +13,22 @@ import net.member.db.UserInfo;
 public class MemberJoinProcessAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
-		String USER_ID = request.getParameter("USER_ID");
-		String USER_PASSWORD = request.getParameter("USER_PASSWORD");
-		String USER_EMAIL = request.getParameter("USER_EMAIL");
+		String USER_ID = request.getParameter("id");
+		String USER_PASSWORD = request.getParameter("pass");
+		String USER_PASSWORD_CH = request.getParameter("password_ch");
+		String USER_EMAIL = request.getParameter("email");
 		//int USER_CODE = Integer.parseInt(request.getParameter("USER_CODE"));
-		String USER_NAME = request.getParameter("USER_NAME");
+		String USER_NAME = request.getParameter("name");
 		
 
 		UserInfo m = new UserInfo();
 		m.setUSER_ID(USER_ID);		m.setUSER_PASSWORD(USER_PASSWORD);
 		m.setUSER_EMAIL(USER_EMAIL);			//m.setUSER_CODE(USER_CODE);	
-		m.setUSER_NAME(USER_NAME);
-
-		Company m = new Company();
-		m.setID(ID);				m.setPASSWORD(PASSWORD);		m.setPASSWORD_CH(PASSWORD_CH);
-		m.setEMAIL(EMAIL);			m.setCODE(CODE);			m.setNAME(NAME);
- 
+		m.setUSER_NAME(USER_NAME);		m.setUSER_PASSWORD_CH(USER_PASSWORD_CH);
 		
 		UserDAO mdao = new UserDAO();
 		int result = mdao.insert(m);
 		
-		result=0;
 		if(result==0) {
 			System.out.println("회원 가입 실패입니다.");
 			ActionForward forward = new ActionForward();
@@ -47,7 +42,7 @@ public class MemberJoinProcessAction implements Action {
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
 		if(result == 1) { //삽입이 된 경우
-			out.println("alert('회원 가입을 축하합니다.');");
+			out.println("alert('회원 가입을 축하합니다. 다시 로그인 해주세요.');");
 			out.println("location.href='login.net';");
 		}else if(result == -1) {
 			out.println("alert('아이디가 중복되었습니다. 다시 입력하세요');");
