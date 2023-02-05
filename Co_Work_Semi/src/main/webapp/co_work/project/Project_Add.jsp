@@ -35,12 +35,12 @@
 			</div>
 				
 
-				<input type="text" class="center" placeholder="프로젝트 명"><br>
+				<input type="text" name="project_name" placeholder="프로젝트 명"><br>
 
 				<!-- boday -->
 				<div class="center">
 						<label class="col-sm-2 control-label" for="lg">상태</label> 
-						<select class="form-select" aria-label="Default select example" style="width:180" >
+						<select class="form-select" name="project_prog" aria-label="Default select example" style="width:180" >
 							<option class=center>요청</option>
 							<option class=center>진행중</option>
 							<option class=center>마감</option>
@@ -50,16 +50,16 @@
 
 		
 					<div class="center"">
-						<label>관리자</label> <input type="text" class="form-control" value="${user_info.user_id}">
+						<label>관리자</label> <input type="text" name="project_admin" value="${user_info.user_id}">
 						<button>+</button>
 					</div><br>
 
 					<div class="center">
-						<label>날짜</label> <input type="date" class="form-control" style="width:180">
+						<label>날짜</label> <input type="date" name="project_start" class="form-control" style="width:180">
 					</div><br>
 					
 					<div class="center">
-					<label>우선순위</label> <select class="form-select"
+					<label>우선순위</label> <select class="form-select" name="project_priority"
 						aria-label="Default select example" style="width:150">
 						<option class=center>높음</option>
 						<option class=center>중간</option>
@@ -68,7 +68,7 @@
 
 
 					<div class="center">
-						<label>참여자</label> <input type="text" class="form-control" value="${user_info.user_name}">
+						<label>참여자</label> <input type="text" name="project_partici" value="${user_info.user_name}">
 						<button>+</button>
 					</div>
 					<br>
@@ -76,7 +76,7 @@
 					<!-- footer -->
 					<div class="center">
 					<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal" style="width:80">완료</button>
+					<button type="submit" class="submitbtn" style="width:80">완료</button>
 					</div>
 				</div>
 			</div>
