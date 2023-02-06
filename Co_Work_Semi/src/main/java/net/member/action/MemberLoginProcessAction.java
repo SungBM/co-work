@@ -42,7 +42,7 @@ public class MemberLoginProcessAction implements Action {
 				response.addCookie(cookie);
 			}
 			
-			forward.setRedirect(true);
+			forward.setRedirect(false);
 			forward.setPath("co_work/index2.jsp");  //메인 페이지로 이동
 			return forward;
 		} else {
