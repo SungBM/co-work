@@ -182,6 +182,47 @@ public class ProjectDAO {
 		
 		return list;
 		}
+	
+	public int insert(Project p) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result=0;
+		try {
+			con = ds.getConnection();
+			System.out.println("getConnection : insert()");
+			
+			pstmt = con.prepareStatement(
+					"INSERT INTO PROJECT (PROJECT_NAME, PROJECT_PROG, PROJECT_ADMIN, PROJECT_START, "
+					+ "					PROJECT_PRIORITY, PROJECT_PARTICI) "
+					+"VALUES (?,?,?,?,?,?)");
+			
+			pstmt.setString(1, p.getProject_name());
+			pstmt.setInt(2, p.getProject_partici());
+			pstmt.setString(3, p.getProject_admin());
+			result = pstmt.executeUpdate();//삽입 성공시 result는 1
+			
+			//primary key 제약조건 위반했을 경우 발생하는 에러
+			}catch(java.sql.SQLIntegrityConstraintViolationException e) {
+				result = -1;
+				System.out.println("프로젝트명 중복 에러입니다.");
+			}catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if (pstmt != null)
+					try {
+						pstmt.close();
+					} catch (SQLException ex) {
+					ex.printStackTrace();
+					}
+				if (con != null)
+					try {
+						con.close();
+					} catch (Exception ex) {
+					ex.printStackTrace();
+					}
+				}
+				return result;		
+			}//insert end		
 		
 }
 
