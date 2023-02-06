@@ -13,8 +13,8 @@ public class MemberLogoutAction implements Action {
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();   //로그아웃은 세션을 invalidate해야함.
 		session.invalidate();
-		forward.setPath("co_work/member/loginForm.jsp");	//로그아웃하면 로그인 페이지로 이동
-		forward.setRedirect(true);		//주소가 바뀌므로 리다이렉트
+		forward.setRedirect(true);		//주소가 바뀌므로 리다이렉트. 주소가 바뀌면 true
+		forward.setPath("login.net");	//로그아웃하면 로그인 페이지로 이동
 		return forward;
 	}
 }
