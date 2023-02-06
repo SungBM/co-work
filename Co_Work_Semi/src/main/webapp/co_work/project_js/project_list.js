@@ -18,12 +18,13 @@ $(function(){
 			move_ajax("ProjectList.po");
 		});
 		
-
+	
 		
 		//a 태그 href 이동 막아주는 부분
 		//<a id="HTABL" href="blog-list.html" onclick='preventClick(event)'> 태그에 onclick='preventClick(event) 작성해야합니다
 		function preventClick(e){
 			e.preventDefault()
 		}
-	})
+		
+})
 	
