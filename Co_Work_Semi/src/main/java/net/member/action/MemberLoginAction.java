@@ -18,7 +18,7 @@ public class MemberLoginAction implements Action {
 		Cookie[] cookies = request.getCookies();
 		if(cookies != null) {
 			for(int i=0; i<cookies.length; i++) {
-				if(cookies[i].getName().equals("USER_ID")) {
+				if(cookies[i].getName().equals("id")) {
 					id=cookies[i].getValue();
 				}
 			}
