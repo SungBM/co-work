@@ -366,7 +366,7 @@
 								<span key="t-settings">Settings</span>
 							</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item text-danger" href="#">
+							<a class="dropdown-item text-danger" href="login.net">
 								<i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
 								<span key="t-logout">Logout</span>
 							</a>

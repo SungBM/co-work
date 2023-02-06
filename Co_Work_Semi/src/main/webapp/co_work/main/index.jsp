@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="page-content">
     <div class="container-fluid">
 
@@ -28,7 +29,7 @@
                         <div class="row">
                             <div class="col-7">
                                 <div class="text-primary p-3">
-                                    <h5 class="text-primary">변경되는지 확인</h5>
+                                    <h5 class="text-primary">환영합니다! value="${memberinfo.user_name }"님</h5>
                                     <p>Skote Dashboard</p>
                                 </div>
                             </div>
