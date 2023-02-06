@@ -38,7 +38,6 @@
 				<input type="text" name="project_name" placeholder="프로젝트 명"><br>
 
 				<!-- boday -->
-				<div class="center">
 						<label class="col-sm-2 control-label" for="lg">상태</label> 
 						<select class="form-select" name="project_prog" aria-label="Default select example" style="width:180" >
 							<option class=center>요청</option>
