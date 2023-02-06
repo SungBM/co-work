@@ -16,19 +16,19 @@ public class MemberLoginProcessAction implements Action {
 			throws ServletException, IOException{
 		
 		ActionForward forward = new ActionForward();
-		String USER_ID = request.getParameter("USER_ID");
-		String USER_PASSWORD = request.getParameter("USER_PASSWORD");
+		String USER_ID = request.getParameter("id");
+		String USER_PASSWORD = request.getParameter("pass");
 		UserDAO mdao = new UserDAO();
 		int result = mdao.isId(USER_ID, USER_PASSWORD);
 		System.out.println("결과는 " + result);
 		
 		//로그인 성공
-		if(result ==1) {
+		if(result == 1) {
 			HttpSession session = request.getSession();
-			session.setAttribute("USER_ID", USER_ID);
+			session.setAttribute("id", USER_ID);
 			
-			String IDStore = request.getParameter("remember");
-			Cookie cookie = new Cookie("USER_ID", USER_ID);
+			String IDStore = request.getParameter("remember-check");
+			Cookie cookie = new Cookie("id", USER_ID);
 			
 			//아이디 기억하기를 체크한 경우
 			if(IDStore != null && IDStore.equals("store")) {
@@ -42,13 +42,13 @@ public class MemberLoginProcessAction implements Action {
 				response.addCookie(cookie);
 			}
 			
-			forward.setRedirect(true);
-			forward.setPath("BoardList.bo");  //메인 페이지로 변경하기
+			forward.setRedirect(false);
+			forward.setPath("index2.jsp");  //메인 페이지로 이동
 			return forward;
 		} else {
 			String message = "비밀번호가 일치하지 않습니다.";
 			if(result == -1)
-				message = "아이디가 존재하지 않습니다.";
+				message = "아이디가 존재하지 않습니다.\\n아이디를 다시 확인하거나\\n행정팀에 회원가입 승인 여부 확인해주세요.";
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");

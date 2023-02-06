@@ -31,6 +31,7 @@
                                 <tr>
                                     <th scope="col" style="width: 100px">${listcount }PROJECT</th>
                                     <th scope="col">프로젝트</th>
+                                    <th scope="col">PROGRESS</th>
                                     <th scope="col">시작일</th>
                                     <th scope="col">종료일</th>
                                     <th scope="col">Status</th>
@@ -48,6 +49,16 @@
 											<c:out value="${p.project_name }"/>
 										</a></h5>
                                         <p class="text-muted mb-0">It will be as simple as Occidental</p>
+                                    </td>
+                                    <td>
+                                    	<div class="">
+                           					<div class="progress">
+                                				<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar"
+                                    			aria-valuenow="${p.project_prog }" aria-valuemin="0" aria-valuemax="100" style="width: ${p.project_prog}%">
+                                    			</div>
+                            				</div>
+                            				<p style="color: black">${p.project_prog }</p>
+                        				</div>
                                     </td>
                                      <td>	<c:out value="${p.project_start.substring(0,10) }"/></td>
                                     <td>

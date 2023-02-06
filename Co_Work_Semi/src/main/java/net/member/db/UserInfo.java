@@ -16,8 +16,15 @@ public class UserInfo {
 	private String USER_STATE;
 	private String USER_JOIN_DATE;
 	private String USER_PHONE;
+	private String USER_PASSWORD_CH;
 	
 	
+	public String getUSER_PASSWORD_CH() {
+		return USER_PASSWORD_CH;
+	}
+	public void setUSER_PASSWORD_CH(String uSER_PASSWORD_CH) {
+		USER_PASSWORD_CH = uSER_PASSWORD_CH;
+	}
 	public String getUSER_ID() {
 		return USER_ID;
 	}
@@ -108,4 +115,5 @@ public class UserInfo {
 	public void setUSER_PHONE(String uSER_PHONE) {
 		USER_PHONE = uSER_PHONE;
 	}
-}
+
+	}

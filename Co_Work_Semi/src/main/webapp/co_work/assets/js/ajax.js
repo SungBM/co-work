@@ -58,7 +58,7 @@ function call_ajax_page(page) {
 	}
 
 	$.ajax({
-		url: "ajax/" + page,
+		url: "co_work/" + page,
 		cache: false,
 		dataType: "html",
 		type: "GET",
