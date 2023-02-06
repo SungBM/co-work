@@ -43,7 +43,7 @@ public class MemberLoginProcessAction implements Action {
 			}
 			
 			forward.setRedirect(false);
-			forward.setPath("co_work/index2.jsp");  //메인 페이지로 이동
+			forward.setPath("index2.jsp");  //메인 페이지로 이동
 			return forward;
 		} else {
 			String message = "비밀번호가 일치하지 않습니다.";
