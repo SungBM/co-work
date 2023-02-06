@@ -5,6 +5,10 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import net.mypage.db.Member;
+import net.mypage.db.MypageDAO;
 
 public class MypageCheckAction implements Action {
 
@@ -12,9 +16,16 @@ public class MypageCheckAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
+		HttpSession session = request.getSession();
+		String user_id = (String) session.getAttribute("id");
 
-		forward.setPath("mypagecheck.jsp");
+		MypageDAO mydao = new MypageDAO();
+		Member m = mydao.member_info(user_id);
+
 		forward.setRedirect(false);
+		forward.setPath("mypage/mypagecheck.jsp");
+		request.setAttribute("memberinfo", m);
 		return forward;
+
 	}
 }

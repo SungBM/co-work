@@ -1,60 +1,40 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <title>설정 - 비밀번호 변경</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta content="Premium Multipurpose Admin & Dashboard Template"
-	name="description" />
-<meta content="Themesbrand" name="author" />
-<!-- App favicon -->
-<script type="text/javascript"
-	nonce="XOJ0BVE+zr3qdJZKBBAaLFbFzesxhK/xP1QmLnOdycs="
-	src="//lc.getunicorn.org?type=base-script&amp;request-id=39152"></script>
-<link rel="shortcut icon" href="assets/images/favicon.ico">
-<!-- Bootstrap Css -->
-<link href="assets/css/bootstrap.min.css" id="bootstrap-style"
-	rel="stylesheet" type="text/css" />
-<!-- Icons Css -->
-<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-<!-- App Css-->
-<link href="assets/css/app.min.css" id="app-style" rel="stylesheet"
-	type="text/css" />
-
 </head>
-<!-- ============================================================== -->
-<!-- Start right Content here -->
-<!-- ============================================================== -->
 <div class="page-content">
 	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+				<div class="page-title-box d-sm-flex align-items-center justify-content-between">
+					<h4 class="mb-sm-0 font-size-18">설정> 비밀번호 변경</h4>
+
+				</div>
+			</div>
+		</div>
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-					<h4 class="card-title mb-4">설정> 비밀번호 변경</h4>
 					<form action="passwordchangeProcess.my" method="POST">
 						<div class="row mb-4">
-							<label for="horizontal-firstname-input"
-								class="col-sm-3 col-form-label">현재 비밀번호</label>
+							<label for="horizontal-firstname-input" class="col-sm-3 col-form-label">현재 비밀번호</label>
 							<div class="col-sm-9">
-								<input type="password" class="form-control"
-									id="horizontal-password-input" name="user_password">
+								<input type="password" class="form-control" id="horizontal-password-input" name="user_password">
 							</div>
 						</div>
 						<div class="row mb-4">
-							<label for="horizontal-email-input"
-								class="col-sm-3 col-form-label">새 비밀번호</label>
+							<label for="horizontal-email-input" class="col-sm-3 col-form-label">새 비밀번호</label>
 							<div class="col-sm-9">
-								<input type="password" class="form-control"
-									id="horizontal-password-input" name="user_password1">
+								<input type="password" class="form-control" id="horizontal-password-input" name="user_password1">
 							</div>
 						</div>
 						<div class="row mb-4">
-							<label for="horizontal-password-input"
-								class="col-sm-3 col-form-label">새 비밀번호 확인</label>
+							<label for="horizontal-password-input" class="col-sm-3 col-form-label">새 비밀번호 확인</label>
 							<div class="col-sm-9">
-								<input type="password" class="form-control"
-									id="horizontal-password-input" name="user_password2">
+								<input type="password" class="form-control" id="horizontal-password-input" name="user_password2">
 							</div>
 						</div>
 						<div class="row justify-content-end">
