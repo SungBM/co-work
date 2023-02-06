@@ -5,15 +5,74 @@
     <div class="container-fluid">
 
         <!-- start page title -->
+       
         <div class="row">
             <div class="col-12">
+             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                            data-bs-whatever="@mdo">프로젝트 추가</button>
+                                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">프로젝트 추가</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <form name="project_Add" action="ProjectAddProcess.po" method="post">
+                                                <div class="modal-body">                                         
+                                                        <div class="mb-3">
+                                                            <label for="recipient-name" class="col-form-label">프로젝트명</label>
+                                                            <input type="text" class="form-control" id="recipient-name" name="project_name">
+                                                        </div>
+                                                        <div class="col-md-10">
+									                               <label class="col-md-2 col-form-label">상태</label>
+									                                <select class="form-select" name="project_prog">
+									                                    <option>요청</option>
+									                                    <option>진행중</option>
+									                                    <option>마감</option>
+									                                </select>
+									                            </div>
+                                                        <div class="mb-3">
+                                                            <label for="message-text" class="col-form-label">관리자</label>
+                                                            <textarea class="form-control" id="message-text" name="project_admin" ></textarea>
+                                                        </div>
+                                                       <div class="mb-3 row">
+							                            <label for="example-date-input" class="col-md-3 col-form-label" >날짜</label>
+							                            <div class="col-md-10">
+								                        <input class="form-control" type="date" value="2023-02-06" id="example-date-input" name="project_start">
+								                            </div>
+								                        </div>
+									                            <div class="col-md-10">
+									                               <label class="col-md-2 col-form-label">우선순위</label>
+									                                <select class="form-select" name="project_priority">
+									                                    <option>높음</option>
+									                                    <option>중간</option>
+									                                    <option>낮음</option>
+									                                </select>
+									                            </div>
+									                   <div class="mb-3">
+                                                            <label for="message-text" class="col-form-label">참여자</label>
+                                                            <textarea class="form-control" id="message-text" name="project_partici"></textarea>
+                                                        </div>      
+									                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">                                          
+                                                    <button type="submit" id="submit_add" class="btn btn-primary">완료</button>
+                                               
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 
+               <br><br>
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                     <h4 class="mb-sm-0 font-size-18">Projects List</h4>
-
-                    <div class="page-title-right">
+					
+                    <div class="page-title-rig ht">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Projects</a></li>
                             <li class="breadcrumb-item active">Projects List</li>
+                            
                         </ol>
                     </div>
 
@@ -21,7 +80,6 @@
             </div>
         </div>
         <!-- end page title -->
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="">
@@ -131,3 +189,4 @@
     </div> <!-- container-fluid -->
 </div>
 <!-- End Page-content -->
+<script src="project_js/project_add.js"></script>

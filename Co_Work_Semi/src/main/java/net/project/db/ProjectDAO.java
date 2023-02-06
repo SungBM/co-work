@@ -4,10 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-<<<<<<< HEAD
-=======
+
 import java.text.SimpleDateFormat;
->>>>>>> branch 'main' of https://github.com/SungBM/co-work.git
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -185,13 +183,7 @@ public class ProjectDAO {
 		
 		return list;
 		}
-<<<<<<< HEAD
-=======
-		
-}
->>>>>>> branch 'main' of https://github.com/SungBM/co-work.git
-
-<<<<<<< HEAD
+	
 	public int insert(Project p) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -232,6 +224,4 @@ public class ProjectDAO {
 				}
 				return result;		
 			}//insert end		
-	}
-=======
->>>>>>> branch 'main' of https://github.com/SungBM/co-work.git
+}
