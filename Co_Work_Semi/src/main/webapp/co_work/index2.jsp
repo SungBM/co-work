@@ -583,7 +583,7 @@
 	<script src="assets/js/ajax.js"></script>
 	<script src="project_js/project_list.js"></script>
 	<script src="mypage_js/index.js"></script>
-
+	<script src="main_js/main_js.js"></script>
 </body>
 
 </html>
