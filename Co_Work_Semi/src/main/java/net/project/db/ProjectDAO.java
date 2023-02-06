@@ -150,7 +150,7 @@ public class ProjectDAO {
 			pstmt = con.prepareStatement(
 					"INSERT INTO PROJECT (PROJECT_NAME, PROJECT_PROG, PROJECT_ADMIN, PROJECT_START, "
 					+ "					PROJECT_PRIORITY, PROJECT_PARTICI) "
-					+"VALUES (?,?,?)");
+					+"VALUES (?,?,?,?,?,?)");
 			
 			pstmt.setString(1, p.getProject_name());
 			pstmt.setInt(2, p.getProject_partici());

@@ -72,12 +72,10 @@
 					<br>
 
 					<!-- footer -->
-					<div class="center">
 					<div class="modal-footer">
 					<button type="submit" class="submitbtn" style="width:80">완료</button>
 					</div>
 				</div>
 			</div>
-		</div>
 	</form>
 </body>
