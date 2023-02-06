@@ -450,7 +450,7 @@
 								<span>설정</span>
 							</a>
 							<ul class="sub-menu" aria-expanded="false">
-								<li><a id="notify" href="#">알림</a></li>
+								<li><a id="notify" href="#">알림(미구현)</a></li>
 								<li><a id="passwordchange" href="#">비밀번호 변경</a></li>
 								<li><a>보안(미구현)</a></li>
 								<li><a>접속기기(미구현)</a></li>

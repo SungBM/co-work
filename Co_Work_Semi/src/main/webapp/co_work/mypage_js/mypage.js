@@ -10,7 +10,7 @@ function onClickUpload1() {
 
 
 $(function() {
-	$("#mypageinfo").on("click", function() {
+	$("#mypageinfo").off("click").on("click", function() {
 
 		var data = $("#mypage").serialize();
 		console.log(data);
@@ -30,11 +30,7 @@ $(function() {
 		})
 	})
 
-	//a 태그 href 이동 막아주는 부분
-	//<a id="HTABL" href="blog-list.html" onclick='preventClick(event)'> 태그에 onclick='preventClick(event) 작성해야합니다
-
-
-	$("button").off("click").on("click", function(e) {
+	$("button[type=submit]").off("click").on("click", function(e) {
 		e.preventDefault();
 		var val = $(this).parent().prev().children().first().val()
 
@@ -44,6 +40,7 @@ $(function() {
 			$(this).parent().prev().children().first().focus()
 			$(this).parent().prev().children().first().val('')
 			$(this).parent().prev().children().first().val(val)
+			$("button[type=submit]").not(this).hide();
 			$(this).text('확인')
 			$(this).next().show();
 
@@ -65,7 +62,16 @@ $(function() {
 		$(this).parent().prev().children().first().attr("readOnly", true)
 		$(this).parent().prev().children().first().attr("disabled", true)
 		$(this).prev().text('수정')
+		$("button[type=submit]").not(this).show();
 		$(this).hide()
+	}) // 취소 버튼 클릭
+
+	$('.row').on('click', '.update', function() {
+		const data = $(this).parent().prev().children().first().val();
+		const id = $('input[name=user_id]').val();
+		
+		 
+		
 	})
 
 	$('#formFile1').change(function(event) {
@@ -124,5 +130,6 @@ $(function() {
 			$(this).val('')
 			$('input[name=check]').val('');
 		}
-	}) // change() end
+	}) // change() end           
+
 })
