@@ -14,14 +14,15 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet{
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
+		
 		String requestURI = request.getRequestURI();
 		System.out.println("RequestURI = " +requestURI);
 		
 		//getContextPath() : 컨텍스트 경로가반환
 		//contextPath : "JspProject 가 반환
-		String contextPath = request.getContextPath() + "/co_work";
+		//String contextPath = request.getContextPath() + "/Ajax";
+		String contextPath = request.getContextPath();
 		System.out.println("contextPath = " + contextPath);
-		
 		
 		//requestURI 에서 컨텍스트 경로 길이 값의 인덱스 위치의 문자부터 마지막 위치 문자까지 추출
 		//command : /login.net 반환
@@ -59,7 +60,7 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet{
 				response.sendRedirect(forward.getPath());
 			}else { //포워딩됩니다.
 				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
-				dispatcher.forward(request,	 response);
+				dispatcher.forward(request, response);
 			}
 		}
 		
