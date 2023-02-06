@@ -25,7 +25,8 @@
 </style>
 </head>
 <body>
-	<div class="modal modal-center fade" id="myCenterModal" tabindex="-1"
+	<form name="project_Add" action="ProjectAddProcess.po" method="post">
+	 <div class="modal modal-center fade" id="myCenterModal" tabindex="-1"
 		role="dialog" aria-labelledby="myCenterModalLabel">
 		<div class="modal-dialog modal-center" role="document">
 
@@ -34,7 +35,6 @@
 					aria-label="Close" style="background-color:white">X</button>
 			</div>
 				
-
 				<input type="text" name="project_name" placeholder="프로젝트 명"><br>
 
 				<!-- boday -->
@@ -47,18 +47,16 @@
 						</select>
 					</div><br>
 			
-
-		
-					<div class="center"">
-						<label>관리자</label> <input type="text" name="project_admin" value="${user_info.user_id}">
+					<div>
+						<label>관리자</label> <input type="text" name="project_admin" value="${PROJECT.PROJECT_ADMIN}">
 						<button>+</button>
 					</div><br>
 
-					<div class="center">
+					<div>
 						<label>날짜</label> <input type="date" name="project_start" class="form-control" style="width:180">
 					</div><br>
 					
-					<div class="center">
+					<div>
 					<label>우선순위</label> <select class="form-select" name="project_priority"
 						aria-label="Default select example" style="width:150">
 						<option class=center>높음</option>
@@ -67,8 +65,8 @@
 					</select></div><br>
 
 
-					<div class="center">
-						<label>참여자</label> <input type="text" name="project_partici" value="${user_info.user_name}">
+					<div>
+						<label>참여자</label> <input type="text" name="project_partici" value="${PROJECT.PROJECT_PARTICI}">
 						<button>+</button>
 					</div>
 					<br>
@@ -81,4 +79,5 @@
 				</div>
 			</div>
 		</div>
+	</form>
 </body>

@@ -10,17 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 import net.project.db.Project;
 import net.project.db.ProjectDAO;
 
-public class ProjecAddProcessAction implements Action {
+public class ProjectAddProcessAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String project_name = request.getParameter("name");
-		int project_prog = Integer.parseInt(request.getParameter("prog"));
-		String project_start = request.getParameter("start");
-		String project_priority = request.getParameter("priority");
-		int project_partici = Integer.parseInt(request.getParameter("partici"));
-		String project_admin = request.getParameter("admin");
+		String project_name = request.getParameter("project_name");
+		int project_prog = Integer.parseInt(request.getParameter("project_prog"));
+		String project_start = request.getParameter("project_start");
+		String project_priority = request.getParameter("project_priority");
+		int project_partici = Integer.parseInt(request.getParameter("project_partici"));
+		String project_admin = request.getParameter("project_admin");
 		
 		
 		Project p = new Project();
@@ -47,7 +47,7 @@ public class ProjecAddProcessAction implements Action {
 		out.println("<script>");
 		if (result == 1) {//삽입이 된 경우
 			out.println("alert('프로젝트 등록 성공.');");
-			out.println("location.href='login.net';");			
+			out.println("location.href='ProjectAddProcess.po';");			
 		} else if (result == -1) {
 			out.println("alert('프로젝트명이 중복되었습니다. 다시 입력하세요');");
 			//새로고침되어 이전에 입력한 데이터가 나타나지 않습니다.
