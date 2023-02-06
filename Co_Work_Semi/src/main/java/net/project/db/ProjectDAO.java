@@ -160,7 +160,7 @@ public class ProjectDAO {
 				    System.out.println((today / all_days)*100  + " 백분율");
 					pro.setProject_prog(prog);
 				} else {
-					pro.setProject_prog(Integer.parseInt(rs.getString(5)));
+					pro.setProject_prog(1);
 				}
 						
 				pro.setProject_start(rs.getString(6));
@@ -182,6 +182,9 @@ public class ProjectDAO {
 		
 		return list;
 		}
+	public Project getDetailProject() {
+		return null;
+	}
 	
 	public int insert(Project p) {
 		Connection con = null;
