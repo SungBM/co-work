@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -17,14 +18,24 @@ import javax.sql.DataSource;
 public class ProjectDAO {
 	private DataSource ds;
 
+	
+	//생성자에서 JNDI 리소스를 참조하여 Connection 객체를 얻어옵니다.
+
+
+
 	public ProjectDAO() {
 		try {
 			Context init = new InitialContext();
 			ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
-		} catch (Exception ex) {
-			System.out.println("DB연결 실패 : " + ex);
+
+		}catch(Exception ex) {
+			System.out.println("DB 연결 실패 : " + ex);
 		}
-	}
+   }
+	
+
+
+
 
 	public void close(PreparedStatement pstmt, Connection conn) {
 		if (pstmt != null) {
@@ -173,3 +184,4 @@ public class ProjectDAO {
 		}
 		
 }
+
