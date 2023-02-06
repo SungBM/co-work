@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
 <head>
 
 <meta charset="utf-8" />
@@ -12,28 +12,23 @@
 <meta content="Themesbrand" name="author" />
 <!-- App favicon -->
 <link rel="shortcut icon" href="assets/images/favicon.ico">
-
-
-
 <!-- Bootstrap Css -->
-<link href="assets/css/bootstrap.min.css" id="bootstrap-style"
+<link href="co_work/assets/css/bootstrap.min.css" id="bootstrap-style"
 	rel="stylesheet" type="text/css" />
 <!-- Icons Css -->
-<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+<link href="co_work/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 <!-- App Css-->
-<link href="assets/css/app.min.css" id="app-style" rel="stylesheet"
+<link href="co_work/assets/css/app.min.css" id="app-style" rel="stylesheet"
 	type="text/css" />
 
-<link href="assets/css/main.css" rel="stylesheet" type="text/css" />
+<link href="co_work/assets/css/main.css" rel="stylesheet" type="text/css" />
 
 <!-- Custom Css-->
-<link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
-<script src="assets/libs/metismenu/metismenu.min.js"></script>
+<link href="co_work/assets/css/custom.css" rel="stylesheet" type="text/css" />
+<script src="co_work/assets/libs/metismenu/metismenu.min.js"></script>
 </head>
 
 <body data-sidebar="dark">
-
-
             <hr class="mt-0" />
             <h6 class="text-center mb-0">Choose Layouts</h6>
 
@@ -67,7 +62,7 @@
 					<!-- App Search-->
 					<form class="app-search d-none d-lg-block">
 						<div class="position-relative">
-							<input type="text" class="form-control" placeholder="Search...">
+							<input type="text" class="form-control" placeholder="Searchco_work.">
 							<span class="bx bx-search-alt"></span>
 						</div>
 					</form>
@@ -437,7 +432,7 @@
 								class="bx bx-wrench font-size-16 align-middle me-1"></i> <span
 								key="t-settings">Settings</span></a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item text-danger" href="#"><i
+							<a href = "logout.net" class="dropdown-item text-danger"><i
 								class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
 								<span key="t-logout">Logout</span></a>
 						</div>
@@ -627,26 +622,73 @@
 			</div>
 		</div>
 		<!-- end slimscroll-menu-->
+		
+		<!-- 이다빈 메인 -->
+		
+		<div class="main-content">
+		  <div class="page-content">
+			<div class="container-fluid">
+			  <!-- start page title -->
+			  <div class="row">
+			    <div class="col-12">...</div>
+			  </div>
+			  <!-- end page title -->
+			  <div class="row">
+			    <div class="col-x1-4">
+			      <div class="card overflow-hidden">
+			        <div class="bg-primary bg-soft">
+			          <div class="row">
+			            <div class="col-7">
+			              <div class="text-primary p-3">
+			                <h5 class="Welcome Back!"></h5>
+			                 <p>Skote Dashboard</p>
+			              </div>
+			            </div>
+			            <div class="col-5 align-self-end">...</div>
+			          </div>
+			        </div>
+			        <div class="card-body pt-0">...</div>
+			      </div>
+			      <div class="card">...</div>
+			    </div>
+			    <div class="col-x1-8">
+			    </div>
+			    <!--  end row -->
+			  </div>
+			  <!-- End page-content -->
+			  <!-- Transaction Modal -->
+			  <div class="modal fade transaction-detailModal" tabindex="-1" role="dialog" aria-labelledby="transaction-detailModalLabel" aria-hidden="true">...</div>
+			  <!-- end modal -->
+			  <!-- subscribeModal -->
+			  <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel"
+			  aria-hidden="true" style="display:none;">
+			  <div class="modal-dialog modal-dialog-centered">
+			  	<div class="modal-content">...</div>
+			  </div>
+			</div>		  
+		  </div>
+		</div>
 	</div>
 	<!-- /Right-bar -->
 
 	<!-- Right bar overlay-->
 	<div class="rightbar-overlay"></div>
+	
 
 	<!-- JAVASCRIPT -->
-	<script src="assets/libs/jquery/jquery.min.js"></script>
-	<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="assets/libs/metismenu/metismenu.min.js"></script>
-	<script src="assets/libs/simplebar/simplebar.min.js"></script>
-	<script src="assets/libs/node-waves/waves.min.js"></script>
+	<script src="co_work/assets/libs/jquery/jquery.min.js"></script>
+	<script src="co_work/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="co_work/assets/libs/metismenu/metismenu.min.js"></script>
+	<script src="co_work/assets/libs/simplebar/simplebar.min.js"></script>
+	<script src="co_work/assets/libs/node-waves/waves.min.js"></script>
 
 
 	</script>
 	<!-- App js -->
-	<script src="assets/js/app.js"></script>
-	<script src="assets/js/ajax.js"></script>
-  <script src="project_js/project_list.js"></script>
-  <script src="mypage/mypage.js"></script>
+	<script src="co_work/assets/js/app.js"></script>
+	<script src="co_work/assets/js/ajax.js"></script>
+  <script src="co_work/project_js/project_list.js"></script>
+  <script src="co_work/mypage/mypage.js"></script>
 
 </body>
 
