@@ -355,7 +355,7 @@
 						</button>
 						<div class="dropdown-menu dropdown-menu-end">
 							<!-- item-->
-							<a class="dropdown-item" name="mypage">
+							<a class="dropdown-item" id="mypagedrop">
 								<i class="bx bx-user font-size-16 align-middle me-1"></i>
 								<span key="t-profile">내 프로필</span>
 							</a>
@@ -440,7 +440,7 @@
 
 						<%-- 2월 2일 안덕균 추가 --%>
 
-						<li><a name="mypage" class="waves-effect">
+						<li><a id="mypagecheck" class="waves-effect">
 								<i class="bx bx-user"></i>
 								<span key="t-chat">내 프로필</span>
 							</a></li>
@@ -452,8 +452,8 @@
 							<ul class="sub-menu" aria-expanded="false">
 								<li><a id="notify" href="#">알림</a></li>
 								<li><a id="passwordchange" href="#">비밀번호 변경</a></li>
-								<li><a>보안</a></li>
-								<li><a>접속기기</a></li>
+								<li><a>보안(미구현)</a></li>
+								<li><a>접속기기(미구현)</a></li>
 							</ul></li>
 						<li style="text-align: center"><a>👇 관리자 메뉴 👇</a></li>
 						<%-- 작업 완료 후 삭제 에정 --%>
@@ -582,8 +582,8 @@
 	<script src="assets/js/app.js"></script>
 	<script src="assets/js/ajax.js"></script>
 	<script src="project_js/project_list.js"></script>
-	<script src="admin_js/admin.js"></script>
-	<script src="mypage_js/mypage.js"></script>
-	<script src="main_js/main.js"></script>
+	<script src="mypage_js/index.js"></script>
 
 </body>
+
+</html>
