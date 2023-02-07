@@ -45,12 +45,12 @@ input[type=file] {
 									</c:if>
 									<img src="${src }" alt="profile">
 								</span>
-								<input class="form-control" type="file" name="user_img" id="formFile1">
+								<input class="form-control update" type="file" name="user_img" id="formFile1">
 								<input type="hidden" name="user_id" value="${memberinfo.user_id}">
 								<input type="hidden" name="value" value="user_img">
 							</label>
-							<div class="col-md-5">
-								<button class="btn btn-success waves-effect waves-light" type="submit">수정</button>
+							<div class="col-md-6">
+								<button class="btn btn-success waves-effect waves-light file" type="submit">수정</button>
 								<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
 							</div>
 						</div>
@@ -68,13 +68,13 @@ input[type=file] {
 									</c:if>
 									<img src="${src }" alt="card">
 								</span>
-								<input class="form-control" type="file" name="user_card" id="formFile2">
+								<input class="form-control update" type="file" name="user_card" id="formFile2">
 								<input type="hidden" name="user_id" value="${memberinfo.user_id}">
 								<input type="hidden" name="value" value="user_card">
 							</label>
 
-							<div class="col-md-3">
-								<button class="btn btn-success waves-effect waves-light" type="submit">수정</button>
+							<div class="col-md-6">
+								<button class="btn btn-success waves-effect waves-light file" type="submit">수정</button>
 								<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
 							</div>
 						</div>
@@ -92,8 +92,8 @@ input[type=file] {
 										<input type="hidden" name="user_id" value="${memberinfo.user_id}">
 										<input type="hidden" name="value" value="user_name">
 									</div>
-									<div class="col-md-2">
-										<button class="btn btn-success waves-effect waves-light" type="submit">수정</button>
+									<div class="col-md-3">
+										<button class="btn btn-success waves-effect waves-light update" type="submit">수정</button>
 										<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
 									</div>
 								</div>
@@ -114,7 +114,7 @@ input[type=file] {
 										<input type="hidden" name="value" value="user_dept">
 									</div>
 									<div class="col-md-3">
-										<button class="btn btn-success waves-effect waves-light" type="submit">수정</button>
+										<button class="btn btn-success waves-effect waves-light update" type="submit">수정</button>
 										<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
 									</div>
 								</div>
@@ -135,7 +135,7 @@ input[type=file] {
 										<input type="hidden" name="value" value="user_job">
 									</div>
 									<div class="col-md-3">
-										<button class="btn btn-success waves-effect waves-light" type="submit">수정</button>
+										<button class="btn btn-success waves-effect waves-light update" type="submit">수정</button>
 										<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
 									</div>
 								</div>
@@ -151,7 +151,7 @@ input[type=file] {
 
 									</div>
 									<div class="col-md-3">
-										<button class="btn btn-success waves-effect waves-light" type="submit">수정</button>
+										<button class="btn btn-success waves-effect waves-light update" type="submit">수정</button>
 										<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
 									</div>
 								</div>
@@ -167,7 +167,7 @@ input[type=file] {
 
 									</div>
 									<div class="col-md-3">
-										<button class="btn btn-success waves-effect waves-light" type="submit">수정</button>
+										<button class="btn btn-success waves-effect waves-light update" type="submit">수정</button>
 										<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
 									</div>
 								</div>
@@ -181,7 +181,7 @@ input[type=file] {
 										<input type="hidden" name="value" value="user_phone">
 									</div>
 									<div class="col-md-3">
-										<button class="btn btn-success waves-effect waves-light" type="submit">수정</button>
+										<button class="btn btn-success waves-effect waves-light update" type="submit">수정</button>
 										<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
 									</div>
 								</div>
@@ -196,7 +196,7 @@ input[type=file] {
 										<input type="hidden" name="value" value="user_intro">
 									</div>
 									<div class="col-md-3">
-										<button class="btn btn-success waves-effect waves-light" type="submit">수정</button>
+										<button class="btn btn-success waves-effect waves-light update" type="submit">수정</button>
 										<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
 									</div>
 								</div>
@@ -224,5 +224,5 @@ input[type=file] {
 
 <script>
 	$("option[value='${memberinfo.user_dept }']").prop("selected", true);
-	$("option[value='${memberinfo.user_job }']").prop("selected", true);	
+	$("option[value='${memberinfo.user_job }']").prop("selected", true);
 </script>

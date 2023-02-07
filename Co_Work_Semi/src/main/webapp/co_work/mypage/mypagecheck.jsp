@@ -63,7 +63,6 @@ input[type=file] {
 		$("#mypageinfo").on("click", function() {
 
 			var data = $("#mypage").serialize();
-			console.log(data);
 
 			$.ajax({
 				type : "post",
@@ -75,7 +74,6 @@ input[type=file] {
 					$("#result").html(rdata);
 					window.location.hash = page;
 					$(window).scrollTop(0);
-					console.log(rdata);
 				}
 			})
 		})

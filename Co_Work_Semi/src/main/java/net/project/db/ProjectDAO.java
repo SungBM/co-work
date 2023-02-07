@@ -255,28 +255,30 @@ public class ProjectDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int result=0;
+			
 		try {
 			con = ds.getConnection();
 			System.out.println("getConnection : insert()");
 			
 			pstmt = con.prepareStatement(
-					"INSERT INTO PROJECT (PROJECT_NAME, PROJECT_PROG, PROJECT_ADMIN, PROJECT_START, "
+					"INSERT INTO PROJECT (PROJECT_NUM, PROJECT_NAME, PROJECT_PROG, PROJECT_ADMIN, PROJECT_START, "
 					+ "					PROJECT_END, PROJECT_PRIORITY, PROJECT_PARTICI) "
-					+"VALUES (?,?,?,?,?,?,?)");
+					+"VALUES (PROJECT_SEQ.NEXTVAL, ?,?,?,?,?,?,?)");
 			
-			pstmt.setString(1, p.getProject_name());
-			pstmt.setInt(2, p.getProject_prog());
-			pstmt.setString(3, p.getProject_admin());
-			pstmt.setString(4, p.getProject_start());
-			pstmt.setString(5, p.getProject_end());
-			pstmt.setString(6, p.getProject_priority());
-			pstmt.setInt(7, p.getProject_partici());
+			pstmt.setInt(1, p.getProject_num());
+			pstmt.setString(2, p.getProject_name());
+			pstmt.setInt(3, p.getProject_prog());
+			pstmt.setString(4, p.getProject_admin());
+			pstmt.setString(5, p.getProject_start());
+			pstmt.setString(6, p.getProject_end());
+			pstmt.setString(7, p.getProject_priority());
+			pstmt.setInt(8, p.getProject_partici());
 			result = pstmt.executeUpdate();//삽입 성공시 result는 1
 			
 			//primary key 제약조건 위반했을 경우 발생하는 에러
 			}catch(java.sql.SQLIntegrityConstraintViolationException e) {
 				result = -1;
-				System.out.println("프로젝트명 중복 에러입니다.");
+				System.out.println("DAO:primary key 제약조건 위반.");
 			}catch (Exception e) {
 				e.printStackTrace();
 			} finally {

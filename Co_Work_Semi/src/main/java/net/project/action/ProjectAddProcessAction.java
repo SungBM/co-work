@@ -15,6 +15,7 @@ public class ProjectAddProcessAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		String project_name = request.getParameter("project_name");
 		int project_prog = Integer.parseInt(request.getParameter("project_prog"));
 		String project_start = request.getParameter("project_start");
@@ -25,9 +26,10 @@ public class ProjectAddProcessAction implements Action {
 		
 		
 		Project p = new Project();
-		p.setProject_name(project_name); 			p.setProject_prog(project_prog);
-		p.setProject_start(project_start);  		p.setProject_end(project_end);
-		p.setProject_priority(project_priority);	p.setProject_partici(project_partici);  p.setProject_admin(project_admin); 
+						p.setProject_name(project_name); 			
+		p.setProject_prog(project_prog);			p.setProject_start(project_start);  		
+		p.setProject_end(project_end);				p.setProject_priority(project_priority);	
+		p.setProject_partici(project_partici);  	p.setProject_admin(project_admin); 
 		
 		
 		ProjectDAO pdao = new ProjectDAO();

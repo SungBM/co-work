@@ -399,7 +399,12 @@ public class MypageDAO {
 				m.setUser_join_date(rs.getDate("user_join_date"));
 				m.setUser_state(rs.getInt("user_state"));
 				m.setUser_is_admin(rs.getInt("user_is_admin"));
-
+				m.setUser_fax(rs.getString("user_fax"));
+				m.setUser_phone(rs.getString("user_phone"));
+				m.setUser_intro(rs.getString("user_intro"));
+				m.setUser_img(rs.getString("user_img"));
+				m.setUser_card(rs.getString("user_card"));
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.mypage.db.MypageDAO;
 
@@ -15,14 +16,13 @@ public class PasswordChangeProcess implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
-		String user_id = request.getParameter("user_id");
-//		String user_id = (String) session.getAttribute("id");
+		HttpSession session = request.getSession();
+//		String user_id = request.getParameter("user_id");
+		String user_id = (String) session.getAttribute("id");
 		String user_password = request.getParameter("user_password");
 		MypageDAO mydao = new MypageDAO();
 		int result = mydao.isId(user_id, user_password); // id, password 1차 확인
 		System.out.println("검사" + result);
-
-//		HttpSession session = request.getSession();
 
 		if (result != 1) {
 			PrintWriter out = response.getWriter();

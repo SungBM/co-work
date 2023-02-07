@@ -396,7 +396,7 @@
 							</a>
 							<ul class="sub-menu" aria-expanded="false">
 								<li><a id="project_list">전체</a></li>
-								<li><a>진행</a></li>
+								<li><a id="project_list_detail">진행</a></li>
 								<li><a>마감</a></li>
 								<li><a>즐겨찾기</a></li>
 							</ul></li>
