@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ProjectFrontController
  */
-@WebServlet("*.bo")
+@WebServlet("*.bon")
 public class NoticeFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -40,9 +40,9 @@ public class NoticeFrontController extends HttpServlet {
 		Action action = null;
 		
 		switch(command) {
-		case "/logo.bo" :
-			action = new NoticeLogoAction();
-			break;
+        case "/BoardList.bon":
+            action = new NoticeListAction();
+            break;
 		}
 		
 		forward = action.execute(request, response);
