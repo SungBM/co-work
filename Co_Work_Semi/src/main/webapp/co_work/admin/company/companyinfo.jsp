@@ -61,37 +61,6 @@
 									</div>
 								</div>
 							</form>
-							<!-- 
-							<form action="companyupdateProcess.com" method="post" enctype="multipart/form-data">
-								<div class="mb-3 row">
-									<label for="example-search-input" class="col-md-2 col-form-label">부서 설정</label>
-									<div class="col-md-8">
-										<input class="form-control" type="email" value="${memberinfo.user_email }" name="user_email" readOnly>
-										<input type="hidden" name="value" value="user_email">
-
-									</div>
-									<div class="col-md-2">
-										<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
-										<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
-									</div>
-								</div>
-							</form>
-
-							<form action="companyupdateProcess.com" method="post" enctype="multipart/form-data">
-								<div class="mb-3 row">
-									<label for="example-email-input" class="col-md-2 col-form-label">직함 설정</label>
-									<div class="col-md-8">
-										<input class="form-control" type="text" value="${memberinfo.user_fax}" placeholder="Enter fax" name="user_fax" readOnly>
-										<input type="hidden" name="value" value="user_fax">
-
-									</div>
-									<div class="col-md-2">
-										<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
-										<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
-									</div>
-								</div>
-							</form>
- -->
 						</div>
 					</div>
 
@@ -104,161 +73,62 @@
 				<div class="col-xl-6">
 					<div class="card">
 						<div class="card-body">
-							<form action="companyupdateProcess.com" method="post" enctype="multipart/form-data">
-								<div class="mb-3 row">
-									<label for="example-text-input" class="col-md-2 col-form-label">회사명</label>
-									<div class="col-md-8">
-										<input class="form-control" type="text" value="CO-WORK" name="company_name" readonly="">
-										<input type="hidden" name="value" value="company_name">
+							<div class="input-group hstack gap-3">
+								<h4 class="mb-sm-0 font-size-18">부서</h4>
+								<span class="input-group-btn input-group-append">
+									<button class="btn btn-primary bootstrap-touchspin-up" type="button">+</button>
+								</span>
+							</div>
+							<br>
+							<c:forEach var="m" items="${dept }">
+								<form action="deptJobUpdateProcess.com" method="post" enctype="multipart/form-data">
+									<div class="mb-3 row">
+										<div class="col-md-7">
+											<input class="form-control" type="text" value="${m.dept_name }" name="dept_name" readOnly>
+											<input type="hidden" name="value" value="dept_name">
+										</div>
+										<div class="col-md-5">
+											<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
+											<input class="btn btn-warning waves-effect waves-light" type="reset" id="second" style="display: none" value="취소">
+										</div>
 									</div>
-									<div class="col-md-2">
-										<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
-										<input class="btn btn-warning waves-effect waves-light" type="reset" id="second" style="display: none" value="취소">
-									</div>
-								</div>
-							</form>
-
-							<form action="companyupdateProcess.com" method="post" enctype="multipart/form-data">
-								<div class="mb-3 row">
-									<label for="example-text-input" class="col-md-2 col-form-label">전용 URL</label>
-									<div class="col-md-8">
-										<input class="form-control" type="text" value="" name="company_url" readonly="">
-										<input type="hidden" name="value" value="company_url">
-									</div>
-									<div class="col-md-2">
-										<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
-										<input class="btn btn-warning waves-effect waves-light" type="reset" id="second" style="display: none" value="취소">
-									</div>
-								</div>
-							</form>
-
-							<form action="companyupdateProcess.com" method="post" enctype="multipart/form-data">
-								<div class="mb-3 row">
-									<label for="example-text-input" class="col-md-2 col-form-label">로고 설정</label>
-									<div class="col-md-8">
-										<input class="form-control" type="text" value="" name="company_logo" readonly="">
-										<input type="hidden" name="value" value="company_logo">
-									</div>
-									<div class="col-md-2">
-										<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
-										<input class="btn btn-warning waves-effect waves-light" type="reset" id="second" style="display: none" value="취소">
-									</div>
-								</div>
-							</form>
-
-							<form action="companyupdateProcess.com" method="post" enctype="multipart/form-data">
-								<div class="mb-3 row">
-									<label for="example-search-input" class="col-md-2 col-form-label">부서 설정</label>
-									<div class="col-md-8">
-										<input class="form-control" type="email" value="" name="user_email" readonly="">
-										<input type="hidden" name="value" value="user_email">
-
-									</div>
-									<div class="col-md-2">
-										<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
-										<input class="btn btn-warning waves-effect waves-light" type="reset" id="second" style="display: none" value="취소">
-									</div>
-								</div>
-							</form>
-
-							<form action="companyupdateProcess.com" method="post" enctype="multipart/form-data">
-								<div class="mb-3 row">
-									<label for="example-email-input" class="col-md-2 col-form-label">직함 설정</label>
-									<div class="col-md-8">
-										<input class="form-control" type="text" value="" placeholder="Enter fax" name="user_fax" readonly="">
-										<input type="hidden" name="value" value="user_fax">
-
-									</div>
-									<div class="col-md-2">
-										<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
-										<input class="btn btn-warning waves-effect waves-light" type="reset" id="second" style="display: none" value="취소">
-									</div>
-								</div>
-							</form>
+								</form>
+							</c:forEach>
 
 						</div>
 					</div>
 				</div>
+
 				<!-- list 2 -->
 				<div class="col-xl-6">
 					<div class="card">
 						<div class="card-body">
-
-							<form action="companyupdateProcess.com" method="post" enctype="multipart/form-data">
-								<div class="mb-3 row">
-									<label for="example-text-input" class="col-md-2 col-form-label">회사명</label>
-									<div class="col-md-8">
-										<input class="form-control" type="text" value="CO-WORK" name="company_name" readonly="">
-										<input type="hidden" name="value" value="company_name">
+							<div class="input-group hstack gap-3">
+								<h4 class="mb-sm-0 font-size-18">직함</h4>
+								<span class="input-group-btn input-group-append">
+									<button class="btn btn-primary bootstrap-touchspin-up" type="button">+</button>
+								</span>
+							</div>
+							<br>
+							<c:forEach var="m" items="${job }">
+								<form action="deptJobUpdateProcess.com" method="post" enctype="multipart/form-data">
+									<div class="mb-3 row">
+										<div class="col-md-7">
+											<input class="form-control" type="text" value="${m.job_name }" name="job_name" readonly="">
+											<input type="hidden" name="value" value="job_name">
+										</div>
+										<div class="col-md-5">
+											<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
+											<input class="btn btn-warning waves-effect waves-light" type="reset" id="second" style="display: none" value="취소">
+										</div>
 									</div>
-									<div class="col-md-2">
-										<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
-										<input class="btn btn-warning waves-effect waves-light" type="reset" id="second" style="display: none" value="취소">
-									</div>
-								</div>
-							</form>
-
-							<form action="companyupdateProcess.com" method="post" enctype="multipart/form-data">
-								<div class="mb-3 row">
-									<label for="example-text-input" class="col-md-2 col-form-label">전용 URL</label>
-									<div class="col-md-8">
-										<input class="form-control" type="text" value="" name="company_url" readonly="">
-										<input type="hidden" name="value" value="company_url">
-									</div>
-									<div class="col-md-2">
-										<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
-										<input class="btn btn-warning waves-effect waves-light" type="reset" id="second" style="display: none" value="취소">
-									</div>
-								</div>
-							</form>
-
-							<form action="companyupdateProcess.com" method="post" enctype="multipart/form-data">
-								<div class="mb-3 row">
-									<label for="example-text-input" class="col-md-2 col-form-label">로고 설정</label>
-									<div class="col-md-8">
-										<input class="form-control" type="text" value="" name="company_logo" readonly="">
-										<input type="hidden" name="value" value="company_logo">
-									</div>
-									<div class="col-md-2">
-										<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
-										<input class="btn btn-warning waves-effect waves-light" type="reset" id="second" style="display: none" value="취소">
-									</div>
-								</div>
-							</form>
-
-							<form action="companyupdateProcess.com" method="post" enctype="multipart/form-data">
-								<div class="mb-3 row">
-									<label for="example-search-input" class="col-md-2 col-form-label">부서 설정</label>
-									<div class="col-md-8">
-										<input class="form-control" type="email" value="" name="user_email" readonly="">
-										<input type="hidden" name="value" value="user_email">
-
-									</div>
-									<div class="col-md-2">
-										<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
-										<input class="btn btn-warning waves-effect waves-light" type="reset" id="second" style="display: none" value="취소">
-									</div>
-								</div>
-							</form>
-
-							<form action="companyupdateProcess.com" method="post" enctype="multipart/form-data">
-								<div class="mb-3 row">
-									<label for="example-email-input" class="col-md-2 col-form-label">직함 설정</label>
-									<div class="col-md-8">
-										<input class="form-control" type="text" value="" placeholder="Enter fax" name="user_fax" readonly="">
-										<input type="hidden" name="value" value="user_fax">
-
-									</div>
-									<div class="col-md-2">
-										<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
-										<input class="btn btn-warning waves-effect waves-light" type="reset" id="second" style="display: none" value="취소">
-									</div>
-								</div>
-							</form>
+								</form>
+							</c:forEach>
 
 						</div>
 					</div>
 				</div>
+
 
 			</div>
 			<!-- container-fluid -->
@@ -267,5 +137,5 @@
 	</div>
 	<!-- end main content-->
 </body>
-</html>
 <script src="admin_js/admin.js"></script>
+</html>

@@ -10,31 +10,7 @@ function onClickUpload1() {
 
 
 $(function() {
-	$("#mypageinfo").on("click", function() {
-
-		var data = $("#mypage").serialize();
-		console.log(data);
-
-		$.ajax({
-			type: "post",
-			url: "mypage.my",
-			dataType: "html",
-			data: data,
-			success: function(rdata) {
-				$("#result").empty();
-				$("#result").html(rdata);
-				window.location.hash = page;
-				$(window).scrollTop(0);
-				console.log(rdata);
-			}
-		})
-	})
-
-	//a 태그 href 이동 막아주는 부분
-	//<a id="HTABL" href="blog-list.html" onclick='preventClick(event)'> 태그에 onclick='preventClick(event) 작성해야합니다
-
-
-	$("button").off("click").on("click", function(e) {
+	$("button[type=submit]").on("click", function(e) {
 		e.preventDefault();
 		var val = $(this).parent().prev().children().first().val()
 
@@ -44,6 +20,7 @@ $(function() {
 			$(this).parent().prev().children().first().focus()
 			$(this).parent().prev().children().first().val('')
 			$(this).parent().prev().children().first().val(val)
+			$("button[type=submit]").not(this).hide();
 			$(this).text('확인')
 			$(this).next().show();
 
@@ -61,12 +38,14 @@ $(function() {
 		e.stopPropagation();
 	}) // 수정 버튼 클릭
 
-	$(document).off("click").on("click", "#second", function() {
+	$(document).on("click", "#second", function() {
 		$(this).parent().prev().children().first().attr("readOnly", true)
 		$(this).parent().prev().children().first().attr("disabled", true)
 		$(this).prev().text('수정')
+		$("button[type=submit]").not(this).show();
 		$(this).hide()
-	})
+	}) // 취소 버튼 클릭
+
 
 	$('#formFile1').change(function(event) {
 
@@ -124,5 +103,6 @@ $(function() {
 			$(this).val('')
 			$('input[name=check]').val('');
 		}
-	}) // change() end
+	}) // change() end           
+
 })

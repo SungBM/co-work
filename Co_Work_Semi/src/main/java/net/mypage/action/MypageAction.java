@@ -19,10 +19,10 @@ public class MypageAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
-
 		ActionForward forward = new ActionForward();
 		String user_id = request.getParameter("user_id");
 		String user_password = request.getParameter("user_password");
+		System.out.println(user_id);
 		
 		MypageDAO mydao = new MypageDAO();
 		if (user_password != null) {
