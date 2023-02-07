@@ -7,19 +7,20 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="co_work/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
 
     <!-- Bootstrap Css -->
-    <link href="co_work/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
-    <link href="aco_work/ssets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="co_work/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
-<script src="co_work/member_js/jquery-3.6.3.js"></script>
+    <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+    <script src="assets/libs/jquery/jquery.min.js"></script>
 <script>
 $(function(){
 	let checkid=false;
 	let checkemail=false;
+	let checkpass=false;
 	
 	$("input[name=id]").on('keyup', function(){
 		$("#message").empty(); //처음에 pattern에 적합하지 않은 경우 메시지 출력 후 적합한 데이터를 입력해도
@@ -66,7 +67,6 @@ $(function(){
 			}
 		}); //on
 		
-		let pwChecked=false;
         $(".form-control").focusout(function() { // 아이디를 입력할때 마다 중복검사 실행
             checkPw($(this).val())
         })
@@ -75,28 +75,35 @@ $(function(){
               $("#checkId").text("");
               return; // 아직 입력된 상태가 아니라면 아무런 문구를 출력하지 않는다
           }
+
           if($('#pw1').val()!=$('#pw2').val()){
               // 만약 pw1과 pw2가 알치하지 않는다면
               $("#checkPw").html('비밀번호가 일치하지 않습니다'); // 문구 출력
               $("#checkPw").attr('color', 'red');
               $('#pw2').val(''); // 값을 비움
               $('#pw2').focus(); // 포인터를 pw2 로 맞춘다
-              pwChecked=false;
+              checkpass=false;
           }
           else{
               $("#checkPw").html('비밀번호가 일치합니다'); // 문구 출력
               $("#checkPw").attr('color', 'green');
-              pwChecked=true;
+              checkpass=true;
           }
           setAble();
         }
         
         $('form').submit(function(){
         	if(!checkid){
-				alert("사용 가능한 id로 입력하세요.");
+				alert("사용 가능한 아이디로 입력하세요.");
 				$("input[name=id]").val('').focus();
 				return false;
 			}
+        	
+        	if(!checkpass){
+        		alert("사용 가능한 비밀번호로 입력하세요.");
+        		$("input[name=pass]").val('').focus();
+        		return false;
+        	}
 			
 			if(!checkemail){
 				alert("email 형식을 확인하세요.");
@@ -190,7 +197,7 @@ $(function(){
                                     
                                     <div class="mt-4 d-grid">
                                         <button class="btn btn-primary waves-effect waves-light"
-                                            type="reset">취소</button>
+                                            type="reset" onClick="history.back();">취소</button>
                                     </div>
 
                                     <div class="mt-4 text-center">
@@ -222,11 +229,11 @@ $(function(){
                                         <p class="mb-0">By registering you agree to the Skote <a href="#"
                                                 class="text-primary">Terms of Use</a></p>
                                     </div>
-                                </form>
                             </div>
 
                         </div>
                     </div>
+  
                     <div class="mt-5 text-center">
 
                         <div>
@@ -245,18 +252,18 @@ $(function(){
     </div>
 
     <!-- JAVASCRIPT -->
-    <script src="co_work/assets/libs/jquery/jquery.min.js"></script>
-    <script src="co_work/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="co_work/assets/libs/metismenu/metisMenu.min.js"></script>
-    <script src="co_work/assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="co_work/assets/libs/node-waves/waves.min.js"></script>
+    <script src="assets/libs/jquery/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
 
     <!-- validation init -->
-    <script src="co_work/assets/js/pages/validation.init.js"></script>
+    <script src="assets/js/pages/validation.init.js"></script>
 
     <!-- App js -->
-    <script src="co_work/assets/js/app.js"></script>
-</form>
+    <script src="assets/js/app.js"></script>
+	</form>
 </body>
 
 </html>

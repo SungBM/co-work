@@ -21,16 +21,6 @@
     <!-- App Css-->
     <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
-
-<script>
-	$(function(){
-		const id = '${id}';
-		if(id){
-			$("#id").val(id);
-			$("#remember-check").prop('checked', true);
-		}
-	
-</script>
 </head>
 <body class="auth-body-bg">
     <div>
@@ -162,5 +152,13 @@
     <script src="assets/js/pages/auth-2-carousel.init.js"></script>
     <!-- App js -->
     <script src="assets/js/app.js"></script>
+    <script>
+		const id = '${id}';
+		if(id){
+			console.log(id);
+			$("#id").val(id);
+			$("#remember-check").prop('checked', true);
+		}
+</script>
 </body>
 </html>

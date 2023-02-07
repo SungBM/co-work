@@ -366,7 +366,7 @@
 								<span key="t-settings">Settings</span>
 							</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item text-danger" href="#">
+							<a class="dropdown-item text-danger" href="logout.net">
 								<i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
 								<span key="t-logout">Logout</span>
 							</a>
@@ -454,6 +454,7 @@
 								<li><a id="passwordchange" href="#">비밀번호 변경</a></li>
 								<li><a>보안(미구현)</a></li>
 								<li><a>접속기기(미구현)</a></li>
+								<!-- <li><a id="passwordchange" href="logout.net">로그아웃</a></li> -->
 							</ul></li>
 						<li style="text-align: center"><a>👇 관리자 메뉴 👇</a></li>
 						<%-- 작업 완료 후 삭제 에정 --%>

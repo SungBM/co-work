@@ -28,12 +28,16 @@
                         <div class="row">
                             <div class="col-7">
                                 <div class="text-primary p-3">
-                                    <h5 class="text-primary">Welcome Back !</h5>
-                                    <p>Skote Dashboard</p>
+                                    <h5 class="text-primary">환영합니다.</h5>
+                                    <% 
+                                    String id = (String)session.getAttribute("id");
+                                    %>
+                                    <p><%=id %>님</p>
+                                   <!-- <c:out value="${memberinfo.user_name } /> -->
                                 </div>
                             </div>
                             <div class="col-5 align-self-end">
-                                <img src="assets/images/profile-img.png" alt="" class="img-fluid">
+                                <a href="index2.jsp"><img src="assets/images/profile-img.png" alt="" class="img-fluid" ></a>
                             </div>
                         </div>
                     </div>
@@ -44,8 +48,11 @@
                                     <img src="assets/images/users/avatar-1.jpg" alt=""
                                         class="img-thumbnail rounded-circle">
                                 </div>
-                                <h5 class="font-size-15 text-truncate">Henry Price</h5>
-                                <p class="text-muted mb-0 text-truncate">UI/UX Designer</p>
+                                <% 
+                                String name = (String)session.getAttribute("name");
+                                %>
+                                <h5 class="font-size-15 text-truncate"><%=name %></h5>
+                                <p class="text-muted mb-0 text-truncate">팀명</p>
                             </div>
 
                             <div class="col-sm-8">
@@ -72,7 +79,7 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4">Monthly Earning</h4>
+                        <h4 class="card-title mb-4">현재 진행중인 프로젝트</h4>
                         <div class="row">
                             <div class="col-sm-6">
                                 <p class="text-muted">This month</p>
@@ -102,7 +109,7 @@
                             <div class="card-body">
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
-                                        <p class="text-muted fw-medium">Orders</p>
+                                        <p class="text-muted fw-medium">메일함</p>
                                         <h4 class="mb-0">1,235</h4>
                                     </div>
 
@@ -120,7 +127,7 @@
                             <div class="card-body">
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
-                                        <p class="text-muted fw-medium">Revenue</p>
+                                        <p class="text-muted fw-medium">전자결재</p>
                                         <h4 class="mb-0">$35, 723</h4>
                                     </div>
 
@@ -138,7 +145,7 @@
                             <div class="card-body">
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
-                                        <p class="text-muted fw-medium">Average Price</p>
+                                        <p class="text-muted fw-medium">게시판</p>
                                         <h4 class="mb-0">$16.2</h4>
                                     </div>
 
@@ -241,7 +248,7 @@
             <div class="col-xl-4">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-5">Activity</h4>
+                        <h4 class="card-title mb-5">오늘 할 일</h4>
                         <ul class="verti-timeline list-unstyled">
                             <li class="event-list">
                                 <div class="event-timeline-dot">
@@ -700,7 +707,7 @@
 <!-- end modal -->
 
 <!-- subscribeModal -->
-<div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header border-bottom-0">
@@ -737,7 +744,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- end modal -->
 
 <!-- apexcharts -->
