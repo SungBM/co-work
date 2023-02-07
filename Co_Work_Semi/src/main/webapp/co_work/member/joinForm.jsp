@@ -10,12 +10,12 @@
     <link rel="shortcut icon" href="co_work/assets/images/favicon.ico">
 
     <!-- Bootstrap Css -->
-    <link href="co_work/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
-    <link href="aco_work/ssets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="co_work/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
-<script src="co_work/member_js/jquery-3.6.3.js"></script>
+    <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+    <script src="assets/libs/jquery/jquery.min.js"></script>
 <script>
 $(function(){
 	let checkid=false;
@@ -246,17 +246,17 @@ $(function(){
     </div>
 
     <!-- JAVASCRIPT -->
-    <script src="co_work/assets/libs/jquery/jquery.min.js"></script>
-    <script src="co_work/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="co_work/assets/libs/metismenu/metisMenu.min.js"></script>
-    <script src="co_work/assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="co_work/assets/libs/node-waves/waves.min.js"></script>
+    <script src="assets/libs/jquery/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
 
     <!-- validation init -->
-    <script src="co_work/assets/js/pages/validation.init.js"></script>
+    <script src="assets/js/pages/validation.init.js"></script>
 
     <!-- App js -->
-    <script src="co_work/assets/js/app.js"></script>
+    <script src="assets/js/app.js"></script>
 </form>
 </body>
 
