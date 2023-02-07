@@ -65,7 +65,6 @@
                                     </div>
                                  
                <br><br>
-               
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                     <h4 class="mb-sm-0 font-size-18">Projects List</h4>
 					
@@ -112,7 +111,7 @@
                                     <td>
                                     	<div class="">
                            					<div class="progress">
-                                				<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar"
+                                				<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                                     			aria-valuenow="${p.project_prog }" aria-valuemin="0" aria-valuemax="100" style="width: ${p.project_prog}%">
                                     			</div>
                             				</div>
@@ -186,8 +185,8 @@
             </div> <!-- end col-->
         </div>
         <!-- end row -->
-        
     </div> <!-- container-fluid -->
 </div>
 <!-- End Page-content -->
 <script src="project_js/project_add.js"></script>
+<script src="project_js/project_list_onload.js"></script>
