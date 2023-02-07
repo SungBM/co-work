@@ -48,7 +48,6 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                     <button type="submit" id="submit_add" class="btn btn-primary">Send message</button>
-                                               
                                                 </div>
                                             </div>
                                         </div>
@@ -129,37 +128,31 @@
                                     </td>
                                     <td><span class="badge " aria-valuenow="${p.project_state }" style="width: 50%">${p.project_priority }</span></td>
                                     <td>
-                                        <div class="avatar-group">
-                                            <div class="avatar-group-item">
+                                    <div class="avatar-group">
+                                    	<c:forEach var='u' items="${p.project_parti }" varStatus="status">
+                                    		<c:if test="${status.index > 3 }">
+                                    			<div>
+                                            		<a href="#" class="dropdown-toggle card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                                		<i class="mdi mdi-dots-horizontal font-size-18"></i>
+                                            		</a>
+                                            	</div>
+                                    		</c:if>
+                                    		<c:if test="${status.index <= 3 }">
+                                    		  <div class="avatar-group-item">
                                                 <a href="javascript: void(0);" class="d-inline-block">
-                                                    <img src="assets/images/users/avatar-4.jpg" alt="" class="rounded-circle avatar-xs">
+                                                    <img src="image/users/${u.USER_IMG }" alt="" class="rounded-circle avatar-xs" id="more_team">
                                                 </a>
-                                            </div>
-                                            <div class="avatar-group-item">
-                                                <a href="javascript: void(0);" class="d-inline-block">
-                                                    <img src="assets/images/users/avatar-5.jpg" alt="" class="rounded-circle avatar-xs">
-                                                </a>
-                                            </div>
-                                            <div class="avatar-group-item">
-                                                <a href="javascript: void(0);" class="d-inline-block">
-                                                        <span class="avatar-title rounded-circle bg-success text-white font-size-16">
-                                                              <img src="assets/images/users/avatar-5.jpg" alt="" class="rounded-circle avatar-xs">
-                                                        </span>
-                                                </a>
-                                            </div>
-                                            <div class="avatar-group-item">
-                                                <a href="javascript: void(0);" class="d-inline-block">
-                                                    <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-xs">
-                                                </a>
-                                            </div>
-                                        </div>
+                                              </div>
+                                            </c:if>
+                                    	</c:forEach>
+                                    </div>
                                     </td>
                                     <td>
                                         <div class="avatar-group">
                                              <div class="avatar-group-item">
                                              <!-- 프로필 페이지로 연결 -->
                                                 <a href="javascript: void(0);" class="d-inline-block">
-                                                    <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-xs">
+                                                    <img src="image/users/${p.project_admin_img }" alt="" class="rounded-circle avatar-xs">
                                                 </a>
                                             </div>
                                         </div>

@@ -3,7 +3,6 @@ function preventClick(e) {
 }
 
 $(function() {
-
 	$("button[name=sub]").off("click").on("click", function(e) {
 		e.preventDefault();
 		var val = $(this).parent().prev().children().first().val()

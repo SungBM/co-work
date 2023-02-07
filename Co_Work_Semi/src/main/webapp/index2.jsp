@@ -12,7 +12,6 @@
 <link rel="shortcut icon" href="assets/images/favicon.ico">
 
 
-
 <!-- Bootstrap Css -->
 <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <!-- Icons Css -->
@@ -582,6 +581,7 @@
 	<script src="assets/js/app.js"></script>
 	<script src="assets/js/ajax.js"></script>
 	<script src="project_js/project_list.js"></script>
+	<script src="project_js/project_add.js"></script>
 	<script src="mypage_js/index.js"></script>
 	<script src="main_js/main_js.js"></script>
 </body>
