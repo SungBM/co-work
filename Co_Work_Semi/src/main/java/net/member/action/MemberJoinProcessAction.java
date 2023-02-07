@@ -23,25 +23,14 @@ public class MemberJoinProcessAction implements Action {
 		UserInfo m = new UserInfo();
 		m.setUSER_ID(USER_ID);		m.setUSER_PASSWORD(USER_PASSWORD);
 		m.setUSER_EMAIL(USER_EMAIL);			//m.setUSER_CODE(USER_CODE);	
-<<<<<<< HEAD
-<<<<<<< HEAD
 		m.setUSER_NAME(USER_NAME);
  
-=======
-=======
-		m.setUSER_NAME(USER_NAME);
->>>>>>> branch 'main' of https://github.com/SungBM/co-work.git
 
-<<<<<<< HEAD
+		m.setUSER_NAME(USER_NAME);
+
 		m.setUSER_NAME(USER_NAME);		m.setUSER_PASSWORD_CH(USER_PASSWORD_CH);
 
->>>>>>> branch 'main' of https://github.com/SungBM/co-work.git
-=======
-		Company m = new Company();
-		m.setID(ID);				m.setPASSWORD(PASSWORD);		m.setPASSWORD_CH(PASSWORD_CH);
-		m.setEMAIL(EMAIL);			m.setCODE(CODE);			m.setNAME(NAME);
- 
->>>>>>> branch 'main' of https://github.com/SungBM/co-work.git
+
 		
 		UserDAO mdao = new UserDAO();
 		int result = mdao.insert(m);
