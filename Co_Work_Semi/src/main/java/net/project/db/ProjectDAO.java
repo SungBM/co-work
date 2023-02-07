@@ -14,6 +14,7 @@ import java.util.List;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+import javax.swing.plaf.ProgressBarUI;
 
 public class ProjectDAO {
 	private DataSource ds;
@@ -106,14 +107,42 @@ public class ProjectDAO {
 		}
 		return x;
 	}
-
-	public List<Project> getProjectList(int page, int limit) {
+	public int getDayCount(String date1, String date2) {
+		int prog = 0;
+		
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c1 = Calendar.getInstance();
+        String strToday = sdf.format(c1.getTime());
+        try {
+        	Date format1 = new SimpleDateFormat("yyyy-MM-dd").parse(date1);
+    	    Date format2 = new SimpleDateFormat("yyyy-MM-dd").parse(date2);
+    	    Date todayformat = new SimpleDateFormat("yyyy-MM-dd").parse(strToday);
+    	    long diffSec = (format2.getTime() - format1.getTime()) / 1000; //초 차이
+    	    long diffMin = (format2.getTime() - format1.getTime()) / 60000; //분 차이
+    	    long diffHor = (format2.getTime() - format1.getTime()) / 3600000; //시 차이
+    	    long all_Days_diff = diffSec / (24*60*60); //일자수 차이
+    	   
+    	    long today_diff_sec = (format2.getTime() - todayformat.getTime()) / 1000;
+    	    long today_diff = today_diff_sec / (24*60*60);
+    			        		
+    	    double all_days = all_Days_diff;
+    	    double today =  today_diff;
+    	    prog = 100-(int)((today / all_days)*100 );
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+	   
+	   
+	    
+	    return prog;
+	}
+	public List<Project> getDeadLineProjects(int page, int limit){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		String project_List_Sql =   "SELECT * FROM (SELECT ROWNUM,P.* FROM (SELECT * FROM PROJECT ORDER BY PROJECT_END)P "
-								+ "WHERE ROWNUM <= ?) WHERE ROWNUM >= ? AND ROWNUM <= ?";
+								+ "WHERE ROWNUM <= ?) WHERE ROWNUM >= ? AND ROWNUM <= ? AND PROJECT_END < SYSDATE";
 		
 		List<Project> list = new ArrayList<Project>();
 		int startrow = (page -1 ) * limit + 1;
@@ -132,37 +161,7 @@ public class ProjectDAO {
 				pro.setProject_num(rs.getInt(2));
 				pro.setProject_name(rs.getString(3));
 				pro.setProject_state(rs.getString(4));
-				if(rs.getString(7) != null ) {
-					String date1 = rs.getString(6).substring(0,10); //날짜1
-				    String date2 = rs.getString(7).substring(0,10); //날짜2
-				    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			        Calendar c1 = Calendar.getInstance();
-			        String strToday = sdf.format(c1.getTime());
-			        
-				    Date format1 = new SimpleDateFormat("yyyy-MM-dd").parse(date1);
-				    Date format2 = new SimpleDateFormat("yyyy-MM-dd").parse(date2);
-				    Date todayformat = new SimpleDateFormat("yyyy-MM-dd").parse(strToday);
-				        
-				    long diffSec = (format2.getTime() - format1.getTime()) / 1000; //초 차이
-				    long diffMin = (format2.getTime() - format1.getTime()) / 60000; //분 차이
-				    long diffHor = (format2.getTime() - format1.getTime()) / 3600000; //시 차이
-				    long all_Days_diff = diffSec / (24*60*60); //일자수 차이
-				   
-				    long today_diff_sec = (format2.getTime() - todayformat.getTime()) / 1000;
-				    long today_diff = today_diff_sec / (24*60*60);
-						        		
-				    double all_days = all_Days_diff;
-				    double today =  today_diff;
-				    int prog = 100-(int)((today / all_days)*100 );
-				 
-				    System.out.println(today + "오늘날짜로부터 차이");
-				    System.out.println(all_days + "전체일수");
-				    System.out.println((today / all_days)*100  + " 백분율");
-					pro.setProject_prog(prog);
-				} else {
-					pro.setProject_prog(1);
-				}
-						
+				pro.setProject_prog(100);
 				pro.setProject_start(rs.getString(6));
 				pro.setProject_end(rs.getString(7));
 				pro.setProject_priority(rs.getString(8));
@@ -170,9 +169,75 @@ public class ProjectDAO {
 				pro.setProject_admin(rs.getString(10));
 				pro.setProject_bookmark(rs.getString(11));
 				pro.setProject_parti(rs.getString(12));
-				
 				list.add(pro);
 			}
+		
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("getProjectList() : 에러발생" + ex);
+		} finally {
+			all_close(rs, pstmt, conn);
+		}
+		
+		return list;
+
+	}
+	
+	public List<Project> getProjectList(int page, int limit) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String project_List_Sql =   "SELECT * FROM (SELECT ROWNUM,P.* FROM (SELECT * FROM PROJECT ORDER BY PROJECT_END)P "
+								+ "WHERE ROWNUM <= ?) WHERE ROWNUM >= ? AND ROWNUM <= ? AND PROJECT_END > "
+								+ "SYSDATE OR PROJECT_END IS NULL";
+		
+		
+		
+		List<Project> list = new ArrayList<Project>();
+		List<Project> dead_list = new ArrayList<Project>();
+		
+		int startrow = (page -1 ) * limit + 1;
+		int endrow = startrow + limit -1;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(project_List_Sql);
+			pstmt.setInt(1, endrow);
+			pstmt.setInt(2,startrow);
+			pstmt.setInt(3, endrow);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Project pro = new Project();
+				pro.setRow_num(rs.getInt(1));
+				pro.setProject_num(rs.getInt(2));
+				pro.setProject_name(rs.getString(3));
+				pro.setProject_state(rs.getString(4));
+				int prog = 0;
+				if(rs.getString(7) != null ) {
+					String date1 = rs.getString(6).substring(0,10); //날짜1
+				    String date2 = rs.getString(7).substring(0,10); //날짜2
+				
+				    prog = getDayCount(date1, date2);
+					pro.setProject_prog(prog);
+				} else {
+					pro.setProject_prog(1);
+				}
+				
+				pro.setProject_start(rs.getString(6));
+				pro.setProject_end(rs.getString(7));
+				pro.setProject_priority(rs.getString(8));
+				pro.setProject_partici(Integer.parseInt(rs.getString(9)));
+				pro.setProject_admin(rs.getString(10));
+				pro.setProject_bookmark(rs.getString(11));
+				pro.setProject_parti(rs.getString(12));
+				list.add(pro);
+				
+			}
+			dead_list = getDeadLineProjects(page,limit);
+			list.addAll(dead_list);
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			System.out.println("getProjectList() : 에러발생" + ex);
