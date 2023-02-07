@@ -21,6 +21,7 @@ public class CompanyInfoAction implements Action {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String user_id = (String) session.getAttribute("id");
+		System.out.println("company id : " + user_id );
 
 		CompanyDAO mydao = new CompanyDAO();
 		MypageDAO mdao = new MypageDAO();

@@ -21,7 +21,7 @@ input[type=file] {
 					</div>
 				</div>
 			</div>
-			<div class="col-12">
+			<div class="col-8">
 				<div class="card">
 					<div class="card-body">
 						<form method="POST" id="mypage">
@@ -35,7 +35,7 @@ input[type=file] {
 							<div class="row justify-content-end">
 								<div class="col-sm-9">
 									<div>
-										<button type="submit" class="btn btn-primary w-md" id="mypageinfo">변경</button>
+										<button type="submit" class="btn btn-primary w-md" id="mypageinfo">확인</button>
 										<button type="reset" class="btn btn-secondary w-md">취소</button>
 									</div>
 								</div>
@@ -56,24 +56,38 @@ input[type=file] {
 <script src="assets/libs/jquery/jquery.min.js"></script>
 <script src="assets/js/app.js"></script>
 <script src="assets/js/ajax.js"></script>
-<script src="mypage_js/mypage.js"></script>
 
 <script>
-	$(function() {
-		$("#mypageinfo").on("click", function() {
+	function preventClick(e) {
+		e.preventDefault()
+	}
 
-			var data = $("#mypage").serialize();
+	$(function() {
+		$("#mypage").on("submit", function(e) {
+			e.preventDefault();
+
+			const user_id = $("input[name=user_id]").val();
+			const user_password = $("input[name=user_password]").val();
 
 			$.ajax({
 				type : "post",
 				url : "mypage.my",
 				dataType : "html",
-				data : data,
+				data : {
+					"user_id" : user_id,
+					"user_password" : user_password
+				},
 				success : function(rdata) {
 					$("#result").empty();
 					$("#result").html(rdata);
 					window.location.hash = page;
 					$(window).scrollTop(0);
+				},
+				// 비밀번호 틀리면
+				error : function(r, s, e) {
+					alert("비밀번호가 틀렸습니다. 다시 입력해주세요.");
+					$("input[name=user_password]").focus();
+					$("input[name=user_password]").val('');
 				}
 			})
 		})

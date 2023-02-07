@@ -22,11 +22,13 @@ public class MypageAction implements Action {
 		ActionForward forward = new ActionForward();
 		String user_id = request.getParameter("user_id");
 		String user_password = request.getParameter("user_password");
-		System.out.println(user_id);
-		
+
 		MypageDAO mydao = new MypageDAO();
+
 		if (user_password != null) {
 			int result = mydao.isId(user_id, user_password); // id, password 1차 확인
+			System.out.println("2번째 " + user_id);
+			System.out.println("여기냐"+result);
 			if (result == 1) {
 				Member m = mydao.member_info(user_id);
 				List<Dept> d = mydao.dept("CO-WORK");
@@ -39,13 +41,19 @@ public class MypageAction implements Action {
 				forward.setPath("mypage/mypage.jsp");
 				return forward;
 			} else {
-				PrintWriter out = response.getWriter();
-				out.println("<script>");
-				out.println("alert('비밀번호가 틀렸습니다.');");
-				out.println("location.href='index2.jsp';");
-				out.println("</script>");
-				out.close();
-				return null;
+				System.out.println("3번째 " + user_id);
+				request.setAttribute("memberinfo", user_id);
+				forward.setRedirect(false);
+				forward.setPath("mypage/mypagecheck.jsp");
+				return forward;
+				
+//				PrintWriter out = response.getWriter();
+//				out.println("<script>");
+//				out.println("alert('비밀번호가 틀렸습니다.');");
+//				out.println("history.go(0);");
+//				out.println("</script>");
+//				out.close();
+//				return null;
 			}
 		} else {
 			Member m = mydao.isId(user_id);

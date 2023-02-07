@@ -43,6 +43,9 @@ public class AdminFrontController extends javax.servlet.http.HttpServlet {
 		case "/companyupdateProcess.com":
 			action = new CompanyupdateProcess();
 			break;
+		case "/companycreateProcess.com":
+			action = new CompanycreateProcess();
+			break;
 		case "/membersInfo.com":
 			action = new MembersInfoAction();
 			break;

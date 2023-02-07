@@ -20,21 +20,38 @@
 					<div class="card">
 						<div class="card-body">
 
-							<form action="companyupdateProcess.com" method="post" enctype="multipart/form-data">
-								<div class="mb-3 row">
-									<label for="example-text-input" class="col-md-2 col-form-label">회사명</label>
-									<div class="col-md-8">
-										<input class="form-control" type="text" value="${companyinfo.company_name }" name="company_name" readOnly>
-										<input type="hidden" name="value" value="company_name">
+							<c:if test="${!empty companyinfo.company_name }">
+								<form action="companyupdateProcess.com" method="post">
+									<div class="mb-3 row">
+										<label for="example-text-input" class="col-md-2 col-form-label">회사명</label>
+										<div class="col-md-8">
+											<input class="form-control" type="text" value="${companyinfo.company_name }" name="company_name" readOnly>
+											<input type="hidden" name="value" value="company_name">
+										</div>
+										<div class="col-md-2">
+											<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
+											<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
+										</div>
 									</div>
-									<div class="col-md-2">
-										<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
-										<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
+								</form>
+							</c:if>
+							<c:if test="${empty companyinfo.company_name }">
+								<form action="companycreateProcess.com" method="post">
+									<div class="mb-3 row">
+										<label for="example-text-input" class="col-md-2 col-form-label">회사명</label>
+										<div class="col-md-8">
+											<input class="form-control" type="text" name="company_name" placeholder="회사명을 입력하세요.">
+											<input type="hidden" name="value" value="company_name">
+										</div>
+										<div class="col-md-2">
+											<button class="btn btn-success waves-effect waves-light" type="submit" name="createcompany">생성</button>
+											<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
+										</div>
 									</div>
-								</div>
 							</form>
+							</c:if>
 
-							<form action="companyupdateProcess.com" method="post" enctype="multipart/form-data">
+							<form action="companyupdateProcess.com" method="post">
 								<div class="mb-3 row">
 									<label for="example-text-input" class="col-md-2 col-form-label">전용 URL</label>
 									<div class="col-md-8">
@@ -75,13 +92,26 @@
 						<div class="card-body">
 							<div class="input-group hstack gap-3">
 								<h4 class="mb-sm-0 font-size-18">부서</h4>
-								<span class="input-group-btn input-group-append">
-									<button class="btn btn-primary bootstrap-touchspin-up" type="button">+</button>
-								</span>
+								<span class="input-group-btn input-group-append"></span>
+								<button class="btn btn-primary bootstrap-touchspin-up" type="button">+</button>
+
+								<form action="deptJobUpdateProcess.com" method="post" class="row row-cols-lg-auto" style="display: none" name="addform">
+									<div>
+										<input class="form-control" type="text" placeholder="추가할 부서를 입력해주세요." name="dept_name">
+									</div>
+									<div>
+										<span>
+
+											<button type="submit" class="btn btn-primary">추가</button>
+											<input class="btn btn-warning waves-effect waves-light" type="reset" id="second" value="취소">
+
+										</span>
+									</div>
+								</form>
 							</div>
 							<br>
 							<c:forEach var="m" items="${dept }">
-								<form action="deptJobUpdateProcess.com" method="post" enctype="multipart/form-data">
+								<form action="deptJobUpdateProcess.com" method="post" class="row row-cols-lg-auto" style="display: none" name="addform">
 									<div class="mb-3 row">
 										<div class="col-md-7">
 											<input class="form-control" type="text" value="${m.dept_name }" name="dept_name" readOnly>
@@ -105,16 +135,28 @@
 						<div class="card-body">
 							<div class="input-group hstack gap-3">
 								<h4 class="mb-sm-0 font-size-18">직함</h4>
-								<span class="input-group-btn input-group-append">
-									<button class="btn btn-primary bootstrap-touchspin-up" type="button">+</button>
-								</span>
+								<span class="input-group-btn input-group-append"></span>
+								<button class="btn btn-primary bootstrap-touchspin-up" type="button">+</button>
+
+								<form action="deptJobUpdateProcess.com" method="post" class="row row-cols-lg-auto" style="display: none" name="addform">
+									<div>
+										<input class="form-control" type="text" placeholder="추가할 직함을 입력해주세요." name="dept_name">
+									</div>
+									<div>
+										<span>
+											<button type="submit" class="btn btn-primary">추가</button>
+											<input class="btn btn-warning waves-effect waves-light" type="reset" id="second" value="취소">
+
+										</span>
+									</div>
+								</form>
 							</div>
 							<br>
 							<c:forEach var="m" items="${job }">
-								<form action="deptJobUpdateProcess.com" method="post" enctype="multipart/form-data">
+								<form action="deptJobUpdateProcess.com" method="post">
 									<div class="mb-3 row">
 										<div class="col-md-7">
-											<input class="form-control" type="text" value="${m.job_name }" name="job_name" readonly="">
+											<input class="form-control" type="text" value="${m.job_name }" name="job_name" readOnly>
 											<input type="hidden" name="value" value="job_name">
 										</div>
 										<div class="col-md-5">
@@ -124,12 +166,9 @@
 									</div>
 								</form>
 							</c:forEach>
-
 						</div>
 					</div>
 				</div>
-
-
 			</div>
 			<!-- container-fluid -->
 		</div>

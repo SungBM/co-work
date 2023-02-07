@@ -440,7 +440,7 @@
 
 						<%-- 2월 2일 안덕균 추가 --%>
 
-						<li><a id="mypagecheck" class="waves-effect">
+						<li><a id="mypagecheck" class="waves-effect" href="#">
 								<i class="bx bx-user"></i>
 								<span key="t-chat">내 프로필</span>
 							</a></li>
@@ -576,7 +576,6 @@
 	<script src="assets/libs/metismenu/metismenu.min.js"></script>
 	<script src="assets/libs/simplebar/simplebar.min.js"></script>
 	<script src="assets/libs/node-waves/waves.min.js"></script>
-
 
 	<!-- App js -->
 	<script src="assets/js/app.js"></script>

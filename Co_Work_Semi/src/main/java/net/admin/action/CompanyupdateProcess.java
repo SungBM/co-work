@@ -43,7 +43,7 @@ public class CompanyupdateProcess implements Action {
 			response.setContentType("text/html;charset=utf-8");
 			System.out.println(result);
 			PrintWriter out = response.getWriter();
-			
+
 			if (result == 1) {
 				out.println("<script>");
 				out.println("alert('" + dc(value) + " 수정되었습니다.');");

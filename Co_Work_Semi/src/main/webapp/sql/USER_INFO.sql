@@ -1,4 +1,5 @@
-select * from USER_INFO;
+select * from company_info
+select * from project;
 
 SELECT USER_ID FROM USER_INFO WHERE USER_ID = HTA1;
 

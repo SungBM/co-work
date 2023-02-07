@@ -37,4 +37,9 @@ $(function() {
 		$(this).prev().text('수정')
 		$(this).hide()
 	})
+
+	$(".bootstrap-touchspin-up").on("click", function() {
+		$(this).hide();
+		$(this).next().show();
+	})
 })
