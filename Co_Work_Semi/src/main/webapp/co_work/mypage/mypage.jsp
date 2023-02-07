@@ -50,7 +50,7 @@ input[type=file] {
 								<input type="hidden" name="value" value="user_img">
 							</label>
 							<div class="col-md-6">
-								<button class="btn btn-success waves-effect waves-light" type="submit">수정</button>
+								<button class="btn btn-success waves-effect waves-light file" type="submit">수정</button>
 								<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
 							</div>
 						</div>
@@ -74,7 +74,7 @@ input[type=file] {
 							</label>
 
 							<div class="col-md-6">
-								<button class="btn btn-success waves-effect waves-light" type="submit">수정</button>
+								<button class="btn btn-success waves-effect waves-light file" type="submit">수정</button>
 								<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
 							</div>
 						</div>

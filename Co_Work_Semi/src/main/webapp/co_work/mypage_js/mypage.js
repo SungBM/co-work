@@ -10,27 +10,7 @@ function onClickUpload1() {
 
 
 $(function() {
-	$("#mypageinfo").off("click").on("click", function() {
-
-		var data = $("#mypage").serialize();
-		console.log(data);
-
-		$.ajax({
-			type: "post",
-			url: "mypage.my",
-			dataType: "html",
-			data: data,
-			success: function(rdata) {
-				$("#result").empty();
-				$("#result").html(rdata);
-				window.location.hash = page;
-				$(window).scrollTop(0);
-				console.log(rdata);
-			}
-		})
-	})
-
-	$("button[type=submit]").off("click").on("click", function(e) {
+	$("button[type=submit]").on("click", function(e) {
 		e.preventDefault();
 		var val = $(this).parent().prev().children().first().val()
 
@@ -58,7 +38,7 @@ $(function() {
 		e.stopPropagation();
 	}) // 수정 버튼 클릭
 
-	$(document).off("click").on("click", "#second", function() {
+	$(document).on("click", "#second", function() {
 		$(this).parent().prev().children().first().attr("readOnly", true)
 		$(this).parent().prev().children().first().attr("disabled", true)
 		$(this).prev().text('수정')
@@ -66,13 +46,6 @@ $(function() {
 		$(this).hide()
 	}) // 취소 버튼 클릭
 
-	$('.row').on('click', '.update', function() {
-		const data = $(this).parent().prev().children().first().val();
-		const id = $('input[name=user_id]').val();
-		
-		 
-		
-	})
 
 	$('#formFile1').change(function(event) {
 

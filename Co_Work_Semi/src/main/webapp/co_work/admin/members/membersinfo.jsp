@@ -77,7 +77,10 @@
 														<input class="form-check-input" type="checkbox" id="formCheck1">
 													</td>
 													<td>
-														<a id="meminfo" href="#">${m.user_name }</a>
+														<a name="meminfo" href="#"}">${m.user_name }</a>
+														<form method="post" id="mypage">
+															<input type="hidden" id="user_id" name="user_id" value="${m.user_id}">
+														</form>
 													</td>
 													<td>${m.user_dept }</td>
 													<td>${m.user_job }</td>
@@ -115,6 +118,22 @@
 	</div>
 </body>
 <script>
-	
+	$(function() {
+		$("a[name=meminfo]").on("click", function() {
+			var data = $(this).next().children().val()
+			$.ajax({
+				type : "post",
+				url : "mypage.my",
+				dataType : "html",
+				data : {user_id : data},
+				success : function(rdata) {
+					$("#result").empty();
+					$("#result").html(rdata);
+					window.location.hash = page;
+					$(window).scrollTop(0);
+				}
+			})
+		})
+	})
 </script>
 </html>
