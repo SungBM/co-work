@@ -3,11 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href="project_Css/project.css" rel="stylesheet" type="text/css" />
 <script>
-$(".btn btn-primary").click(function(){
-	var data = $(this).data('name');
-    $("#contents.body-contents").val(data);
-    $("#text-contents.body-contents").html(data);
-});
+
 </script>
 <div class="page-content">
     <div class="container-fluid">
@@ -24,7 +20,7 @@ $(".btn btn-primary").click(function(){
                                                     <h5 class="modal-title" id="exampleModalLabel">프로젝트 추가</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                             <form name="project_Add" action="ProjectAddProcess.po" method="post">
+                                             
                                                 <div class="modal-body">                                         
                                                         <div class="mb-3">
                                                             <label for="recipient-name" class="col-form-label">프로젝트명</label>
@@ -71,7 +67,7 @@ $(".btn btn-primary").click(function(){
                                                     <button type="submit" id="submit_add" class="btn btn-primary">완료</button>
                                            
                                                 </div>
-									                   </form>                     
+									                                       
                                                 </div>
                                                 
                                             </div>
@@ -218,8 +214,6 @@ $(".btn btn-primary").click(function(){
 </div>
 <!-- End Page-content -->
 <script src="project_js/project_add.js"></script>
-
-<script src="project_js/project_list_onload.js"></script>
 
 <script src="project_js/project_list_onload.js"></script>
 

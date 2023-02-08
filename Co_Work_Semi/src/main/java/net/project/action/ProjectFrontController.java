@@ -51,9 +51,6 @@ public class ProjectFrontController extends HttpServlet {
 		case "/ProjectAddProcess.po" :
 			action = new ProjectAddProcessAction();
 			break;
-		case "/ProjectListDetail.po" :
-			action = new ProjectAddProcessAction();
-			break;
 		
 		}
 		

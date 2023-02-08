@@ -165,7 +165,7 @@ public class ProjectDAO {
 				pro.setProject_start(rs.getString(6));
 				pro.setProject_end(rs.getString(7));
 				pro.setProject_priority(rs.getString(8));
-				pro.setProject_partici(Integer.parseInt(rs.getString(9)));
+				//pro.setProject_partici(Integer.parseInt(rs.getString(9)));
 				pro.setProject_admin(rs.getString(10));
 				pro.setProject_bookmark(rs.getString(11));
 				pro.setProject_parti(rs.getString(12));
@@ -262,17 +262,17 @@ public class ProjectDAO {
 			
 			pstmt = con.prepareStatement(
 					"INSERT INTO PROJECT (PROJECT_NUM, PROJECT_NAME, PROJECT_PROG, PROJECT_ADMIN, PROJECT_START, "
-					+ "					PROJECT_END, PROJECT_PRIORITY, PROJECT_PARTICI) "
+					+ "					PROJECT_END, PROJECT_PRIORITY, PROJECT_PARTI) "
 					+"VALUES (PROJECT_SEQ.NEXTVAL, ?,?,?,?,?,?,?)");
 			
-			pstmt.setInt(1, p.getProject_num());
-			pstmt.setString(2, p.getProject_name());
-			pstmt.setInt(3, p.getProject_prog());
-			pstmt.setString(4, p.getProject_admin());
-			pstmt.setString(5, p.getProject_start());
-			pstmt.setString(6, p.getProject_end());
-			pstmt.setString(7, p.getProject_priority());
-			pstmt.setInt(8, p.getProject_partici());
+			
+			pstmt.setString(1, p.getProject_name());
+			pstmt.setInt(2, p.getProject_prog());
+			pstmt.setString(3, p.getProject_admin());
+			pstmt.setString(4, p.getProject_start());
+			pstmt.setString(5, p.getProject_end());
+			pstmt.setString(6, p.getProject_priority());
+			pstmt.setInt(7, p.getProject_partici());
 			result = pstmt.executeUpdate();//삽입 성공시 result는 1
 			
 			//primary key 제약조건 위반했을 경우 발생하는 에러

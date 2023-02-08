@@ -9,7 +9,7 @@ $(function(){
 				success: function(data) {
 					$("#result").empty();
 					$("#result").html(data);
-					window.location.hash = page;
+					//window.location.hash = page;
 					$(window).scrollTop(0);
 				}
 			});

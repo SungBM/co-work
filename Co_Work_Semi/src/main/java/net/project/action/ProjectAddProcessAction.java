@@ -50,7 +50,7 @@ public class ProjectAddProcessAction implements Action {
 		out.println("<script>");
 		if (result == 1) {//삽입이 된 경우
 			out.println("alert('프로젝트 등록 성공.');");
-			out.println("location.href='ProjectAddProcess.po';");			
+			out.println("location.href='ProjectList.po';");			
 		} else if (result == -1) {
 			out.println("alert('프로젝트명이 중복되었습니다. 다시 입력하세요');");
 			//새로고침되어 이전에 입력한 데이터가 나타나지 않습니다.
