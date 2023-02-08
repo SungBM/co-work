@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import net.admin.db.Company;
+import net.admin.db.CompanyDAO;
 import net.mypage.db.Dept;
 import net.mypage.db.Job;
 import net.mypage.db.Member;
@@ -27,9 +29,7 @@ public class MypageUpdateProcessAction implements Action {
 		String value = request.getParameter("value");
 		String change = request.getParameter("val3");
 		String id = request.getParameter("user_id");
-		System.out.println("1번째  " + value);
-		System.out.println("1번째  " + change);
-		System.out.println("1번째  " + id);
+		CompanyDAO cdao = new CompanyDAO();
 
 		if (value.equals("user_img") || value.equals("user_card")) {
 			String realFolder = "";
@@ -46,9 +46,6 @@ public class MypageUpdateProcessAction implements Action {
 				value = multi.getParameter("value");
 				change = multi.getParameter(value);
 				id = multi.getParameter("user_id");
-				System.out.println("1 value " + value);
-				System.out.println("1 change " + change);
-				System.out.println("1 id " + id);
 				// 이미지 교체 진행
 
 				if (change != null) {
@@ -86,9 +83,6 @@ public class MypageUpdateProcessAction implements Action {
 				return forward;
 			} // catch end
 		} else {
-			System.out.println("2번째  " + value);
-			System.out.println("2번째  " + change);
-			System.out.println("2번째  " + id);
 			MypageDAO mydao = new MypageDAO();
 			int result = mydao.update(value, change, id);
 
@@ -97,8 +91,9 @@ public class MypageUpdateProcessAction implements Action {
 
 			if (result == 1) {
 				Member m = mydao.member_info(id);
-				List<Dept> d = mydao.dept("CO-WORK");
-				List<Job> j = mydao.job("CO-WORK");
+				Company c = cdao.company_info(id);
+				List<Dept> d = mydao.dept(c.getCompany_name());
+				List<Job> j = mydao.job(c.getCompany_name());
 
 				request.setAttribute("memberinfo", m);
 				request.setAttribute("dept", d);
@@ -106,6 +101,7 @@ public class MypageUpdateProcessAction implements Action {
 				forward.setRedirect(false);
 				forward.setPath("mypage/mypage.jsp");
 				return forward;
+
 			} else {
 				out.println("alert('회원정보 수정에 실패했습니다.');");
 				out.println("history.back()");

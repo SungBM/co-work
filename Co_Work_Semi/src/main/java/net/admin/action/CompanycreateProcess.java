@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.admin.db.CompanyDAO;
+
 public class CompanycreateProcess implements Action {
 
 	@Override
@@ -36,7 +38,6 @@ public class CompanycreateProcess implements Action {
 		out.close();
 		return null;
 		// 삽입이 된 경우
-
 	} // execute end
 
 	public String dc(String value) {

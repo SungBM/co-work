@@ -48,7 +48,7 @@
 											<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
 										</div>
 									</div>
-							</form>
+								</form>
 							</c:if>
 
 							<form action="companyupdateProcess.com" method="post">

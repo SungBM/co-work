@@ -1,5 +1,7 @@
 package net.project.db;
 
+import java.util.ArrayList;
+
 public class Project {
 	private int row_num;
 	private int project_num;
@@ -11,8 +13,19 @@ public class Project {
 	private String project_priority;
 	private int project_partici;
 	private String project_admin;
-	private String project_parti;
+	private String project_admin_img;
+
+	private ArrayList<Project_User> project_parti;
+	public String getProject_admin_img() {
+		return project_admin_img;
+	}
+	public void setProject_admin_img(String project_admin_img) {
+		this.project_admin_img = project_admin_img;
+	}
+
 	private String project_bookmark;
+	
+	
 	
 	public Project() {
 		super();
@@ -99,14 +112,13 @@ public class Project {
 		this.project_admin = project_admin;
 	}
 
-	public String getProject_parti() {
+
+	public ArrayList<Project_User> getProject_parti() {
 		return project_parti;
 	}
-
-	public void setProject_parti(String project_parti) {
+	public void setProject_parti(ArrayList<Project_User> project_parti) {
 		this.project_parti = project_parti;
 	}
-
 	public String getProject_bookmark() {
 		return project_bookmark;
 	}
