@@ -3,13 +3,13 @@ $(document).on("click", ".metismenu li a, .navbar-nav  li a", function(e) {
 
 	var page = $(this).attr("href");
 	
-	if ($(this).attr("target") == "_self") {window.location.href= page; return true};
+	if ($(this).attr("target") == "_self") {window.location.href= page; return false};
 	if ($(this).attr("target") == "_blank") window.open(page, "_blank");
 
 	 if (page == "javascript: void(0);") return false;
 
-	window.location.hash = page;
-
+	//window.location.hash = page;
+      window.location.href= page;
 	$(".metismenu li, .metismenu li a").removeClass("active");
 	$(".metismenu ul").removeClass("in");
 
@@ -72,10 +72,4 @@ function call_ajax_page(page) {
 }
 
 $(document).ready(function() {
-	 var path = window.location.hash.substr(1);
-	if (path == "index.html") {
-		call_ajax_page("index.html");
-	} else {
-		call_ajax_page("index.html");
-	}
 });

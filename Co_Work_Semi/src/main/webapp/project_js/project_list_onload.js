@@ -61,15 +61,12 @@ $(function(){
 			
 		});
 		
-		$("#more_team").dialog({   
-			autoOpen: false,     
-			height: 300,   
-			width: 350,     
-			modal: true,
-			position:[100,200]
-		});
+		$(".team_a").click(function(){
+			console.log("a 클릭");
+			$(".team_btn").click();
+			console.log("a 클릭 after");
+		})
 		
-		console.log(prog_arr);
 		
 		
 })

@@ -10,6 +10,10 @@ function onClickUpload1() {
 
 
 $(function() {
+	$("#mypagecheck").click(function(){
+		console.log("ㅎㅇ")
+	});
+	
 	$("button[type=submit]").on("click", function(e) {
 		e.preventDefault();
 		var val = $(this).parent().prev().children().first().val()

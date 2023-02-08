@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<html>
-<head>
+<!DOCTYPE html>
+<html lang="en">
+<jsp:include page="/main/header.html"></jsp:include>
 <title>알림 설정</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
@@ -157,10 +157,8 @@ input[type=file] {
 		</div>
 	</div>
 </body>
-
+<jsp:include page="/main/footer.html"></jsp:include>
 <!-- apexcharts -->
 <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
 <script src="assets/js/pages/profile.init.js"></script>
-<script src="assets/libs/jquery/jquery.min.js"></script>
-<script src="assets/js/app.js"></script>
-<script src="assets/js/ajax.js"></script>
+</html>

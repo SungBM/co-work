@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html>
-<head>
+<!DOCTYPE html>
+<html lang="en">
+<jsp:include page="/main/header.html"></jsp:include>
 <title>설정 - 비밀번호 변경</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -54,18 +55,6 @@
 	</div>
 </div>
 
-<!-- Right bar overlay-->
-<div class="rightbar-overlay"></div>
-
-<!-- JAVASCRIPT -->
-<script src="assets/libs/jquery/jquery.min.js"></script>
-<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/libs/metismenu/metisMenu.min.js"></script>
-<script src="assets/libs/simplebar/simplebar.min.js"></script>
-<script src="assets/libs/node-waves/waves.min.js"></script>
-
-<script src="assets/js/app.js"></script>
-<script src="assets/js/ajax.js"></script>
-
 </body>
+<jsp:include page="/main/footer.html"></jsp:include>
 </html>
