@@ -166,22 +166,33 @@ $(function(){
                                             placeholder="비밀번호를 다시 입력하세요" required>
                                              <td><font id="checkPw"></font></td>
                                     </div>
-
-                                    <!-- <div class="mb-3">
+									
+									
+                                    <div class="mb-3">
+                                    
                                     <div class="float-end">
-                                                    <a href="auth-recoverpw-2.html" class="text-muted">인증번호 전송</a>
-                                                </div> -->
+                                    <form action="/send" method="post" id="firm1">
+                                                    <input id="submit" type="submit" value="인증번호발송">
+                                                    <%! public int getRandom(){
+                                                    	int random = 0;
+                                                    	random=(int)Math.floor(Math.random()*(99999-10000+1))+10000;
+                                                    	return random;
+                                                    } %>
+                                                    <input type="hidden" readonly="readonly" name="code_check" id="code_check" 
+                                                    		value="<%=getRandom() %>">
+                                                </div>
                                         <label for="useremail" class="form-label">이메일</label>
-                                        <input type="email" class="form-control" id="useremail" name="email"
+                                        <input type="email" class="form-control" id="inputEmailForm" name="email"
                                             placeholder="e-mail@naver.com" required>
                                             <span id="email_message"></span>
                                     </div>
-                                    
-                                   <!--  <div class="mb-3">
-                                        <label for="code" class="form-label">인증번호</label>
-                                        <input type="text" class="form-control" id="code"
+                                    </form>
+                                   
+                                   <div class="mb-3">
+                                        <label for="code" class="mail_check_wrap">인증번호</label>
+                                        <input type="text" class="form-control" id="code" name="code"
                                             placeholder="인증번호" required>
-                                    </div> -->
+                                    </div>
 
                                     <div class="mb-3">
                                         <label for="name" class="form-label">이름</label>
