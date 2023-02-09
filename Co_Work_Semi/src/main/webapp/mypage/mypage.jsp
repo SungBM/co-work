@@ -3,8 +3,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="/main/header.html"></jsp:include>
-<title>회원정보 수정</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 label {
 	text-align: center
@@ -25,8 +23,9 @@ input[type=file] {
 	<div class="page-content ">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-12">
+				<div class="col-8">
 					<div class="page-title-box d-sm-flex align-items-center justify-content-between">
+
 						<h4 class="mb-sm-0 font-size-18">내 프로필> 수정</h4>
 
 					</div>
@@ -35,7 +34,7 @@ input[type=file] {
 			<div class="row">
 				<div class="col-lg-3">
 					<form action="updateProcess.my" method="post" enctype="multipart/form-data">
-						<div class="card">
+						<div class="card h-50">
 							<label>
 								<span id="showImage1">
 									<c:if test='${empty memberinfo.user_img }'>
@@ -47,18 +46,18 @@ input[type=file] {
 									</c:if>
 									<img src="${src }" alt="profile">
 								</span>
-								<input class="form-control update" type="file" name="user_img" id="formFile1">
+								<input class="form-control" type="file" name="user_img" id="formFile1">
 								<input type="hidden" name="user_id" value="${memberinfo.user_id}">
 								<input type="hidden" name="value" value="user_img">
 							</label>
-							<div class="col-md-6">
-								<button class="btn btn-success waves-effect waves-light file" type="submit">수정</button>
+							<div class="col-md-4">
+								<button class="btn btn-success waves-effect waves-light file update" type="submit">수정</button>
 								<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
 							</div>
 						</div>
 					</form>
 					<form action="updateProcess.my" method="post" enctype="multipart/form-data">
-						<div class="card">
+						<div class="card h-50">
 							<label>
 								<span id="showImage2">
 									<c:if test='${empty memberinfo.user_card }'>
@@ -70,23 +69,23 @@ input[type=file] {
 									</c:if>
 									<img src="${src }" alt="card">
 								</span>
-								<input class="form-control update" type="file" name="user_card" id="formFile2">
+								<input class="form-control" type="file" name="user_card" id="formFile2">
 								<input type="hidden" name="user_id" value="${memberinfo.user_id}">
 								<input type="hidden" name="value" value="user_card">
 							</label>
 
 							<div class="col-md-6">
-								<button class="btn btn-success waves-effect waves-light file" type="submit">수정</button>
+								<button class="btn btn-success waves-effect waves-light file update" type="submit">수정</button>
 								<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
 							</div>
 						</div>
 					</form>
 				</div>
 
-				<div class="col-xl-9">
-					<div class="card">
+				<div class="col-xl-6">
+					<div class="card" style="height: 510px">
 						<div class="card-body">
-							<form action="updateProcess.my" method="post" enctype="multipart/form-data">
+							<form action="updateProcess.my" method="post" id="up">
 								<div class="mb-3 row">
 									<label for="value-name" class="col-md-2 col-form-label">이름</label>
 									<div class="col-md-7">
@@ -101,7 +100,7 @@ input[type=file] {
 								</div>
 							</form>
 
-							<form action="updateProcess.my" method="post" enctype="multipart/form-data">
+							<form action="updateProcess.my" method="post" id="up">
 								<div class="mb-3 row">
 									<label for="value-name" class="col-md-2 col-form-label">부서</label>
 									<div class="col-md-7">
@@ -122,7 +121,7 @@ input[type=file] {
 								</div>
 							</form>
 
-							<form action="updateProcess.my" method="post" enctype="multipart/form-data">
+							<form action="updateProcess.my" method="post" id="up">
 								<div class="mb-3 row">
 									<label for="value-name" class="col-md-2 col-form-label">직함</label>
 									<div class="col-md-7">
@@ -143,7 +142,7 @@ input[type=file] {
 								</div>
 							</form>
 
-							<form action="updateProcess.my" method="post" enctype="multipart/form-data">
+							<form action="updateProcess.my" method="post" id="up">
 								<div class="mb-3 row">
 									<label for="value-name" class="col-md-2 col-form-label">이메일 주소</label>
 									<div class="col-md-7">
@@ -159,7 +158,7 @@ input[type=file] {
 								</div>
 							</form>
 
-							<form action="updateProcess.my" method="post" enctype="multipart/form-data">
+							<form action="updateProcess.my" method="post" id="up">
 								<div class="mb-3 row">
 									<label for="value-name" class="col-md-2 col-form-label">FAX</label>
 									<div class="col-md-7">
@@ -174,7 +173,7 @@ input[type=file] {
 									</div>
 								</div>
 							</form>
-							<form action="updateProcess.my" method="post" enctype="multipart/form-data">
+							<form action="updateProcess.my" method="post" id="up">
 								<div class="mb-3 row">
 									<label for="value-name" class="col-md-2 col-form-label">연락처</label>
 									<div class="col-md-7">
@@ -189,7 +188,7 @@ input[type=file] {
 								</div>
 							</form>
 
-							<form action="updateProcess.my" method="post" enctype="multipart/form-data">
+							<form action="updateProcess.my" method="post" id="up">
 								<div class="mb-3 row">
 									<label for="value-name" class="col-md-2 col-form-label">자기소개</label>
 									<div class="col-md-7">
@@ -214,9 +213,8 @@ input[type=file] {
 
 <jsp:include page="/main/footer.html"></jsp:include>
 <script src="mypage_js/mypage.js"></script>
-
 <script>
-	$("option[value='${memberinfo.user_dept }']").prop("selected", true);
+	$("select[name=user_dept]").val('${memberinfo.user_dept}').prop("selected", true);
 	$("option[value='${memberinfo.user_job }']").prop("selected", true);
 </script>
 </html>

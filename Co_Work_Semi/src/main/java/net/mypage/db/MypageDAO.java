@@ -207,6 +207,7 @@ public class MypageDAO {
 			pstmt.setString(1, change);
 			pstmt.setString(2, id);
 			result = pstmt.executeUpdate();
+			System.out.println(result + " update() 결과");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("update() 오류");
