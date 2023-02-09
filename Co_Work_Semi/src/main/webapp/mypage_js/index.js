@@ -9,7 +9,7 @@ $(function() {
 			success: function(data) {
 				$("#result").empty();
 				$("#result").html(data);
-				window.location.hash = page;
+				window.location.hash = url_add;
 				$(window).scrollTop(0);
 			}
 		});
@@ -37,6 +37,5 @@ $(function() {
 	$("#companyinfo").off("click").click(function() {
 		move_ajax("companyinfo.com");
 	});
-	
 	
 })

@@ -61,7 +61,13 @@ $(function(){
 			
 		});
 		
-		
+		$("#more_team").dialog({   
+			autoOpen: false,     
+			height: 300,   
+			width: 350,     
+			modal: true,
+			position:[100,200]
+		});
 		
 		console.log(prog_arr);
 		

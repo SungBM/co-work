@@ -72,7 +72,7 @@ input[type=file] {
 				success : function(rdata) {
 					$("#result").empty();
 					$("#result").html(rdata);
-					window.location.hash = page;
+					window.location.hash = 'mypage.my';
 					$(window).scrollTop(0);
 				}
 			})
