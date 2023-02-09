@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <head>
 
@@ -90,6 +89,7 @@ $(function(){
               $("#checkPw").attr('color', 'green');
               checkpass=true;
           }
+          setAble();
         }
         
         $('form').submit(function(){
@@ -113,9 +113,6 @@ $(function(){
 		});//submit
 })//ready
 </script>
-<Style>
- .mail_check_wrap{weith: 50px}
-</Style>
 </head>
 
 <body>
@@ -153,60 +150,54 @@ $(function(){
                                 	<div class="mb-3">
                                         <label for="userId" class="form-label">아이디</label>
                                         <input type="text" class="form-control" id="id" name="id"
-                                            placeholder="아이디(6~15자 영문, 숫자, _로 가능합니다.)">
+                                            placeholder="아이디(6~15자 영문, 숫자, _로 가능합니다.)" required>
                                             <span id="message"></span>
                                     </div>
                                     	
                                     <div class="mb-3">
                                         <label for="userpassword" class="form-label">비밀번호</label>
                                         <input type="password" class="form-control" id="pw1" name="pass"
-                                            placeholder="비밀번호(6~15자 영문, 숫자, _로 가능합니다.)">
+                                            placeholder="비밀번호(6~15자 영문, 숫자, _로 가능합니다.)" required>
                                     </div>
                                     
                                     <div class="mb-3">
                                         <label for="userpassword_ch" class="form-label">비밀번호 확인</label>
                                         <input type="password" class="form-control" id="pw2" name="password_ch"
-                                            placeholder="비밀번호를 다시 입력하세요">
+                                            placeholder="비밀번호를 다시 입력하세요" required>
                                              <td><font id="checkPw"></font></td>
                                     </div>
 									
+									
                                     <div class="mb-3">
-                                    <div class="float-end">
                                     
-                                                    <input id="mail_submit" type="button" value="인증번호발송">
-                                                    <input type="hidden" readonly="readonly" name="code_check" id="code_check"
-                                                    >
-                                                    <span id="code_check_message"></span>
-                                   </div>
-                                    </div>
-                                                
-                                                
+                                    <div class="float-end">
+                                    <form action="/send" method="post" id="firm1">
+                                                    <input id="submit" type="submit" value="인증번호발송">
+                                                    <%! public int getRandom(){
+                                                    	int random = 0;
+                                                    	random=(int)Math.floor(Math.random()*(99999-10000+1))+10000;
+                                                    	return random;
+                                                    } %>
+                                                    <input type="hidden" readonly="readonly" name="code_check" id="code_check" 
+                                                    		value="<%=getRandom() %>">
+                                                </div>
                                         <label for="useremail" class="form-label">이메일</label>
-                                        <input type="email" class="form-control" id="receiver" name="receiver"
-                                            placeholder="e-mail@naver.com">
+                                        <input type="email" class="form-control" id="inputEmailForm" name="email"
+                                            placeholder="e-mail@naver.com" required>
                                             <span id="email_message"></span>
                                     </div>
-                                    
-                                    <div class="mb-3">
-                                    <div class="float-end">
-                                    
-                                                    <input id="code_submit" type="button" value="인증번호확인">
-                                                    <input type="hidden" readonly="readonly" name="code_num_check" id="code_num_check"
-                                                    >
-                                   </div>
-                                    </div>
+                                    </form>
                                    
                                    <div class="mb-3">
                                         <label for="code" class="mail_check_wrap">인증번호</label>
                                         <input type="text" class="form-control" id="code" name="code"
-                                            placeholder="인증번호">
-                                            <span id="code_message"></span>
+                                            placeholder="인증번호" required>
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="name" class="form-label">이름</label>
                                         <input type="text" class="form-control" id="name" name="name"
-                                            placeholder="이름을 입력하세요">
+                                            placeholder="이름을 입력하세요" required>
                                     </div>
 
 
@@ -216,11 +207,11 @@ $(function(){
                                     </div>
                                     
                                     <div class="mt-4 d-grid">
-                                        <button class="btn btn-danger waves-effect waves-light"
+                                        <button class="btn btn-primary waves-effect waves-light"
                                             type="reset" onClick="history.back();">취소</button>
                                     </div>
 
-                                    <!-- <div class="mt-4 text-center">
+                                    <div class="mt-4 text-center">
                                         <h5 class="font-size-14 mb-3">Sign up using</h5>
 
                                         <ul class="list-inline">
@@ -248,12 +239,12 @@ $(function(){
                                     <div class="mt-4 text-center">
                                         <p class="mb-0">By registering you agree to the Skote <a href="#"
                                                 class="text-primary">Terms of Use</a></p>
-                                    </div> -->
+                                    </div>
                             </div>
 
                         </div>
                     </div>
-  <!-- 
+  
                     <div class="mt-5 text-center">
 
                         <div>
@@ -263,7 +254,7 @@ $(function(){
                                 <script>document.write(new Date().getFullYear())</script> Skote. Crafted with <i
                                     class="mdi mdi-heart text-danger"></i> by Themesbrand
                             </p>
-                        </div> -->
+                        </div>
                     </div>
 
                 </div>
@@ -279,35 +270,11 @@ $(function(){
     <script src="assets/libs/node-waves/waves.min.js"></script>
 
     <!-- validation init -->
-    <!-- <script src="assets/js/pages/validation.init.js"></script> -->
+    <script src="assets/js/pages/validation.init.js"></script>
 
     <!-- App js -->
-   <script src="assets/js/app.js"></script>
+    <script src="assets/js/app.js"></script>
 	</form>
-	<script>
-	  let re="";
-	  $("#mail_submit").click(function(){
-		  $.ajax({
-		        url : "send.net",
-		        data : {"receiver" : $("#receiver").val()},
-		        success : function(rdata){
-		        	//$("#code_check_message").css('color','green').html("인증번호 전송 완료되었습니다.");
-		        	re = rdata;
-		        	alert("인증번호 전송 되었습니다.")
-		        }
-		  })
-	  })
-		        
-		            $("#code_submit").click(function(){
-		            	console.log(re)
-		        	if(re == $("#code").val()){  //이건 값을 보내는 경우 . 확인을 누르면 검사할 수 있도록. 버튼 만들어야해
-		        		$("#code_message").text("인증번호 일치합니다.").css("color", "green");
-		        	}else{
-		        		$("#code_message").text("인증번호 일치하지않습니다.").css("color", "red");
-		        	}
-		        	//시점확인. 문장을 다 적었을 때 검사하도록.
-		       });
-	</script>
 </body>
 
 </html>
