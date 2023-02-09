@@ -1,6 +1,4 @@
 $(function() {
-
-
 	$("#mypagecheck").click(function() {
 		location.href="mypagecheck.my";
 	});
@@ -32,4 +30,6 @@ $(function() {
 	$("#board_free").off("click").click(function() {
 		location.href="NoticeList.bon";
 	});
+
+
 })

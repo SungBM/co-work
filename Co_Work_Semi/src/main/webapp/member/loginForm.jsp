@@ -21,16 +21,6 @@
     <!-- App Css-->
     <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
-
-<script>
-	$(function(){
-		const id = '${id}';
-		if(id){
-			$("#id").val(id);
-			$("#remember-check").prop('checked', true);
-		}
-	
-</script>
 </head>
 <body class="auth-body-bg">
     <div>
@@ -106,7 +96,7 @@
                                         <p class="text-muted">오늘도 행복한 하루 되세요!</p>
                                     </div>
                                     <div class="mt-4">
-                                    	 <form name="loginform" action="index.net" method="post">
+                                        <form name="loginform" action="index.net" method="post">
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">아이디</label>
                                                 <input type="text" class="form-control" id="id" name="id"
@@ -154,7 +144,7 @@
     <script src="assets/libs/jquery/jquery.min.js"></script>
     <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/libs/metismenu/metisMenu.min.js"></script>
-    <script src="cassets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
     <script src="assets/libs/node-waves/waves.min.js"></script>
     <!-- owl.carousel js -->
     <script src="assets/libs/owl.carousel/owl.carousel.min.js"></script>
@@ -162,5 +152,13 @@
     <script src="assets/js/pages/auth-2-carousel.init.js"></script>
     <!-- App js -->
     <script src="assets/js/app.js"></script>
+    <script>
+      const id = '${id}';
+      if(id){
+         console.log(id);
+         $("#id").val(id);
+         $("#remember-check").prop('checked', true);
+      }
+</script>
 </body>
 </html>
