@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<head>
+<!DOCTYPE html>
+<html lang="en">
+<jsp:include page="/main/header.html"></jsp:include>
 <title>회원정보 수정</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
@@ -209,20 +211,12 @@ input[type=file] {
 		</div>
 	</div>
 </body>
-</html>
-<!-- JAVASCRIPT -->
-<script src="assets/libs/jquery/jquery.min.js"></script>
-<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/libs/metismenu/metismenu.min.js"></script>
-<script src="assets/libs/simplebar/simplebar.min.js"></script>
-<script src="assets/libs/node-waves/waves.min.js"></script>
 
-<!-- App js -->
-<script src="assets/js/app.js"></script>
-<script src="assets/js/ajax.js"></script>
+<jsp:include page="/main/footer.html"></jsp:include>
 <script src="mypage_js/mypage.js"></script>
 
 <script>
 	$("option[value='${memberinfo.user_dept }']").prop("selected", true);
 	$("option[value='${memberinfo.user_job }']").prop("selected", true);
 </script>
+</html>

@@ -1,8 +1,9 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<html>
-<head>
+<!DOCTYPE html>
+<html lang="en">
+<jsp:include page="/main/header.html"></jsp:include>
 <title>회원정보수정</title>
 <style>
 input[type=file] {
@@ -24,7 +25,7 @@ input[type=file] {
 			<div class="col-12">
 				<div class="card">
 					<div class="card-body">
-						<form method="POST" id="mypage">
+						<form method="POST" id="mypage" action="mypage.my">
 							<div class="row mb-4">
 								<label for="horizontal-firstname-input" class="col-sm-3 col-form-label">현재 비밀번호</label>
 								<div class="col-sm-9">
@@ -35,7 +36,7 @@ input[type=file] {
 							<div class="row justify-content-end">
 								<div class="col-sm-9">
 									<div>
-										<button type="submit" class="btn btn-primary w-md" id="mypageinfo">변경</button>
+										<input type="submit" class="btn btn-primary w-md" id="mypageinfo" value="변경">
 										<button type="reset" class="btn btn-secondary w-md">취소</button>
 									</div>
 								</div>
@@ -51,32 +52,9 @@ input[type=file] {
 </body>
 
 <!-- apexcharts -->
-<script src="assets/libs/apexcharts/apexcharts.min.js"></script>
-<script src="assets/js/pages/profile.init.js"></script>
-<script src="assets/libs/jquery/jquery.min.js"></script>
-<script src="assets/js/app.js"></script>
-<script src="assets/js/ajax.js"></script>
+
+<jsp:include page="/main/footer.html"></jsp:include>
 <script src="mypage_js/mypage.js"></script>
-
 <script>
-	$(function() {
-		$("#mypageinfo").on("click", function() {
-
-			var data = $("#mypage").serialize();
-
-			$.ajax({
-				type : "post",
-				url : "mypage.my",
-				dataType : "html",
-				data : data,
-				success : function(rdata) {
-					$("#result").empty();
-					$("#result").html(rdata);
-					window.location.hash = 'mypage.my';
-					$(window).scrollTop(0);
-				}
-			})
-		})
-	})
 </script>
 </html>

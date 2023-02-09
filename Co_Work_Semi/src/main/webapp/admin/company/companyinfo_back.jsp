@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<head>
+<!DOCTYPE html>
+<html lang="en">
+<jsp:include page="/main/header.html"></jsp:include>
 <title>회사정보</title>
 <body data-sidebar="dark" data-layout-mode="light">
 	<!-- <body data-layout="horizontal" data-topbar="dark"> -->
@@ -135,6 +136,7 @@
 		<!-- End Page-content -->
 	</div>
 	<!-- end main content-->
+	<jsp:include page="/main/footer.html"></jsp:include>
 </body>
-</html>
 <script src="admin_js/admin.js"></script>
+</html>
