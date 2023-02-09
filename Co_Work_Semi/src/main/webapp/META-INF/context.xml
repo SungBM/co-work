@@ -33,5 +33,4 @@
       
    8. url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
       DB의 접속 URL 입니다.      
-
- -->
+-->

@@ -1,13 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html lang="en">
-<jsp:include page="/main/header.html"></jsp:include>
 <link href="project_Css/project.css" rel="stylesheet" type="text/css" />
 <div class="page-content">
     <div class="container-fluid">
-        <!-- start page title -->
-    <jsp:include page="/project/project_add_modal.jsp"></jsp:include>
+
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                    <h4 class="mb-sm-0 font-size-18">Projects List</h4>
+					
+                    <div class="page-title-rig ht">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Projects</a></li>
+                            <li class="breadcrumb-item active">Projects List</li>
+                            
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
         <!-- end page title -->
         <div class="row">
             <div class="col-lg-12">
@@ -69,33 +80,37 @@
                                     </td>
                                     <td><span class="badge " aria-valuenow="${p.project_state }" style="width: 50%">${p.project_priority }</span></td>
                                     <td>
-                                    <div class="avatar-group">
-                                    	<c:forEach var='u' items="${p.project_parti }" varStatus="status">
-                                    		<c:if test="${status.index > 3 }">
-                                    			<div>
-                                            		<a href="#" class="dropdown-toggle card-drop" 
-                                            		data-bs-toggle="modal" data-bs-target="#myModal" aria-expanded="false">
-                                                		<i class="mdi mdi-dots-horizontal font-size-18"></i>
-                                            		</a>
-                                            		<jsp:include page="/project/project_team_modal.jsp"></jsp:include>
-                                            	</div>
-                                    		</c:if>
-                                    		<c:if test="${status.index <= 3 }">
-                                    		  <div class="avatar-group-item">
+                                        <div class="avatar-group">
+                                            <div class="avatar-group-item">
                                                 <a href="javascript: void(0);" class="d-inline-block">
-                                                    <img src="image/users/${u.USER_IMG }" alt="" class="rounded-circle avatar-xs" id="more_team">
+                                                    <img src="assets/images/users/avatar-4.jpg" alt="" class="rounded-circle avatar-xs">
                                                 </a>
-                                              </div>
-                                            </c:if>
-                                    	</c:forEach>
-                                    </div>
+                                            </div>
+                                            <div class="avatar-group-item">
+                                                <a href="javascript: void(0);" class="d-inline-block">
+                                                    <img src="assets/images/users/avatar-5.jpg" alt="" class="rounded-circle avatar-xs">
+                                                </a>
+                                            </div>
+                                            <div class="avatar-group-item">
+                                                <a href="javascript: void(0);" class="d-inline-block">
+                                                        <span class="avatar-title rounded-circle bg-success text-white font-size-16">
+                                                              <img src="assets/images/users/avatar-5.jpg" alt="" class="rounded-circle avatar-xs">
+                                                        </span>
+                                                </a>
+                                            </div>
+                                            <div class="avatar-group-item">
+                                                <a href="javascript: void(0);" class="d-inline-block">
+                                                    <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-xs">
+                                                </a>
+                                            </div>
+                                        </div>
                                     </td>
                                     <td>
                                         <div class="avatar-group">
                                              <div class="avatar-group-item">
                                              <!-- 프로필 페이지로 연결 -->
                                                 <a href="javascript: void(0);" class="d-inline-block">
-                                                    <img src="image/users/${p.project_admin_img }" alt="" class="rounded-circle avatar-xs">
+                                                    <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-xs">
                                                 </a>
                                             </div>
                                         </div>
@@ -124,9 +139,10 @@
     </div> <!-- container-fluid -->
 </div>
 <!-- End Page-content -->
-<jsp:include page="/main/footer.html"></jsp:include>
-	<script src="project_js/project_add.js"></script>
-	<script src="project_js/project_list_onload.js"></script>
-</html>
+<script src="project_js/project_add.js"></script>
+
+<script src="project_js/project_list_onload.js"></script>
+
+<script src="project_js/project_list_onload.js"></script>
 
 
