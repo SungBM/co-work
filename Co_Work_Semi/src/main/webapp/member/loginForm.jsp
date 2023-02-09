@@ -89,7 +89,7 @@
                                         <p class="text-muted">오늘도 행복한 하루 되세요!</p>
                                     </div>
                                     <div class="mt-4">
-                                    	 <form name="loginform" action="index.net" method="post">
+                                        <form name="loginform" action="index.net" method="post">
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">아이디</label>
                                                 <input type="text" class="form-control" id="id" name="id"
@@ -146,12 +146,12 @@
     <!-- App js -->
     <script src="assets/js/app.js"></script>
     <script>
-		const id = '${id}';
-		if(id){
-			console.log(id);
-			$("#id").val(id);
-			$("#remember-check").prop('checked', true);
-		}
+      const id = '${id}';
+      if(id){
+         console.log(id);
+         $("#id").val(id);
+         $("#remember-check").prop('checked', true);
+      }
 </script>
 </body>
 </html>

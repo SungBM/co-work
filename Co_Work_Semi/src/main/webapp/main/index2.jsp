@@ -31,12 +31,17 @@
                         <div class="row">
                             <div class="col-7">
                                 <div class="text-primary p-3">
+<<<<<<< HEAD
                                     <h5 class="text-primary">환영합니다 !</h5>
                                    <%--    String id = (String)session.getAttribute("id");
                                     %>
                                     <p><%=id %>님</p>
                                      --%>
                                     <p>${m.USER_ID}님</p>
+=======
+                                    <h5 class="text-primary">Welcome Back !</h5>
+                                    <p>Skote Dashboard</p>
+>>>>>>> refs/remotes/origin/dabin3
                                 </div>
                             </div>
                             <div class="col-5 align-self-end">
