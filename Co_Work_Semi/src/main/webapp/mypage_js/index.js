@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 $(function() {
 	//ajax호출할때마다 실행되는 함수 (페이지이동시)
 	var move_ajax = function(url_add) {
@@ -39,6 +40,34 @@ $(function() {
 		move_ajax("companyinfo.com");
 	});
 	
+=======
+$(function() {
+
+
+	$("#mypagecheck").click(function() {
+		location.href="mypagecheck.my";
+	});
+	$("#mypagedrop").click(function() {
+		location.href="mypagecheck.my";
+	});
+
+	$("#passwordchange").off("click").click(function() {
+		location.href="passwordchange.my";
+	});
+
+	$("#notify").off("click").click(function() {
+		location.href="notify.my";
+	});
+
+	$("#membersinfo").off("click").click(function() {
+		location.href="membersInfo.com";
+	});
+
+	$("#companyinfo").off("click").click(function() {
+		location.href="companyinfo.com";
+	});
+	
+>>>>>>> branch 'sungbin' of https://github.com/SungBM/co-work.git
 =======
 $(function() {
 
