@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 $(function() {
 /*
 
@@ -138,5 +138,4 @@ $(function() {
 	})
 	*/
 
->>>>>>> branch 'sungbin' of https://github.com/SungBM/co-work.git
-});
+
