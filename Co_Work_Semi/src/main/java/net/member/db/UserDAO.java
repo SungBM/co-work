@@ -149,17 +149,16 @@ public class UserDAO {
 		}
 		return result;
 	}
-
-	public List<UserInfo> all_member_info() {
+		public UserInfo userinfo(String USER_ID) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<UserInfo> list = new ArrayList<UserInfo>();
 		try {
 			con = ds.getConnection();
 			
-			String sql = "SELECT * FROM USER_INFO";
+			String sql = "SELECT * FROM USER_INFO WHERE USER_ID = ?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, USER_ID);
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -179,33 +178,32 @@ public class UserDAO {
 				m.setUSER_STATE(rs.getString("USER_STATE"));
 				//m.setUSER_JOIN_DATE(rs.getDate("USER_JOIN_DATE"));
 				m.setUSER_PHONE(rs.getString("USER_PHONE"));
-				list.add(m);
+				return m;
 			}
 				
-			} catch (Exception e) {
-				e.printStackTrace();
-				System.out.println("dept() 오류");
-			} finally {
-				if (rs != null)
-					try {
-						rs.close();
-					} catch (SQLException ex) {
-						ex.printStackTrace();
-					}
-				if (pstmt != null)
-					try {
-						pstmt.close();
-					} catch (SQLException ex) {
-						ex.printStackTrace();
-					}
-				if (con != null)
-					try {
-						con.close();
-					} catch (SQLException ex) {
-						ex.printStackTrace();
-					}
+		}catch(Exception se) {
+			se.printStackTrace();
+		}finally {
+			try {
+				if(rs != null)
+					rs.close();
+			}catch(SQLException e) {
+				System.out.println(e.getMessage());
 			}
-			return list;
+			try {
+				if(pstmt != null)
+					pstmt.close();
+			}catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
+			try {
+				if(con != null)
+					con.close();
+			}catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return null;
 	}
 
 }

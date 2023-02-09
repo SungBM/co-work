@@ -53,7 +53,7 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet{
 		case "/send.net":
 			action = new SendAction();
 			break;
-		case "/memberinfo.net":
+		case "/memberInfo.net":
 			action = new MemberInfoAction();
 			break;
 	

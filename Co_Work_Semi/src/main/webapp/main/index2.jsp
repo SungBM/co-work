@@ -23,21 +23,20 @@
             </div>
         </div>
         <!-- end page title -->
-
         <div class="row">
+		<input type="hidden" id="loginid" value="${USER_ID}" name="loginid">
             <div class="col-xl-4">
-            <input type="hidden" name="user_id" value="${m.user_id }">
-            <c:forEach var="m" items="${list }">   //여기수정
                 <div class="card overflow-hidden">
                     <div class="bg-primary bg-soft">
                         <div class="row">
                             <div class="col-7">
                                 <div class="text-primary p-3">
                                     <h5 class="text-primary">환영합니다 !</h5>
-                                    <% 
-                                    String id = (String)session.getAttribute("id");
+                                   <%--    String id = (String)session.getAttribute("id");
                                     %>
                                     <p><%=id %>님</p>
+                                     --%>
+                                    <p>${m.USER_ID}님</p>
                                 </div>
                             </div>
                             <div class="col-5 align-self-end">
@@ -52,7 +51,7 @@
                                     <img src="assets/images/users/avatar-1.jpg" alt=""
                                         class="img-thumbnail rounded-circle">
                                 </div>
-                                <h5 class="font-size-15 text-truncate">${m.user_name }님</h5>
+                                <h5 class="font-size-15 text-truncate">${memberinfo.user_name }님</h5>
                                 <p class="text-muted mb-0 text-truncate">${m.user_dept }</p>
                             </div>
 
@@ -79,8 +78,7 @@
                     </div>
                     
                 </div>
-              </c:forEach>
-              </from>
+              
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title mb-4">Monthly Earning</h4>

@@ -16,14 +16,20 @@ public class MemberInfoAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
+		String USER_ID = request.getParameter("USER_ID");
 		UserDAO udao = new UserDAO();
+		UserInfo m = udao.userinfo(USER_ID);
+		
+		if(m==null) {
+			forward.setPath("error/error.jsp");
+			forward.setRedirect(false);
+			request.setAttribute("message", "아이디에 해당하는 정보가 없습니다.");
+			return forward;
+		}
 
-		List<UserInfo> list = null;
-		list = udao.all_member_info();
-
-		request.setAttribute("list", list);
-		forward.setRedirect(false);
 		forward.setPath("main/index2.jsp");
+		forward.setRedirect(false);
+		request.setAttribute("memberinfo", m);
 		return forward;
 
 	}
