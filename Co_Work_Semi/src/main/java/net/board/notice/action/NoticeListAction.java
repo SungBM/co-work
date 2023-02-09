@@ -24,9 +24,6 @@ public class NoticeListAction implements Action {
 		NoticeDAO noticedao = new NoticeDAO();
 		List<NoticeBean> noticelist = new ArrayList<NoticeBean>();
 		
-		String field = request.getParameter("f"); //검색 카테고리
-		String query = request.getParameter("q"); //검색키워드
-		
 		
 		
 		int page = 1; //보여줄 page

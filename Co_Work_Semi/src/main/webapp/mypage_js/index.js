@@ -24,4 +24,12 @@ $(function() {
 		location.href="companyinfo.com";
 	});
 	
+	//커뮤니티
+	$("#board_notice").off("click").click(function() {
+		location.href="NoticeList.bon";
+	});
+	
+	$("#board_free").off("click").click(function() {
+		location.href="NoticeList.bon";
+	});
 })
