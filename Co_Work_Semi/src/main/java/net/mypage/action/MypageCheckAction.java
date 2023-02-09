@@ -21,7 +21,8 @@ public class MypageCheckAction implements Action {
 
 		MypageDAO mydao = new MypageDAO();
 		Member m = mydao.member_info(user_id);
-
+		
+		System.out.println(user_id);
 		forward.setRedirect(false);
 		forward.setPath("mypage/mypagecheck.jsp");
 		request.setAttribute("memberinfo", m);

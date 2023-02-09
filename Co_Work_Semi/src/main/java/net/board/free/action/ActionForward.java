@@ -18,8 +18,8 @@ public class ActionForward {
 		this.redirect = b;
 	}
 
-	public void setPath(String path) {
-		this.path = path;
+	public void setPath(String string) {
+		this.path = string;
 	}
 
 	public String getPath() {

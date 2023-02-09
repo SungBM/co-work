@@ -25,20 +25,18 @@ public class CompanyInfoAction implements Action {
 		CompanyDAO mydao = new CompanyDAO();
 		MypageDAO mdao = new MypageDAO();
 		Company m = mydao.company_info(user_id);
-		List<Dept> d = mdao.dept("CO-WORK");
-		List<Job> j = mdao.job("CO-WORK");
+		List<Dept> d = mdao.dept(m.getCompany_name());
+		List<Job> j = mdao.job(m.getCompany_name());
 
 		request.setAttribute("memberinfo", m);
 		request.setAttribute("dept", d);
 		request.setAttribute("job", j);
-
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("admin/company/companyinfo.jsp");
 		request.setAttribute("companyinfo", m);
 		request.setAttribute("dept", d);
 		request.setAttribute("job", j);
-		
 		return forward;
 	}
 }

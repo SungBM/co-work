@@ -21,16 +21,6 @@
     <!-- App Css-->
     <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
-
-<script>
-	$(function(){
-		const id = '${id}';
-		if(id){
-			$("#id").val(id);
-			$("#remember-check").prop('checked', true);
-		}
-	
-</script>
 </head>
 <body class="auth-body-bg">
     <div>
@@ -47,18 +37,13 @@
                                             <div class="text-center">
                                                 <h4 class="mb-3"><i
                                                         class="bx bxs-quote-alt-left text-primary h1 align-middle me-3"></i><span
-                                                        class="text-primary">5k</span>+ Satisfied clients</h4>
+                                                        class="text-primary">CO-WORK</span> company</h4>
                                                 <div dir="ltr">
                                                     <div class="owl-carousel owl-theme auth-review-carousel"
                                                         id="auth-review-carousel">
                                                         <div class="item">
                                                             <div class="py-3">
-                                                                <p class="font-size-16 mb-4">" Fantastic theme with a
-                                                                    ton of options. If you just want the HTML to
-                                                                    integrate with your project, then this is the
-                                                                    package. You can find the files in the 'dist'
-                                                                    folder...no need to install git and all the other
-                                                                    stuff the documentation talks about. "</p>
+                                                                <p class="font-size-16 mb-4">" Be What's Next "</p>
                                                                 <div>
                                                                     <h4 class="font-size-16 text-primary">Abs1981</h4>
                                                                     <p class="font-size-14 mb-0">- Skote User</p>
@@ -94,8 +79,6 @@
                             <div class="d-flex flex-column h-100">
                                 <div class="mb-4 mb-md-5">
                                     <a href="index2.jsp" class="d-block auth-logo">
-                                        <img src="assets/images/logo-dark.png" alt="" height="18"
-                                            class="auth-logo-dark">
                                         <img src="assets/images/logo-light.png" alt="" height="18"
                                             class="auth-logo-light">
                                     </a>
@@ -106,7 +89,7 @@
                                         <p class="text-muted">오늘도 행복한 하루 되세요!</p>
                                     </div>
                                     <div class="mt-4">
-                                    	 <form name="loginform" action="index.net" method="post">
+                                        <form name="loginform" action="index.net" method="post">
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">아이디</label>
                                                 <input type="text" class="form-control" id="id" name="id"
@@ -154,7 +137,7 @@
     <script src="assets/libs/jquery/jquery.min.js"></script>
     <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/libs/metismenu/metisMenu.min.js"></script>
-    <script src="cassets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
     <script src="assets/libs/node-waves/waves.min.js"></script>
     <!-- owl.carousel js -->
     <script src="assets/libs/owl.carousel/owl.carousel.min.js"></script>
@@ -162,5 +145,13 @@
     <script src="assets/js/pages/auth-2-carousel.init.js"></script>
     <!-- App js -->
     <script src="assets/js/app.js"></script>
+    <script>
+      const id = '${id}';
+      if(id){
+         console.log(id);
+         $("#id").val(id);
+         $("#remember-check").prop('checked', true);
+      }
+</script>
 </body>
 </html>

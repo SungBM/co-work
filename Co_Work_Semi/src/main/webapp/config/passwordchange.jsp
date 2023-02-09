@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="/main/header.html"></jsp:include>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <title>설정 - 비밀번호 변경</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <div class="page-content">
 	<div class="container-fluid">
@@ -12,7 +12,6 @@
 			<div class="col-12">
 				<div class="page-title-box d-sm-flex align-items-center justify-content-between">
 					<h4 class="mb-sm-0 font-size-18">설정> 비밀번호 변경</h4>
-
 				</div>
 			</div>
 		</div>

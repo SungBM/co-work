@@ -1,10 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
+<script>
+	function checkCode(){
+		var v1 = form2.code_check.value;
+		var v2 = form2.code.value;
+		if(v1 != v2){
+			document.getElementById('checkCode').style.color = "red";
+			document.getElementById('checkCode').innerHTML = "잘못된 인증번호";
+			makeNull();
+		}else{
+			document.getElementById('checkCode').style.color = "blue";
+			document.getElementById('checkCode').innerHTML = "인증되었습니다.";
+			
+			makeReal();
+		}
+	}
+</script>
 </head>
 <body>
 	<form id="form2" action="javascript:getPassword()">
@@ -16,10 +32,10 @@
 					 
 				<div id="checkCode"></div></td>
 				<td><input type="hidden" readonly="readonly" name="code_check"
-				     id="code_check" value="<%=request.getAttribute("code") %>" /></td>
+				     id="code_check" value='<%=request.getAttribute("code") %>' /></td>
+				   value="&{code}" %>
 			</tr>
 		</table>
-		<input id="hi" type="hidden" value="인증하기" />
 	</form>
 </body>
 </html>

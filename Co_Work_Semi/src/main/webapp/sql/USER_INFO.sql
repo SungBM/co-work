@@ -1,5 +1,7 @@
 select * from USER_INFO;
-
+delete COMPANY_DEPT
+select * from company_dept
+select * from company_job
 SELECT USER_ID FROM USER_INFO WHERE USER_ID = HTA1;
 
 CREATE TABLE USER_INFO(

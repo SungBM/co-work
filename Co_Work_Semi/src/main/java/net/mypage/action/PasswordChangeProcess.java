@@ -28,7 +28,7 @@ public class PasswordChangeProcess implements Action {
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('현재 비밀번호가 틀렸습니다.');");
-			out.println("location.href='index2.jsp';");
+			out.println("history.back();");
 			out.println("</script>");
 			out.close();
 			return null;
@@ -40,7 +40,7 @@ public class PasswordChangeProcess implements Action {
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
 				out.println("alert('새로운 비밀번호가 서로 다릅니다.');");
-				out.println("location.href='index2.jsp';");
+				out.println("history.back();");
 				out.println("</script>");
 				out.close();
 				return null;
@@ -50,7 +50,6 @@ public class PasswordChangeProcess implements Action {
 					out.println("<script>");
 					out.println("alert('변경할 비밀번호가 현재 비밀번호와 동일합니다.');");
 					out.println("history.back()");
-					out.println("$(this).focus()");
 					out.println("</script>");
 					out.close();
 					return null;
@@ -65,7 +64,7 @@ public class PasswordChangeProcess implements Action {
 					PrintWriter out = response.getWriter();
 					out.println("<script>");
 					out.println("alert('수정되었습니다.');");
-					out.println("location.href='index2.jsp';");
+					out.println("location.href='passwordchange.my'");
 					out.println("</script>");
 					out.close();
 					return null;

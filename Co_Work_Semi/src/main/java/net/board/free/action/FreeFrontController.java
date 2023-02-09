@@ -40,7 +40,7 @@ public class FreeFrontController extends HttpServlet {
 		Action action = null;
 		
 		switch(command) {
-		case "/logo.net" :
+		case "/logo.bo" :
 			action = new FreeLogoAction();
 			break;
 		}

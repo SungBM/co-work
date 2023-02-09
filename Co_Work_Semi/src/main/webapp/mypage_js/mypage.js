@@ -10,13 +10,12 @@ function onClickUpload1() {
 
 
 $(function() {
-	$("#mypagecheck").click(function(){
-		console.log("ㅎㅇ")
-	});
-	
-	$("button[type=submit]").on("click", function(e) {
+	$(".update").on("click", function(e) {
 		e.preventDefault();
-		var val = $(this).parent().prev().children().first().val()
+
+		var val = $(this).parent().prev().children().eq(0).val()
+		var val2 = $(this).parent().prev().children().eq(1).val()
+		var val3 = $(this).parent().prev().children().eq(2).val()
 
 		if ($(this).text() == "수정") {
 			$(this).parent().prev().children().first().attr("readOnly", false)
@@ -31,8 +30,20 @@ $(function() {
 		} else if ($(this).text() == "확인") {
 			var answer = confirm(val + " 변경 하시겠어요?");
 			if (answer) {
-				$(this).unbind('click').click()
-				$(this).text('수정')
+				// 수정 완료 시
+				$.ajax({
+					type: "post",
+					url: "updateProcess.my",
+					data: {
+						"value": val3,
+						"user_id": val2,
+						"val3": val
+					},
+					success: function(rdata) {
+						history.go(0);
+					}
+				})
+
 			} else {
 				$(this).parent().prev().children().first().focus()
 				$(this).parent().prev().children().first().val('')
@@ -46,7 +57,7 @@ $(function() {
 		$(this).parent().prev().children().first().attr("readOnly", true)
 		$(this).parent().prev().children().first().attr("disabled", true)
 		$(this).prev().text('수정')
-		$("button[type=submit]").not(this).show();
+		$(".update").not(this).show();
 		$(this).hide()
 	}) // 취소 버튼 클릭
 
