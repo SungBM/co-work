@@ -89,7 +89,6 @@ $(function(){
               $("#checkPw").attr('color', 'green');
               checkpass=true;
           }
-          setAble();
         }
         
         $('form').submit(function(){
@@ -285,19 +284,22 @@ $(function(){
    <script src="assets/js/app.js"></script>
 	</form>
 	<script>
+	  let re="";
 	  $("#mail_submit").click(function(){
 		  $.ajax({
 		        url : "send.net",
 		        data : {"receiver" : $("#receiver").val()},
 		        success : function(rdata){
 		        	//$("#code_check_message").css('color','green').html("인증번호 전송 완료되었습니다.");
+		        	re = rdata;
 		        	alert("인증번호 전송 되었습니다.")
 		        }
 		  })
 	  })
 		        
-		            $("#code_num_check").click(function(){
-		        	if(rdata == $("#code").val()){  //이건 값을 보내는 경우 . 확인을 누르면 검사할 수 있도록. 버튼 만들어야해
+		            $("#code_submit").click(function(){
+		            	console.log(re)
+		        	if(re == $("#code").val()){  //이건 값을 보내는 경우 . 확인을 누르면 검사할 수 있도록. 버튼 만들어야해
 		        		$("#code_message").text("인증번호 일치합니다.").css("color", "green");
 		        	}else{
 		        		$("#code_message").text("인증번호 일치하지않습니다.").css("color", "red");
