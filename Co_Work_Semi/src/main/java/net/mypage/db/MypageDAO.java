@@ -237,6 +237,7 @@ public class MypageDAO {
 		try {
 			con = ds.getConnection();
 
+			System.out.println(com);
 			String sql = "SELECT * from company_dept where company_name = ? order by dept_name";
 			pstmt = con.prepareStatement(sql);
 

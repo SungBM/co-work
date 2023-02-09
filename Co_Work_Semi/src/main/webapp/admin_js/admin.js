@@ -20,24 +20,6 @@ $(function() {
 
 		} else if ($(this).text() == "확인") {
 			$(this).unbind('click').click()
-
-			$.ajax({
-				type: "post",
-				url: "deptJobUpdateProcess.com",
-				dataType: "html",
-				data: {
-					"data": val,
-					"value": val2,
-					"def": val3
-				},
-				success: function(rdata) {
-					alert(rdata)
-					$("#result").empty();
-					$("#result").html(rdata);
-					window.location.hash = page;
-					$(window).scrollTop(0);
-				}
-			})
 		}
 		e.stopPropagation();
 	}) // 수정 버튼 클릭

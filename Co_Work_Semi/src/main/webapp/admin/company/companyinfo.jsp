@@ -28,6 +28,7 @@
 										<div class="col-md-8">
 											<input class="form-control" type="text" value="${companyinfo.company_name }" name="company_name" readOnly>
 											<input type="hidden" name="value" value="company_name">
+											<input type="hidden" name="def" value="${companyinfo.company_name }">
 										</div>
 										<div class="col-md-2">
 											<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
@@ -164,8 +165,8 @@
 									<div class="mb-3 row">
 										<div class="col-md-7">
 											<input class="form-control" type="text" value="${m.job_name }" name="job_name" readOnly>
-											<input type="hidden" name="company_name" value="${companyinfo.company_name}">
 											<input type="hidden" name="value" value="job_name">
+											<input type="hidden" name="def" value="${m.job_name }">
 										</div>
 										<div class="col-md-5">
 											<button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>

@@ -52,34 +52,31 @@
 						<!-- Tab panes -->
 						<div class="tab-content p-3 text-muted">
 							<div class="tab-pane active" id="home-1" role="tabpanel">
-								<p class="mb-0">작업중입니다.</p>
+								<p class="mb-1">작업중입니다.</p>
 								<div class="table-responsive">
-									<table class="table mb-0 dataTable">
+									<table class="table mb-1 dataTable">
 										<thead>
 											<tr role="row">
-												<th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 13px;" aria-label="Check: activate to sort column descending" aria-sort="ascending"><input class="form-check-input" type="checkbox" id="formCheck1"></th>
-												<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 40px;" aria-label="Name: activate to sort column ascending">이름</th>
-												<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 50px;" aria-label="Dept: activate to sort column ascending">부서</th>
-												<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 50px;" aria-label="Job: activate to sort column ascending">직책</th>
-												<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 50px;" aria-label="Email: activate to sort column ascending">이메일</th>
-												<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 50px;" aria-label="Phone: activate to sort column ascending">연락처</th>
-												<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 50px;" aria-label="Joindate: activate to sort column ascending">가입일</th>
-												<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 60px;" aria-label="Lastlog: activate to sort column ascending">마지막 접속</th>
-												<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 50px;" aria-label="Status: activate to sort column ascending">상태</th>
-												<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 50px;" aria-label="Admin: activate to sort column ascending">관리자</th>
+												<th class="sorting_asc" style="width: 13px;" aria-sort="ascending"><input class="form-check-input" type="checkbox" id="formCheck1"></th>
+												<th class="sorting" style="width: 40px;">이름</th>
+												<th class="sorting" style="width: 50px;">부서</th>
+												<th class="sorting" style="width: 50px;">직책</th>
+												<th class="sorting" style="width: 30px;">이메일</th>
+												<th class="sorting" style="width: 50px;">연락처</th>
+												<th class="sorting" style="width: 50px;">가입일</th>
+												<th class="sorting" style="width: 60px;">마지막 접속</th>
+												<th class="sorting" style="width: 50px;">상태</th>
+												<th class="sorting" style="width: 50px;">관리자</th>
 											</tr>
 										</thead>
 										<tbody>
 											<c:forEach var="m" items="${list }">
 												<tr>
 													<td>
-														<input class="form-check-input" type="checkbox" id="formCheck1">
+														<input class="form-check-input" type="checkbox" id="formCheck2">
 													</td>
 													<td>
-														<a name="meminfo" href="#"}">${m.user_name }</a>
-														<form method="post" id="mypage">
-															<input type="hidden" id="user_id" name="user_id" value="${m.user_id}">
-														</form>
+														<a name="meminfo" href="mypage.my?user_id=${m.user_id }"}">${m.user_name }</a>
 													</td>
 													<td>${m.user_dept }</td>
 													<td>${m.user_job }</td>
@@ -89,8 +86,19 @@
 													<td>${m.user_phone }</td>
 													<td>${m.user_join_date }</td>
 													<td>미구현</td>
-													<td>${m.user_state }</td>
-													<td>${m.user_is_admin }</td>
+													<c:if test="${m.user_state eq 0}">
+														<td>이용중지</td>
+													</c:if>
+													<c:if test="${m.user_state eq 1}">
+														<td>정상</td>
+													</c:if>
+
+													<c:if test="${m.user_is_admin eq 1}">
+														<td>관리자</td>
+													</c:if>
+													<c:if test="${m.user_is_admin eq 0}">
+														<td>사용자</td>
+													</c:if>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -117,23 +125,4 @@
 	</div>
 </body>
 <jsp:include page="/main/footer.html"></jsp:include>
-<script>
-	$(function() {
-		$("a[name=meminfo]").on("click", function() {
-			var data = $(this).next().children().val()
-			$.ajax({
-				type : "post",
-				url : "mypage.my",
-				dataType : "html",
-				data : {user_id : data},
-				success : function(rdata) {
-					$("#result").empty();
-					$("#result").html(rdata);
-					window.location.hash = "mypage.my";
-					$(window).scrollTop(0);
-				}
-			})
-		})
-	})
-</script>
 </html>
