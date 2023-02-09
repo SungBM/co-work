@@ -19,7 +19,7 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet{
 		
 		//getContextPath() : 컨텍스트 경로가반환
 		//contextPath : "JspProject 가 반환
-		String contextPath = request.getContextPath() + "/co_work";
+		String contextPath = request.getContextPath();
 		System.out.println("contextPath = " + contextPath);
 		
 		
@@ -44,11 +44,14 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet{
 		case "/joinProcess.net":
 			action = new MemberJoinProcessAction();
 			break;
-		case "/loginProcess.net":
+		case "/main.net":
 			action = new MemberLoginProcessAction();
 			break;
 		case "/logout.net":
 			action = new MemberLogoutAction();
+			break;
+		case "/send.net":
+			action = new SendAction();
 			break;
 	
 		} //switch and

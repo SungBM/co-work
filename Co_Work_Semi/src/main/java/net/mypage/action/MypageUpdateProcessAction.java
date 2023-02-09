@@ -64,8 +64,7 @@ public class MypageUpdateProcessAction implements Action {
 			if (result == 1) {
 				out.println("<script>");
 				out.println("alert('" + dc(value) + " 수정되었습니다.');");
-				out.println("history.back()");
-				
+				out.println("location.href='index2.jsp';");
 			} else {
 				out.println("alert('회원정보 수정에 실패했습니다.');");
 				out.println("history.back()");
