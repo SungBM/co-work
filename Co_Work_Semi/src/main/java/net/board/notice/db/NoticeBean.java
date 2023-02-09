@@ -1,55 +1,78 @@
 package net.board.notice.db;
 
 public class NoticeBean {
-	private int		notice_num;			//글번호
-	private	String	notice_title;		//글 제목
-	private	String	notice_reg_date;	//작성일
+	private int		notice_num;			//글 번호
+	private	String	notice_name;		//작성자
+	private	String	notice_subject;		//글 제목
 	private	String	notice_content;		//글 내용
-	private	String	notice_file;		//첨부될 파일의이름
+	private	String	notice_file;		//첨부될 파일명
+	private int		notice_re_ref;		//답변 글 작성시 참조되는 글의 번호
+	private int		notice_re_lev;		//답변 글의 깊이
+	private int		notice_re_seq;		//답변 글의 순서
 	private int		notice_readcount;	//글의 조회수
-	private	String	user_id;			//글 작성자
+	private	String	notice_reg_date;	//작성일
 	private int cnt;
-	public int getnotice_num() {
+	
+	
+	public int getNotice_num() {
 		return notice_num;
 	}
-	public void setnotice_num(int notice_num) {
+	public void setNotice_num(int notice_num) {
 		this.notice_num = notice_num;
 	}
-	public String getnotice_title() {
-		return notice_title;
+	public String getNotice_name() {
+		return notice_name;
 	}
-	public void setnotice_title(String notice_title) {
-		this.notice_title = notice_title;
+	public void setNotice_name(String notice_name) {
+		this.notice_name = notice_name;
 	}
-	public String getnotice_reg_date() {
-		return notice_reg_date;
+	public String getNotice_subject() {
+		return notice_subject;
 	}
-	public void setnotice_reg_date(String notice_reg_date) {
-		this.notice_reg_date = notice_reg_date.substring(0,10);//년-월-일 시:분:초 => 년-월-일
+	public void setNotice_subject(String notice_subject) {
+		this.notice_subject = notice_subject;
 	}
-	public String getnotice_content() {
+	public String getNotice_content() {
 		return notice_content;
 	}
-	public void setnotice_content(String notice_content) {
+	public void setNotice_content(String notice_content) {
 		this.notice_content = notice_content;
 	}
-	public String getnotice_file() {
+	public String getNotice_file() {
 		return notice_file;
 	}
-	public void setnotice_file(String notice_file) {
+	public void setNotice_file(String notice_file) {
 		this.notice_file = notice_file;
 	}
-	public int getnotice_readcount() {
+	public int getNotice_re_ref() {
+		return notice_re_ref;
+	}
+	public void setNotice_re_ref(int notice_re_ref) {
+		this.notice_re_ref = notice_re_ref;
+	}
+	public int getNotice_re_lev() {
+		return notice_re_lev;
+	}
+	public void setNotice_re_lev(int notice_re_lev) {
+		this.notice_re_lev = notice_re_lev;
+	}
+	public int getNotice_re_seq() {
+		return notice_re_seq;
+	}
+	public void setNotice_re_seq(int notice_re_seq) {
+		this.notice_re_seq = notice_re_seq;
+	}
+	public int getNotice_readcount() {
 		return notice_readcount;
 	}
-	public void setnotice_readcount(int notice_readcount) {
+	public void setNotice_readcount(int notice_readcount) {
 		this.notice_readcount = notice_readcount;
 	}
-	public String getUser_id() {
-		return user_id;
+	public String getNotice_reg_date() {
+		return notice_reg_date;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setNotice_reg_date(String notice_reg_date) {
+		this.notice_reg_date = notice_reg_date.substring(0,16);
 	}
 	public int getCnt() {
 		return cnt;
@@ -57,5 +80,6 @@ public class NoticeBean {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
-		
+	
+	
 }

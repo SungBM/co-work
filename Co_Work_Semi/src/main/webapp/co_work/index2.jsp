@@ -425,7 +425,7 @@
 								<span>커뮤니티</span>
 							</a>
 							<ul class="sub-menu" aria-expanded="false">
-								<li><a>공지사항 게시판</a></li>
+								<li><a id="notice_list" href="#">공지사항 게시판</a></li>
 								<li><a>자유 게시판</a></li>
 							</ul></li>
 
@@ -584,6 +584,8 @@
 	<script src="project_js/project_list.js"></script>
 	<script src="mypage_js/index.js"></script>
 	<script src="main_js/main_js.js"></script>
+	<script src="board_js/notice/notice_list.js"></script>
+	
 </body>
 
 </html>

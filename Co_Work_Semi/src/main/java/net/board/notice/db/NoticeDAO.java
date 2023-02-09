@@ -25,6 +25,9 @@ public class NoticeDAO {
 		}
 	}
 	
+	//검색하기(NoticeListAction)
+
+	
 	//글 갯수 구하기(NoticeListAction)
 	public int getListCount() {
 		Connection con = null;
@@ -77,15 +80,15 @@ public class NoticeDAO {
 		// board_re_ref desc, board_re_seq asc에 의해 정렬한 것을
 		// 조건절에 맞는 rnum의 범위 만큼 가져오는 쿼리문입니다.
 		
-		String board_list_sql = "select * "
+		String notice_list_sql = "select * "
 							+ " from (select rownum rnum, j.* "
-							+ " 	  from (select board.*, nvl(cnt,0) cnt "
-							+ " 			from board left outer join (select comment_board_num,count(*) cnt"
-							+ "											from comm"
-							+ "											group by comment_board_num)"
-							+ "				on board_num=comment_board_num"
-							+ "				order by BOARD_RE_REF desc,"
-							+ "				BOARD_RE_SEQ asc) j "
+							+ " 	  from (select NOTICE.*, nvl(cnt,0) cnt "
+							+ " 			from NOTICE left outer join (select COMM_BOARD_NUM,count(*) cnt"
+							+ "											from COMM"
+							+ "											group by COMM_BOARD_NUM)"
+							+ "				on NOTICE_NUM=COMM_BOARD_NUM"
+							+ "				order by NOTICE_RE_REF desc,"
+							+ "				NOTICE_RE_SEQ asc) j "
 							+ "		  where rownum<= ? "
 							+ "		  ) "
 							+ " where rnum>=? and rnum<=?";
@@ -96,7 +99,7 @@ public class NoticeDAO {
 		int endrow = startrow + limit - 1;		// 읽을 마지막 row 번호(10 20 30 40 ...
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(board_list_sql);
+			pstmt = con.prepareStatement(notice_list_sql);
 			pstmt.setInt(1, endrow);
 			pstmt.setInt(2, startrow);
 			pstmt.setInt(3, endrow);
@@ -105,23 +108,23 @@ public class NoticeDAO {
 			// DB에서 가져온 데이터를 VO객체에 담습니다.
 			while (rs.next()) {
 				NoticeBean notice = new NoticeBean();
-				notice.setNotice_num(rs.getInt("Notice_NUM"));
-				notice.setNotice_name(rs.getString("Notice_NAME"));
-				notice.setNotice_subject(rs.getString("Notice_SUBJECT"));
-				notice.setNotice_content(rs.getString("Notice_CONTENT"));
-				notice.setNotice_file(rs.getString("Notice_FILE"));
-				notice.setNotice_re_ref(rs.getInt("Notice_RE_REF"));
-				notice.setNotice_re_lev(rs.getInt("Notice_RE_LEV"));
-				notice.setNotice_re_seq(rs.getInt("Notice_RE_SEQ"));
-				notice.setNotice_readcount(rs.getInt("Notice_READCOUNT"));
-				notice.setNotice_date(rs.getString("Notice_DATE"));
+				notice.setNotice_num(rs.getInt("notice_num"));
+				notice.setNotice_name(rs.getString("notice_name"));
+				notice.setNotice_subject(rs.getString("notice_subject"));
+				notice.setNotice_content(rs.getString("notice_content"));
+				notice.setNotice_file(rs.getString("notice_file"));
+				notice.setNotice_re_ref(rs.getInt("notice_re_ref"));
+				notice.setNotice_re_lev(rs.getInt("notice_re_lev"));
+				notice.setNotice_re_seq(rs.getInt("notice_re_seq"));
+				notice.setNotice_readcount(rs.getInt("notice_readcount"));
+				notice.setNotice_reg_date(rs.getString("notice_reg_date"));
 				notice.setCnt(rs.getInt("cnt"));
 				list.add(notice); // 값을 담은 객체를 리스트에 저장합니다.
 			}
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.out.println("getBoardList() 에러: " + ex) ;
+			System.out.println("getNoticeList() 에러: " + ex) ;
 		} finally {
 			if (rs != null)
 				try {
