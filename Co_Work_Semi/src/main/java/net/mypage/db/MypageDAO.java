@@ -298,7 +298,7 @@ public class MypageDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("dept() 오류");
+			System.out.println("job() 오류");
 		} finally {
 			if (rs != null)
 				try {

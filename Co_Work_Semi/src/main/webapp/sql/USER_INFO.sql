@@ -1,5 +1,10 @@
-select * from USER_INFO;
-
+select * from company_dept
+select * from project;
+delete company_dept
+update COMPANY_DEPT
+set dept_name = 'nn'
+where dept_name = 'ㅁㄴㅇ'
+and company_name = '우리123'
 SELECT USER_ID FROM USER_INFO WHERE USER_ID = HTA1;
 
 CREATE TABLE USER_INFO(

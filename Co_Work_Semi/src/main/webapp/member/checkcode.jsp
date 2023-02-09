@@ -11,11 +11,11 @@
 		var v2 = form2.code.value;
 		if(v1 != v2){
 			document.getElementById('checkCode').style.color = "red";
-			document.getElementById('checkCode').innerHTML = "Àß¸øµÈ ÀÎÁõ¹øÈ£";
+			document.getElementById('checkCode').innerHTML = "ì˜ëª»ëœ ì¸ì¦ë²ˆí˜¸";
 			makeNull();
 		}else{
 			document.getElementById('checkCode').style.color = "blue";
-			document.getElementById('checkCode').innerHTML = "ÀÎÁõµÇ¾ú½À´Ï´Ù.";
+			document.getElementById('checkCode').innerHTML = "ì¸ì¦ë˜ì—ˆìŠµë‹ˆë‹¤.";
 			
 			makeReal();
 		}
@@ -26,9 +26,9 @@
 	<form id="form2" action="javascript:getPassword()">
 		<table>
 			<tr>
-				<td><span>ÀÎÁõ¹øÈ£</span></td>
+				<td><span>ì¸ì¦ë²ˆí˜¸</span></td>
 				<td><input type="text" name="code" id="code"
-					 onkeyup="checkCode()" placeholder="ÀÎÁõ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä" />
+					 onkeyup="checkCode()" placeholder="ì¸ì¦ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”" />
 					 
 				<div id="checkCode"></div></td>
 				<td><input type="hidden" readonly="readonly" name="code_check"
