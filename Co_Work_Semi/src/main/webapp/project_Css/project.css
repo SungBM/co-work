@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 .progress {
 	background-color: lightgray;
 	text-align: center;
+=======
+.progress {
+	background-color: gray;
+	text-align: center;
+}
+#team_m{
+	overflow: auto;
+>>>>>>> branch 'sungbin' of https://github.com/SungBM/co-work.git
 }

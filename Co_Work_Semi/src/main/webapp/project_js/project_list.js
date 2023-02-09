@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $(function(){
 		//ajax호출할때마다 실행되는 함수 (페이지이동시)
 		var move_ajax = function(url_add){
@@ -28,3 +29,6 @@ $(function(){
 		
 })
 	
+=======
+
+>>>>>>> branch 'sungbin' of https://github.com/SungBM/co-work.git
