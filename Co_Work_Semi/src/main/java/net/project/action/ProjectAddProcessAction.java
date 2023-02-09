@@ -15,6 +15,7 @@ public class ProjectAddProcessAction implements Action {
    @Override
    public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
          throws ServletException, IOException {
+	  System.out.println("액션들어옴");
       String project_name = request.getParameter("project_name");
       int project_prog = Integer.parseInt(request.getParameter("project_prog"));
       String project_start = request.getParameter("project_start");
@@ -22,7 +23,6 @@ public class ProjectAddProcessAction implements Action {
       String project_priority = request.getParameter("project_priority");
       int project_partici = Integer.parseInt(request.getParameter("project_partici"));
       String project_admin = request.getParameter("project_admin");
-      
       
       Project p = new Project();
       p.setProject_name(project_name);          p.setProject_prog(project_prog);
@@ -32,11 +32,12 @@ public class ProjectAddProcessAction implements Action {
       
       ProjectDAO pdao = new ProjectDAO();
       int result = pdao.insert(p);
-      
+       
+      ActionForward forward = new ActionForward();
       //result=0;
       if(result==0) {
          System.out.println("프로젝트 등록 실패입니다.");
-         ActionForward forward = new ActionForward();
+         forward = new ActionForward();
          forward.setRedirect(false);
          request.setAttribute("message", "프로젝트 등록 실패입니다.");
          forward.setPath("error/error.jsp");
@@ -57,6 +58,9 @@ public class ProjectAddProcessAction implements Action {
       }
       out.println("</script>");
       out.close();
-      return null;
+      
+      forward.setRedirect(false);
+      forward.setPath("ProjectList.po");
+      return forward;
    }
 }
