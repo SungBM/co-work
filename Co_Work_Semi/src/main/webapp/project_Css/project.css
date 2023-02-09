@@ -1,0 +1,7 @@
+.progress {
+	background-color: gray;
+	text-align: center;
+}
+#team_m{
+	overflow: auto;
+}

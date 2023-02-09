@@ -141,8 +141,10 @@ public class ProjectDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String project_List_Sql =   "SELECT * FROM (SELECT ROWNUM,P.* FROM (SELECT * FROM PROJECT ORDER BY PROJECT_END)P "
-								+ "WHERE ROWNUM <= ?) WHERE ROWNUM >= ? AND ROWNUM <= ? AND PROJECT_END < SYSDATE";
+		String project_List_Sql = "SELECT PR.*,U.USER_IMG FROM ( SELECT * FROM (SELECT ROWNUM,P.* FROM (SELECT * FROM PROJECT ORDER BY PROJECT_END)P "
+								+ "                WHERE ROWNUM <= ?) WHERE ROWNUM >= ? AND ROWNUM <= ? AND PROJECT_END < SYSDATE  )PR "
+								+ "INNER JOIN USER_INFO U "
+								+ "ON PR.PROJECT_ADMIN = U.USER_ID ";
 		
 		List<Project> list = new ArrayList<Project>();
 		int startrow = (page -1 ) * limit + 1;
@@ -165,13 +167,14 @@ public class ProjectDAO {
 				pro.setProject_start(rs.getString(6));
 				pro.setProject_end(rs.getString(7));
 				pro.setProject_priority(rs.getString(8));
-				pro.setProject_partici(Integer.parseInt(rs.getString(9)));
-				pro.setProject_admin(rs.getString(10));
+				pro.setProject_admin(rs.getString("project_admin"));
 				pro.setProject_bookmark(rs.getString(11));
-				pro.setProject_parti(rs.getString(12));
+				ArrayList<Project_User> user_parti = getParticipants(rs.getInt(2));
+				pro.setProject_parti(user_parti);
+				pro.setProject_admin_img(rs.getString("user_img"));
+				
 				list.add(pro);
 			}
-		
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -189,10 +192,15 @@ public class ProjectDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String project_List_Sql =   "SELECT * FROM (SELECT ROWNUM,P.* FROM (SELECT * FROM PROJECT ORDER BY PROJECT_END)P "
-								+ "WHERE ROWNUM <= ?) WHERE ROWNUM >= ? AND ROWNUM <= ? AND PROJECT_END > "
-								+ "SYSDATE OR PROJECT_END IS NULL";
-		
+		String project_List_Sql = "SELECT PR.*, U.USER_IMG FROM ( SELECT * FROM "
+								+ "    (SELECT ROWNUM,P.* FROM (SELECT * FROM PROJECT ORDER BY PROJECT_END)P "
+								+ "     WHERE ROWNUM <= ?) "
+								+ "WHERE ROWNUM >= ? "
+								+ "AND ROWNUM <= ? "
+								+ "AND PROJECT_END > SYSDATE "
+								+ "OR PROJECT_END IS NULL )PR "
+								+ "INNER JOIN USER_INFO U "
+								+ "ON PR.PROJECT_ADMIN = U.USER_ID ";
 		
 		
 		List<Project> list = new ArrayList<Project>();
@@ -228,10 +236,12 @@ public class ProjectDAO {
 				pro.setProject_start(rs.getString(6));
 				pro.setProject_end(rs.getString(7));
 				pro.setProject_priority(rs.getString(8));
-				pro.setProject_partici(Integer.parseInt(rs.getString(9)));
-				pro.setProject_admin(rs.getString(10));
+				pro.setProject_admin(rs.getString("project_admin"));
 				pro.setProject_bookmark(rs.getString(11));
-				pro.setProject_parti(rs.getString(12));
+				
+				ArrayList<Project_User> user_parti = getParticipants(rs.getInt(2));
+				pro.setProject_parti(user_parti);
+				pro.setProject_admin_img(rs.getString("user_img"));
 				list.add(pro);
 				
 			}
@@ -246,7 +256,50 @@ public class ProjectDAO {
 		}
 		
 		return list;
+	}
+	
+	private ArrayList<Project_User> getParticipants(int pro_num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<Project_User> list = null;
+		
+		String participants_Sql = "SELECT P.USER_ID, U.USER_NAME, U.USER_IMG FROM PROJECT_USER P "
+								+ "INNER JOIN USER_INFO U "
+								+ "ON P.USER_ID = U.USER_ID "
+								+ "WHERE PROJECT_NUM = ? ";
+	
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(participants_Sql);
+			pstmt.setInt(1, pro_num);
+		
+			rs = pstmt.executeQuery();
+			list = new ArrayList<Project_User>();
+			while(rs.next()) {
+				Project_User user = new Project_User();
+				user.setUSER_ID(rs.getString(1));
+				user.setUSER_NAME(rs.getString(2));
+				user.setUSER_IMG(rs.getString(3));
+				
+				list.add(user);
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("getProjectList() : 에러발생" + ex);
+		} finally {
+			all_close(rs, pstmt, conn);
 		}
+		
+		return list;
+	}
+
+
+
+
+
 	public Project getDetailProject() {
 		return null;
 	}
