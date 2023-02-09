@@ -21,23 +21,21 @@ public class CompanyInfoAction implements Action {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String user_id = (String) session.getAttribute("id");
+		
 
 		CompanyDAO mydao = new CompanyDAO();
 		MypageDAO mdao = new MypageDAO();
+		
 		Company m = mydao.company_info(user_id);
-		List<Dept> d = mdao.dept("CO-WORK");
-		List<Job> j = mdao.job("CO-WORK");
-
-		request.setAttribute("memberinfo", m);
-		request.setAttribute("dept", d);
-		request.setAttribute("job", j);
+		List<Dept> d = mdao.dept(m.getCompany_name());
+		List<Job> j = mdao.job(m.getCompany_name());
 
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("admin/company/companyinfo.jsp");
 		request.setAttribute("companyinfo", m);
 		request.setAttribute("dept", d);
 		request.setAttribute("job", j);
+		forward.setPath("admin/company/companyinfo.jsp");
 		
 		return forward;
 	}
