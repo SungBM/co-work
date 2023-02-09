@@ -14,11 +14,12 @@ public class Project {
 	private int project_partici;
 	private String project_admin;
 	private String project_admin_img;
-
 	private ArrayList<Project_User> project_parti;
 	public String getProject_admin_img() {
 		return project_admin_img;
 	}
+	
+	
 	public void setProject_admin_img(String project_admin_img) {
 		this.project_admin_img = project_admin_img;
 	}

@@ -167,8 +167,8 @@ public class ProjectDAO {
 				pro.setProject_start(rs.getString(6));
 				pro.setProject_end(rs.getString(7));
 				pro.setProject_priority(rs.getString(8));
-				//pro.setProject_partici(Integer.parseInt(rs.getString(9)));
-				pro.setProject_admin(rs.getString(10));
+				pro.setProject_admin(rs.getString("project_admin"));
+
 				pro.setProject_bookmark(rs.getString(11));
 				ArrayList<Project_User> user_parti = getParticipants(rs.getInt(2));
 				pro.setProject_parti(user_parti);
@@ -237,8 +237,7 @@ public class ProjectDAO {
 				pro.setProject_start(rs.getString(6));
 				pro.setProject_end(rs.getString(7));
 				pro.setProject_priority(rs.getString(8));
-				pro.setProject_partici(Integer.parseInt(rs.getString(9)));
-				pro.setProject_admin(rs.getString(10));
+				pro.setProject_admin(rs.getString("project_admin"));
 				pro.setProject_bookmark(rs.getString(11));
 				
 				ArrayList<Project_User> user_parti = getParticipants(rs.getInt(2));

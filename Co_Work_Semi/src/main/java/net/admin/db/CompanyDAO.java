@@ -37,7 +37,6 @@ public class CompanyDAO {
 				c.setCompany_url(rs.getString(2));
 				c.setCompany_logo(rs.getString(3));
 			}
-			System.out.println(c.getCompany_name());
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			System.out.println("member_info() 에러 : " + ex);
@@ -62,7 +61,118 @@ public class CompanyDAO {
 				}
 		}
 		return c;
-	} // company_info end	
+	} // company_info end
+
+	public int create(String id, String value, String change) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			con = ds.getConnection();
+
+			// 원문글의 BOARD_RE_REF 필드는 자신의 글번호 입니다.
+			String sql = "insert into COMPANY_INFO(" + value + ", user_id) values(?, ?)";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, change);
+			pstmt.setString(2, id);
+			result = pstmt.executeUpdate();
+			if (result == 1) {
+				System.out.println("데이터 삽입이 모두 완료되었습니다.");
+			}
+		} catch (Exception ex) {
+			System.out.println("company_create() 에러 : " + ex);
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}
+		return result;
+	}
+
+	public int dept_create(String value, String change, String company_name) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			con = ds.getConnection();
+
+			// 원문글의 BOARD_RE_REF 필드는 자신의 글번호 입니다.
+			String sql = "insert into COMPANY_DEPT(" + value + ", COMPANY_NAME) values(?, ?)";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, change);
+			pstmt.setString(2, company_name);
+			result = pstmt.executeUpdate();
+			if (result == 1) {
+				System.out.println("데이터 삽입이 모두 완료되었습니다.");
+			}
+		} catch (Exception ex) {
+			System.out.println("dept_create() 에러 : " + ex);
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}
+		return result;
+	}
+
+	public int job_create(String value, String change, String company_name) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			con = ds.getConnection();
+
+			// 원문글의 BOARD_RE_REF 필드는 자신의 글번호 입니다.
+			String sql = "insert into COMPANY_JOB(" + value + ", COMPANY_NAME) values(?, ?)";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, change);
+			pstmt.setString(2, company_name);
+			result = pstmt.executeUpdate();
+			if (result == 1) {
+				System.out.println("데이터 삽입이 모두 완료되었습니다.");
+			}
+		} catch (Exception ex) {
+			System.out.println("dept_create() 에러 : " + ex);
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}
+		return result;
+	}
 
 	public int update(String value, String change, String id) {
 		Connection con = null;
@@ -70,9 +180,7 @@ public class CompanyDAO {
 		int result = 0;
 		try {
 			con = ds.getConnection();
-			String sql = "update company_info "
-					+ "	  set "+ value + " = ?"
-					+ "	  where USER_ID=?";
+			String sql = "update company_info set " + value + " = ? where USER_ID=?";
 			pstmt = con.prepareStatement(sql);
 			System.out.println(sql);
 			System.out.println(id);
@@ -98,6 +206,50 @@ public class CompanyDAO {
 				}
 		}
 		return result;
+	} // update end
+
+	public boolean update1(String value, String change, String company, String def) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			con = ds.getConnection();
+			String sql = "update company_dept " + 
+						 "set dept_name = ? " + 
+						 "where dept_name = ? and company_name = ?";
+			
+			System.out.println(change);
+			System.out.println(def);
+			System.out.println(company);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, change);
+			pstmt.setString(2, def);
+			pstmt.setString(3, company);
+			result = pstmt.executeUpdate();
+			System.out.println("dept update 결과 " + result);
+			if (result == 1) {
+				System.out.println("정상 수정 완료");
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("update() 오류");
+
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}
+		return false;
 	} // update end
 
 }
