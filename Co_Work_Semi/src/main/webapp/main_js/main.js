@@ -1,6 +1,5 @@
 $(function() {
 /*
-
 	if(url.includes(".my")){
 		$('#side-menu').children("li").removeClass();
 		var li = $('#side-menu').children('li:eq(6)');
@@ -43,7 +42,6 @@ $(function() {
 			li.children("ul").addClass("mm-show");
 			li.children("ul").children("li").removeClass();
 			li.children("ul").children("li:eq(0)").addClass("mm-active");
-			
 			break;
 		case "membersInfo.com" :
 			var li = $('#side-menu').children('li:eq(10)');
@@ -52,7 +50,6 @@ $(function() {
 			li.children("ul").children("li").removeClass();
 			li.children("ul").children("li:eq(0)").addClass("mm-active");
 			break;
-
 	}
 	
 	$(".logo-light").click(function(){

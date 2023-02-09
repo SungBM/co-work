@@ -188,7 +188,6 @@ input[type=file] {
 									</div>
 								</div>
 							</form>
-
 							<form action="updateProcess.my" method="post" enctype="multipart/form-data">
 								<div class="mb-3 row">
 									<label for="value-name" class="col-md-2 col-form-label">자기소개</label>
@@ -214,7 +213,6 @@ input[type=file] {
 
 <jsp:include page="/main/footer.html"></jsp:include>
 <script src="mypage_js/mypage.js"></script>
-
 <script>
 	$("option[value='${memberinfo.user_dept }']").prop("selected", true);
 	$("option[value='${memberinfo.user_job }']").prop("selected", true);

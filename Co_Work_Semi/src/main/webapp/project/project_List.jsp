@@ -1,10 +1,9 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="/main/header.html"></jsp:include>
-<link href="project_Css/project.css" rel="stylesheet" type="text/css" />
+<link href="project_Css/project.css" rel="stylesheet" type="text/css"/>
 <div class="page-content">
     <div class="container-fluid">
         <!-- start page title -->
@@ -125,6 +124,7 @@
     </div> <!-- container-fluid -->
 </div>
 <!-- End Page-content -->
+</body>
 <jsp:include page="/main/footer.html"></jsp:include>
 	<script src="project_js/project_add.js"></script>
 	<script src="project_js/project_list_onload.js"></script>
