@@ -1,4 +1,4 @@
-package net.board.free.action;
+package net.board.notice.action;
 
 import java.io.IOException;
 
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ProjectFrontController
  */
-@WebServlet("*.bo")
-public class FreeFrontController extends HttpServlet {
+@WebServlet("*.bon")
+public class NoticeFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,10 +40,13 @@ public class FreeFrontController extends HttpServlet {
 		Action action = null;
 		
 		switch(command) {
-		case "/logo.bo" :
-			action = new FreeLogoAction();
-			break;
-		}
+        case "/NoticeList.bon":
+            action = new NoticeListAction();
+            break;
+        case "/NoticeWrite.bon":
+            action = new NoticeWritection();
+            break;
+		}//switch end
 		
 		forward = action.execute(request, response);
 		
