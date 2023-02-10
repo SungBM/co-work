@@ -33,7 +33,7 @@
 				<div id="checkCode"></div></td>
 				<td><input type="hidden" readonly="readonly" name="code_check"
 				     id="code_check" value='<%=request.getAttribute("code") %>' /></td>
-				   value="&{code}" %>
+				     value="&{code}" %>
 			</tr>
 		</table>
 	</form>
