@@ -50,6 +50,8 @@ $(function() {
 			li.children("ul").children("li").removeClass();
 			li.children("ul").children("li:eq(0)").addClass("mm-active");
 			break;
+		
+		
 	}
 	
 	$(".logo-light").click(function(){

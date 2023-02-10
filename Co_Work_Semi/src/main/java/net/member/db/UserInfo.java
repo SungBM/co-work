@@ -116,4 +116,4 @@ public class UserInfo {
 		USER_PHONE = uSER_PHONE;
 	}
 
-	}
+}

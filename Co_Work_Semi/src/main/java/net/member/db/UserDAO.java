@@ -4,10 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
 
 public class UserDAO {
 	private DataSource ds;
@@ -146,4 +149,61 @@ public class UserDAO {
 		}
 		return result;
 	}
+		public UserInfo userinfo(String USER_ID) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			
+			String sql = "SELECT * FROM USER_INFO WHERE USER_ID = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, USER_ID);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				UserInfo m = new UserInfo();
+				m.setUSER_ID(rs.getString("user_id"));
+				m.setUSER_PASSWORD(rs.getString("user_password"));
+				m.setUSER_EMAIL(rs.getString("user_email"));
+				m.setUSER_CODE(rs.getInt("USER_CODE"));
+				m.setUSER_NAME(rs.getString("user_name"));
+				m.setUSER_IMG(rs.getString("USER_IMG"));
+				m.setUSER_IS_ADMIN(rs.getInt("USER_IS_ADMIN"));
+				m.setUSER_DEPT(rs.getString("user_dept"));
+				m.setUSER_JOB(rs.getString("user_job"));
+				m.setUSER_FAX(rs.getString("USER_FAX"));
+				m.setUSER_INTRO(rs.getString("USER_INTRO"));
+				m.setUSER_CARD(rs.getString("USER_CARD"));
+				m.setUSER_STATE(rs.getString("USER_STATE"));
+				//m.setUSER_JOIN_DATE(rs.getDate("USER_JOIN_DATE"));
+				m.setUSER_PHONE(rs.getString("USER_PHONE"));
+				return m;
+			}
+				
+		}catch(Exception se) {
+			se.printStackTrace();
+		}finally {
+			try {
+				if(rs != null)
+					rs.close();
+			}catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
+			try {
+				if(pstmt != null)
+					pstmt.close();
+			}catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
+			try {
+				if(con != null)
+					con.close();
+			}catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return null;
+	}
+
 }
