@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import net.member.db.UserDAO;
+import net.member.db.UserInfo;
 
 public class MemberLoginProcessAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -41,9 +42,23 @@ public class MemberLoginProcessAction implements Action {
 				cookie.setMaxAge(0);
 				response.addCookie(cookie);
 			}
+			//String USER_ID = (String)session.getAttribute("USER_ID");
+			UserDAO udao = new UserDAO();
+
+			UserInfo userinfo = udao.userinfo(USER_ID);
+			
+			if(userinfo==null) {
+				forward.setPath("error/error.jsp");
+				forward.setRedirect(false);
+				request.setAttribute("message", "아이디에 해당하는 정보가 없습니다.");
+				return forward;
+			}
+
+			request.setAttribute("userinfo", userinfo);
+			
 			
 			forward.setRedirect(false);
-			forward.setPath("main/index2.jsp");  //메인 페이지로 이동
+			forward.setPath("main/main.jsp");  //메인 페이지로 이동
 			return forward;
 		} else {
 			String message = "비밀번호가 일치하지 않습니다.";
