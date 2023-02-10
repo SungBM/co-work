@@ -305,30 +305,37 @@ public class ProjectDAO {
 	}
 	
 	public int insert(Project p) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		int result=0;
-		try {
-			con = ds.getConnection();
-			System.out.println("getConnection : insert()");
+	      Connection con = null;
+	      PreparedStatement pstmt = null;
+	      int result=0;
+
+	try {
+		con = ds.getConnection();
+		con.setAutoCommit(false);
+
+	String sql = "insert into PROJECT (PROJECT_NUM, PROJECT_NAME, PROJECT_PROG, PROJECT_ADMIN, "				+	"								PROJECT_START, PROJECT_END, PROJECT_PRIORITY) "
+				+  " values (PROJECT_SEQ.NEXTVAL, ?,?,?,?,?,?)";
+
+
+	String sql2 = "insert into PROJECT_USER "
+				+  " values (PROJECT_SEQ.NEXTVAL, ?,?)";
+
+
+
+			if (result == 2) {
+				System.out.println("insert 삽입 완료되었습니다.");
+							con.commit();
+			}
 			
-			pstmt = con.prepareStatement(
-					"INSERT INTO PROJECT (PROJECT_NAME, PROJECT_PROG, PROJECT_ADMIN, PROJECT_START, "
-					+ "					PROJECT_PRIORITY, PROJECT_PARTICI) "
-					+"VALUES (?,?,?,?,?,?)");
-			
-			pstmt.setString(1, p.getProject_name());
-			pstmt.setInt(2, p.getProject_partici());
-			pstmt.setString(3, p.getProject_admin());
-			result = pstmt.executeUpdate();//삽입 성공시 result는 1
-			
-			//primary key 제약조건 위반했을 경우 발생하는 에러
-			}catch(java.sql.SQLIntegrityConstraintViolationException e) {
-				result = -1;
-				System.out.println("프로젝트명 중복 에러입니다.");
-			}catch (Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
+				try {
+					con.rollback();
+				} catch (SQLException e1) {
+						e1.printStackTrace();
+				}
 			} finally {
+				
 				if (pstmt != null)
 					try {
 						pstmt.close();
@@ -337,13 +344,15 @@ public class ProjectDAO {
 					}
 				if (con != null)
 					try {
+						con.setAutoCommit(true);
 						con.close();
 					} catch (Exception ex) {
 					ex.printStackTrace();
 					}
 				}
 				return result;		
-			}//insert end		
+			}
+
 		
 }
 
