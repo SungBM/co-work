@@ -51,7 +51,7 @@ $(function(){
 			})//ajax end
 		});//id keyup end
 		
-		$("input[name=email]").on('keyup', function(){
+		$("input[name=receiver]").on('keyup', function(){
 			//$("#email_message").empty();
 			//[A-Za-z0-9_]와 동일한 것이 \w입니다.
 			//+는 1회 이상 반복을 의미하고 {1,}와 동일합니다.
