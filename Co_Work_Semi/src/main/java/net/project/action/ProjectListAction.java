@@ -79,6 +79,7 @@ public class ProjectListAction implements Action {
 			endpage = maxpage;
 
 		String state = request.getParameter("state");
+		
 
 		if (state == null) {
 			System.out.println("state == null");
@@ -97,12 +98,15 @@ public class ProjectListAction implements Action {
 			request.setAttribute("projectList", projectList);
 
 			request.setAttribute("limit", limit);
+			request.setAttribute("state", "ajax");
 			ActionForward forward = new ActionForward();
 			forward.setRedirect(false);
 
 			// 글 목록 페이지로 이동하기 위해 경로를 설정합니다.
 			forward.setPath("project/project_List.jsp");
+			state = "ajax";
 			return forward; // BoardFrontController.java로 리턴합니다.
+			
 		} else {
 			System.out.println("state==ajax");
 
