@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.project.db.Project;
 import net.project.db.ProjectDAO;
+import net.project.db.Project_User;
 
 public class ProjectAddProcessAction implements Action {
 
@@ -21,17 +22,20 @@ public class ProjectAddProcessAction implements Action {
       String project_start = request.getParameter("project_start");
       String project_end = request.getParameter("project_end");
       String project_priority = request.getParameter("project_priority");
-      int project_partici = Integer.parseInt(request.getParameter("project_partici"));
       String project_admin = request.getParameter("project_admin");
+      String user_id = request.getParameter("user_id");
+      int project_user_no = Integer.parseInt(request.getParameter("project_user_no"));
       
       Project p = new Project();
       p.setProject_name(project_name);          p.setProject_prog(project_prog);
       p.setProject_start(project_start);        p.setProject_end(project_end);
-      p.setProject_priority(project_priority);   p.setProject_partici(project_partici);  p.setProject_admin(project_admin); 
+      p.setProject_priority(project_priority);  p.setProject_admin(project_admin); 
       
+      Project  u = new Project();
+      u.setuser_id(user_id);					p.setproject_user_no(project_user_no);
       
       ProjectDAO pdao = new ProjectDAO();
-      int result = pdao.insert(p);
+      int result = pdao.insert(p, u);
        
       ActionForward forward = new ActionForward();
       //result=0;
