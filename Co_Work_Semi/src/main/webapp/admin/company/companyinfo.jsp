@@ -98,11 +98,11 @@
                      <div class="input-group hstack gap-3">
                         <h4 class="mb-sm-0 font-size-18">부서</h4>
                         <span class="input-group-btn input-group-append"></span>
-                        <button class="btn btn-primary bootstrap-touchspin-up" type="button">+</button>
+                        <button class="btn btn-primary bootstrap-touchspin-up bx bx-add-to-queue" type="button">+</button>
 
                         <form action="DeptJobCreateProcess.com" method="post" class="row row-cols-lg-auto" style="display: none" name="addform">
                            <div>
-                              <input class="form-control" type="text" placeholder="추가할 부서를 입력해주세요." name="dept_name">
+                              <input class="form-control" type="text" placeholder="부서를 입력해주세요." name="dept_name" style="width:165px">
                               <input type="hidden" name="company_name" value="${companyinfo.company_name}">
                               <input type="hidden" name="value" value="dept_name">
                            </div>
@@ -142,11 +142,10 @@
                      <div class="input-group hstack gap-3">
                         <h4 class="mb-sm-0 font-size-18">직함</h4>
                         <span class="input-group-btn input-group-append"></span>
-                        <button class="btn btn-primary bootstrap-touchspin-up" type="button">+</button>
-
+                        <button class="btn btn-primary bootstrap-touchspin-up bx bx-add-to-queue" type="button">+</button>
                         <form action="DeptJobCreateProcess.com" method="post" class="row row-cols-lg-auto" style="display: none" name="addform">
                            <div>
-                              <input class="form-control" type="text" placeholder="추가할 직함을 입력해주세요." name="job_name">
+                              <input class="form-control" type="text" placeholder="직함을 입력해주세요." name="job_name" style="width:165px">
                               <input type="hidden" name="company_name" value="${companyinfo.company_name}">
                               <input type="hidden" name="value" value="job_name">
                            </div>
@@ -188,5 +187,5 @@
 </body>
 
 <jsp:include page="/main/footer.html"></jsp:include>
-<script src="admin_js/admin.js"></script>
+<script src="admin_js/company.js"></script>
 </html>
