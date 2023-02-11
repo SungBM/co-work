@@ -4,7 +4,8 @@
 <html lang="en">
 <jsp:include page="/main/header.html"></jsp:include>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
-<script src=board_js/notice/view.js></script>
+<script src="board_js/notice/list.js"></script>
+<script src="board_js/notice/view.js"></script>
 <style>
 
 .container-fluid{
@@ -20,8 +21,19 @@
 	float: left;
 	width:10%;
 }
-#myModal {
-	display: none
+.float-date{
+	float: right;	
+}
+.bottom-active{
+	margin-top: 1em;
+}
+
+.file-value{
+	float: left;
+	width: 80%;
+}
+.button{
+	float: right;	
 }
 </style>
 <head>
@@ -43,48 +55,51 @@
 	        <!-- end page title -->
 	        <!-- view페이지 -->
 			<div class="card">
-                   <div class="card-body">
-						<div class="float-subject">
-							<div class="form-control"><c:out value="${noticedata.notice_subject}"/></div>
+               	<div class="card-body">
+					<div class="float-subject">
+						<div class="form-control"><c:out value="${noticedata.notice_subject}"/></div>
+					</div>
+					<div class="float-name">
+							<input class="form-control" value="${noticedata.notice_name}" readOnly>
+					</div>
+					<div class="float-date">
+							<span><c:out value="${noticedata.notice_reg_date}"/></span>
+					</div>					
+					<div class="form-group">
+						<textarea class="form-control" rows="10">${noticedata.notice_content}</textarea>
+					</div>
+			
+					<div class="bottom-active" >
+						<div class="file-value">
+							<label class="form-control" >
+								<span id="filevalue"></span>
+								<!-- 파일 첨부한 경우 -->
+								<c:if test="${!empty noticedata.notice_file}">
+									<td>
+										<img src="image/board/down.png" width="10px">
+										<a href="NoticeFileDown.bon?filename=${noticedata.notice_file}">${noticedata.notice_file}</a>
+									</td>
+								</c:if>
+							</label>
 						</div>
-						<div class="float-name">
-							<div class="form-control">${noticedata.notice_name}</div>
-						</div>			
-						<div class="form-group">
-							<textarea class="form-control" rows="10">${noticedata.notice_content}</textarea>
+						<div class="button">
+							<c:if test="${noticedata.notice_name == 'HTA1'}">
+								<%--href의 주소를 #으로 설정합니다. --%>
+								<span href="#">
+									<button class="btn btn-danger" data-toggle="modal"
+										data-target="#myModal">삭제</button>	
+								</span>
+								<span href="NoticeModifyView.bon?num=${noticedata.notice_num}">
+									<button class="btn btn-info">수정</button>
+								</span>
+							</c:if>	
 						</div>
-				
-						<div class="bottom-active" >
-							<div class="file-value">
-								<label class="form-control" >
-									<span id="filevalue"></span>
-									<!-- 파일 첨부한 경우 -->
-									<c:if test="${!empty noticedata.notice_file}">
-										<td>
-											<img src="image/board/down.png" width="10px">
-											<a href="NoticeFileDown.bon?filename=${noticedata.notice_file}">${noticedata.notice_file}</a>
-										</td>
-									</c:if>
-								</label>
-							</div>
-							<div class="button">
-								<c:if test="${noticedata.notice_name == 'HTA1'}">
-									<%--href의 주소를 #으로 설정합니다. --%>
-									<a href="#">
-										<button class="btn btn-danger" data-toggle="modal"
-											data-target="#myModal">삭제</button>	
-									</a>
-									<a href="NoticeModifyView.bon?num=${noticedata.notice_num}">
-										<button class="btn btn-info">수정</button>
-									</a>
-								</c:if>	
-							</div>
-						</div>
-					</form>
+					</div>
 				</div>
 			</div>	    
-		</div> <!-- container-fluid -->
-	</div>
+		</div> 
+	</div><!-- container-fluid -->
+	
 <!-- End Page-content -->
 <jsp:include page="/main/footer.html"></jsp:include>
 </body>

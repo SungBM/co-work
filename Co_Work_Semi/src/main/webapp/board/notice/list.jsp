@@ -6,6 +6,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
 <script src="board_js/notice/list.js"></script>
 <style>
+
 .form-select{
 	float: left;
 	width:10%;
@@ -67,11 +68,7 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th colspan="3">공지사항 게시판</th>
-						<th colspan="2"></th>
-						<th>
-							<font>등록 : ${listcount}</font>
-						</th>
+						<th>등록 : ${listcount}</th>
 					</tr>
 					<tr>
 						<th><div>NO.</div></th>
