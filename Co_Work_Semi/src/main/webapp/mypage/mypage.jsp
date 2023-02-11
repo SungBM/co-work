@@ -104,12 +104,21 @@ input[type=file] {
 								<div class="mb-3 row">
 									<label for="value-name" class="col-md-2 col-form-label">부서</label>
 									<div class="col-md-7">
-										<select class="form-select" name="user_dept" disabled>
-											<c:if test="${!empty dept }">
+										<select class="form-select" name="user_dept" disabled required>
+
+											<c:if test="${!empty list.dept_name }">
 												<c:forEach var="list" items="${dept }" varStatus="i">
 													<option value="${list.dept_name }">${list.dept_name}</option>
 												</c:forEach>
 											</c:if>
+
+											<c:if test="${empty list.dept_name }">
+												<option value="" selected style="display: none">부서를 선택해주세요.</option>
+												<c:forEach var="list" items="${dept }" varStatus="i">
+													<option value="${list.dept_name }">${list.dept_name}</option>
+												</c:forEach>
+											</c:if>
+
 										</select>
 										<input type="hidden" name="user_id" value="${memberinfo.user_id}">
 										<input type="hidden" name="value" value="user_dept">
@@ -126,11 +135,20 @@ input[type=file] {
 									<label for="value-name" class="col-md-2 col-form-label">직함</label>
 									<div class="col-md-7">
 										<select class="form-select" name="user_job" disabled>
-											<c:if test="${!empty job }">
+
+											<c:if test="${!empty list.job_name }">
 												<c:forEach var="list" items="${job }" varStatus="i">
 													<option value="${list.job_name }">${list.job_name}</option>
 												</c:forEach>
 											</c:if>
+
+											<c:if test="${empty list.job_name }">
+												<option value="" selected style="display: none">직함을 선택해주세요.</option>
+												<c:forEach var="list" items="${job }" varStatus="i">
+													<option value="${list.job_name }">${list.job_name}</option>
+												</c:forEach>
+											</c:if>
+											
 										</select>
 										<input type="hidden" name="user_id" value="${memberinfo.user_id}">
 										<input type="hidden" name="value" value="user_job">
@@ -214,7 +232,8 @@ input[type=file] {
 <jsp:include page="/main/footer.html"></jsp:include>
 <script src="mypage_js/mypage.js"></script>
 <script>
-	$("select[name=user_dept]").val('${memberinfo.user_dept}').prop("selected", true);
+	$("select[name=user_dept]").val('${memberinfo.user_dept}').prop("selected",
+			true);
 	$("option[value='${memberinfo.user_job }']").prop("selected", true);
 </script>
 </html>

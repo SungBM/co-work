@@ -44,7 +44,13 @@ public class NoticeFrontController extends HttpServlet {
             action = new NoticeListAction();
             break;
         case "/NoticeWrite.bon":
-            action = new NoticeWritection();
+            action = new NoticeWriteAction();
+            break;
+        case "/NoticeAddAction.bon":
+            action = new NoticeAddAction();
+            break;
+        case "/NoticeDetailAction.bon":
+            action = new NoticeDetailAction();
             break;
 		}//switch end
 		

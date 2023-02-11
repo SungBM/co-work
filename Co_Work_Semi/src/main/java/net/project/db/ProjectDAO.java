@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -264,7 +265,7 @@ public class ProjectDAO {
 		ResultSet rs = null;
 		ArrayList<Project_User> list = null;
 		
-		String participants_Sql = "SELECT P.USER_ID, U.USER_NAME, U.USER_IMG FROM PROJECT_USER P "
+		String participants_Sql = "SELECT P.USER_ID,P.PROJECT_NUM , U.USER_NAME, U.USER_IMG FROM PROJECT_USER P "
 								+ "INNER JOIN USER_INFO U "
 								+ "ON P.USER_ID = U.USER_ID "
 								+ "WHERE PROJECT_NUM = ? ";
@@ -280,8 +281,9 @@ public class ProjectDAO {
 			while(rs.next()) {
 				Project_User user = new Project_User();
 				user.setUSER_ID(rs.getString(1));
-				user.setUSER_NAME(rs.getString(2));
-				user.setUSER_IMG(rs.getString(3));
+				user.setPROJECT_NUM(rs.getInt(2));
+				user.setUSER_NAME(rs.getString(3));
+				user.setUSER_IMG(rs.getString(4));
 				
 				list.add(user);
 			}
@@ -305,45 +307,92 @@ public class ProjectDAO {
 	}
 	
 	public int insert(Project p) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		int result=0;
-		try {
-			con = ds.getConnection();
-			System.out.println("getConnection : insert()");
-			
-			pstmt = con.prepareStatement(
-					"INSERT INTO PROJECT (PROJECT_NAME, PROJECT_PROG, PROJECT_ADMIN, PROJECT_START, "
-					+ "					PROJECT_PRIORITY, PROJECT_PARTICI) "
-					+"VALUES (?,?,?,?,?,?)");
-			
-			pstmt.setString(1, p.getProject_name());
-			pstmt.setInt(2, p.getProject_partici());
-			pstmt.setString(3, p.getProject_admin());
-			result = pstmt.executeUpdate();//삽입 성공시 result는 1
-			
-			//primary key 제약조건 위반했을 경우 발생하는 에러
-			}catch(java.sql.SQLIntegrityConstraintViolationException e) {
-				result = -1;
-				System.out.println("프로젝트명 중복 에러입니다.");
-			}catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				if (pstmt != null)
-					try {
-						pstmt.close();
-					} catch (SQLException ex) {
-					ex.printStackTrace();
-					}
-				if (con != null)
-					try {
-						con.close();
-					} catch (Exception ex) {
-					ex.printStackTrace();
-					}
-				}
-				return result;		
-			}//insert end		
-		
-}
+		   //초기변수선언부
+		        Connection con = null;
+		        PreparedStatement pstmt = null;
+		        int result=0;
+
+		  try {
+		     //db객체받아서
+		     con = ds.getConnection();
+		     //auto커밋 false
+		     con.setAutoCommit(false);
+		     
+		     //1차 sql문생성
+		     String sql =   "insert into PROJECT (PROJECT_NUM, PROJECT_NAME, PROJECT_PROG, PROJECT_ADMIN, "            
+		              +  "                        PROJECT_START, PROJECT_END, PROJECT_PRIORITY) "
+		              +  " values (PROJECT_SEQ.NEXTVAL, ?,?,?,?,?,?)";
+		     //커넥션 객체 con 에 sql문을 넣어서 pstmt객체 생성 
+		     pstmt = con.prepareStatement(sql);
+		     
+		     //sql 에 ? 부분 값 설정해주기
+		     pstmt.setString(1, p.getProject_name());
+		     pstmt.setInt(2, p.getProject_prog());
+		     pstmt.setString(3, p.getProject_admin());
+		     pstmt.setString(4, p.getProject_start());
+		     pstmt.setString(5, p.getProject_end());
+		     pstmt.setString(6, p.getProject_priority());
+		     //executeUpdate 메서드 반환값 result에 저장 executeUpdate함수는 변화가 일어난 row개수를 반환합니다 실패시 0 반환
+		     //예를들어 1개행 insert : 1 / 5개행 insert : 5를반환 저희는 지금 프로젝트 1개를 생성하기때문에 1을 반환합니다
+		     result = pstmt.executeUpdate(); //성공하면 result 1 실패면 0 인상태
+		     //한번 실행한 pstmt객체는 close()해서 리소스 반환
+		     pstmt.close();
+		     
+		     //2차 실행할 sql문 작성
+		     sql = "insert into PROJECT_USER "
+		    	+ " values( (select max(project_num), 0) +1 from project) "
+		    	+ "		, ?, "
+		    	+ "		PROJECT_UESR_SEQ";
+		     
+		     //2차 sql문 실행해줄 pstmt객체 새로이 생성
+		     pstmt = con.prepareStatement(sql);
+		     
+		     pstmt.setString(1, p.getProject_admin());
+		     /*
+		      *  sql 에 ? 부분 값 설정해주시면됩니다
+		      * 
+		      */
+		     
+		    //똑같이 result  에 executeUpdate 반환값 저장해주시고
+		    //전에 실행한 executeUpdate 의 결과에 현재 executeUpdate 실행결과값을 더해줍니다
+		    //위의 설명과 마찬가지로 일단은 프로젝트 최초 생성자 한명만 참여자 테이블에 들어가기 때문에 성공시 1개 행 insert 1을 반환합니다
+		    result += pstmt.executeUpdate();
+		    
+		     
+		        if (result == 2) {
+		        //2면 둘다 실행이 잘된거니까 삽입완료 커밋하시면됩니다
+		        //2가 아니면 0,1 둘다 둘중하나는 실패한상황이므로 맞춰서 에러메시지 추적하실수있게하세요!
+		           System.out.println("insert 삽입 완료되었습니다.");
+		           con.commit();
+		        } else {
+		        	System.out.println("삽입 실패");
+		        }
+		        
+		        } catch (Exception e) {
+		           e.printStackTrace();
+		           
+		           try {
+		              con.rollback();
+		           } catch (SQLException e1) {
+		                 e1.printStackTrace();
+		           }
+		        } finally {
+		           
+		           if (pstmt != null)
+		              try {
+		                 pstmt.close();
+		              } catch (SQLException ex) {
+		              ex.printStackTrace();
+		              }
+		           if (con != null)
+		              try {
+		                 con.setAutoCommit(true);
+		                 con.close();
+		              } catch (Exception ex) {
+		              ex.printStackTrace();
+		              }
+		           }
+		           return result;      
+		        }
+		}
 

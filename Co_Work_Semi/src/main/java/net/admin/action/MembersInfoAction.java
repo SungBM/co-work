@@ -19,9 +19,19 @@ public class MembersInfoAction implements Action {
 		MypageDAO mydao = new MypageDAO();
 
 		List<Member> list = null;
+		List<Member> normal = null;
+		List<Member> wait = null;
+		List<Member> stop = null;
 		list = mydao.all_member_info();
+		normal = mydao.normal_info();
+		wait = mydao.wait_info();
+		stop = mydao.stop_info();
+		
 
 		request.setAttribute("list", list);
+		request.setAttribute("normal", normal);
+		request.setAttribute("wait", wait);
+		request.setAttribute("stop", stop);
 		forward.setRedirect(false);
 		forward.setPath("admin/members/membersinfo.jsp");
 		return forward;

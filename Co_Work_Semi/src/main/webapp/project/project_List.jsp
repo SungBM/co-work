@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+
 <html lang="en">
 <jsp:include page="/main/header.html"></jsp:include>
 <link href="project_Css/project.css" rel="stylesheet" type="text/css"/>
+<style>
+</style>
 <div class="page-content">
     <div class="container-fluid">
         <!-- start page title -->
@@ -28,7 +31,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-	                          
                             	<c:forEach var="p" items="${projectList }">
                             	
                             	<tr>
@@ -43,7 +45,7 @@
                                         <h5 class="text-truncate font-size-14"><a href="#" class="text-dark">
 											<c:out value="${p.project_name }"/>
 										</a></h5>
-                                        
+                                        <p hidden="true" id="${p.project_num }"></p>
                                     </td>
                                     <td>
                                     	<h5 id="getState" aria-valuenow = "${p.project_state }" class="text-truncate font-size-14" >
@@ -69,16 +71,18 @@
                                     </td>
                                     <td><span class="badge " aria-valuenow="${p.project_state }" style="width: 50%">${p.project_priority }</span></td>
                                     <td>
-                                    <div class="avatar-group">
+                                    <div class="avatar-group" id = "${p.project_num }">
                                     	<c:forEach var='u' items="${p.project_parti }" varStatus="status">
+                                    	<c:if test="${not doneLoop}"> 
                                     		<c:if test="${status.index > 3 }">
-                                    			<div>
+                                    			<div class="team_icon">
                                             		<a href="#" class="dropdown-toggle card-drop" 
                                             		data-bs-toggle="modal" data-bs-target="#myModal" aria-expanded="false">
                                                 		<i class="mdi mdi-dots-horizontal font-size-18"></i>
                                             		</a>
-                                            		<jsp:include page="/project/project_team_modal.jsp"></jsp:include>
+                                            		<jsp:include page="/project/project_team_modal3.jsp?project_num = ${p.project_num }"></jsp:include>
                                             	</div>
+                                            		<c:set var="doneLoop" value="true"/> 
                                     		</c:if>
                                     		<c:if test="${status.index <= 3 }">
                                     		  <div class="avatar-group-item">
@@ -86,6 +90,7 @@
                                                     <img src="image/users/${u.USER_IMG }" alt="" class="rounded-circle avatar-xs" id="more_team">
                                                 </a>
                                               </div>
+                                            </c:if>
                                             </c:if>
                                     	</c:forEach>
                                     </div>
@@ -128,6 +133,33 @@
 <jsp:include page="/main/footer.html"></jsp:include>
 	<script src="project_js/project_add.js"></script>
 	<script src="project_js/project_list_onload.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$(".team_icon").click(function(){
+			$("#stateForm").submit(function(){
+				
+			});
+			
+			   console.log("들어옴");
+			   var p = $(this).parent().attr("id");
+			   var state = $("#state").val();
+			   console.log(state);
+			   console.log(p);
+			   $.ajax({			
+					url: "ProjectList.po",  
+		 			type:"GET",
+		 			success:function(response) {
+		 				console.log(response);
+		 			},
+		 			error:function(xhr,status,msg){
+		 				console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+		 			}
+		 	   });
+		});
+	});
+		
+	
+	</script>
 </html>
 
 
