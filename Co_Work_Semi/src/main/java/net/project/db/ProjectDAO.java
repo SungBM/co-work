@@ -264,7 +264,7 @@ public class ProjectDAO {
 		ResultSet rs = null;
 		ArrayList<Project_User> list = null;
 		
-		String participants_Sql = "SELECT P.USER_ID, U.USER_NAME, U.USER_IMG FROM PROJECT_USER P "
+		String participants_Sql = "SELECT P.USER_ID,P.PROJECT_NUM , U.USER_NAME, U.USER_IMG FROM PROJECT_USER P "
 								+ "INNER JOIN USER_INFO U "
 								+ "ON P.USER_ID = U.USER_ID "
 								+ "WHERE PROJECT_NUM = ? ";
@@ -280,8 +280,9 @@ public class ProjectDAO {
 			while(rs.next()) {
 				Project_User user = new Project_User();
 				user.setUSER_ID(rs.getString(1));
-				user.setUSER_NAME(rs.getString(2));
-				user.setUSER_IMG(rs.getString(3));
+				user.setPROJECT_NUM(rs.getInt(2));
+				user.setUSER_NAME(rs.getString(3));
+				user.setUSER_IMG(rs.getString(4));
 				
 				list.add(user);
 			}

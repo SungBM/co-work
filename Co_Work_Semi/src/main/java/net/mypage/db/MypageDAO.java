@@ -332,7 +332,7 @@ public class MypageDAO {
 		try {
 			con = ds.getConnection();
 
-			String sql = "SELECT * from user_info";
+			String sql = "SELECT * from user_info order by user_state";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
@@ -406,7 +406,7 @@ public class MypageDAO {
 				m.setUser_intro(rs.getString("user_intro"));
 				m.setUser_img(rs.getString("user_img"));
 				m.setUser_card(rs.getString("user_card"));
-				
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -433,6 +433,195 @@ public class MypageDAO {
 				}
 		}
 		return m;
+	}
+
+	public void member_status(String user_id, String state) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = ds.getConnection();
+			String sql = "update user_info set user_state = ? WHERE USER_ID = ?";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, state);
+			pstmt.setString(2, user_id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("member_status() 오류");
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}
+	}
+
+	public List<Member> normal_info() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Member> normal = new ArrayList<Member>();
+		try {
+			con = ds.getConnection();
+
+			String sql = "SELECT * from user_info where user_state = 0";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				Member m = new Member();
+				m.setUser_id(rs.getString("user_id"));
+				m.setUser_password(rs.getString("user_password"));
+				m.setUser_name(rs.getString("user_name"));
+				m.setUser_dept(rs.getString("user_dept"));
+				m.setUser_job(rs.getString("user_job"));
+				m.setUser_email(rs.getString("user_email"));
+				m.setUser_phone(rs.getString("user_phone"));
+				m.setUser_join_date(rs.getDate("user_join_date"));
+				m.setUser_state(rs.getInt("user_state"));
+				m.setUser_is_admin(rs.getInt("user_is_admin"));
+				normal.add(m);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("normal_info() 오류");
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}
+		return normal;
+	}
+
+	public List<Member> wait_info() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Member> wait = new ArrayList<Member>();
+		try {
+			con = ds.getConnection();
+
+			String sql = "SELECT * from user_info where user_state = 2";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				Member m = new Member();
+				m.setUser_id(rs.getString("user_id"));
+				m.setUser_password(rs.getString("user_password"));
+				m.setUser_name(rs.getString("user_name"));
+				m.setUser_dept(rs.getString("user_dept"));
+				m.setUser_job(rs.getString("user_job"));
+				m.setUser_email(rs.getString("user_email"));
+				m.setUser_phone(rs.getString("user_phone"));
+				m.setUser_join_date(rs.getDate("user_join_date"));
+				m.setUser_state(rs.getInt("user_state"));
+				m.setUser_is_admin(rs.getInt("user_is_admin"));
+				wait.add(m);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("normal_info() 오류");
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}
+		return wait;
+	}
+
+	public List<Member> stop_info() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Member> stop = new ArrayList<Member>();
+		try {
+			con = ds.getConnection();
+
+			String sql = "SELECT * from user_info where user_state = 1";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				Member m = new Member();
+				m.setUser_id(rs.getString("user_id"));
+				m.setUser_password(rs.getString("user_password"));
+				m.setUser_name(rs.getString("user_name"));
+				m.setUser_dept(rs.getString("user_dept"));
+				m.setUser_job(rs.getString("user_job"));
+				m.setUser_email(rs.getString("user_email"));
+				m.setUser_phone(rs.getString("user_phone"));
+				m.setUser_join_date(rs.getDate("user_join_date"));
+				m.setUser_state(rs.getInt("user_state"));
+				m.setUser_is_admin(rs.getInt("user_is_admin"));
+				stop.add(m);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("normal_info() 오류");
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}
+		return stop;
 	}
 
 }

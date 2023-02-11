@@ -4,7 +4,11 @@
 <html lang="en">
 <jsp:include page="/main/header.html"></jsp:include>
 <title>구성원 관리</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+th, tr {
+	text-align: center;
+}
+</style>
 </head>
 <body>
 	<input type="hidden" name="user_id" value="${m.user_id }">
@@ -18,7 +22,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xl-12">
+			<div class="col-12">
 				<div class="card">
 					<div class="card-body">
 						<!-- Nav tabs -->
@@ -50,23 +54,23 @@
 						</ul>
 
 						<!-- Tab panes -->
+
 						<div class="tab-content p-3 text-muted">
 							<div class="tab-pane active" id="home-1" role="tabpanel">
-								<p class="mb-1">작업중입니다.</p>
 								<div class="table-responsive">
-									<table class="table mb-1 dataTable">
+									<table class="table mb-1 table-hover">
 										<thead>
 											<tr role="row">
-												<th class="sorting_asc" style="width: 13px;" aria-sort="ascending"><input class="form-check-input" type="checkbox" id="formCheck1"></th>
-												<th class="sorting" style="width: 40px;">이름</th>
-												<th class="sorting" style="width: 50px;">부서</th>
-												<th class="sorting" style="width: 50px;">직책</th>
-												<th class="sorting" style="width: 30px;">이메일</th>
-												<th class="sorting" style="width: 50px;">연락처</th>
-												<th class="sorting" style="width: 50px;">가입일</th>
-												<th class="sorting" style="width: 60px;">마지막 접속</th>
-												<th class="sorting" style="width: 50px;">상태</th>
-												<th class="sorting" style="width: 50px;">관리자</th>
+												<th><input class="form-check-input" type="checkbox" id="formCheck1"></th>
+												<th>이름</th>
+												<th>부서</th>
+												<th>직책</th>
+												<th>이메일</th>
+												<th>연락처</th>
+												<th>가입일</th>
+												<th>마지막 접속</th>
+												<th>상태</th>
+												<th>관리자</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -86,18 +90,39 @@
 													<td>${m.user_phone }</td>
 													<td>${m.user_join_date }</td>
 													<td>미구현</td>
+
+													<!-- 상태 표시 -->
 													<c:if test="${m.user_state eq 0}">
-														<td>이용중지</td>
+														<td style="color: green;">
+															<span>정상</span>
+															<br>
+															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=1">[중지]</a>
+														</td>
 													</c:if>
 													<c:if test="${m.user_state eq 1}">
-														<td>정상</td>
+														<td style="color: red;">
+															<span>중지</span>
+															<br>
+															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=0">[정상]</a>
+														</td>
+													</c:if>
+													<c:if test="${m.user_state eq 2}">
+														<td style="color: orange">
+															<span>승인 대기</span>
+															<br>
+															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=2">[승인]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=1">[중지]</a>
+														</td>
 													</c:if>
 
+													<!-- 관리자 표시 -->
 													<c:if test="${m.user_is_admin eq 1}">
 														<td>관리자</td>
 													</c:if>
 													<c:if test="${m.user_is_admin eq 0}">
-														<td>사용자</td>
+														<td>
+															<a href="admingrant.com">[지정]</a>
+														</td>
 													</c:if>
 												</tr>
 											</c:forEach>
@@ -107,15 +132,228 @@
 							</div>
 
 							<div class="tab-pane" id="profile-1" role="tabpanel">
-								<p class="mb-0">승인</p>
+								<div class="table-responsive">
+									<table class="table mb-1 table-hover">
+										<thead>
+											<tr role="row">
+												<th><input class="form-check-input" type="checkbox" id="formCheck1"></th>
+												<th>이름</th>
+												<th>부서</th>
+												<th>직책</th>
+												<th>이메일</th>
+												<th>연락처</th>
+												<th>가입일</th>
+												<th>마지막 접속</th>
+												<th>상태</th>
+												<th>관리자</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach var="m" items="${normal }">
+												<tr>
+													<td>
+														<input class="form-check-input" type="checkbox" id="formCheck2">
+													</td>
+													<td>
+														<a name="meminfo" href="mypage.my?user_id=${m.user_id }"}">${m.user_name }</a>
+													</td>
+													<td>${m.user_dept }</td>
+													<td>${m.user_job }</td>
+													<td>
+														<a href="#">${m.user_email }</a>
+													</td>
+													<td>${m.user_phone }</td>
+													<td>${m.user_join_date }</td>
+													<td>미구현</td>
+
+													<!-- 상태 표시 -->
+													<c:if test="${m.user_state eq 0}">
+														<td style="color: green;">
+															<span>정상</span>
+															<br>
+															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=1">[중지]</a>
+														</td>
+													</c:if>
+													<c:if test="${m.user_state eq 1}">
+														<td style="color: red;">
+															<span>중지</span>
+															<br>
+															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=0">[정상]</a>
+														</td>
+													</c:if>
+													<c:if test="${m.user_state eq 2}">
+														<td style="color: orange">
+															<span>승인 대기</span>
+															<br>
+															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=2">[승인]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=1">[중지]</a>
+														</td>
+													</c:if>
+
+													<!-- 관리자 표시 -->
+													<c:if test="${m.user_is_admin eq 1}">
+														<td>관리자</td>
+													</c:if>
+													<c:if test="${m.user_is_admin eq 0}">
+														<td>
+															<a href="admingrant.com">[지정]</a>
+														</td>
+													</c:if>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
 							</div>
 
 							<div class="tab-pane" id="messages-1" role="tabpanel">
-								<p class="mb-0">승인 대기</p>
+								<div class="table-responsive">
+									<table class="table mb-1 table-hover">
+										<thead>
+											<tr role="row">
+												<th><input class="form-check-input" type="checkbox" id="formCheck1"></th>
+												<th>이름</th>
+												<th>부서</th>
+												<th>직책</th>
+												<th>이메일</th>
+												<th>연락처</th>
+												<th>가입일</th>
+												<th>마지막 접속</th>
+												<th>상태</th>
+												<th>관리자</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach var="m" items="${wait }">
+												<tr>
+													<td>
+														<input class="form-check-input" type="checkbox" id="formCheck2">
+													</td>
+													<td>
+														<a name="meminfo" href="mypage.my?user_id=${m.user_id }"}">${m.user_name }</a>
+													</td>
+													<td>${m.user_dept }</td>
+													<td>${m.user_job }</td>
+													<td>
+														<a href="#">${m.user_email }</a>
+													</td>
+													<td>${m.user_phone }</td>
+													<td>${m.user_join_date }</td>
+													<td>미구현</td>
+
+													<!-- 상태 표시 -->
+													<c:if test="${m.user_state eq 0}">
+														<td style="color: green;">
+															<span>정상</span>
+															<br>
+															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=1">[중지]</a>
+														</td>
+													</c:if>
+													<c:if test="${m.user_state eq 1}">
+														<td style="color: red;">
+															<span>중지</span>
+															<br>
+															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=0">[정상]</a>
+														</td>
+													</c:if>
+													<c:if test="${m.user_state eq 2}">
+														<td style="color: orange">
+															<span>승인 대기</span>
+															<br>
+															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=2">[승인]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=1">[중지]</a>
+														</td>
+													</c:if>
+
+													<!-- 관리자 표시 -->
+													<c:if test="${m.user_is_admin eq 1}">
+														<td>관리자</td>
+													</c:if>
+													<c:if test="${m.user_is_admin eq 0}">
+														<td>
+															<a href="admingrant.com">[지정]</a>
+														</td>
+													</c:if>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
 							</div>
 
 							<div class="tab-pane" id="settings-1" role="tabpanel">
-								<p class="mb-0">이용 중지</p>
+								<div class="table-responsive">
+									<table class="table mb-1 table-hover">
+										<thead>
+											<tr role="row">
+												<th><input class="form-check-input" type="checkbox" id="formCheck1"></th>
+												<th>이름</th>
+												<th>부서</th>
+												<th>직책</th>
+												<th>이메일</th>
+												<th>연락처</th>
+												<th>가입일</th>
+												<th>마지막 접속</th>
+												<th>상태</th>
+												<th>관리자</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach var="m" items="${stop }">
+												<tr>
+													<td>
+														<input class="form-check-input" type="checkbox" id="formCheck2">
+													</td>
+													<td>
+														<a name="meminfo" href="mypage.my?user_id=${m.user_id }"}">${m.user_name }</a>
+													</td>
+													<td>${m.user_dept }</td>
+													<td>${m.user_job }</td>
+													<td>
+														<a href="#">${m.user_email }</a>
+													</td>
+													<td>${m.user_phone }</td>
+													<td>${m.user_join_date }</td>
+													<td>미구현</td>
+
+													<!-- 상태 표시 -->
+													<c:if test="${m.user_state eq 0}">
+														<td style="color: green;">
+															<span>정상</span>
+															<br>
+															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=1">[중지]</a>
+														</td>
+													</c:if>
+													<c:if test="${m.user_state eq 1}">
+														<td style="color: red;">
+															<span>중지</span>
+															<br>
+															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=0">[정상]</a>
+														</td>
+													</c:if>
+													<c:if test="${m.user_state eq 2}">
+														<td style="color: orange">
+															<span>승인 대기</span>
+															<br>
+															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=2">[승인]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=1">[중지]</a>
+														</td>
+													</c:if>
+
+													<!-- 관리자 표시 -->
+													<c:if test="${m.user_is_admin eq 1}">
+														<td>관리자</td>
+													</c:if>
+													<c:if test="${m.user_is_admin eq 0}">
+														<td>
+															<a href="admingrant.com">[지정]</a>
+														</td>
+													</c:if>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -125,4 +363,5 @@
 	</div>
 </body>
 <jsp:include page="/main/footer.html"></jsp:include>
+<script src="admin_js/members.js"></script>
 </html>
