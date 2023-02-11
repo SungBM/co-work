@@ -150,6 +150,7 @@ public class UserDAO {
 		return result;
 	}
 		public UserInfo userinfo(String USER_ID) {
+		UserInfo userinfo = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -162,23 +163,23 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				UserInfo m = new UserInfo();
-				m.setUSER_ID(rs.getString("user_id"));
-				m.setUSER_PASSWORD(rs.getString("user_password"));
-				m.setUSER_EMAIL(rs.getString("user_email"));
-				m.setUSER_CODE(rs.getInt("USER_CODE"));
-				m.setUSER_NAME(rs.getString("user_name"));
-				m.setUSER_IMG(rs.getString("USER_IMG"));
-				m.setUSER_IS_ADMIN(rs.getInt("USER_IS_ADMIN"));
-				m.setUSER_DEPT(rs.getString("user_dept"));
-				m.setUSER_JOB(rs.getString("user_job"));
-				m.setUSER_FAX(rs.getString("USER_FAX"));
-				m.setUSER_INTRO(rs.getString("USER_INTRO"));
-				m.setUSER_CARD(rs.getString("USER_CARD"));
-				m.setUSER_STATE(rs.getString("USER_STATE"));
-				//m.setUSER_JOIN_DATE(rs.getDate("USER_JOIN_DATE"));
-				m.setUSER_PHONE(rs.getString("USER_PHONE"));
-				return m;
+				userinfo = new UserInfo();
+				userinfo.setUSER_ID(rs.getString("USER_ID"));
+				userinfo.setUSER_PASSWORD(rs.getString("USER_PASSWORD"));
+				userinfo.setUSER_EMAIL(rs.getString("USER_EMAIL"));
+				userinfo.setUSER_CODE(rs.getInt("USER_CODE"));
+				userinfo.setUSER_NAME(rs.getString("USER_NAME"));
+				userinfo.setUSER_IMG(rs.getString("USER_IMG"));
+				userinfo.setUSER_IS_ADMIN(rs.getInt("USER_IS_ADMIN"));
+				userinfo.setUSER_DEPT(rs.getString("USER_DEPT"));
+				userinfo.setUSER_JOB(rs.getString("USER_JOB"));
+				userinfo.setUSER_FAX(rs.getString("USER_FAX"));
+				userinfo.setUSER_INTRO(rs.getString("USER_INTRO"));
+				userinfo.setUSER_CARD(rs.getString("USER_CARD"));
+				userinfo.setUSER_STATE(rs.getString("USER_STATE"));
+				//userinfo.setUSER_JOIN_DATE(rs.getDate("USER_JOIN_DATE"));
+				userinfo.setUSER_PHONE(rs.getString("USER_PHONE"));
+				
 			}
 				
 		}catch(Exception se) {
@@ -203,7 +204,7 @@ public class UserDAO {
 				System.out.println(e.getMessage());
 			}
 		}
-		return null;
+		return userinfo;
 	}
 
 }

@@ -153,20 +153,20 @@ $(function(){
                                 	<div class="mb-3">
                                         <label for="userId" class="form-label">아이디</label>
                                         <input type="text" class="form-control" id="id" name="id"
-                                            placeholder="아이디(6~15자 영문, 숫자, _로 가능합니다.)">
+                                            placeholder="아이디(6~15자 영문, 숫자, _로 가능합니다.)" required>
                                             <span id="message"></span>
                                     </div>
                                     	
                                     <div class="mb-3">
                                         <label for="userpassword" class="form-label">비밀번호</label>
                                         <input type="password" class="form-control" id="pw1" name="pass"
-                                            placeholder="비밀번호(6~15자 영문, 숫자, _로 가능합니다.)">
+                                            placeholder="비밀번호(6~15자 영문, 숫자, _로 가능합니다.)" required>
                                     </div>
                                     
                                     <div class="mb-3">
                                         <label for="userpassword_ch" class="form-label">비밀번호 확인</label>
                                         <input type="password" class="form-control" id="pw2" name="password_ch"
-                                            placeholder="비밀번호를 다시 입력하세요">
+                                            placeholder="비밀번호를 다시 입력하세요" required>
                                              <td><font id="checkPw"></font></td>
                                     </div>
 									
@@ -183,7 +183,7 @@ $(function(){
                                                 
                                         <label for="useremail" class="form-label">이메일</label>
                                         <input type="email" class="form-control" id="receiver" name="receiver"
-                                            placeholder="e-mail@naver.com">
+                                            placeholder="e-mail@naver.com" required>
                                             <span id="email_message"></span>
                                     </div>
                                     
@@ -199,14 +199,14 @@ $(function(){
                                    <div class="mb-3">
                                         <label for="code" class="mail_check_wrap">인증번호</label>
                                         <input type="text" class="form-control" id="code" name="code"
-                                            placeholder="인증번호">
+                                            placeholder="이메일로 전송된 인증번호를 입력하세요" required>
                                             <span id="code_message"></span>
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="name" class="form-label">이름</label>
                                         <input type="text" class="form-control" id="name" name="name"
-                                            placeholder="이름을 입력하세요">
+                                            placeholder="이름을 입력하세요" required>
                                     </div>
 
 
@@ -287,6 +287,7 @@ $(function(){
 	<script>
 	  let re="";
 	  $("#mail_submit").click(function(){
+		  $("#mail_submit").attr("disabled", true);
 		  $.ajax({
 		        url : "send.net",
 		        data : {"receiver" : $("#receiver").val()},
@@ -297,7 +298,8 @@ $(function(){
 		        }
 		  })
 	  })
-		        
+	  
+	  
 		            $("#code_submit").click(function(){
 		            	console.log(re)
 		        	if(re == $("#code").val()){  //이건 값을 보내는 경우 . 확인을 누르면 검사할 수 있도록. 버튼 만들어야해

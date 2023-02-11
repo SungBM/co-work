@@ -54,9 +54,9 @@ $(function() {
 		
 	}
 	
-	$(".logo-light").click(function(){
+	$(".logo logo-light").click(function(){
 		console.log("클릭");
-		location.href = "index.net";
+		location.href = "main.net";
 		
 	});
 	/*

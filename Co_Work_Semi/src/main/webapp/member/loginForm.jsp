@@ -45,20 +45,6 @@
                                                             <div class="py-3">
                                                                 <p class="font-size-16 mb-4">" Be What's Next "</p>
                                                                 <div>
-                                                                    <h4 class="font-size-16 text-primary">Abs1981</h4>
-                                                                    <p class="font-size-14 mb-0">- Skote User</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="item">
-                                                            <div class="py-3">
-                                                                <p class="font-size-16 mb-4">" If Every Vendor on Envato
-                                                                    are as supportive as Themesbrand, Development with
-                                                                    be a nice experience. You guys are Wonderful. Keep
-                                                                    us the good work. "</p>
-                                                                <div>
-                                                                    <h4 class="font-size-16 text-primary">nezerious</h4>
-                                                                    <p class="font-size-14 mb-0">- Skote User</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -78,7 +64,7 @@
                         <div class="w-100">
                             <div class="d-flex flex-column h-100">
                                 <div class="mb-4 mb-md-5">
-                                    <a href="index2.jsp" class="d-block auth-logo">
+                                    <a href="main.net" class="d-block auth-logo">
                                         <img src="assets/images/logo-light.png" alt="" height="18"
                                             class="auth-logo-light">
                                     </a>
@@ -89,16 +75,16 @@
                                         <p class="text-muted">오늘도 행복한 하루 되세요!</p>
                                     </div>
                                     <div class="mt-4">
-                                        <form name="loginform" action="index.net" method="post">
+                                        <form name="loginform" action="main.net" method="post">
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">아이디</label>
                                                 <input type="text" class="form-control" id="id" name="id"
                                                     placeholder="Enter id" required>
                                             </div>
                                             <div class="mb-3">
-                                                <div class="float-end">
+                                              <!--  <div class="float-end">
                                                     <a href="auth-recoverpw-2.html" class="text-muted" >비밀번호찾기</a>
-                                                </div>
+                                                </div> -->
                                                 <label class="form-label">비밀번호</label>
                                                 <div class="input-group auth-pass-inputgroup">
                                                     <input type="password" class="form-control" id="pass"

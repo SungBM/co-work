@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.member.db.UserDAO;
 import net.member.db.UserInfo;
@@ -16,21 +17,25 @@ public class MemberInfoAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
-		String USER_ID = request.getParameter("USER_ID");
 		UserDAO udao = new UserDAO();
-		UserInfo m = udao.userinfo(USER_ID);
+		UserInfo userinfo = new UserInfo();
 		
-		if(m==null) {
+		HttpSession session = request.getSession();
+		String USER_ID = (String)session.getAttribute("USER_ID");
+		userinfo = udao.userinfo(USER_ID);
+		
+		if(userinfo==null) {
 			forward.setPath("error/error.jsp");
 			forward.setRedirect(false);
 			request.setAttribute("message", "아이디에 해당하는 정보가 없습니다.");
 			return forward;
 		}
 
-		forward.setPath("main/index2.jsp");
+		request.setAttribute("userinfo", userinfo);
 		forward.setRedirect(false);
-		request.setAttribute("memberinfo", m);
+		
+		forward.setPath("main/main.jsp");
 		return forward;
-
+		//이 서블릿은 사용안함
 	}
 }
