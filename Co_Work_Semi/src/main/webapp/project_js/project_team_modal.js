@@ -33,7 +33,7 @@ $(function(){
 	  html2 += '</div>'
 	  html2 += '	</div>';
 	  <c:forEach var="u" items="${p.project_parti }" varStatus="status">;
-			
+			var html.appen()
 	  </c:forEach>
 	  html += '</c:if>'
 	  html += '</c:forEach>'
