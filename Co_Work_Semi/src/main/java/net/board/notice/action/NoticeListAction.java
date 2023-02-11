@@ -80,7 +80,7 @@ public class NoticeListAction implements Action {
 			forward.setRedirect(false);
 			
 			// 글 목록 페이지로 이동하기 위해 경로를 설정합니다.
-			forward.setPath("board/notice/notice_list.jsp");
+			forward.setPath("board/notice/list.jsp");
 			return forward;
 			
 		}else {

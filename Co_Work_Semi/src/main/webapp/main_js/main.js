@@ -50,6 +50,13 @@ $(function() {
 			li.children("ul").children("li").removeClass();
 			li.children("ul").children("li:eq(0)").addClass("mm-active");
 			break;
+		case "NoticeList.bon" :
+			var li = $('#side-menu').children('li:eq(4)');
+			li.addClass("mm-active");
+			li.children("ul").addClass("mm-show");
+			li.children("ul").children("li").removeClass();
+			li.children("ul").children("li:eq(0)").addClass("mm-active");
+			break;
 		
 		
 	}

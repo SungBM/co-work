@@ -23,6 +23,9 @@ function go(page){
 //<li class="page-item"><a class="page-link gray">다음&nbsp;</a></li> 다음페이지 없어서 gray
 
 //위와 같은 쿼리(//<li class="page-item"><a class="page-link" href="javascript:go(1)">이전&nbsp;</a></li>)나오는 쿼리
+
+
+//페이지 이동
 function setPaging(href, digit){
 	let active="";
 	let gray="";
@@ -38,7 +41,7 @@ let output = `<li class="page-item ${active}">`;
 let anchor = `<a class='page-link ${gray}' ${href}>${digit}</a></li>`;
 output += anchor;
 return output;
-}
+}//페이지 이동end
 
 
 function ajax(sdata){
@@ -47,7 +50,7 @@ function ajax(sdata){
 	$.ajax({
 		type : "POST",
 		data : sdata,
-		url : "BoardList.bo",
+		url : "NoticeList.bon",
 		dataType : "json",  //데이터타입=json이라는 것은 객체화 해서 불러옴.=오브젝트 형식= {}임.
 		cache : false,  //브라우저에서 캐시쓰지 않겠다. 정적페이지(항상변함없는 html, css같은거). 브라우저 너 캐시쓰지말고 계쏙해서 업데이트해서 보여줘.
 		success : function(data){  //data=변수명은 내 맘대로
@@ -126,11 +129,15 @@ function ajax(sdata){
 } //function ajax end
 
 $(function(){
-	$("button").click(function(){		//
-		location.href="BoardWrite.bo";
-	})
+	$("#write").click(function(){		//
+		location.href="NoticeWrite.bon";
+	})	
 	
 	$("#viewcount").change(function(){
 		go(1); //보여줄 페이지를 1페이지로 설정합니다.
-	}); //change end
-})
+	}) //change end
+	
+	$("#search").change(function(){
+		go(1); //보여줄 페이지를 1페이지로 설정합니다.
+	})
+});
