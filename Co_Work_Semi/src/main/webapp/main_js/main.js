@@ -61,9 +61,9 @@ $(function() {
 		
 	}
 	
-	$(".logo logo-light").click(function(){
+/*	$(".logo logo-light").click(function(){
 		console.log("클릭");
-		location.href = "main.net";
+		window.location.href = "main2.net";
 		
 	});
 	/*

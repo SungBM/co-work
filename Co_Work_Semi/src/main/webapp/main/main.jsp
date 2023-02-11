@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-<jsp:include page="/main/header.jsp"></jsp:include>
+<jsp:include page="/main/header.html"></jsp:include>
 <div class="page-content">
     <div class="container-fluid">
 
@@ -702,4 +702,3 @@
 <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
 <script src="assets/js/pages/dashboard.init.js"></script>
 </html>
-
