@@ -1,7 +1,14 @@
 select * from PROJECT;
+select * from PROJECT_USER;
 
 --테이블 행 삭제
 delete from PROJECT;
+
+
+--PROJECT_UESR_NUM 시퀀스 생성
+CREATE SEQUENCE PROJECT_UESR_SEQ
+INCREMENT BY 1
+START WITH 1;
 
 --PROJECT_NUM 시퀀스 생성
 CREATE SEQUENCE PROJECT_SEQ
@@ -134,3 +141,13 @@ SET PROJECT_PARTICI = 0;
 
 UPDATE PROJECT
 SET PROJECT_START = '2023-01-01';
+
+insert into PROJECT_USER 
+values (select project_num 
+from project 
+where max(project_num)+1, HTA1, PROJECT_UESR_SEQ);
+
+insert into PROJECT_USER 
+select project_num 
+from project 
+HAVING max(project_num)+1;

@@ -57,6 +57,7 @@ $(function() {
 	$(".logo-light").click(function(){
 		console.log("클릭");
 		location.href = "index.net";
+		
 	});
 	/*
 	var my_profile = $('ul').children('li:eq(6)');
