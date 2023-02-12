@@ -91,151 +91,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-8">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card mini-stats-wid">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                        <p class="text-muted fw-medium">진행중인 프로젝트</p>
-                                        <h4 class="mb-0">2</h4>
-                                    </div>
-
-                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
-                                        <span class="avatar-title">
-                                            <i class="bx bx-copy-alt font-size-24"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mini-stats-wid">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                        <p class="text-muted fw-medium">요청한 프로젝트</p>
-                                        <h4 class="mb-0">2</h4>
-                                    </div>
-
-                                    <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
-                                        <span class="avatar-title rounded-circle bg-primary">
-                                            <i class="bx bx-archive-in font-size-24"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mini-stats-wid">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                        <p class="text-muted fw-medium">전자결재</p>
-                                        <h4 class="mb-0">1</h4>
-                                    </div>
-
-                                    <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
-                                        <span class="avatar-title rounded-circle bg-primary">
-                                            <i class="bx bx-purchase-tag-alt font-size-24"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end row -->
-
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-sm-flex flex-wrap">
-                            <h4 class="card-title mb-4">Email Sent</h4>
-                            <div class="ms-auto">
-                                <ul class="nav nav-pills">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Week</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Month</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="#">Year</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div id="stacked-column-chart" class="apex-charts" dir="ltr"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end row -->
-
-        <div class="row">
-            <div class="col-xl-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title mb-4">Social Source</h4>
-                        <div class="text-center">
-                            <div class="avatar-sm mx-auto mb-4">
-                                <span class="avatar-title rounded-circle bg-primary bg-soft font-size-24">
-                                    <i class="mdi mdi-facebook text-primary"></i>
-                                </span>
-                            </div>
-                            <p class="font-16 text-muted mb-2"></p>
-                            <h5><a href="#" class="text-dark">Facebook - <span class="text-muted font-16">125
-                                        sales</span> </a></h5>
-                            <p class="text-muted">Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut
-                                libero venenatis faucibus tincidunt.</p>
-                            <a href="#" class="text-primary font-16">Learn more <i
-                                    class="mdi mdi-chevron-right"></i></a>
-                        </div>
-                        <div class="row mt-4">
-                            <div class="col-4">
-                                <div class="social-source text-center mt-3">
-                                    <div class="avatar-xs mx-auto mb-3">
-                                        <span class="avatar-title rounded-circle bg-primary font-size-16">
-                                            <i class="mdi mdi-facebook text-white"></i>
-                                        </span>
-                                    </div>
-                                    <h5 class="font-size-15">Facebook</h5>
-                                    <p class="text-muted mb-0">125 sales</p>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="social-source text-center mt-3">
-                                    <div class="avatar-xs mx-auto mb-3">
-                                        <span class="avatar-title rounded-circle bg-info font-size-16">
-                                            <i class="mdi mdi-twitter text-white"></i>
-                                        </span>
-                                    </div>
-                                    <h5 class="font-size-15">Twitter</h5>
-                                    <p class="text-muted mb-0">112 sales</p>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="social-source text-center mt-3">
-                                    <div class="avatar-xs mx-auto mb-3">
-                                        <span class="avatar-title rounded-circle bg-pink font-size-16">
-                                            <i class="mdi mdi-instagram text-white"></i>
-                                        </span>
-                                    </div>
-                                    <h5 class="font-size-15">Instagram</h5>
-                                    <p class="text-muted mb-0">104 sales</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4">
+                
+              <div class="col-xl-4">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title mb-5">Activity</h4>
@@ -315,76 +172,103 @@
                                     class="mdi mdi-arrow-right ms-1"></i></a></div>
                     </div>
                 </div>
+            </div>  
+                
+                
             </div>
+            <div class="col-xl-8">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mini-stats-wid">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="flex-grow-1">
+                                        <p class="text-muted fw-medium">진행중인 프로젝트</p>
+                                        <h4 class="mb-0">2</h4>
+                                    </div>
 
-            <div class="col-xl-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title mb-4">Top Cities Selling Product</h4>
-
-                        <div class="text-center">
-                            <div class="mb-4">
-                                <i class="bx bx-map-pin text-primary display-4"></i>
+                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
+                                        <span class="avatar-title">
+                                            <i class="bx bx-copy-alt font-size-24"></i>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
-                            <h3>1,456</h3>
-                            <p>San Francisco</p>
                         </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mini-stats-wid">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="flex-grow-1">
+                                        <p class="text-muted fw-medium">요청한 프로젝트</p>
+                                        <h4 class="mb-0">2</h4>
+                                    </div>
 
-                        <div class="table-responsive mt-4">
-                            <table class="table align-middle table-nowrap">
-                                <tbody>
-                                    <tr>
-                                        <td style="width: 30%">
-                                            <p class="mb-0">San Francisco</p>
-                                        </td>
-                                        <td style="width: 25%">
-                                            <h5 class="mb-0">1,456</h5>
-                                        </td>
-                                        <td>
-                                            <div class="progress bg-transparent progress-sm">
-                                                <div class="progress-bar bg-primary rounded" role="progressbar"
-                                                    style="width: 94%" aria-valuenow="94" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p class="mb-0">Los Angeles</p>
-                                        </td>
-                                        <td>
-                                            <h5 class="mb-0">1,123</h5>
-                                        </td>
-                                        <td>
-                                            <div class="progress bg-transparent progress-sm">
-                                                <div class="progress-bar bg-success rounded" role="progressbar"
-                                                    style="width: 82%" aria-valuenow="82" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p class="mb-0">San Diego</p>
-                                        </td>
-                                        <td>
-                                            <h5 class="mb-0">1,026</h5>
-                                        </td>
-                                        <td>
-                                            <div class="progress bg-transparent progress-sm">
-                                                <div class="progress-bar bg-warning rounded" role="progressbar"
-                                                    style="width: 70%" aria-valuenow="70" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                    <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
+                                        <span class="avatar-title rounded-circle bg-primary">
+                                            <i class="bx bx-archive-in font-size-24"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mini-stats-wid">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="flex-grow-1">
+                                        <p class="text-muted fw-medium">전자결재</p>
+                                        <h4 class="mb-0">1</h4>
+                                    </div>
+
+                                    <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
+                                        <span class="avatar-title rounded-circle bg-primary">
+                                            <i class="bx bx-purchase-tag-alt font-size-24"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+                
+                
+                <!-- end row -->
+						<div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0 font-size-18">TUI Calendar</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Calendar</a></li>
+                                            <li class="breadcrumb-item active">TUI Calendar</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                     	<img src="image/cal.png" width="1000" height="1200">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   
+
+        <div class="row">
+            
+            
+
+          
         <!-- end row -->
 
 <!--     <div class="row">
