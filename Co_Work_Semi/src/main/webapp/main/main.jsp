@@ -72,14 +72,14 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4">(북마크한 업무 제목)실시간 업무 공유 협업툴</h4>
+                        <h4 class="card-title mb-4">실시간 업무 공유 협업툴</h4>
                         <div class="row">
                             <div class="col-sm-6">
                                 <p class="text-muted">2023. 02. 15일까지</p>
-                                <p class="text-muted"><span class="text-success me-2"> 진행상황</p>
+                                <p class="text-muted" >D-DAY -7</p>
 
                                 <div class="mt-4">
-                                    <a href="" class="btn btn-primary waves-effect waves-light btn-sm">View More <i
+                                    <a href="ProjectList.po" class="btn btn-primary waves-effect waves-light btn-sm">View More <i
                                             class="mdi mdi-arrow-right ms-1"></i></a>
                                 </div>
                             </div>
@@ -89,7 +89,6 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="text-muted mb-0">We craft digital, graphic and dimensional thinking.</p>
                     </div>
                 </div>
             </div>
@@ -388,7 +387,7 @@
         </div>
         <!-- end row -->
 
-        <div class="row">
+<!--     <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
@@ -434,9 +433,9 @@
                                         <td>
                                             <i class="fab fa-cc-mastercard me-1"></i> Mastercard
                                         </td>
-                                        <td>
+                                        <td> -->
                                             <!-- Button trigger modal -->
-                                            <button type="button"
+                          <!--               <button type="button"
                                                 class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
                                                 data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
                                                 View Details
@@ -467,8 +466,8 @@
                                             <i class="fab fa-cc-visa me-1"></i> Visa
                                         </td>
                                         <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button"
+                                        -->        <!-- Button trigger modal -->
+                             <!--            <button type="button"
                                                 class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
                                                 data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
                                                 View Details
@@ -498,8 +497,8 @@
                                             <i class="fab fa-cc-paypal me-1"></i> Paypal
                                         </td>
                                         <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button"
+                                 -->                <!-- Button trigger modal -->
+                                 <!--          <button type="button"
                                                 class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
                                                 data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
                                                 View Details
@@ -528,8 +527,8 @@
                                             <i class="fab fa-cc-mastercard me-1"></i> Mastercard
                                         </td>
                                         <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button"
+                                          <!-- Button trigger modal -->
+                         <!--                     <button type="button"
                                                 class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
                                                 data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
                                                 View Details
@@ -558,8 +557,8 @@
                                             <i class="fab fa-cc-visa me-1"></i> Visa
                                         </td>
                                         <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button"
+                              -->              <!-- Button trigger modal -->
+                           <!--                <button type="button"
                                                 class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
                                                 data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
                                                 View Details
@@ -588,8 +587,8 @@
                                             <i class="fab fa-cc-paypal me-1"></i> Paypal
                                         </td>
                                         <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button"
+                             -->                 <!-- Button trigger modal -->
+                            <!--             <button type="button"
                                                 class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
                                                 data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
                                                 View Details
@@ -599,11 +598,12 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!-- end table-responsive -->
+             -->           <!-- end table-responsive -->
                     </div>
                 </div>
             </div>
         </div>
+        
         <!-- end row -->
     </div>
     <!-- container-fluid -->
