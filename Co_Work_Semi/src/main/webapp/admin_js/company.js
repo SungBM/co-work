@@ -64,12 +64,8 @@ $(function() {
 	$(document).on("click", "button[name=del]", function() {
 		var del = $(this).parent().prev().children().first().val();
 		var answer = confirm(del + "  삭제하시겠습니까?");
-		if (answer) {
-			$(this).unbind('click').click()
-		} else {
-			$(this).parent().prev().children().first().focus()
-			$(this).parent().prev().children().first().val('')
-			$(this).parent().prev().children().first().val(val)
+		if (!answer) {
+			return false;
 		}
 	})
 

@@ -125,7 +125,7 @@
                               </div>
                               <div class="col-md-5">
                                  <button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
-                                 <button class="btn btn-danger waves-effect waves-light" type="button" id="del" name="del">삭제</button>
+                                 <button class="btn btn-danger waves-effect waves-light" type="submit" id="del" name="del">삭제</button>
                                  <input class="btn btn-warning waves-effect waves-light" type="reset" id="second" style="display: none" value="취소">
                               </div>
                            </div>
@@ -169,7 +169,7 @@
                               </div>
                               <div class="col-md-5">
                                  <button class="btn btn-success waves-effect waves-light" type="submit" name="sub">수정</button>
-                                 <button class="btn btn-danger waves-effect waves-light" type="button" id="del" name="del">삭제</button>
+                                 <button class="btn btn-danger waves-effect waves-light" type="submit" id="del" name="del">삭제</button>
                                  <input class="btn btn-warning waves-effect waves-light" type="reset" id="second" style="display: none" value="취소">
                               </div>
                            </div>

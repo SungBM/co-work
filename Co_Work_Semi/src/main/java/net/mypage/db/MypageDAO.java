@@ -200,6 +200,7 @@ public class MypageDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int result = 0;
+
 		try {
 			con = ds.getConnection();
 			String sql = "update user_info " + " set " + value + " = ?" + "	  where USER_ID=?";
@@ -348,6 +349,8 @@ public class MypageDAO {
 				m.setUser_join_date(rs.getDate("user_join_date"));
 				m.setUser_state(rs.getInt("user_state"));
 				m.setUser_is_admin(rs.getInt("user_is_admin"));
+				
+				
 				list.add(m);
 			}
 
@@ -623,5 +626,36 @@ public class MypageDAO {
 		}
 		return stop;
 	}
+
+	public void admin_status(String user_id, String state) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = ds.getConnection();
+			String sql = "update user_info set user_is_admin = ? WHERE USER_ID = ?";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, state);
+			pstmt.setString(2, user_id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("admin_status() 오류");
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}
+	}
+
 
 }

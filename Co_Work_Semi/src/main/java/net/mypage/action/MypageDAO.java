@@ -9,6 +9,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import net.mypage.db.Member;
+
 public class MypageDAO {
 	private DataSource ds;
 
@@ -28,14 +30,12 @@ public class MypageDAO {
 		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-//			pstmt = con.prepareStatement("select * from user_info user_id = ?");
-			pstmt = con.prepareStatement("select * from USER_INFO WHERE user_id = 'HTA1'");
-//			pstmt.setString(1, user_id);
+			pstmt = con.prepareStatement("select * from user_info user_id = ?");
+			pstmt.setString(1, user_id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				m = new Member();
 				m.setUser_id(rs.getString("user_id"));
-//				m.setUser_id("HTA1");
 				m.setUser_password(rs.getString("user_password"));
 				m.setUser_dept(rs.getString("user_dept"));
 				m.setUser_job(rs.getString("user_job"));

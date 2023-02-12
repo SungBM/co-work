@@ -28,15 +28,17 @@ public class DeptJobUpdateProcess implements Action {
 		CompanyDAO mydao = new CompanyDAO();
 		MypageDAO mdao = new MypageDAO();
 
-		// 글 내용 불러오기 실패한 경우입니다.
 		HttpSession session = request.getSession();
 		String user_id = (String) session.getAttribute("id");
 		Company m = mydao.company_info(user_id);
-		mydao.dept_update(value, change, m.getCompany_name(), def);
 
+		if (request.getParameter("sub") != null) {	// 수정
+			mydao.dept_update(value, change, m.getCompany_name(), def);
+		} else if (request.getParameter("del") != null) {	// 삭제
+			mydao.dept_delete(value, change, m.getCompany_name(), def);
+		}
 		List<Dept> d = mdao.dept(m.getCompany_name());
 		List<Job> j = mdao.job(m.getCompany_name());
-
 
 		forward = new ActionForward();
 		forward.setRedirect(true);

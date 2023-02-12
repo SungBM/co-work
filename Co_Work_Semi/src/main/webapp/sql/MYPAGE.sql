@@ -3,7 +3,7 @@ DROP TABLE COMPANY_JOB
 DROP TABLE COMPANY_INFO
 
 
-select * from COMPANY_DEPT;
+select * from company_dept;
 
 SELECT * FROM USER_INFO where user_state = 0;
 
@@ -15,7 +15,7 @@ UPDATE USER_INFO
 SET USER_state = 2
 where user_id = 'micron1'
 
-
+alter table user_info add user_lasttime varchar(50)
 
 CREATE TABLE COMPANY_INFO(
     COMPANY_NAME        VARCHAR2(50) PRIMARY KEY,
@@ -43,7 +43,7 @@ CREATE TABLE COMPANY_JOB
 
 INSERT INTO COMPANY_INFO(COMPANY_NAME, COMPANY_URL, USER_ID)
 VALUES(
-    'CO-WORK1', 'http://cowork.run/', 'HTA1'
+    'CO-WORK', 'http://cowork.run/', 'HTA3'
 );
 
 

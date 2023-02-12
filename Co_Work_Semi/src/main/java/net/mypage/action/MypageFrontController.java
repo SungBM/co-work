@@ -55,6 +55,9 @@ public class MypageFrontController extends javax.servlet.http.HttpServlet {
 		case "/notify.my":
 			action = new NotifyAction();
 			break;
+		case "/ImgupdateProcess.my":
+			action = new ImgupdateProcess();
+			break;
 		
 		} // switch end
 		forward = action.execute(request, response);

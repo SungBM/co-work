@@ -117,11 +117,15 @@ th, tr {
 
 													<!-- 관리자 표시 -->
 													<c:if test="${m.user_is_admin eq 1}">
-														<td>관리자</td>
+														<td>
+															관리자<br>
+															<a href="adminright.com?user_id=${m.user_id }&user_is_admin=0">[해제]</a>
+
+														</td>
 													</c:if>
 													<c:if test="${m.user_is_admin eq 0}">
 														<td>
-															<a href="admingrant.com">[지정]</a>
+															<a href="adminright.com?user_id=${m.user_id }&user_is_admin=1">[지정]</a>
 														</td>
 													</c:if>
 												</tr>
@@ -196,7 +200,7 @@ th, tr {
 													</c:if>
 													<c:if test="${m.user_is_admin eq 0}">
 														<td>
-															<a href="admingrant.com">[지정]</a>
+															<a href="adminright.com?user_id=${m.user_id }&user_is_admin=1">[지정]</a>
 														</td>
 													</c:if>
 												</tr>
@@ -271,7 +275,7 @@ th, tr {
 													</c:if>
 													<c:if test="${m.user_is_admin eq 0}">
 														<td>
-															<a href="admingrant.com">[지정]</a>
+															<a href="adminright.com?user_id=${m.user_id }&user_is_admin=1">[지정]</a>
 														</td>
 													</c:if>
 												</tr>
@@ -346,7 +350,7 @@ th, tr {
 													</c:if>
 													<c:if test="${m.user_is_admin eq 0}">
 														<td>
-															<a href="admingrant.com">[지정]</a>
+															<a href="adminright.com?user_id=${m.user_id }&user_is_admin=1">[지정]</a>
 														</td>
 													</c:if>
 												</tr>
