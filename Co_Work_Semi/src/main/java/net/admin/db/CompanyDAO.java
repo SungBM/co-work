@@ -122,6 +122,7 @@ public class CompanyDAO {
 			String sql = "insert into COMPANY_DEPT(" + value + ", COMPANY_NAME) values(?, ?)";
 
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, change);
 			pstmt.setString(2, company_name);
 			result = pstmt.executeUpdate();
 			if (result == 1) {
@@ -158,7 +159,7 @@ public class CompanyDAO {
 
 			con.setAutoCommit(false);
 
-			String select_sql = "select * from company_dept where job_name = ?";
+			String select_sql = "select * from company_job where job_name = ?";
 			pstmt = con.prepareStatement(select_sql);
 			pstmt.setString(1, change);
 			rs = pstmt.executeQuery();
@@ -257,6 +258,7 @@ public class CompanyDAO {
 		String sql = "";
 		try {
 			con = ds.getConnection();
+
 			if (value.equals("dept_name")) {
 				sql = "update company_dept set dept_name = ? where dept_name = ? and company_name = ?";
 
@@ -296,16 +298,30 @@ public class CompanyDAO {
 		String sql = "";
 		try {
 			con = ds.getConnection();
+			con.setAutoCommit(false);
+
 			if (value.equals("dept_name")) {
 				sql = "delete from company_dept where dept_name = ? and company_name = ?";
 
+				String dept_sql = "update user_info set user_dept = '' where user_dept = ?";
+				pstmt = con.prepareStatement(dept_sql);
+				pstmt.setString(1, change);
+				pstmt.executeUpdate();
+				pstmt.close();
+
 			} else if (value.equals("job_name")) {
 				sql = "delete from company_job where job_name = ? and company_name = ?";
+				String job_sql = "update user_info set user_job = '' where user_job = ?";
+				pstmt = con.prepareStatement(job_sql);
+				pstmt.setString(1, change);
+				pstmt.executeUpdate();
+				pstmt.close();
 			}
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, def);
 			pstmt.setString(2, company);
 			pstmt.executeUpdate();
+			con.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("update() 오류");
@@ -325,5 +341,38 @@ public class CompanyDAO {
 				}
 		}
 	}
+
+	public int update(String value, String change, String company_name) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			con = ds.getConnection();
+			String update_sql = "update company_info set " + value + " = ? where company_name = ?";
+			pstmt = con.prepareStatement(update_sql);
+			pstmt.setString(1, change);
+			pstmt.setString(2, company_name);
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("update() 오류");
+
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}
+		return result;
+	} // update end
 
 }

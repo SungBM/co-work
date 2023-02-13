@@ -207,4 +207,36 @@ public class UserDAO {
 		return userinfo;
 	}
 
+		public void lasttime(String USER_ID, String time) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "";
+		try {
+			con = ds.getConnection();
+			sql = "update user_info set user_lasttime = ? where user_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, time);
+			pstmt.setString(2, USER_ID);
+			pstmt.executeUpdate();
+			System.out.println(time);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("update() 오류");
+
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}
+	} // lasttime end
+
 }

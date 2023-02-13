@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.admin.db.Company;
 import net.admin.db.CompanyDAO;
+import net.member.db.UserInfo;
 import net.mypage.db.Dept;
 import net.mypage.db.Job;
-import net.mypage.db.Member;
 import net.mypage.db.MypageDAO;
 
 public class MypageUpdateProcessAction implements Action {
@@ -38,7 +38,7 @@ public class MypageUpdateProcessAction implements Action {
 		PrintWriter out = response.getWriter();
 
 		if (result == 1) {
-			Member m = mydao.member_info(id);
+			UserInfo m = mydao.member_info(id);
 			Company c = cdao.company_info(id);
 			List<Dept> d = mydao.dept(c.getCompany_name());
 			List<Job> j = mydao.job(c.getCompany_name());

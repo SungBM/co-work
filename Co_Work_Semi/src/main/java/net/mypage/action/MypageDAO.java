@@ -9,7 +9,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import net.mypage.db.Member;
+import net.member.db.UserInfo;
 
 public class MypageDAO {
 	private DataSource ds;
@@ -23,8 +23,8 @@ public class MypageDAO {
 		}
 	}
 
-	public Member member_info(String user_id) {
-		Member m = new Member();
+	public UserInfo member_info(String user_id) {
+		UserInfo m = new UserInfo();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -34,18 +34,18 @@ public class MypageDAO {
 			pstmt.setString(1, user_id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				m = new Member();
-				m.setUser_id(rs.getString("user_id"));
-				m.setUser_password(rs.getString("user_password"));
-				m.setUser_dept(rs.getString("user_dept"));
-				m.setUser_job(rs.getString("user_job"));
-				m.setUser_email(rs.getString("user_email"));
-				m.setUser_name(rs.getString("user_name"));
-				m.setUser_fax(rs.getString("user_fax"));
-				m.setUser_phone(rs.getString("user_phone"));
-				m.setUser_intro(rs.getString("user_intro"));
-				m.setUser_img(rs.getString("user_img"));
-				m.setUser_card(rs.getString("user_card"));
+				m = new UserInfo();
+				m.setUSER_ID(rs.getString("user_id"));
+				m.setUSER_PASSWORD(rs.getString("user_password"));
+				m.setUSER_DEPT(rs.getString("user_dept"));
+				m.setUSER_JOB(rs.getString("user_job"));
+				m.setUSER_EMAIL(rs.getString("user_email"));
+				m.setUSER_NAME(rs.getString("user_name"));
+				m.setUSER_FAX(rs.getString("user_fax"));
+				m.setUSER_PHONE(rs.getString("user_phone"));
+				m.setUSER_INTRO(rs.getString("user_intro"));
+				m.setUSER_IMG(rs.getString("user_img"));
+				m.setUSER_CARD(rs.getString("user_card"));
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -73,7 +73,7 @@ public class MypageDAO {
 		return m;
 	} // member_info end
 
-	public int update(Member m) {
+	public int update(UserInfo m) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -83,16 +83,16 @@ public class MypageDAO {
 					+ "	  set user_name=?, user_dept=?, user_job=?, user_email=?, user_fax=?, user_phone=?, user_intro=?, user_img=?, user_card=? "
 					+ "	  where USER_ID=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, m.getUser_name());
-			pstmt.setString(2, m.getUser_dept());
-			pstmt.setString(3, m.getUser_job());
-			pstmt.setString(4, m.getUser_email());
-			pstmt.setString(5, m.getUser_fax());
-			pstmt.setString(6, m.getUser_phone());
-			pstmt.setString(7, m.getUser_intro());
-			pstmt.setString(8, m.getUser_img());
-			pstmt.setString(9, m.getUser_card());
-			pstmt.setString(10, "HTA1");
+			pstmt.setString(1, m.getUSER_NAME());
+			pstmt.setString(2, m.getUSER_DEPT());
+			pstmt.setString(3, m.getUSER_JOB());
+			pstmt.setString(4, m.getUSER_EMAIL());
+			pstmt.setString(5, m.getUSER_FAX());
+			pstmt.setString(6, m.getUSER_PHONE());
+			pstmt.setString(7, m.getUSER_INTRO());
+			pstmt.setString(8, m.getUSER_IMG());
+			pstmt.setString(9, m.getUSER_CARD());
+			pstmt.setString(10, m.getUSER_ID());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

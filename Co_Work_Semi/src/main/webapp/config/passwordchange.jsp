@@ -15,7 +15,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12">
+		<div class="col-8">
 			<div class="card">
 				<div class="card-body">
 					<form action="passwordchangeProcess.my" method="POST">

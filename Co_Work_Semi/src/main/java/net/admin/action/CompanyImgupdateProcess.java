@@ -1,4 +1,4 @@
-package net.mypage.action;
+package net.admin.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,24 +8,26 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import net.admin.db.Company;
 import net.admin.db.CompanyDAO;
-import net.member.db.UserInfo;
 import net.mypage.db.Dept;
 import net.mypage.db.Job;
 import net.mypage.db.MypageDAO;
 
-public class ImgupdateProcess implements Action {
+public class CompanyImgupdateProcess implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		ActionForward forward = new ActionForward();
+		HttpSession session = request.getSession();
+		String user_id = (String) session.getAttribute("id");
+		
 		String realFolder = "";
 		// webapp아래에 꼭 폴더 생성하세요
 		String saveFolder = "image";
@@ -39,54 +41,42 @@ public class ImgupdateProcess implements Action {
 					new DefaultFileRenamePolicy());
 			String value = multi.getParameter("value");
 			String change = multi.getFilesystemName(value);
-			String id = multi.getParameter("user_id");
+			String company_name = multi.getParameter("company_name");
 			System.out.println(value);
+			System.out.println(change);
 			// 이미지 교체 진행
 			CompanyDAO cdao = new CompanyDAO();
 
-			if (value.equals("company_logo")) {
-
-			}
-
-			if (change != null) {
-				change = multi.getFilesystemName(value);
-			} else if (multi.getParameter("check") != "") {
-				change = multi.getFilesystemName("check");
-			}
-
-			MypageDAO mydao = new MypageDAO();
-			int result = mydao.update(value, change, id);
+			int result = cdao.update(value, change, company_name);
 
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
-			System.out.println(result);
 
-			if (result == 1) {
-				UserInfo m = mydao.member_info(id);
-				Company c = cdao.company_info(id);
-				List<Dept> d = mydao.dept(c.getCompany_name());
-				List<Job> j = mydao.job(c.getCompany_name());
+			if (result != 0) {
+				CompanyDAO mydao = new CompanyDAO();
+				MypageDAO mdao = new MypageDAO();
+				Company m = mydao.company_info(user_id);
+				List<Dept> d = mdao.dept(m.getCompany_name());
+				List<Job> j = mdao.job(m.getCompany_name());
 
 				request.setAttribute("memberinfo", m);
 				request.setAttribute("dept", d);
 				request.setAttribute("job", j);
 				forward.setRedirect(false);
-				out.println("<script>");
-				out.println("history.back()");
-				out.println("</script>");
-				out.close();
-				return null;
+				forward.setPath("admin/company/companyinfo.jsp");
+				request.setAttribute("companyinfo", m);
+				request.setAttribute("dept", d);
+				request.setAttribute("job", j);
+				return forward;
 			} else {
 				out.println("<script>");
-				out.println("alert('회원정보 수정에 실패했습니다.');");
+				out.println("alert('정보 수정에 실패했습니다.');");
 				out.println("history.back()");
 				out.println("</script>");
 				out.close();
 			}
 			return null;
-		} catch (
-
-		IOException ex) {
+		} catch (IOException ex) {
 			ex.printStackTrace();
 			forward = new ActionForward();
 			forward.setPath("error/error.jsp");
