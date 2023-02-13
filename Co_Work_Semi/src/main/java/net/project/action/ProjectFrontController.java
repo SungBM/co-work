@@ -53,6 +53,7 @@ public class ProjectFrontController extends HttpServlet {
 		}
 		
 		forward = action.execute(request, response);
+		System.out.println("forward : " + forward);
 		
 		if(forward != null ) {
 			if(forward.isRedirect()) {
@@ -60,6 +61,7 @@ public class ProjectFrontController extends HttpServlet {
 			} else {
 				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
 				dispatcher.forward(request, response);
+				return;
 			}
 		}
 	}
