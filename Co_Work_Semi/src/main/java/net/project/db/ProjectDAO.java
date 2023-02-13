@@ -17,6 +17,8 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import javax.swing.plaf.ProgressBarUI;
 
+import net.member.db.MainBean;
+
 public class ProjectDAO {
 	private DataSource ds;
 
@@ -394,5 +396,60 @@ public class ProjectDAO {
 		           }
 		           return result;      
 		        }
+	
+	
+	public static MainBean main(String PROJECT_NAME) {
+		MainBean mb = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			
+			String sql = "SELECT * FROM PROJECT WHERE PROJECT_NAME = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "PROJECT_NAME");
+			rs = pstmt.executeQuery();
+		
+			while (rs.next()) {
+				mb = new MainBean();
+				mb.setProject_name(rs.getString("PROJECT_NAME"));
+				mb.setProject_state(rs.getString("PROJECT_STATE"));
+				mb.setProject_prog(rs.getInt("PROJECT_PROG"));
+				mb.setProject_start(rs.getString("PROJECT_START"));
+				mb.setProject_end(rs.getString("PROJECT_END"));
+				mb.setProject_priority(rs.getString("PROJECT_PRIORITY"));
+				mb.setProject_partici(rs.getInt("PROJECT_PARTICI"));
+				mb.setProject_admin(rs.getString("PROJECT_ADMIN"));
+				
+			}
+			
+		}catch(Exception se) {
+			se.printStackTrace();
+		}finally {
+			try {
+				if(rs != null)
+					rs.close();
+			}catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
+			try {
+				if(pstmt != null)
+					pstmt.close();
+			}catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
+			try {
+				if(con != null)
+					con.close();
+			}catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		return mb;
+	}
+	
+	
 		}
 

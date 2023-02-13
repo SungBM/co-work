@@ -42,7 +42,7 @@ public class MypageUpdateProcessAction implements Action {
 			int fileSize = 5 * 1024 * 1024;
 			// 실제 저장 경로 지정
 			ServletContext sc = request.getServletContext();
-			realFolder = sc.getRealPath(saveFolder);
+			realFolder = sc.getRealPath("/saveFolder");
 			System.out.println("realFolder = [" + realFolder + "]");
 			try {
 				MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "utf-8",

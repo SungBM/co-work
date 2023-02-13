@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-<jsp:include page="/main/header.html"></jsp:include>
+<jsp:include page="/main/header.jsp"></jsp:include>
 <style>
 label {
 	text-align: center
@@ -229,7 +229,7 @@ input[type=file] {
 	</div>
 </body>
 
-<jsp:include page="/main/footer.html"></jsp:include>
+<jsp:include page="/main/footer.jsp"></jsp:include>
 <script src="mypage_js/mypage.js"></script>
 <script>
 	$("select[name=user_dept]").val('${memberinfo.user_dept}').prop("selected",

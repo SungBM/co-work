@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-<jsp:include page="/main/header.html"></jsp:include>
+<jsp:include page="/main/header.jsp"></jsp:include>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
 <script src=board_js/notice/view.js></script>
 <style>
@@ -86,6 +86,6 @@
 		</div> <!-- container-fluid -->
 	</div>
 <!-- End Page-content -->
-<jsp:include page="/main/footer.html"></jsp:include>
+<jsp:include page="/main/footer.jsp"></jsp:include>
 </body>
 </html>

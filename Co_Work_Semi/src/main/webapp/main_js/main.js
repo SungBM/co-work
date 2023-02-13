@@ -63,7 +63,8 @@ $(function() {
 	
 /*	$(".logo logo-light").click(function(){
 		console.log("클릭");
-		window.location.href = "main2.net";
+		location.reload();
+		window.location.href = "main.net";
 		
 	});
 	/*
