@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<jsp:include page="/main/header.html"></jsp:include>
+<jsp:include page="/main/header.jsp"></jsp:include>
 <link href="project_Css/project.css" rel="stylesheet" type="text/css"/>
 <style>
 </style>
@@ -130,7 +130,7 @@
 </div>
 <!-- End Page-content -->
 </body>
-<jsp:include page="/main/footer.html"></jsp:include>
+<jsp:include page="/main/footer.jsp"></jsp:include>
 	<script src="project_js/project_add.js"></script>
 	<script src="project_js/project_list_onload.js"></script>
 	<script type="text/javascript">

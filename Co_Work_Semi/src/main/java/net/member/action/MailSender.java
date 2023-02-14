@@ -42,3 +42,5 @@ public class MailSender {
 		}
 	}
 }
+
+//사용하지않음
