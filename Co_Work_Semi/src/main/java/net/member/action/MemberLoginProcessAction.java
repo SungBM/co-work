@@ -69,8 +69,12 @@ public class MemberLoginProcessAction implements Action {
 
 			session = request.getSession();
 			session.setAttribute("id", USER_ID);
+<<<<<<< HEAD
+		
+=======
 
 
+>>>>>>> branch 'main' of https://github.com/SungBM/co-work.git
 			String IDStore = request.getParameter("remember-check");
 			Cookie cookie = new Cookie("id", USER_ID);
 

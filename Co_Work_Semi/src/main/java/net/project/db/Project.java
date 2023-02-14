@@ -15,11 +15,34 @@ public class Project {
 	private String project_admin;
 	private String project_admin_img;
 	private ArrayList<Project_User> project_parti;
+	private int parti_count;
+	private ArrayList<Project_User> project_parti_forModal;
+	
 	public String getProject_admin_img() {
 		return project_admin_img;
 	}
 	
 	
+	public int getParti_count() {
+		return parti_count;
+	}
+
+
+	public void setParti_count(int parti_count) {
+		this.parti_count = parti_count;
+	}
+
+
+	public ArrayList<Project_User> getProject_parti_forModal() {
+		return project_parti_forModal;
+	}
+
+
+	public void setProject_parti_forModal(ArrayList<Project_User> project_parti_forModal) {
+		this.project_parti_forModal = project_parti_forModal;
+	}
+
+
 	public void setProject_admin_img(String project_admin_img) {
 		this.project_admin_img = project_admin_img;
 	}
