@@ -14,7 +14,7 @@ CREATE TABLE FREE(
 		FREE_READCOUNT		NUMBER,						--글의 조회수
 		FREE_REG_DATE DATE DEFAULT SYSDATE,				--글의 작성 날짜
 		FREE_LIKE			NUMBER,						--좋아요
-		FREE_HATE			NUMBER,						--좋아요
+		FREE_HATE			NUMBER,						--싫어요
 		PRIMARY KEY(FREE_NUM)
 );
 

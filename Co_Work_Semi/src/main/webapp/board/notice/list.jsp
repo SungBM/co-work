@@ -194,9 +194,13 @@ textarea{
 						</li>
 					</c:if>
 					<c:if test="${page > 1}">
+						<c:url var="Previous" value="NoticeList.bon">
+							<c:param name="search_field"	value="${search_field}" />
+							<c:param name="search_word"		value="${search_word}" />
+							<c:param name="page"			value="${page-1}" />
+						</c:url>
 						<li class="page-item">
-							<a href="NoticeList.bon?page=${page-1}$search_field=${search_field}&search_word=${search_word}"
-								class="page-link">이전&nbsp;</a>
+							<a href= "${Previous}" class="page-link">이전&nbsp;</a>
 						</li>
 					</c:if>
 					
@@ -210,7 +214,7 @@ textarea{
 							<c:url var="go" value="NoticeList.bon">
 								<c:param name="search_field"	value="${search_field}" />
 								<c:param name="search_word"		value="${search_word}" />
-								<c:param name="page"	value="${a}" />
+								<c:param name="page"			value="${a}" />
 							</c:url>
 							<li class="page-item">
 								<a href="${go}" class="page-link">${a}</a>
