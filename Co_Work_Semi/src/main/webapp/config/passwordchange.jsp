@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-<jsp:include page="/main/header.html"></jsp:include>
+<jsp:include page="/main/header.jsp"></jsp:include>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <title>설정 - 비밀번호 변경</title>
 </head>
@@ -15,7 +15,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12">
+		<div class="col-8">
 			<div class="card">
 				<div class="card-body">
 					<form action="passwordchangeProcess.my" method="POST">
@@ -55,5 +55,5 @@
 </div>
 
 </body>
-<jsp:include page="/main/footer.html"></jsp:include>
+<jsp:include page="/main/footer.jsp"></jsp:include>
 </html>

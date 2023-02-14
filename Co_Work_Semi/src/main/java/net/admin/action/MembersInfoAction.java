@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.member.db.UserInfo;
 import net.mypage.db.Member;
 import net.mypage.db.MypageDAO;
 
@@ -18,15 +19,14 @@ public class MembersInfoAction implements Action {
 		ActionForward forward = new ActionForward();
 		MypageDAO mydao = new MypageDAO();
 
-		List<Member> list = null;
-		List<Member> normal = null;
-		List<Member> wait = null;
-		List<Member> stop = null;
+		List<UserInfo> list = null;
+		List<UserInfo> normal = null;
+		List<UserInfo> wait = null;
+		List<UserInfo> stop = null;
 		list = mydao.all_member_info();
 		normal = mydao.normal_info();
 		wait = mydao.wait_info();
 		stop = mydao.stop_info();
-		
 
 		request.setAttribute("list", list);
 		request.setAttribute("normal", normal);

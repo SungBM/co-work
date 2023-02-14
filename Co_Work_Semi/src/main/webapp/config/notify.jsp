@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-<jsp:include page="/main/header.html"></jsp:include>
+<jsp:include page="/main/header.jsp"></jsp:include>
 <title>알림 설정</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
@@ -22,7 +22,7 @@ input[type=file] {
 					</div>
 				</div>
 			</div>
-			<div class="col-12">
+			<div class="col-8">
 				<div class="card">
 					<div class="card-body">
 						<div class="table-responsive">
@@ -157,7 +157,7 @@ input[type=file] {
 		</div>
 	</div>
 </body>
-<jsp:include page="/main/footer.html"></jsp:include>
+<jsp:include page="/main/footer.jsp"></jsp:include>
 <!-- apexcharts -->
 <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
 <script src="assets/js/pages/profile.init.js"></script>

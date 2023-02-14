@@ -1,6 +1,7 @@
 package net.admin.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -26,14 +27,26 @@ public class DeptJobCreateProcess implements Action {
 		String value = request.getParameter("value");
 		String change = request.getParameter(value);
 
+		System.out.println(change);
+
 		CompanyDAO dao = new CompanyDAO();
-		int result = 0;
+		int result = -1;
 
 		if (value.equals("dept_name")) {
 			result = dao.dept_create(value, change, company_name);
 
 		} else if (value.equals("job_name")) {
 			result = dao.job_create(value, change, company_name);
+		}
+
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		if (result == 0) {
+			out.println("<script>");
+			out.println("alert('중복 되었습니다.');");
+			out.println("history.back()");
+			out.println("</script>");
+			return null;
 		}
 
 		CompanyDAO mydao = new CompanyDAO();

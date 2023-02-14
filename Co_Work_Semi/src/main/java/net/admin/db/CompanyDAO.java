@@ -103,9 +103,20 @@ public class CompanyDAO {
 	public int dept_create(String value, String change, String company_name) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		int result = 0;
+		ResultSet rs = null;
+		int result = -1;
 		try {
 			con = ds.getConnection();
+			con.setAutoCommit(false);
+
+			String select_sql = "select * from company_dept where dept_name = ?";
+			pstmt = con.prepareStatement(select_sql);
+			pstmt.setString(1, change);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return 0;
+			}
+			pstmt.close();
 
 			// 원문글의 BOARD_RE_REF 필드는 자신의 글번호 입니다.
 			String sql = "insert into COMPANY_DEPT(" + value + ", COMPANY_NAME) values(?, ?)";
@@ -129,6 +140,7 @@ public class CompanyDAO {
 				}
 			if (con != null)
 				try {
+					con.setAutoCommit(true);
 					con.close();
 				} catch (SQLException ex) {
 					ex.printStackTrace();
@@ -140,13 +152,23 @@ public class CompanyDAO {
 	public int job_create(String value, String change, String company_name) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		int result = 0;
 		try {
 			con = ds.getConnection();
 
-			// 원문글의 BOARD_RE_REF 필드는 자신의 글번호 입니다.
-			String sql = "insert into COMPANY_JOB(" + value + ", COMPANY_NAME) values(?, ?)";
+			con.setAutoCommit(false);
 
+			String select_sql = "select * from company_job where job_name = ?";
+			pstmt = con.prepareStatement(select_sql);
+			pstmt.setString(1, change);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return 0;
+			}
+			pstmt.close();
+
+			String sql = "insert into COMPANY_JOB(" + value + ", COMPANY_NAME) values(?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, change);
 			pstmt.setString(2, company_name);
@@ -166,6 +188,7 @@ public class CompanyDAO {
 				}
 			if (con != null)
 				try {
+					con.setAutoCommit(true);
 					con.close();
 				} catch (SQLException ex) {
 					ex.printStackTrace();
@@ -189,7 +212,7 @@ public class CompanyDAO {
 			pstmt.setString(2, id);
 			result = pstmt.executeUpdate();
 			pstmt.close();
-			
+
 			if (value.equals("company_name")) {
 				String dept_sql = "update company_dept set " + value + " = ? where company_name = ?";
 				pstmt = con.prepareStatement(dept_sql);
@@ -232,10 +255,10 @@ public class CompanyDAO {
 	public boolean dept_update(String value, String change, String company, String def) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		int result = 0;
 		String sql = "";
 		try {
 			con = ds.getConnection();
+
 			if (value.equals("dept_name")) {
 				sql = "update company_dept set dept_name = ? where dept_name = ? and company_name = ?";
 
@@ -246,7 +269,7 @@ public class CompanyDAO {
 			pstmt.setString(1, change);
 			pstmt.setString(2, def);
 			pstmt.setString(3, company);
-			result = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -267,6 +290,89 @@ public class CompanyDAO {
 				}
 		}
 		return false;
+	} // update end
+
+	public void dept_delete(String value, String change, String company, String def) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "";
+		try {
+			con = ds.getConnection();
+			con.setAutoCommit(false);
+
+			if (value.equals("dept_name")) {
+				sql = "delete from company_dept where dept_name = ? and company_name = ?";
+
+				String dept_sql = "update user_info set user_dept = '' where user_dept = ?";
+				pstmt = con.prepareStatement(dept_sql);
+				pstmt.setString(1, change);
+				pstmt.executeUpdate();
+				pstmt.close();
+
+			} else if (value.equals("job_name")) {
+				sql = "delete from company_job where job_name = ? and company_name = ?";
+				String job_sql = "update user_info set user_job = '' where user_job = ?";
+				pstmt = con.prepareStatement(job_sql);
+				pstmt.setString(1, change);
+				pstmt.executeUpdate();
+				pstmt.close();
+			}
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, def);
+			pstmt.setString(2, company);
+			pstmt.executeUpdate();
+			con.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("update() 오류");
+
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}
+	}
+
+	public int update(String value, String change, String company_name) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			con = ds.getConnection();
+			String update_sql = "update company_info set " + value + " = ? where company_name = ?";
+			pstmt = con.prepareStatement(update_sql);
+			pstmt.setString(1, change);
+			pstmt.setString(2, company_name);
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("update() 오류");
+
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+		}
+		return result;
 	} // update end
 
 }

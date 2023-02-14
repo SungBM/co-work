@@ -17,12 +17,10 @@ public class PasswordChangeProcess implements Action {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		HttpSession session = request.getSession();
-//		String user_id = request.getParameter("user_id");
 		String user_id = (String) session.getAttribute("id");
 		String user_password = request.getParameter("user_password");
 		MypageDAO mydao = new MypageDAO();
 		int result = mydao.isId(user_id, user_password); // id, password 1차 확인
-		System.out.println("검사" + result);
 
 		if (result != 1) {
 			PrintWriter out = response.getWriter();
@@ -57,9 +55,6 @@ public class PasswordChangeProcess implements Action {
 				}
 
 				result = mydao.passwordchange(user_id, user_password1);
-				System.out.println(user_id);
-				System.out.println(user_password1);
-				System.out.println(result);
 				if (result == 1) {
 					PrintWriter out = response.getWriter();
 					out.println("<script>");

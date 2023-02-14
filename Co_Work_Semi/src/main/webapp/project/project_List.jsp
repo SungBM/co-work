@@ -4,9 +4,14 @@
 <!DOCTYPE html>
 
 <html lang="en">
+<<<<<<< HEAD
 <link href="project_Css/project.css" rel="stylesheet" type="text/css" />
 <jsp:include page="/main/header.html"></jsp:include>
 
+=======
+<jsp:include page="/main/header.jsp"></jsp:include>
+<link href="project_Css/project.css" rel="stylesheet" type="text/css"/>
+>>>>>>> branch 'main' of https://github.com/SungBM/co-work.git
 <style>
 #icon_id{
 	display: none;
@@ -192,6 +197,7 @@
 </div>
 <!-- End Page-content -->
 </body>
+<<<<<<< HEAD
 <jsp:include page="/main/footer.html"></jsp:include>
 <script src="project_js/project_add.js"></script>
 <script src="project_js/project_list_onload.js"></script>
@@ -201,6 +207,38 @@ $(function(){
 })
 
 </script>
+=======
+<jsp:include page="/main/footer.jsp"></jsp:include>
+	<script src="project_js/project_add.js"></script>
+	<script src="project_js/project_list_onload.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$(".team_icon").click(function(){
+			$("#stateForm").submit(function(){
+				
+			});
+			
+			   console.log("들어옴");
+			   var p = $(this).parent().attr("id");
+			   var state = $("#state").val();
+			   console.log(state);
+			   console.log(p);
+			   $.ajax({			
+					url: "ProjectList.po",  
+		 			type:"GET",
+		 			success:function(response) {
+		 				console.log(response);
+		 			},
+		 			error:function(xhr,status,msg){
+		 				console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+		 			}
+		 	   });
+		});
+	});
+		
+	
+	</script>
+>>>>>>> branch 'main' of https://github.com/SungBM/co-work.git
 </html>
 
 

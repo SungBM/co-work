@@ -4,19 +4,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
 import net.admin.db.Company;
 import net.admin.db.CompanyDAO;
+import net.member.db.UserInfo;
 import net.mypage.db.Dept;
 import net.mypage.db.Job;
-import net.mypage.db.Member;
 import net.mypage.db.MypageDAO;
 
 public class MypageUpdateProcessAction implements Action {
@@ -29,7 +25,7 @@ public class MypageUpdateProcessAction implements Action {
 		String value = request.getParameter("value");
 		String change = request.getParameter("val3");
 		String id = request.getParameter("user_id");
-		
+
 		CompanyDAO cdao = new CompanyDAO();
 		System.out.println(value);
 		System.out.println(change);
@@ -42,7 +38,7 @@ public class MypageUpdateProcessAction implements Action {
 			int fileSize = 5 * 1024 * 1024;
 			// 실제 저장 경로 지정
 			ServletContext sc = request.getServletContext();
-			realFolder = sc.getRealPath(saveFolder);
+			realFolder = sc.getRealPath("/saveFolder");
 			System.out.println("realFolder = [" + realFolder + "]");
 			try {
 				MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "utf-8",
@@ -52,70 +48,40 @@ public class MypageUpdateProcessAction implements Action {
 				id = multi.getParameter("user_id");
 				// 이미지 교체 진행
 
-				if (change != null) {
-					change = multi.getFilesystemName(value);
 
-				} else if (multi.getParameter("check") != "") {
-					change = multi.getFilesystemName("check");
-				}
+		System.out.println("value="+value);
+		System.out.println("id="+id);
+		System.out.println("change="+change);
+		CompanyDAO cdao = new CompanyDAO();
 
-				MypageDAO mydao = new MypageDAO();
-				int result = mydao.update(value, change, id);
+		MypageDAO mydao = new MypageDAO();
+		int result = mydao.update(value, change, id);
 
-				response.setContentType("text/html;charset=utf-8");
-				PrintWriter out = response.getWriter();
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
 
-				if (result == 1) {
-					out.println("<script>");
-					out.println("alert('" + dc(value) + " 수정되었습니다.');");
-					out.println("location.href='index2.jsp';");
-				} else {
-					out.println("alert('회원정보 수정에 실패했습니다.');");
-					out.println("history.back()");
-				}
-				out.println("</script>");
-				out.close();
-				return null;
-			} catch (
+		if (result == 1) {
+			UserInfo m = mydao.member_info(id);
+			Company c = cdao.company_info(id);
+			List<Dept> d = mydao.dept(c.getCompany_name());
+			List<Job> j = mydao.job(c.getCompany_name());
 
-			IOException ex) {
-				ex.printStackTrace();
-				forward = new ActionForward();
-				forward.setPath("error/error.jsp");
-				request.setAttribute("message", "프로필 사진 업로드 실패입니다.");
-				forward.setRedirect(false);
-				return forward;
-			} // catch end
+			request.setAttribute("memberinfo", m);
+			request.setAttribute("dept", d);
+			request.setAttribute("job", j);
+			forward.setRedirect(false);
+			forward.setPath("mypage/mypage.jsp");
+			return forward;
+
 		} else {
-			MypageDAO mydao = new MypageDAO();
-			int result = mydao.update(value, change, id);
-
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-
-			if (result == 1) {
-				Member m = mydao.member_info(id);
-				Company c = cdao.company_info(id);
-				List<Dept> d = mydao.dept(c.getCompany_name());
-				List<Job> j = mydao.job(c.getCompany_name());
-
-				request.setAttribute("memberinfo", m);
-				request.setAttribute("dept", d);
-				request.setAttribute("job", j);
-				forward.setRedirect(false);
-				forward.setPath("mypage/mypage.jsp");
-				return forward;
-
-			} else {
-				out.println("alert('회원정보 수정에 실패했습니다.');");
-				out.println("history.back()");
-			}
-			out.println("</script>");
-			out.close();
-			return null;
-
+			out.println("alert('회원정보 수정에 실패했습니다.');");
+			out.println("history.back()");
 		}
-	} // execute end
+		out.println("</script>");
+		out.close();
+		return null;
+
+	}
 
 	public String dc(String value) {
 		String v1 = "";
