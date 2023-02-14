@@ -8,7 +8,6 @@ function onClickUpload1() {
 	$("#file1").click();
 }
 
-
 $(function() {
 	$(".update").on("click", function(e) {
 		e.preventDefault();
@@ -79,8 +78,11 @@ $(function() {
 			reader.readAsDataURL(event.target.files[0]);
 
 			reader.onload = function() { // 읽기에  성공했을 때
+			
+				$("#profile").submit();
 				$('#showImage1 > img').attr('src', this.result).css({ "width": "200px", "height": "200px" });
 				$('#showImage1 > img').css({ "width": "200px", "height": "200px" });
+				
 			};
 		} else {
 			alert('이미지 파일(gif, jpg, jpeg, png)이 아닌 경우는 무시됩니다.');
@@ -108,13 +110,14 @@ $(function() {
 			reader.readAsDataURL(event.target.files[0]);
 
 			reader.onload = function() { // 읽기에  성공했을 때
+				$("#card").submit();
 				$('#showImage2 > img').attr('src', this.result).css({ "width": "200px", "height": "200px" });
 				$('#showImage2 > img').css({ "width": "200px", "height": "200px" });
 			};
 		} else {
 			alert('이미지 파일(gif, jpg, jpeg, png)이 아닌 경우는 무시됩니다.');
 			$('#filename2').text('');
-			$('#showImage2 > img').attr('src', 'image/profile.png');
+			$('#showImage2 > img').attr('src', 'image/card.png');
 			$(this).val('')
 			$('input[name=check]').val('');
 		}

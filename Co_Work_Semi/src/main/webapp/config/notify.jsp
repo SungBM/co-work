@@ -22,7 +22,7 @@ input[type=file] {
 					</div>
 				</div>
 			</div>
-			<div class="col-12">
+			<div class="col-8">
 				<div class="card">
 					<div class="card-body">
 						<div class="table-responsive">

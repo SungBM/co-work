@@ -21,7 +21,7 @@ input[type=file] {
 					</div>
 				</div>
 			</div>
-			<div class="col-12">
+			<div class="col-8">
 				<div class="card">
 					<div class="card-body">
 						<form method="POST" id="mypage" action="mypage.my">
@@ -29,7 +29,7 @@ input[type=file] {
 								<label for="horizontal-firstname-input" class="col-sm-3 col-form-label">현재 비밀번호</label>
 								<div class="col-sm-9">
 									<input type="password" class="form-control" id="horizontal-password-input" name="user_password">
-									<input type="hidden" name="user_id" value="${memberinfo.user_id}">
+									<input type="hidden" name="user_id" value="${memberinfo.USER_ID}">
 								</div>
 							</div>
 							<div class="row justify-content-end">

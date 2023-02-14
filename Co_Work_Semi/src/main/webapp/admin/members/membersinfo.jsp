@@ -11,7 +11,7 @@ th, tr {
 </style>
 </head>
 <body>
-	<input type="hidden" name="user_id" value="${m.user_id }">
+	<input type="hidden" name="user_id" value="${m.USER_ID }">
 	<div class="page-content">
 		<div class="container-fluid">
 			<div class="row">
@@ -74,54 +74,87 @@ th, tr {
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="m" items="${list }">
+											<c:forEach var="m" items="${list }" varStatus="vs">
 												<tr>
 													<td>
 														<input class="form-check-input" type="checkbox" id="formCheck2">
 													</td>
 													<td>
-														<a name="meminfo" href="mypage.my?user_id=${m.user_id }"}">${m.user_name }</a>
+
+														<div>
+															<a name="meminfo" data-bs-toggle="modal" data-bs-target="#myModal${vs.index }" href="mypage.my?user_id=${m.USER_ID }" data-remote="mypage/mypage.jsp"> ${m.USER_NAME } </a>
+															<!-- sample modal content -->
+															<div id="myModal${vs.index }" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+																<div class="modal-dialog">
+																	<div class="modal-content">
+																		<div class="modal-header">
+																			<h5 class="modal-title" id="myModalLabel">Default Modal Heading</h5>
+																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+																		</div>
+
+																		<div class="modal-body">
+																			... remote content from "data-remote"
+																			loads here ...
+																		</div>
+
+																		<div class="modal-footer">
+																			<button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
+																			<button type="button" class="btn btn-primary waves-effect waves-light">Save changes</button>
+																		</div>
+																	</div>
+																	<!-- /.modal-content -->
+																</div>
+																<!-- /.modal-dialog -->
+															</div>
+															<!-- /.modal -->
+														</div>
+														<!-- end preview-->
+
 													</td>
-													<td>${m.user_dept }</td>
-													<td>${m.user_job }</td>
+													<td>${m.USER_DEPT }</td>
+													<td>${m.USER_JOB }</td>
 													<td>
-														<a href="#">${m.user_email }</a>
+														<a href="#">${m.USER_EMAIL }</a>
 													</td>
-													<td>${m.user_phone }</td>
-													<td>${m.user_join_date }</td>
-													<td>미구현</td>
+													<td>${m.USER_PHONE }</td>
+													<td>${m.USER_JOIN_DATE }</td>
+													<td>${m.USER_LASTTIME }</td>
 
 													<!-- 상태 표시 -->
-													<c:if test="${m.user_state eq 0}">
+													<c:if test="${m.USER_STATE eq 0}">
 														<td style="color: green;">
 															<span>정상</span>
 															<br>
-															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=1">[중지]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.USER_ID }&state=1">[중지]</a>
 														</td>
 													</c:if>
-													<c:if test="${m.user_state eq 1}">
+													<c:if test="${m.USER_STATE eq 1}">
 														<td style="color: red;">
 															<span>중지</span>
 															<br>
-															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=0">[정상]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.USER_ID }&state=0">[정상]</a>
 														</td>
 													</c:if>
-													<c:if test="${m.user_state eq 2}">
+													<c:if test="${m.USER_STATE eq 2}">
 														<td style="color: orange">
 															<span>승인 대기</span>
 															<br>
-															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=2">[승인]</a>
-															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=1">[중지]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.USER_ID }&state=0">[승인]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.USER_ID }&state=1">[중지]</a>
 														</td>
 													</c:if>
 
 													<!-- 관리자 표시 -->
-													<c:if test="${m.user_is_admin eq 1}">
-														<td>관리자</td>
-													</c:if>
-													<c:if test="${m.user_is_admin eq 0}">
+													<c:if test="${m.USER_IS_ADMIN eq 1}">
 														<td>
-															<a href="admingrant.com">[지정]</a>
+															관리자<br>
+															<a href="adminright.com?user_id=${m.USER_ID }&user_is_admin=0">[해제]</a>
+
+														</td>
+													</c:if>
+													<c:if test="${m.USER_IS_ADMIN eq 0}">
+														<td>
+															<a href="adminright.com?user_id=${m.USER_ID }&user_is_admin=1">[지정]</a>
 														</td>
 													</c:if>
 												</tr>
@@ -155,48 +188,47 @@ th, tr {
 														<input class="form-check-input" type="checkbox" id="formCheck2">
 													</td>
 													<td>
-														<a name="meminfo" href="mypage.my?user_id=${m.user_id }"}">${m.user_name }</a>
+														<a name="meminfo" href="mypage.my?user_id=${m.USER_ID }"}">${m.USER_NAME }</a>
 													</td>
-													<td>${m.user_dept }</td>
-													<td>${m.user_job }</td>
+													<td>${m.USER_DEPT }</td>
+													<td>${m.USER_JOB }</td>
 													<td>
-														<a href="#">${m.user_email }</a>
+														<a href="#">${m.USER_EMAIL}</a>
 													</td>
-													<td>${m.user_phone }</td>
-													<td>${m.user_join_date }</td>
-													<td>미구현</td>
-
+													<td>${m.USER_PHONE }</td>
+													<td>${m.USER_JOIN_DATE }</td>
+													<td>${m.USER_LASTTIME }</td>
 													<!-- 상태 표시 -->
-													<c:if test="${m.user_state eq 0}">
+													<c:if test="${m.USER_STATE eq 0}">
 														<td style="color: green;">
 															<span>정상</span>
 															<br>
-															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=1">[중지]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.USER_ID }&state=1">[중지]</a>
 														</td>
 													</c:if>
-													<c:if test="${m.user_state eq 1}">
+													<c:if test="${m.USER_STATE eq 1}">
 														<td style="color: red;">
 															<span>중지</span>
 															<br>
-															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=0">[정상]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.USER_ID }&state=0">[정상]</a>
 														</td>
 													</c:if>
-													<c:if test="${m.user_state eq 2}">
+													<c:if test="${m.USER_STATE eq 2}">
 														<td style="color: orange">
 															<span>승인 대기</span>
 															<br>
-															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=2">[승인]</a>
-															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=1">[중지]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.USER_ID }&state=2">[승인]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.USER_ID }&state=1">[중지]</a>
 														</td>
 													</c:if>
 
 													<!-- 관리자 표시 -->
-													<c:if test="${m.user_is_admin eq 1}">
+													<c:if test="${m.USER_IS_ADMIN eq 1}">
 														<td>관리자</td>
 													</c:if>
-													<c:if test="${m.user_is_admin eq 0}">
+													<c:if test="${m.USER_IS_ADMIN eq 0}">
 														<td>
-															<a href="admingrant.com">[지정]</a>
+															<a href="adminright.com?user_id=${m.USER_ID }&user_is_admin=1">[지정]</a>
 														</td>
 													</c:if>
 												</tr>
@@ -230,48 +262,48 @@ th, tr {
 														<input class="form-check-input" type="checkbox" id="formCheck2">
 													</td>
 													<td>
-														<a name="meminfo" href="mypage.my?user_id=${m.user_id }"}">${m.user_name }</a>
+														<a name="meminfo" href="mypage.my?user_id=${m.USER_ID }"}">${m.USER_NAME }</a>
 													</td>
-													<td>${m.user_dept }</td>
-													<td>${m.user_job }</td>
+													<td>${m.USER_DEPT }</td>
+													<td>${m.USER_JOB }</td>
 													<td>
-														<a href="#">${m.user_email }</a>
+														<a href="#">${m.USER_EMAIL }</a>
 													</td>
-													<td>${m.user_phone }</td>
-													<td>${m.user_join_date }</td>
-													<td>미구현</td>
+													<td>${m.USER_PHONE }</td>
+													<td>${m.USER_JOIN_DATE }</td>
+													<td>${m.USER_LASTTIME }</td>
 
 													<!-- 상태 표시 -->
-													<c:if test="${m.user_state eq 0}">
+													<c:if test="${m.USER_STATE eq 0}">
 														<td style="color: green;">
 															<span>정상</span>
 															<br>
-															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=1">[중지]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.USER_ID }&state=1">[중지]</a>
 														</td>
 													</c:if>
-													<c:if test="${m.user_state eq 1}">
+													<c:if test="${m.USER_STATE eq 1}">
 														<td style="color: red;">
 															<span>중지</span>
 															<br>
-															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=0">[정상]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.USER_ID }&state=0">[정상]</a>
 														</td>
 													</c:if>
-													<c:if test="${m.user_state eq 2}">
+													<c:if test="${m.USER_STATE eq 2}">
 														<td style="color: orange">
 															<span>승인 대기</span>
 															<br>
-															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=2">[승인]</a>
-															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=1">[중지]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.USER_ID }&state=2">[승인]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.USER_ID }&state=1">[중지]</a>
 														</td>
 													</c:if>
 
 													<!-- 관리자 표시 -->
-													<c:if test="${m.user_is_admin eq 1}">
+													<c:if test="${m.USER_IS_ADMIN eq 1}">
 														<td>관리자</td>
 													</c:if>
-													<c:if test="${m.user_is_admin eq 0}">
+													<c:if test="${m.USER_IS_ADMIN eq 0}">
 														<td>
-															<a href="admingrant.com">[지정]</a>
+															<a href="adminright.com?user_id=${m.USER_ID }&user_is_admin=1">[지정]</a>
 														</td>
 													</c:if>
 												</tr>
@@ -305,48 +337,48 @@ th, tr {
 														<input class="form-check-input" type="checkbox" id="formCheck2">
 													</td>
 													<td>
-														<a name="meminfo" href="mypage.my?user_id=${m.user_id }"}">${m.user_name }</a>
+														<a name="meminfo" href="mypage.my?user_id=${m.USER_ID }"}">${m.USER_NAME}</a>
 													</td>
-													<td>${m.user_dept }</td>
-													<td>${m.user_job }</td>
+													<td>${m.USER_DEPT }</td>
+													<td>${m.USER_JOB }</td>
 													<td>
-														<a href="#">${m.user_email }</a>
+														<a href="#">${m.USER_EMAIL}</a>
 													</td>
-													<td>${m.user_phone }</td>
-													<td>${m.user_join_date }</td>
-													<td>미구현</td>
+													<td>${m.USER_PHONE }</td>
+													<td>${m.USER_JOIN_DATE }</td>
+													<td>${m.USER_LASTTIME }</td>
 
 													<!-- 상태 표시 -->
-													<c:if test="${m.user_state eq 0}">
+													<c:if test="${m.USER_STATE eq 0}">
 														<td style="color: green;">
 															<span>정상</span>
 															<br>
-															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=1">[중지]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.USER_ID }&state=1">[중지]</a>
 														</td>
 													</c:if>
-													<c:if test="${m.user_state eq 1}">
+													<c:if test="${m.USER_STATE eq 1}">
 														<td style="color: red;">
 															<span>중지</span>
 															<br>
-															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=0">[정상]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.USER_ID }&state=0">[정상]</a>
 														</td>
 													</c:if>
-													<c:if test="${m.user_state eq 2}">
+													<c:if test="${m.USER_STATE eq 2}">
 														<td style="color: orange">
 															<span>승인 대기</span>
 															<br>
-															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=2">[승인]</a>
-															<a name="stat" href="memberstatus.com?user_id=${m.user_id }&state=1">[중지]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.USER_ID }&state=2">[승인]</a>
+															<a name="stat" href="memberstatus.com?user_id=${m.USER_ID }&state=1">[중지]</a>
 														</td>
 													</c:if>
 
 													<!-- 관리자 표시 -->
-													<c:if test="${m.user_is_admin eq 1}">
+													<c:if test="${m.USER_IS_ADMIN eq 1}">
 														<td>관리자</td>
 													</c:if>
-													<c:if test="${m.user_is_admin eq 0}">
+													<c:if test="${m.USER_IS_ADMIN eq 0}">
 														<td>
-															<a href="admingrant.com">[지정]</a>
+															<a href="adminright.com?user_id=${m.USER_ID }&user_is_admin=1">[지정]</a>
 														</td>
 													</c:if>
 												</tr>

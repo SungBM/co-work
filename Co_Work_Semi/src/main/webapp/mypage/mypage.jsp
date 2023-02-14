@@ -33,49 +33,47 @@ input[type=file] {
 			</div>
 			<div class="row">
 				<div class="col-lg-3">
-					<form action="updateProcess.my" method="post" enctype="multipart/form-data">
+					<form action="ImgupdateProcess.my" method="post" enctype="multipart/form-data" id="profile">
 						<div class="card h-50">
 							<label>
 								<span id="showImage1">
-									<c:if test='${empty memberinfo.user_img }'>
+									<c:if test='${empty memberinfo.USER_IMG }'>
 										<c:set var='src' value='image/profile.png' />
 									</c:if>
-									<c:if test='${!empty memberinfo.user_img }'>
-										<c:set var='src' value='${"image/" }${memberinfo.user_img }' />
-										<input type="hidden" name="check" value="${memberinfo.user_img }">
+									<c:if test='${!empty memberinfo.USER_IMG }'>
+										<c:set var='src' value='${"image/" }${memberinfo.USER_IMG }' />
+										<input type="hidden" name="check" value="${memberinfo.USER_IMG }">
 									</c:if>
 									<img src="${src }" alt="profile">
 								</span>
 								<input class="form-control" type="file" name="user_img" id="formFile1">
-								<input type="hidden" name="user_id" value="${memberinfo.user_id}">
+								<input type="hidden" name="user_id" value="${memberinfo.USER_ID}">
 								<input type="hidden" name="value" value="user_img">
 							</label>
 							<div class="col-md-4">
-								<button class="btn btn-success waves-effect waves-light file update" type="submit">수정</button>
 								<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
 							</div>
 						</div>
 					</form>
-					<form action="updateProcess.my" method="post" enctype="multipart/form-data">
+					<form action="ImgupdateProcess.my" method="post" enctype="multipart/form-data" id="card">
 						<div class="card h-50">
 							<label>
 								<span id="showImage2">
-									<c:if test='${empty memberinfo.user_card }'>
+									<c:if test='${empty memberinfo.USER_CARD }'>
 										<c:set var='src' value='image/card.jpg' />
 									</c:if>
-									<c:if test='${!empty memberinfo.user_card }'>
-										<c:set var='src' value='${"image/" }${memberinfo.user_card }' />
-										<input type="hidden" name="check" value="${memberinfo.user_card }">
+									<c:if test='${!empty memberinfo.USER_CARD }'>
+										<c:set var='src' value='${"image/" }${memberinfo.USER_CARD }' />
+										<input type="hidden" name="check" value="${memberinfo.USER_CARD }">
 									</c:if>
 									<img src="${src }" alt="card">
 								</span>
 								<input class="form-control" type="file" name="user_card" id="formFile2">
-								<input type="hidden" name="user_id" value="${memberinfo.user_id}">
+								<input type="hidden" name="user_id" value="${memberinfo.USER_ID}">
 								<input type="hidden" name="value" value="user_card">
 							</label>
 
 							<div class="col-md-6">
-								<button class="btn btn-success waves-effect waves-light file update" type="submit">수정</button>
 								<input class='btn btn-warning waves-effect waves-light' type="reset" id='second' style="display: none" value="취소">
 							</div>
 						</div>
@@ -87,10 +85,10 @@ input[type=file] {
 						<div class="card-body">
 							<form action="updateProcess.my" method="post" id="up">
 								<div class="mb-3 row">
-									<label for="value-name" class="col-md-2 col-form-label">이름</label>
-									<div class="col-md-7">
-										<input class="form-control" type="text" value="${memberinfo.user_name }" name="user_name" readOnly>
-										<input type="hidden" name="user_id" value="${memberinfo.user_id}">
+									<label for="value-name" class="col-md-3 col-form-label">이름</label>
+									<div class="col-md-6">
+										<input class="form-control" type="text" value="${memberinfo.USER_NAME }" name="user_name" readOnly>
+										<input type="hidden" name="user_id" value="${memberinfo.USER_ID}">
 										<input type="hidden" name="value" value="user_name">
 									</div>
 									<div class="col-md-3">
@@ -102,8 +100,8 @@ input[type=file] {
 
 							<form action="updateProcess.my" method="post" id="up">
 								<div class="mb-3 row">
-									<label for="value-name" class="col-md-2 col-form-label">부서</label>
-									<div class="col-md-7">
+									<label for="value-name" class="col-md-3 col-form-label">부서</label>
+									<div class="col-md-6">
 										<select class="form-select" name="user_dept" disabled required>
 
 											<c:if test="${!empty list.dept_name }">
@@ -120,7 +118,7 @@ input[type=file] {
 											</c:if>
 
 										</select>
-										<input type="hidden" name="user_id" value="${memberinfo.user_id}">
+										<input type="hidden" name="user_id" value="${memberinfo.USER_ID}">
 										<input type="hidden" name="value" value="user_dept">
 									</div>
 									<div class="col-md-3">
@@ -132,8 +130,8 @@ input[type=file] {
 
 							<form action="updateProcess.my" method="post" id="up">
 								<div class="mb-3 row">
-									<label for="value-name" class="col-md-2 col-form-label">직함</label>
-									<div class="col-md-7">
+									<label for="value-name" class="col-md-3 col-form-label">직함</label>
+									<div class="col-md-6">
 										<select class="form-select" name="user_job" disabled>
 
 											<c:if test="${!empty list.job_name }">
@@ -150,7 +148,7 @@ input[type=file] {
 											</c:if>
 											
 										</select>
-										<input type="hidden" name="user_id" value="${memberinfo.user_id}">
+										<input type="hidden" name="user_id" value="${memberinfo.USER_ID}">
 										<input type="hidden" name="value" value="user_job">
 									</div>
 									<div class="col-md-3">
@@ -162,10 +160,10 @@ input[type=file] {
 
 							<form action="updateProcess.my" method="post" id="up">
 								<div class="mb-3 row">
-									<label for="value-name" class="col-md-2 col-form-label">이메일 주소</label>
-									<div class="col-md-7">
-										<input class="form-control" type="email" value="${memberinfo.user_email }" name="user_email" readOnly>
-										<input type="hidden" name="user_id" value="${memberinfo.user_id}">
+									<label for="value-name" class="col-md-3 col-form-label">이메일 주소</label>
+									<div class="col-md-6">
+										<input class="form-control" type="email" value="${memberinfo.USER_EMAIL }" name="user_email" readOnly>
+										<input type="hidden" name="user_id" value="${memberinfo.USER_ID}">
 										<input type="hidden" name="value" value="user_email">
 
 									</div>
@@ -178,10 +176,10 @@ input[type=file] {
 
 							<form action="updateProcess.my" method="post" id="up">
 								<div class="mb-3 row">
-									<label for="value-name" class="col-md-2 col-form-label">FAX</label>
-									<div class="col-md-7">
-										<input class="form-control" type="text" value="${memberinfo.user_fax}" placeholder="Enter fax" name="user_fax" readOnly>
-										<input type="hidden" name="user_id" value="${memberinfo.user_id}">
+									<label for="value-name" class="col-md-3 col-form-label">FAX</label>
+									<div class="col-md-6">
+										<input class="form-control" type="text" value="${memberinfo.USER_FAX}" placeholder="Enter fax" name="user_fax" readOnly>
+										<input type="hidden" name="user_id" value="${memberinfo.USER_ID}">
 										<input type="hidden" name="value" value="user_fax">
 
 									</div>
@@ -193,10 +191,10 @@ input[type=file] {
 							</form>
 							<form action="updateProcess.my" method="post" id="up">
 								<div class="mb-3 row">
-									<label for="value-name" class="col-md-2 col-form-label">연락처</label>
-									<div class="col-md-7">
-										<input class="form-control" type="text" value="${memberinfo.user_phone }" placeholder="Enter phone" name="user_phone" readOnly>
-										<input type="hidden" name="user_id" value="${memberinfo.user_id}">
+									<label for="value-name" class="col-md-3 col-form-label">연락처</label>
+									<div class="col-md-6">
+										<input class="form-control" type="text" value="${memberinfo.USER_PHONE }" placeholder="Enter phone" name="user_phone" readOnly>
+										<input type="hidden" name="user_id" value="${memberinfo.USER_ID}">
 										<input type="hidden" name="value" value="user_phone">
 									</div>
 									<div class="col-md-3">
@@ -208,10 +206,10 @@ input[type=file] {
 
 							<form action="updateProcess.my" method="post" id="up">
 								<div class="mb-3 row">
-									<label for="value-name" class="col-md-2 col-form-label">자기소개</label>
-									<div class="col-md-7">
-										<textarea class="form-control" placeholder="Enter INTRO" name="user_intro" rows="4" style="resize: none;" readOnly>${memberinfo.user_intro }</textarea>
-										<input type="hidden" name="user_id" value="${memberinfo.user_id}">
+									<label for="value-name" class="col-md-3 col-form-label">자기소개</label>
+									<div class="col-md-6">
+										<textarea class="form-control" placeholder="Enter INTRO" name="user_intro" rows="4" style="resize: none;" readOnly>${memberinfo.USER_INTRO }</textarea>
+										<input type="hidden" name="user_id" value="${memberinfo.USER_ID}">
 										<input type="hidden" name="value" value="user_intro">
 									</div>
 									<div class="col-md-3">
@@ -232,8 +230,7 @@ input[type=file] {
 <jsp:include page="/main/footer.jsp"></jsp:include>
 <script src="mypage_js/mypage.js"></script>
 <script>
-	$("select[name=user_dept]").val('${memberinfo.user_dept}').prop("selected",
-			true);
-	$("option[value='${memberinfo.user_job }']").prop("selected", true);
+	$("select[name=user_dept]").val('${memberinfo.USER_DEPT}').prop("selected",	true);
+	$("option[value='${memberinfo.USER_JOB }']").prop("selected", true);
 </script>
 </html>

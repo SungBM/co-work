@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import net.mypage.db.Member;
+import net.member.db.UserInfo;
 import net.mypage.db.MypageDAO;
 
 public class MypageCheckAction implements Action {
@@ -20,9 +20,8 @@ public class MypageCheckAction implements Action {
 		String user_id = (String) session.getAttribute("id");
 
 		MypageDAO mydao = new MypageDAO();
-		Member m = mydao.member_info(user_id);
+		UserInfo m = mydao.member_info(user_id);
 		
-		System.out.println(user_id);
 		forward.setRedirect(false);
 		forward.setPath("mypage/mypagecheck.jsp");
 		request.setAttribute("memberinfo", m);

@@ -2,8 +2,6 @@ package net.mypage.db;
 
 import java.sql.Date;
 
-import oracle.sql.DATE;
-
 public class Member {
 	private String user_id;
 	private String user_password;
@@ -17,7 +15,7 @@ public class Member {
 	private String user_intro;
 	private String user_card;
 	private int user_state;
-	private Date user_join_date;
+	private java.util.Date user_join_date;
 	private String user_phone;
 
 	public String getUser_id() {
@@ -116,7 +114,7 @@ public class Member {
 		this.user_state = user_state;
 	}
 
-	public Date getUser_join_date() {
+	public java.util.Date getUser_join_date() {
 		return user_join_date;
 	}
 
