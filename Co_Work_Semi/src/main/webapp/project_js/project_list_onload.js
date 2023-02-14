@@ -1,8 +1,8 @@
 $(function(){
 	$(".avatar-group-item").click(function(){
-		var id = $(this).children("p").text();
+		var id = $(this).children("#icon_id").text();
 		console.log(id);
-		location.href = "pages-404.html?id=" + id;
+		location.href = "myPageDetail.my?id=" + id;
 	});
 	
 	$(".card-drop").click(function (event) {

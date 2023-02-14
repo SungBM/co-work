@@ -17,104 +17,81 @@ import net.mypage.db.MypageDAO;
 
 public class MypageUpdateProcessAction implements Action {
 
-	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		ActionForward forward = new ActionForward();
+   @Override
+   public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
+         throws ServletException, IOException {
+      ActionForward forward = new ActionForward();
 
-		String value = request.getParameter("value");
-		String change = request.getParameter("val3");
-		String id = request.getParameter("user_id");
+      String value = request.getParameter("value");
+      String change = request.getParameter("val3");
+      String id = request.getParameter("user_id");
 
-		CompanyDAO cdao = new CompanyDAO();
-		System.out.println(value);
-		System.out.println(change);
-		System.out.println(id);
+      System.out.println("value="+value);
+      System.out.println("id="+id);
+      System.out.println("change="+change);
+      CompanyDAO cdao = new CompanyDAO();
 
-		if (value.equals("user_img") || value.equals("user_card")) {
-			String realFolder = "";
-			// webapp아래에 꼭 폴더 생성하세요
-			String saveFolder = "image";
-			int fileSize = 5 * 1024 * 1024;
-			// 실제 저장 경로 지정
-			ServletContext sc = request.getServletContext();
-			realFolder = sc.getRealPath("/saveFolder");
-			System.out.println("realFolder = [" + realFolder + "]");
-			try {
-				MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "utf-8",
-						new DefaultFileRenamePolicy());
-				value = multi.getParameter("value");
-				change = multi.getParameter(value);
-				id = multi.getParameter("user_id");
-				// 이미지 교체 진행
+      MypageDAO mydao = new MypageDAO();
+      int result = mydao.update(value, change, id);
 
+      response.setContentType("text/html;charset=utf-8");
+      PrintWriter out = response.getWriter();
 
-		System.out.println("value="+value);
-		System.out.println("id="+id);
-		System.out.println("change="+change);
-		CompanyDAO cdao = new CompanyDAO();
+      if (result == 1) {
+         UserInfo m = mydao.member_info(id);
+         Company c = cdao.company_info(id);
+         List<Dept> d = mydao.dept(c.getCompany_name());
+         List<Job> j = mydao.job(c.getCompany_name());
 
-		MypageDAO mydao = new MypageDAO();
-		int result = mydao.update(value, change, id);
+         request.setAttribute("memberinfo", m);
+         request.setAttribute("dept", d);
+         request.setAttribute("job", j);
+         forward.setRedirect(false);
+         forward.setPath("mypage/mypage.jsp");
+         return forward;
 
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter();
+      } else {
+         out.println("alert('회원정보 수정에 실패했습니다.');");
+         out.println("history.back()");
+      }
+      out.println("</script>");
+      out.close();
+      return null;
 
-		if (result == 1) {
-			UserInfo m = mydao.member_info(id);
-			Company c = cdao.company_info(id);
-			List<Dept> d = mydao.dept(c.getCompany_name());
-			List<Job> j = mydao.job(c.getCompany_name());
+   }
 
-			request.setAttribute("memberinfo", m);
-			request.setAttribute("dept", d);
-			request.setAttribute("job", j);
-			forward.setRedirect(false);
-			forward.setPath("mypage/mypage.jsp");
-			return forward;
-
-		} else {
-			out.println("alert('회원정보 수정에 실패했습니다.');");
-			out.println("history.back()");
-		}
-		out.println("</script>");
-		out.close();
-		return null;
-
-	}
-
-	public String dc(String value) {
-		String v1 = "";
-		switch (value) {
-		case "user_name":
-			v1 = "이름";
-			return v1;
-		case "user_dept":
-			v1 = "부서";
-			return v1;
-		case "user_job":
-			v1 = "직함";
-			return v1;
-		case "user_email":
-			v1 = "이메일 주소";
-			return v1;
-		case "user_fax":
-			v1 = "팩스";
-			return v1;
-		case "user_phone":
-			v1 = "연락처";
-			return v1;
-		case "user_intro":
-			v1 = "자기소개";
-			return v1;
-		case "user_img":
-			v1 = "프로필 사진";
-			return v1;
-		case "user_card":
-			v1 = "명함";
-			return v1;
-		}
-		return v1;
-	}
+   public String dc(String value) {
+      String v1 = "";
+      switch (value) {
+      case "user_name":
+         v1 = "이름";
+         return v1;
+      case "user_dept":
+         v1 = "부서";
+         return v1;
+      case "user_job":
+         v1 = "직함";
+         return v1;
+      case "user_email":
+         v1 = "이메일 주소";
+         return v1;
+      case "user_fax":
+         v1 = "팩스";
+         return v1;
+      case "user_phone":
+         v1 = "연락처";
+         return v1;
+      case "user_intro":
+         v1 = "자기소개";
+         return v1;
+      case "user_img":
+         v1 = "프로필 사진";
+         return v1;
+      case "user_card":
+         v1 = "명함";
+         return v1;
+      }
+      return v1;
+   }
 
 }

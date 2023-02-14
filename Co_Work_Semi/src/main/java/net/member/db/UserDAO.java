@@ -238,38 +238,30 @@ public class UserDAO {
 				list.add(mb);
 			}
 
-
-		public void lasttime(String USER_ID, String time) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		String sql = "";
-		try {
-			con = ds.getConnection();
-			sql = "update user_info set user_lasttime = ? where user_id = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, time);
-			pstmt.setString(2, USER_ID);
-			pstmt.executeUpdate();
-			System.out.println(time);
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("update() 오류");
-
-		} finally {
-			if (pstmt != null)
-				try {
+			
+		}catch(Exception se) {
+			se.printStackTrace();
+		}finally {
+			try {
+				if(rs != null)
+					rs.close();
+			}catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
+			try {
+				if(pstmt != null)
 					pstmt.close();
-				} catch (SQLException ex) {
-					ex.printStackTrace();
-				}
-			if (con != null)
-				try {
+			}catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
+			try {
+				if(con != null)
 					con.close();
-				} catch (SQLException ex) {
-					ex.printStackTrace();
-				}
+			}catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
 		}
-	} // lasttime end
-
-
+		return list;
+	}
+	
 }

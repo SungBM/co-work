@@ -73,19 +73,13 @@ public class AdminFrontController extends javax.servlet.http.HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		}
-	};
-
-	// doProcess(request, response)메서드를 구현하여 요청이 GET, POST 방식으로 전송되어 오든
-	// 같은 메서드에서 요청을 처리할 수 있도록 하였습니다.
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	}	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doProcess(request, response);
-	};
-
+	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		doProcess(request, response);
-	};
-
+	}
 }

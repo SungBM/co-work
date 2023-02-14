@@ -197,7 +197,6 @@ public class ProjectDAO {
 		String id =  logingID;
 		int isAdmin = getIsAdmin(id);
 		String project_List_Sql = "";
-		
 		if(isAdmin == 1) {
 			project_List_Sql = "SELECT PR.*, U.USER_IMG FROM ( SELECT * FROM "
 					+ "    (SELECT ROWNUM,P.* FROM (SELECT * FROM PROJECT ORDER BY PROJECT_END)P "
@@ -247,13 +246,10 @@ public class ProjectDAO {
 				pro.setProject_state(rs.getString(4));
 				int prog = 0;
 				if(rs.getString(7) != null ) {
-					System.out.println(rs.getString(6));
 					String d1 = rs.getString(6);
 					String d1s = d1.substring(0,10);
-					System.out.println("d1s : " + d1s);
 					String date1 = d1s;
 				    String date2 = rs.getString(7).substring(0,10); //날짜2
-				    System.out.println("date2 : "  + date2);
 				    prog = getDayCount(date1, date2);
 					pro.setProject_prog(prog);
 				} else {
@@ -267,8 +263,15 @@ public class ProjectDAO {
 				pro.setProject_bookmark(rs.getString(11));
 				
 				ArrayList<Project_User> user_parti = getParticipants(rs.getInt(2));
+				
+			
 				ArrayList<Project_User> modal = getParticipants(rs.getInt(2));
 				int modalcount = getModalCount(rs.getInt(2));
+				for(Project_User pu : modal ) {
+					String s = pu.getUSER_IMG();
+					System.out.println("modal : " + s);
+				}
+				System.out.println( "===");
 				
 				pro.setProject_parti(user_parti);
 				pro.setParti_count(modalcount);
@@ -450,16 +453,9 @@ public class ProjectDAO {
 		     
 		     //2차 실행할 sql문 작성
 		     sql = "   insert into PROJECT_USER  "
-<<<<<<< HEAD
-		    	+ "  values( (select nvl(max(PROJECT_NUM),0)+1 FROM PROJECT) "
-		    	+ "		  , ? ,  "
-		    	+ "		PROJECT_UESR_SEQ )";
-		     
-=======
 		             + "  values( (select nvl(max(PROJECT_NUM),0)+1 FROM PROJECT) "
 		             + "        , ? ,  "
-		             + "      PROJECT_UESR_SEQ.NEXTVAL )";
->>>>>>> branch 'main' of https://github.com/SungBM/co-work.git
+		             + "      ( SELECT MAX(ROWNUM)+3 FROM PROJECT_USER) ) ";
 		     
 		     //2차 sql문 실행해줄 pstmt객체 새로이 생성
 		     pstmt = con.prepareStatement(sql);
@@ -511,60 +507,6 @@ public class ProjectDAO {
 		           }
 		           return result;      
 		        }
-	
-	
-	public static MainBean main(String PROJECT_NAME) {
-		MainBean mb = null;
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			con = ds.getConnection();
-			
-			String sql = "SELECT * FROM PROJECT WHERE PROJECT_NAME = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, "PROJECT_NAME");
-			rs = pstmt.executeQuery();
-		
-			while (rs.next()) {
-				mb = new MainBean();
-				mb.setProject_name(rs.getString("PROJECT_NAME"));
-				mb.setProject_state(rs.getString("PROJECT_STATE"));
-				mb.setProject_prog(rs.getInt("PROJECT_PROG"));
-				mb.setProject_start(rs.getString("PROJECT_START"));
-				mb.setProject_end(rs.getString("PROJECT_END"));
-				mb.setProject_priority(rs.getString("PROJECT_PRIORITY"));
-				mb.setProject_partici(rs.getInt("PROJECT_PARTICI"));
-				mb.setProject_admin(rs.getString("PROJECT_ADMIN"));
-				
-			}
-			
-		}catch(Exception se) {
-			se.printStackTrace();
-		}finally {
-			try {
-				if(rs != null)
-					rs.close();
-			}catch(SQLException e) {
-				System.out.println(e.getMessage());
-			}
-			try {
-				if(pstmt != null)
-					pstmt.close();
-			}catch(SQLException e) {
-				System.out.println(e.getMessage());
-			}
-			try {
-				if(con != null)
-					con.close();
-			}catch(SQLException e) {
-				System.out.println(e.getMessage());
-			}
-		}
-		
-		return mb;
-	}
-	
 	
 		}
 

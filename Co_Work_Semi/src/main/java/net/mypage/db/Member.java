@@ -1,6 +1,6 @@
 package net.mypage.db;
+import java.util.Date;
 
-import java.sql.Date;
 
 public class Member {
 	private String user_id;

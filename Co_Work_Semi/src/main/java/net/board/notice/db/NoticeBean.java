@@ -2,7 +2,7 @@ package net.board.notice.db;
 
 public class NoticeBean {
 	private int		notice_num;			//글 번호
-	private	String	notice_name;		//작성자
+	private	String	user_id;			//작성자
 	private	String	notice_subject;		//글 제목
 	private	String	notice_content;		//글 내용
 	private	String	notice_file;		//첨부될 파일명
@@ -12,19 +12,34 @@ public class NoticeBean {
 	private int		notice_readcount;	//글의 조회수
 	private	String	notice_reg_date;	//작성일
 	private int cnt;
+	private	String	search_field;
+	private	String	search_word;
 	
 	
+	
+	public String getSearch_field() {
+		return search_field;
+	}
+	public void setSearch_field(String search_field) {
+		this.search_field = search_field;
+	}
+	public String getSearch_word() {
+		return search_word;
+	}  
+	public void setSearch_word(String search_word) {
+		this.search_word = search_word;
+	}	
 	public int getNotice_num() {
 		return notice_num;
 	}
 	public void setNotice_num(int notice_num) {
 		this.notice_num = notice_num;
 	}
-	public String getNotice_name() {
-		return notice_name;
+	public String getUser_id() {
+		return user_id;
 	}
-	public void setNotice_name(String notice_name) {
-		this.notice_name = notice_name;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 	public String getNotice_subject() {
 		return notice_subject;
@@ -72,7 +87,7 @@ public class NoticeBean {
 		return notice_reg_date;
 	}
 	public void setNotice_reg_date(String notice_reg_date) {
-		this.notice_reg_date = notice_reg_date.substring(0,16);
+		this.notice_reg_date = notice_reg_date.substring(0,10);
 	}
 	public int getCnt() {
 		return cnt;
@@ -80,6 +95,5 @@ public class NoticeBean {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
-	
 	
 }

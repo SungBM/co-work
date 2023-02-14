@@ -41,10 +41,10 @@ input[type=file] {
 										<c:set var='src' value='image/profile.png' />
 									</c:if>
 									<c:if test='${!empty memberinfo.USER_IMG }'>
-										<c:set var='src' value='${"image/" }${memberinfo.USER_IMG }' />
+										<c:set var='src' value='${memberinfo.USER_IMG }' />
 										<input type="hidden" name="check" value="${memberinfo.USER_IMG }">
 									</c:if>
-									<img src="${src }" alt="profile">
+									<img src="image/${src }" alt="profile">
 								</span>
 								<input class="form-control" type="file" name="user_img" id="formFile1">
 								<input type="hidden" name="user_id" value="${memberinfo.USER_ID}">

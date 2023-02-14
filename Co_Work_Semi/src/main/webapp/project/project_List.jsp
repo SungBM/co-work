@@ -4,14 +4,9 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<<<<<<< HEAD
-<link href="project_Css/project.css" rel="stylesheet" type="text/css" />
-<jsp:include page="/main/header.html"></jsp:include>
 
-=======
 <jsp:include page="/main/header.jsp"></jsp:include>
 <link href="project_Css/project.css" rel="stylesheet" type="text/css"/>
->>>>>>> branch 'main' of https://github.com/SungBM/co-work.git
 <style>
 #icon_id{
 	display: none;
@@ -128,9 +123,10 @@
 																								class="rounded-circle"
 																								style="width: 52px; height: 52px; padding: -5px; margin: 15px;">
 																							</a>
+																							<p id="icon_id" style="display: none;" >${s.USER_ID }</p>
 																							<p id="team_name" style="font-weight: bold;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 																							${s.USER_NAME }</p>
-																							<p id="icon_id" style="display: none;" >${s.USER_ID }</p>
+																							
 																						</div>
 																					</div>
 																				</c:forEach>
@@ -197,8 +193,6 @@
 </div>
 <!-- End Page-content -->
 </body>
-<<<<<<< HEAD
-<jsp:include page="/main/footer.html"></jsp:include>
 <script src="project_js/project_add.js"></script>
 <script src="project_js/project_list_onload.js"></script>
 <script type="text/javascript">
@@ -207,7 +201,6 @@ $(function(){
 })
 
 </script>
-=======
 <jsp:include page="/main/footer.jsp"></jsp:include>
 	<script src="project_js/project_add.js"></script>
 	<script src="project_js/project_list_onload.js"></script>
@@ -238,7 +231,6 @@ $(function(){
 		
 	
 	</script>
->>>>>>> branch 'main' of https://github.com/SungBM/co-work.git
 </html>
 
 

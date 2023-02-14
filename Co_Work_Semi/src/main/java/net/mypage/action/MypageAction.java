@@ -42,15 +42,15 @@ public class MypageAction implements Action {
 				forward.setRedirect(false);
 				forward.setPath("mypage/mypage.jsp");
 				return forward;
-			} else {
-				PrintWriter out = response.getWriter();
-				out.println("<script>");
-				out.println("alert('비밀번호가 틀렸습니다.');");
-				out.println("location.reload();");
-				out.println("</script>");
-				out.close();
-				return null;
-			}
+		      } else {
+		            PrintWriter out = response.getWriter();
+		            out.println("<script>");
+		            out.println("alert('비밀번호가 틀렸습니다.');");
+		            out.println("history.back();");
+		            out.println("</script>");
+		            out.close();
+		            return null;
+		     }
 		} else {
 			UserInfo m = mydao.member_info(user_id);
 			Company c = cdao.company_info(user_id);

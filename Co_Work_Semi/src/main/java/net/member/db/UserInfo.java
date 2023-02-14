@@ -23,10 +23,13 @@ public class UserInfo {
 		return USER_LASTTIME;
 	}
 
-	public void setUSER_LASTTIME(String uSER_LASTTIME) {
-		USER_LASTTIME = uSER_LASTTIME.substring(0, 10) + "<br>" + uSER_LASTTIME.substring(11, 19);
-	}
-
+	   public void setUSER_LASTTIME(String uSER_LASTTIME) {
+		      if (uSER_LASTTIME != null) {
+		         USER_LASTTIME = uSER_LASTTIME.substring(0, 10) + "<br>" + uSER_LASTTIME.substring(11, 19);
+		      } else {
+		         USER_LASTTIME = null;
+		      }
+		   }
 	public String getUSER_PASSWORD_CH() {
 		return USER_PASSWORD_CH;
 	}
