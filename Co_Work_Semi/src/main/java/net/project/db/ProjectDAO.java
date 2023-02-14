@@ -227,9 +227,13 @@ public class ProjectDAO {
 				pro.setProject_state(rs.getString(4));
 				int prog = 0;
 				if(rs.getString(7) != null ) {
-					String date1 = rs.getString(6).substring(0,10); //날짜1
+					System.out.println(rs.getString(6));
+					String d1 = rs.getString(6);
+					String d1s = d1.substring(0,10);
+					System.out.println("d1s : " + d1s);
+					String date1 = d1s;
 				    String date2 = rs.getString(7).substring(0,10); //날짜2
-				
+				    System.out.println("date2 : "  + date2);
 				    prog = getDayCount(date1, date2);
 					pro.setProject_prog(prog);
 				} else {
@@ -321,19 +325,29 @@ public class ProjectDAO {
 		     con.setAutoCommit(false);
 		     
 		     //1차 sql문생성
-		     String sql =   "insert into PROJECT (PROJECT_NUM, PROJECT_NAME, PROJECT_PROG, PROJECT_ADMIN, "            
-		              +  "                        PROJECT_START, PROJECT_END, PROJECT_PRIORITY) "
-		              +  " values (PROJECT_SEQ.NEXTVAL, ?,?,?,?,?,?)";
+		     String sql =   "insert into PROJECT (PROJECT_NUM, PROJECT_NAME, PROJECT_STATE, PROJECT_ADMIN, "            
+		              +  "                        PROJECT_START, PROJECT_END,PROJECT_priority) "
+		              +  " values ( NVL((SELECT MAX(PROJECT_NUM)FROM PROJECT)+1,0 ), ?,?,?,?,?,?)";
 		     //커넥션 객체 con 에 sql문을 넣어서 pstmt객체 생성 
 		     pstmt = con.prepareStatement(sql);
 		     
 		     //sql 에 ? 부분 값 설정해주기
+		     int state = Integer.parseInt(p.getProject_state());
+		     String s_state= "";
+		     if(state == 1) {
+		    	 s_state = "진행중";
+		     } else if(state == 0) {
+		    	 s_state = "없음";
+		     }
+		     
 		     pstmt.setString(1, p.getProject_name());
-		     pstmt.setInt(2, p.getProject_prog());
+		     pstmt.setString(2, s_state);
 		     pstmt.setString(3, p.getProject_admin());
 		     pstmt.setString(4, p.getProject_start());
 		     pstmt.setString(5, p.getProject_end());
 		     pstmt.setString(6, p.getProject_priority());
+		     
+		     
 		     //executeUpdate 메서드 반환값 result에 저장 executeUpdate함수는 변화가 일어난 row개수를 반환합니다 실패시 0 반환
 		     //예를들어 1개행 insert : 1 / 5개행 insert : 5를반환 저희는 지금 프로젝트 1개를 생성하기때문에 1을 반환합니다
 		     result = pstmt.executeUpdate(); //성공하면 result 1 실패면 0 인상태
@@ -341,10 +355,10 @@ public class ProjectDAO {
 		     pstmt.close();
 		     
 		     //2차 실행할 sql문 작성
-		     sql = "insert into PROJECT_USER "
-		    	+ " values( (select max(project_num), 0) +1 from project) "
-		    	+ "		, ?, "
-		    	+ "		PROJECT_UESR_SEQ";
+		     sql = "   insert into PROJECT_USER  "
+		             + "  values( (select nvl(max(PROJECT_NUM),0)+1 FROM PROJECT) "
+		             + "        , ? ,  "
+		             + "      PROJECT_UESR_SEQ.NEXTVAL )";
 		     
 		     //2차 sql문 실행해줄 pstmt객체 새로이 생성
 		     pstmt = con.prepareStatement(sql);
