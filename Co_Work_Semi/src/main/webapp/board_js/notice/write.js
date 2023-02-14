@@ -9,9 +9,9 @@ $(document).ready(function() {
 	// submit 버튼 클릭할 때 이벤트 부분
 	$("form[name=noticeform]").submit(function() {
 		
-		if ($.trim($("#notice_subject").val()) == "") {
+		if ($.trim($("#autoSizingInputGroup").val()) == "") {
 			 alert("제목을 입력하세요");
-			 $("#notice_subject").focus();
+			 $("#autoSizingInputGroup").focus();
 			 return false;		
 		}
 		

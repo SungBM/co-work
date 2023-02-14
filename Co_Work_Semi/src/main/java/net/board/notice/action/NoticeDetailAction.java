@@ -14,7 +14,6 @@ public class NoticeDetailAction implements Action {
 			HttpServletResponse response) throws ServletException, IOException {
 	NoticeDAO noticedao		=	new NoticeDAO();
 	NoticeBean noticedata	=	new NoticeBean();
-	
 	//글번호 파라미터 값을 num변수에 저장합니다.
 	int num=Integer.parseInt(request.getParameter("num"));
 	

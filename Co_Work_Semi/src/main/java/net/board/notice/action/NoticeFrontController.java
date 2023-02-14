@@ -52,6 +52,18 @@ public class NoticeFrontController extends HttpServlet {
         case "/NoticeDetailAction.bon":
             action = new NoticeDetailAction();
             break;
+        case "/NoticeModifyView.bon":
+            action = new NoticeModifyView();
+            break;
+        case "/NoticeModifyAction.bon":
+            action = new NoticeModifyAction();
+            break;
+        case "/NoticeDeleteAction.bon":
+            action = new NoticeDeleteAction();
+            break;
+        case "/NoticeFileDown.bon":
+            action = new NoticeFileDownAction();
+            break;
 		}//switch end
 		
 		forward = action.execute(request, response);

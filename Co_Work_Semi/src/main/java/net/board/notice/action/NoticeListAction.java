@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -21,30 +22,50 @@ public class NoticeListAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		NoticeDAO noticedao = new NoticeDAO();
-		List<NoticeBean> noticelist = new ArrayList<NoticeBean>();
 		
+		NoticeDAO noticedao = new NoticeDAO();
+		HttpSession session = request.getSession(); 
+		String  id = (String)session.getAttribute("id");
+		System.out.println(id);
+		
+		List<NoticeBean> noticelist = new ArrayList<NoticeBean>();
 		
 		
 		int page = 1; //보여줄 page
 		int limit = 10; //한 페이지에 보여줄 게시판 목록의 수
-		if (request.getParameter("page") != null) {
-			page = Integer.parseInt(request.getParameter("page"));
-		}
-		System.out.println("넘어온 페이지 =" + page);
+			if (request.getParameter("page") != null) {
+				page = Integer.parseInt(request.getParameter("page"));
+			}
+			System.out.println("넘어온 페이지 =" + page);
+			
+			//추가
+			if (request.getParameter("limit") != null) {
+				limit = Integer.parseInt(request.getParameter("limit"));
+			}
+			System.out.println("넘어온 limit =" + limit);
+		int listcount = 0;
+		int index=-1;
+		String search_word="";
 		
-		//추가
-		if (request.getParameter("limit") != null) {
-			limit = Integer.parseInt(request.getParameter("limit"));
-		}
-		System.out.println("넘어온 limit =" + limit);
+		if ( request.getParameter("search_word") == null
+				|| request.getParameter("search_word").equals("")) {
+			
+			// 총 리스트 수를 받아옵니다.
+			listcount = noticedao.getListCount();
 		
-		// 총 리스트 수를 받아옵니다.
-		int listcount = noticedao.getListCount();
-				
-		// 리스트를 받아옵니다.
-		noticelist = noticedao.getNoticeList(page, limit);
-
+			// 리스트를 받아옵니다.
+			noticelist = noticedao.getNoticeList(page, limit);
+		} else { //검색을 클릭한 경우
+			System.out.println("sf : " + request.getParameter("search_field"));
+			index= Integer.parseInt(request.getParameter("search_field"));
+			String[] search_field = new String[] {"notice_subject", "user_id"};
+			search_word = request.getParameter("search_word");
+			noticelist = noticedao.getNoticeList(search_field[index], search_word, page, limit);
+			listcount = noticedao.getListCount(search_field[index], search_word);
+		}
+		System.out.println("넘어온 분류 =" + index);
+		System.out.println("넘어온 검색어 =" + search_word);
+		
 		int maxpage = (listcount + limit - 1) / limit;
 		System.out.println("총 페이지수 =" + maxpage);
 		
@@ -52,7 +73,7 @@ public class NoticeListAction implements Action {
 		System.out.println("현재 페이지에 보여줄 시작 페이지 수 :" + startpage);		
 		
 		int endpage = startpage + 10 - 1;
-		System.out.println("현재 페이지에 보여줄 시작 페이지 수 :" + endpage);
+		System.out.println("현재 페이지에 보여줄 마지막 페이지 수 :" + endpage);
 		
 		if (endpage > maxpage)
 			endpage = maxpage;
@@ -74,8 +95,10 @@ public class NoticeListAction implements Action {
 			
 			// 해당 페이지의 글 목록을 갖고 있는 리스트
 			request.setAttribute("noticelist", noticelist);
-			
 			request.setAttribute("limit", limit);
+			request.setAttribute("search_field", index);
+			request.setAttribute("search_word", search_word);
+			
 			ActionForward forward = new ActionForward();
 			forward.setRedirect(false);
 			
@@ -94,6 +117,8 @@ public class NoticeListAction implements Action {
 			object.addProperty("endpage", endpage);
 			object.addProperty("listcount", listcount);
 			object.addProperty("limit", limit);
+			object.addProperty("search_field", index);
+			object.addProperty("search_word", search_word);
 			
 			//JsonObject에 List 형식을 담을 수 있느 addProperty() 존재하지 않습니다.
 			//void com.google.gson.JsonObject.add(String property, JsonElement value)

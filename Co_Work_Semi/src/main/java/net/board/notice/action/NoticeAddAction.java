@@ -26,7 +26,7 @@ public class NoticeAddAction implements Action {
 		String realFolder="";
 		
 		//webapp아래에 목 폴더 생성하세요
-		String saveFolder="boardupload";
+		String saveFolder="board/notice/boardupload";
 		
 		int fileSize=5*1024*1024; //업로드할 파일이 최대 사이즈 입니다.5MB
 
@@ -44,7 +44,7 @@ public class NoticeAddAction implements Action {
 					new DefaultFileRenamePolicy());
 			
 			//BoardBean 객체에 글 능록 몸에서 입력 받은 정보들을 저장합니다.
-			noticedata.setNotice_name(multi.getParameter("notice_name"));
+			noticedata.setUser_id(multi.getParameter("user_id"));
 			noticedata.setNotice_subject(multi.getParameter("notice_subject"));
 			noticedata.setNotice_content(multi.getParameter("notice_content"));
 			

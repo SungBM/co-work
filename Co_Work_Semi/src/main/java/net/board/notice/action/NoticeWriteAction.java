@@ -12,9 +12,9 @@ public class NoticeWriteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
+		forward.setRedirect(false); 
 		
-		// 글 목록 페이지로 이동하기 위해 경로를 설정합니다.
+		// 글작성 페이지로 이동하기 위해 경로를 설정합니다.
 		forward.setPath("board/notice/write.jsp");
 		return forward;
 	}
