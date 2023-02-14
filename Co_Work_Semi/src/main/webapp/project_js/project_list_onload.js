@@ -1,4 +1,24 @@
 $(function(){
+	$(".avatar-group-item").click(function(){
+		var id = $(this).children("p").text();
+		console.log(id);
+		location.href = "pages-404.html?id=" + id;
+	});
+	
+	$(".card-drop").click(function (event) {
+		   console.log("??");
+		   x = event.clientX;
+		   y = event.clientY; 
+		   var win_x = $( window ).width();
+		   var win_y = $( window ).height();
+		   var rx = ( win_x - x )+ 50;
+		   var ry = ( y  - 400);
+		   console.log("윈 x : " + win_x + "윈 y" + win_y);
+		   console.log('x좌표:' +x + ', y좌표:' + y);
+		   console.log('차이 x:' + rx + ', 차이 y:' + ry);
+		   $("#myModal").css('margin-left',rx);
+		   $("#myModal").css('margin-top',ry);
+	});
 		var prog_arr = new Array();
 		$(".progress-bar").each(function(){
 			prog_arr.push($(this).attr("aria-valuenow"));

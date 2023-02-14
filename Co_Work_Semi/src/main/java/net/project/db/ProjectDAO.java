@@ -188,20 +188,37 @@ public class ProjectDAO {
 
 	}
 	
-	public List<Project> getProjectList(int page, int limit) {
+	public List<Project> getProjectList(int page, int limit, String logingID) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		String id =  logingID;
+		int isAdmin = getIsAdmin(id);
+		String project_List_Sql = "";
 		
-		String project_List_Sql = "SELECT PR.*, U.USER_IMG FROM ( SELECT * FROM "
-								+ "    (SELECT ROWNUM,P.* FROM (SELECT * FROM PROJECT ORDER BY PROJECT_END)P "
-								+ "     WHERE ROWNUM <= ?) "
-								+ "WHERE ROWNUM >= ? "
-								+ "AND ROWNUM <= ? "
-								+ "AND PROJECT_END > SYSDATE "
-								+ "OR PROJECT_END IS NULL )PR "
-								+ "INNER JOIN USER_INFO U "
-								+ "ON PR.PROJECT_ADMIN = U.USER_ID ";
+		if(isAdmin == 1) {
+			project_List_Sql = "SELECT PR.*, U.USER_IMG FROM ( SELECT * FROM "
+					+ "    (SELECT ROWNUM,P.* FROM (SELECT * FROM PROJECT ORDER BY PROJECT_END)P "
+					+ "     WHERE ROWNUM <= ?) "
+					+ "WHERE ROWNUM >= ? "
+					+ "AND ROWNUM <= ? "
+					+ "AND PROJECT_END > SYSDATE "
+					+ "OR PROJECT_END IS NULL )PR "
+					+ "INNER JOIN USER_INFO U "
+					+ "ON PR.PROJECT_ADMIN = U.USER_ID ";
+		} else {
+			project_List_Sql = "SELECT* FROM( SELECT PR.*, U.USER_IMG FROM ( SELECT * FROM "
+					+ "    (SELECT ROWNUM,P.* FROM (SELECT * FROM PROJECT ORDER BY PROJECT_END)P "
+					+ "     WHERE ROWNUM <= ?) "
+					+ "WHERE ROWNUM >= ? "
+					+ "AND ROWNUM <= ? "
+					+ "AND PROJECT_END > SYSDATE "
+					+ "OR PROJECT_END IS NULL )PR "
+					+ "INNER JOIN USER_INFO U "
+					+ "ON PR.PROJECT_ADMIN = U.USER_ID ) WHERE PROJECT_NUM IN (SELECT DISTINCT(PROJECT_NUM) FROM PROJECT_USER WHERE USER_ID LIKE ?) ";
+					
+		}
+		
 		
 		
 		List<Project> list = new ArrayList<Project>();
@@ -215,6 +232,9 @@ public class ProjectDAO {
 			pstmt.setInt(1, endrow);
 			pstmt.setInt(2,startrow);
 			pstmt.setInt(3, endrow);
+			if(isAdmin == 0 ) {
+				pstmt.setString(4, id);
+			}
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -241,7 +261,12 @@ public class ProjectDAO {
 				pro.setProject_bookmark(rs.getString(11));
 				
 				ArrayList<Project_User> user_parti = getParticipants(rs.getInt(2));
+				ArrayList<Project_User> modal = getParticipants(rs.getInt(2));
+				int modalcount = getModalCount(rs.getInt(2));
+				
 				pro.setProject_parti(user_parti);
+				pro.setParti_count(modalcount);
+				pro.setProject_parti_forModal(modal);
 				pro.setProject_admin_img(rs.getString("user_img"));
 				list.add(pro);
 				
@@ -259,6 +284,75 @@ public class ProjectDAO {
 		return list;
 	}
 	
+	private int getIsAdmin(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int isAdmin = 0;
+		
+		String sql = "select USER_IS_ADMIN from user_info where user_id like ?";
+	
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+		
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				isAdmin = rs.getInt(1);
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("isAdmin() : 에러발생" + ex);
+		} finally {
+			all_close(rs, pstmt, conn);
+		}
+		
+		return isAdmin;
+	}
+
+
+
+
+
+	private int getModalCount(int pro_num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		
+		String participants_Sql = "SELECT COUNT(*) FROM PROJECT_USER P "
+								+ "INNER JOIN USER_INFO U "
+								+ "ON P.USER_ID = U.USER_ID "
+								+ "WHERE PROJECT_NUM = ? ";
+	
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(participants_Sql);
+			pstmt.setInt(1, pro_num);
+		
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("getProjectList() : 에러발생" + ex);
+		} finally {
+			all_close(rs, pstmt, conn);
+		}
+		
+		return count;
+	}
+
+
+
+
+
 	private ArrayList<Project_User> getParticipants(int pro_num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -339,10 +433,11 @@ public class ProjectDAO {
 		     pstmt.close();
 		     
 		     //2차 실행할 sql문 작성
-		     sql = "insert into PROJECT_USER "
-		    	+ " values( (select max(project_num), 0) +1 from project) "
-		    	+ "		, ?, "
-		    	+ "		PROJECT_UESR_SEQ";
+		     sql = "   insert into PROJECT_USER  "
+		    	+ "  values( (select nvl(max(PROJECT_NUM),0)+1 FROM PROJECT) "
+		    	+ "		  , ? ,  "
+		    	+ "		PROJECT_UESR_SEQ )";
+		     
 		     
 		     //2차 sql문 실행해줄 pstmt객체 새로이 생성
 		     pstmt = con.prepareStatement(sql);

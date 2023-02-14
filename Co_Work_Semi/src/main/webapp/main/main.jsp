@@ -697,7 +697,6 @@
 </div>
 
 <!-- apexcharts -->
-
 <jsp:include page="/main/footer.html"></jsp:include>
 <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
 <script src="assets/js/pages/dashboard.init.js"></script>

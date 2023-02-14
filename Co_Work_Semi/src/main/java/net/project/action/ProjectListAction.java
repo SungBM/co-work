@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -21,6 +22,8 @@ public class ProjectListAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ProjectDAO prodao = new ProjectDAO();
+		HttpSession session = request.getSession();
+		String logingID = (String)session.getAttribute("id");
 		List<Project> projectList = new ArrayList<Project>();
 
 		// 로그인 성공시 파라미터 page가 없어요. 그래서 초기값이 필요합니다.
@@ -41,7 +44,7 @@ public class ProjectListAction implements Action {
 		int listcount = prodao.getListCount();
 
 		// 리스트를 받아옵니다.
-		projectList = prodao.getProjectList(page, limit);
+		projectList = prodao.getProjectList(page, limit, logingID);
 
 		/*
 		 * 총 페이지 수 = (DB에 저장된 총 리스트의 수 + 한 페이지에서 보여주는 리스트의 수 - 1)/한 페이지에서 보여주는 리스트의 수 예를
