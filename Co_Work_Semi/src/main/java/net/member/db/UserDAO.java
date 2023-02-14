@@ -11,9 +11,11 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import net.project.db.Project;
+
 
 public class UserDAO {
-	private DataSource ds;
+	private static DataSource ds;
 	
 	//생성자에서 JNDI 리소스를 참조하여 Connection 객체를 얻어옵니다.
 	public UserDAO() {
@@ -118,14 +120,15 @@ public class UserDAO {
 			System.out.println("getConnection : insert()");
 			
 			pstmt = con.prepareStatement(
-					"insert into USER_INFO (USER_ID, USER_PASSWORD, USER_PASSWORD_CH, USER_EMAIL, USER_NAME) "
-					+"values (?,?,?,?,?)");
+		               "insert into USER_INFO (USER_ID, USER_PASSWORD, USER_PASSWORD_CH, USER_EMAIL, USER_NAME,USER_IMG) "
+		               +"values (?,?,?,?,?,?)");
 			pstmt.setString(1, m.getUSER_ID());
 			pstmt.setString(2, m.getUSER_PASSWORD());
 			pstmt.setString(3, m.getUSER_PASSWORD_CH());
 			pstmt.setString(4, m.getUSER_EMAIL());
 			//pstmt.setInt(4, m.getUSER_CODE());
 			pstmt.setString(5, m.getUSER_NAME());
+			pstmt.setString(6, "profile.png");
 			result = pstmt.executeUpdate();  //삽입 성공시 result=1
 			
 		}catch(java.sql.SQLIntegrityConstraintViolationException e) {
@@ -149,7 +152,8 @@ public class UserDAO {
 		}
 		return result;
 	}
-		public UserInfo userinfo(String USER_ID) {
+	
+	public UserInfo userinfo(String USER_ID) {
 		UserInfo userinfo = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -206,6 +210,34 @@ public class UserDAO {
 		}
 		return userinfo;
 	}
+	
+	public List<MainBean> main() {
+		List<MainBean> list = new ArrayList<MainBean>();
+		MainBean mb = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			
+			String sql = "SELECT * FROM PROJECT ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "PROJECT_NAME");
+			rs = pstmt.executeQuery();
+		
+			while (rs.next()) {
+				mb = new MainBean();
+				mb.setProject_name(rs.getString("PROJECT_NAME"));
+				mb.setProject_state(rs.getString("PROJECT_STATE"));
+				mb.setProject_prog(rs.getInt("PROJECT_PROG"));
+				mb.setProject_start(rs.getString("PROJECT_START"));
+				mb.setProject_end(rs.getString("PROJECT_END"));
+				mb.setProject_priority(rs.getString("PROJECT_PRIORITY"));
+				mb.setProject_partici(rs.getInt("PROJECT_PARTICI"));
+				mb.setProject_admin(rs.getString("PROJECT_ADMIN"));
+				list.add(mb);
+			}
+
 
 		public void lasttime(String USER_ID, String time) {
 		Connection con = null;
@@ -238,5 +270,6 @@ public class UserDAO {
 				}
 		}
 	} // lasttime end
+
 
 }

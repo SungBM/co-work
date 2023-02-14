@@ -56,6 +56,9 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet{
 	    case "/memberInfo.net":
 	        action = new MemberInfoAction();
 	        break;
+	    case "/main2.net":
+	    	action = new MainAction();
+	    	break;
 	
 		} //switch and
 		forward = action.execute(request, response); //반환형 포워드다.

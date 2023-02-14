@@ -115,6 +115,7 @@ $(function(){
 </script>
 <Style>
  .mail_check_wrap{weith: 50px}
+ #mail_submit, #code_submit{background-color : transparent; border: none;}
 </Style>
 </head>
 
@@ -129,7 +130,7 @@ $(function(){
                             <div class="row">
                                 <div class="col-7">
                                     <div class="text-primary p-4">
-                                        <h5 class="text-primary">회원가입</h5>
+                                        <h4 class="text-primary">회원가입</h4>
                                     </div>
                                 </div>
                                 <div class="col-5 align-self-end">
@@ -287,6 +288,11 @@ $(function(){
 	<script>
 	  let re="";
 	  $("#mail_submit").click(function(){
+	     let receiver=$("#receiver").val();   //이메일 주소 작성할때마다 확인
+		  if(receiver===""){
+			  alert("이메일을 입력하세요.")
+			  $("input[name=receiver]").val('').focus();
+		  }else{
 		  $("#mail_submit").attr("disabled", true);
 		  $.ajax({
 		        url : "send.net",
@@ -295,8 +301,11 @@ $(function(){
 		        	//$("#code_check_message").css('color','green').html("인증번호 전송 완료되었습니다.");
 		        	re = rdata;
 		        	alert("인증번호 전송 되었습니다.")
+		       
 		        }
-		  })
+		  
+		  	})
+		  }
 	  })
 	  
 	  

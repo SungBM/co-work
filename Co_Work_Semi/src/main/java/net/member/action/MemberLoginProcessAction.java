@@ -2,7 +2,11 @@ package net.member.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import java.text.SimpleDateFormat;
+
+import java.util.List;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -10,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.member.db.MainBean;
 import net.member.db.UserDAO;
 import net.member.db.UserInfo;
 
@@ -18,11 +23,40 @@ public class MemberLoginProcessAction implements Action {
 			throws ServletException, IOException {
 
 		ActionForward forward = new ActionForward();
-		String USER_ID = request.getParameter("id");
+		
+		HttpSession session = request.getSession();
+		
+		//세션이 있는 경우
+		String USER_ID = (String)session.getAttribute("id");
+		
+		if(USER_ID != null) {
+		UserDAO udao = new UserDAO();
+
+		UserInfo userinfo = udao.userinfo(USER_ID);
+		List<MainBean> mainbean = udao.main();
+		if(userinfo==null) {
+			forward.setPath("error/error.jsp");
+			forward.setRedirect(false);
+			request.setAttribute("message", "아이디에 해당하는 정보가 없습니다.");
+			return forward;
+		}
+
+		request.setAttribute("mainbean", mainbean);
+		request.setAttribute("userinfo", userinfo);
+		System.out.println(userinfo.getUSER_IMG());
+		
+		forward.setRedirect(false);
+		forward.setPath("main/main.jsp");  //메인 페이지로 이동
+		return forward;
+		}
+		
+		
+		USER_ID = request.getParameter("id");
 		String USER_PASSWORD = request.getParameter("pass");
 		UserDAO mdao = new UserDAO();
 		int result = mdao.isId(USER_ID, USER_PASSWORD);
 		System.out.println("결과는 " + result);
+
 
 		// 시간 설정
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -35,6 +69,7 @@ public class MemberLoginProcessAction implements Action {
 
 			session = request.getSession();
 			session.setAttribute("id", USER_ID);
+
 
 			String IDStore = request.getParameter("remember-check");
 			Cookie cookie = new Cookie("id", USER_ID);

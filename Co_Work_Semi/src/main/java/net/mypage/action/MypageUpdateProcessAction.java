@@ -26,6 +26,29 @@ public class MypageUpdateProcessAction implements Action {
 		String change = request.getParameter("val3");
 		String id = request.getParameter("user_id");
 
+		CompanyDAO cdao = new CompanyDAO();
+		System.out.println(value);
+		System.out.println(change);
+		System.out.println(id);
+
+		if (value.equals("user_img") || value.equals("user_card")) {
+			String realFolder = "";
+			// webapp아래에 꼭 폴더 생성하세요
+			String saveFolder = "image";
+			int fileSize = 5 * 1024 * 1024;
+			// 실제 저장 경로 지정
+			ServletContext sc = request.getServletContext();
+			realFolder = sc.getRealPath("/saveFolder");
+			System.out.println("realFolder = [" + realFolder + "]");
+			try {
+				MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "utf-8",
+						new DefaultFileRenamePolicy());
+				value = multi.getParameter("value");
+				change = multi.getParameter(value);
+				id = multi.getParameter("user_id");
+				// 이미지 교체 진행
+
+
 		System.out.println("value="+value);
 		System.out.println("id="+id);
 		System.out.println("change="+change);

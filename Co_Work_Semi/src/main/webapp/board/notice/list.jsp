@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-<jsp:include page="/main/header.html"></jsp:include>
+<jsp:include page="/main/header.jsp"></jsp:include>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
 <script src="board_js/notice/list.js"></script>
 <style>
@@ -176,6 +176,6 @@
 	</div>
 </div>             
 <!-- 하단푸터 -->
-<jsp:include page="/main/footer.html"></jsp:include>
+<jsp:include page="/main/footer.jsp"></jsp:include>
 </body>
 </html>
