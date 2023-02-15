@@ -206,7 +206,8 @@ public class ProjectDAO {
 					+ "AND PROJECT_END > SYSDATE "
 					+ "OR PROJECT_END IS NULL )PR "
 					+ "INNER JOIN USER_INFO U "
-					+ "ON PR.PROJECT_ADMIN = U.USER_ID ";
+					+ "ON PR.PROJECT_ADMIN = U.USER_ID "
+					+ " ORDER BY PROJECT_END";
 		} else {
 			project_List_Sql = "SELECT* FROM( SELECT PR.*, U.USER_IMG FROM ( SELECT * FROM "
 					+ "    (SELECT ROWNUM,P.* FROM (SELECT * FROM PROJECT ORDER BY PROJECT_END)P "
@@ -216,7 +217,7 @@ public class ProjectDAO {
 					+ "AND PROJECT_END > SYSDATE "
 					+ "OR PROJECT_END IS NULL )PR "
 					+ "INNER JOIN USER_INFO U "
-					+ "ON PR.PROJECT_ADMIN = U.USER_ID ) WHERE PROJECT_NUM IN (SELECT DISTINCT(PROJECT_NUM) FROM PROJECT_USER WHERE USER_ID LIKE ?) ";
+					+ "ON PR.PROJECT_ADMIN = U.USER_ID ORDER BY PROJECT_END ) WHERE PROJECT_NUM IN (SELECT DISTINCT(PROJECT_NUM) FROM PROJECT_USER WHERE USER_ID LIKE ?)";
 					
 		}
 		
@@ -267,11 +268,6 @@ public class ProjectDAO {
 			
 				ArrayList<Project_User> modal = getParticipants(rs.getInt(2));
 				int modalcount = getModalCount(rs.getInt(2));
-				for(Project_User pu : modal ) {
-					String s = pu.getUSER_IMG();
-					System.out.println("modal : " + s);
-				}
-				System.out.println( "===");
 				
 				pro.setProject_parti(user_parti);
 				pro.setParti_count(modalcount);

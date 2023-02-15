@@ -14,7 +14,9 @@ $(function(){
 		 
 	             }
 	           $("#exampleModal").removeClass("show");
-	           location.reload();
+	           setTimeout(function(){
+   				window.location.reload();
+				}, 1000);
                $("#result").empty();
                $("#result").html(data);
               // window.location.hash = page;

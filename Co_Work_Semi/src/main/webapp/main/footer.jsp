@@ -81,7 +81,9 @@
 	<script src="assets/libs/metismenu/metismenu.min.js"></script>
 	<script src="assets/libs/simplebar/simplebar.min.js"></script>
 	<script src="assets/libs/node-waves/waves.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="main_js/main.js"></script>
+	
 	<script>
 	</script>
 

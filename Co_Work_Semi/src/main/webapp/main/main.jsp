@@ -45,7 +45,7 @@
    <!-- 이미지 여기-->
                                 <div class="avatar-md profile-user-wid mb-4">
                                 <c:if test="{}"></c:if>
-                                <img src="image/profile.png" alt="profile">
+                                <img src="image/${userinfo.USER_IMG }" alt="profile" class="img-thumbnail rounded-circle">
                              <!--  <img src="<%=request.getContextPath() %>/saveFolder/${userinfo.USER_IMG}"      
                                    style= "width:95px; height:65px; center;" alt=""
                                         class="img-thumbnail rounded-circle">   --> 

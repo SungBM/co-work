@@ -7,6 +7,8 @@
        <!-- start page title -->
         <div class="row">
             <div class="col-12">
+             <button type="button" class="btn btn-primary waves-effect waves-light"
+                                        id="sa-success">Click me</button>
              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                             data-bs-whatever="@mdo">프로젝트 추가</button>
                                              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

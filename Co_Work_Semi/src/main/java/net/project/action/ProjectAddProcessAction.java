@@ -59,7 +59,7 @@ public class ProjectAddProcessAction implements Action {
       PrintWriter out = response.getWriter();
       out.println("<script>");
       if (result == 2) {//삽입이 된 경우
-         out.println("alert('프로젝트 등록 성공.');");
+         out.println("swal('프로젝트 생성 완료','지금 바로 관리해보세요','success' )");
         // out.println("location.href='ProjectAddProcess.po';");         
       } else if (result == -1) {
          out.println("alert('프로젝트명이 중복되었습니다. 다시 입력하세요');");

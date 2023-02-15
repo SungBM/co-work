@@ -1,4 +1,5 @@
 <!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta charset="utf-8" />
@@ -346,8 +347,8 @@
 					<input type="hidden" name="USER_ID" value="${userinfo.USER_ID }" id="USER_ID">
 					<div class="dropdown d-inline-block">
 						<button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<img class="rounded-circle header-profile-user" src="image/profile.png" alt="Header Avatar">
-							<span class="d-none d-xl-inline-block ms-1" >${userinfo.USER_ID }</span>
+							<img class="rounded-circle header-profile-user" src="image/${userinfo.USER_IMG }" alt="Header Avatar">
+							<span class="d-none d-xl-inline-block ms-1" >${userinfo.USER_NAME }</span>
 							<i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
 						</button>
 						<div class="dropdown-menu dropdown-menu-end">
@@ -833,12 +834,17 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="dropdown d-inline-block">
 						<button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<c:if test="${userinfo.USER_IMG  != null}">
+								<img class="rounded-circle header-profile-user" src="image/${userinfo.USER_IMG }" 
+								style= "width:50px; height:50px; alt="Header Avatar">
+							</c:if>
+							<c:if test="${userinfo.USER_IMG  == null}">
 							<img class="rounded-circle header-profile-user" src="image/profile.png" 
-							style= "width:50px; height:50px; alt="Header Avatar">
-							<span class="d-none d-xl-inline-block ms-1" key="t-henry">${userinfo.USER_ID }</span>
+								style= "width:50px; height:50px; alt="Header Avatar">
+							</c:if>
+							<span class="d-none d-xl-inline-block ms-1" key="t-henry">${userinfo.USER_NAME }</span>
 							<i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
 						</button>
 						<div class="dropdown-menu dropdown-menu-end">

@@ -11,6 +11,9 @@
 #icon_id{
 	display: none;
 }
+#sa-success{
+	display: none;
+}
 </style>
 <div class="page-content">
 	<div class="container-fluid">
@@ -38,7 +41,6 @@
 							</thead>
 							<tbody>
 								<c:forEach var="p" items="${projectList }">
-
 									<tr>
 										<c:if test="${p.row_num <= 6 }">
 											<td><img
