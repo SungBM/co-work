@@ -1,12 +1,4 @@
 $(function() {
-/*
-	if(url.includes(".my")){
-		$('#side-menu').children("li").removeClass();
-		var li = $('#side-menu').children('li:eq(6)');
-		li.addClass("mm-active");
-	}
-	
-*/
 	var full_url = $(location).attr('pathname');   // /가져 오기
 	var url = full_url.substring(14, full_url.length);
 	console.log(url);
